@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Free part of lower limb" latin="Pars libera membri inferioris" id="16" parent="2" last="16000" name_CZ="Kostra volné dolní končetiny">
+  <children>
+    <child id="17" />
+    <child id="18" />
+    <child id="19" />
+    <child id="20" />
+  </children>
+  <bones />
+</group>

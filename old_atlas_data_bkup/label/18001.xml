@@ -1,0 +1,7 @@
+<labels>
+  <label label_CZ="basis patellae" text_CZ="" label="basis patellae" text="" priority="2" x="-18.765476743295515" y="-8.724717079069357" z="133.31801238007137" x2="-213.74410286835464" y2="-75.87555632479834" z2="225.4661757114736"/>
+  <label label_CZ="apex patellae" text_CZ="" label="apex patellae" text="" priority="2" x="12.089996419991298" y="15.122561274694633" z="-149.95772070326626" x2="95.7696108987212" y2="66.98898411646948" z2="-244.93422476981013"/>
+  <label label_CZ="facies anterior" text_CZ="" label="facies anterior" text="" priority="2" x="28.44408596367763" y="-41.85317683015137" z="6.1326054187812735" x2="332.1194439395712" y2="6.543895639704941" z2="-38.2141584201879"/>
+  <label label_CZ="facies articularis - laterální faseta" text_CZ="pro Facies patellaris femoris" label="facies articularis - lateral facet" text="for Facies patellaris femoris" priority="2" x="27.259120818552095" y="72.23391629754542" z="47.60602838330531" x2="174.52174794333786" y2="192.4308292596582" z2="185.83047399622023"/>
+  <label label_CZ="facies articularis - mediální faseta" text_CZ="pro Facies patellaris femoris" label="facies articularis - medial facet" text="for Facies patellaris femoris" priority="2" x="-112.0350573824844" y="15.888274258904076" z="35.13776346792769" x2="-291.9550476732952" y2="-62.43918609487734" z2="-79.64309872763152"/>
+</labels>

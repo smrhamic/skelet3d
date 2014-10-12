@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of crus" latin="Ossa cruris" id="19" parent="16" last="19002" name_CZ="Kosti bérce">
+  <children />
+  <bones>
+    <bone id="19001" name="Fibula" latin="Fibula" model="model/Fibula.stl" cal_x="-47.81395149230957" cal_y="102.29275131225586" cal_z="177.00579702854156" cal_scale="0.8287439474882506" name_CZ="Lýtková kost" />
+    <bone id="19002" name="Tibia" latin="Tibia" model="model/Tibie.stl" cal_x="-54.85949945449829" cal_y="181.0654525756836" cal_z="184.00115299224854" cal_scale="0.7894427174275213" name_CZ="Holenní kost" />
+  </bones>
+</group>

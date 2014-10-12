@@ -1,0 +1,6 @@
+<labels>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os scaphoideum" priority="2" x="39.58414802409001" y="38.47079224159171" z="-76.99025868468816" x2="264.610586428673" y2="-19.875632600608146" z2="-222.95456185187223" label_CZ="kloubní ploška" text_CZ="pro Os scaphoideum"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os capitatum" priority="2" x="-67.0609840299787" y="-1.054910827443902" z="33.79248864173534" x2="-218.3851817609337" y2="-92.06768601668736" z2="155.32197945147837" label_CZ="kloubní ploška" text_CZ="pro Os capitatum"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os metacarpi II" priority="2" x="-32.34746410497946" y="-72.95142432730633" z="55.06439311982457" x2="-124.73082043297774" y2="-78.00760007294379" z2="241.15946577027424" label_CZ="kloubní ploška" text_CZ="pro Os metacarpi II"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os trapezium" priority="2" x="43.287526750754246" y="-98.62923624557385" z="-2.656429676335332" x2="207.5862132059688" y2="-194.02815455226695" z2="-44.70506884742673" label_CZ="kloubní ploška" text_CZ="pro Os trapezium"/>
+</labels>

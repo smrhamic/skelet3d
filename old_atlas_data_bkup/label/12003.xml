@@ -1,0 +1,9 @@
+<labels>
+  <label label="[CZ] basis ossis metacarpi IV" text="[CZ] " priority="2" x="105.31246711377716" y="51.50945609418484" z="46.414243976067034" x2="-24.308214156655993" y2="35.14704618562456" z2="226.6846906914352" label_CZ="basis ossis metacarpi IV" text_CZ=""/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os hamatum" priority="2" x="145.03165605881563" y="15.283011228228297" z="41.56177923283756" x2="240.65909088168976" y2="25.56023085830566" z2="68.94375260716026" label_CZ="kloubní ploška" text_CZ="pro Os hamatum"/>
+  <label label="[CZ] corpus ossis metacarpi IV" text="[CZ] " priority="2" x="4.374173514579648" y="1.6957052579868572" z="9.618699212348334" x2="45.58349920997706" y2="83.32460432318778" z2="-134.83950001440076" label_CZ="corpus ossis metacarpi IV" text_CZ=""/>
+  <label label="[CZ] caput ossis metacarpi IV" text="[CZ] " priority="2" x="-91.67496344935321" y="13.423171353722736" z="-21.83844923082291" x2="-210.20888220202565" y2="23.504106911473386" z2="149.4667099122925" label_CZ="caput ossis metacarpi IV" text_CZ=""/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Phalanx proximalis digiti quarti manus" priority="2" x="-147.3679431288223" y="1.20545177852554" z="-42.587016221783145" x2="-267.55459912770954" y2="-34.48362793144393" z2="-78.02199884909747" label_CZ="kloubní ploška" text_CZ="pro Phalanx proximalis digiti quarti manus"/>
+  <label label="[CZ] 2 kloubní plošky" text="[CZ] pro Os metacarpi III" priority="2" x="107.58437053509323" y="8.375575822873035" z="79.36052340667538" x2="148.8654256350493" y2="-70.05741526340852" z2="166.85235750671296" label_CZ="2 kloubní plošky" text_CZ="pro Os metacarpi III"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os metacarpi V" priority="2" x="110.77894723464065" y="12.394075588116177" z="-0.7917423195283603" x2="125.3300038546817" y2="-198.97664677015283" z2="-46.92362391428873" label_CZ="kloubní ploška" text_CZ="pro Os metacarpi V"/>
+</labels>

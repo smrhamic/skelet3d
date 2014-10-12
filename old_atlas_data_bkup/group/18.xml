@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Patella" latin="Patella" id="18" parent="16" last="18001" name_CZ="Čéška">
+  <children />
+  <bones>
+    <bone id="18001" name="Patella" latin="Patella" model="model/Patella.stl" cal_x="-8.11234998703003" cal_y="38.50210094451904" cal_z="446.9978485107422" cal_scale="7.1387645283923185" name_CZ="Čéška" />
+  </bones>
+</group>

@@ -1,0 +1,7 @@
+<labels>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os triquetrum" priority="2" x="81.50158817246094" y="82.16865835565532" z="-3.3364158301787077" x2="229.87374998947172" y2="129.0204104544768" z2="11.576371916572372" label_CZ="kloubní ploška" text_CZ="pro Os triquetrum"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os capitatum" priority="2" x="30.73007451605015" y="-85.58022895838252" z="7.558212037942831" x2="107.66693116712744" y2="-214.24266217639487" z2="-65.97844907976163" label_CZ="kloubní ploška" text_CZ="pro Os capitatum"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os metacarpi V." priority="2" x="-4.592715561745569" y="24.51519774783206" z="94.10744705781184" x2="25.783075151692636" y2="53.03270330102667" z2="230.05309267298844" label_CZ="kloubní ploška" text_CZ="pro Os metacarpi V."/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os metacarpi IV." priority="2" x="-2.397407650575214" y="-41.16440529814241" z="63.00571859966121" x2="-27.619121202679338" y2="-196.8606691676666" z2="145.9215637270256" label_CZ="kloubní ploška" text_CZ="pro Os metacarpi IV."/>
+  <label label="[CZ] hamulus ossis hamati" text="[CZ] Lig. pisohamatum&#xD;&#xD;ZAČÍNÁ ZDE:&#xD;M. flexor digiti minimi, M. opponens digiti minimi" priority="2" x="-140.09917511794052" y="65.2176125951908" z="23.756796649278172" x2="-292.68507164871676" y2="-5.178694595959475" z2="-3.2541963684185835" label_CZ="hamulus ossis hamati" text_CZ="Lig. pisohamatum&#xD;&#xD;ZAČÍNÁ ZDE:&#xD;M. flexor digiti minimi, M. opponens digiti minimi"/>
+</labels>

@@ -1,0 +1,10 @@
+<group name="" latin="" id="0" parent="0" last="0000" name_CZ="Člověk">
+  <children>
+    <child id="1"/>
+    <child id="2"/>
+    <child id="3"/>
+    <child id="4"/>
+    <child id="5"/>
+  </children>
+  <bones/>
+</group>

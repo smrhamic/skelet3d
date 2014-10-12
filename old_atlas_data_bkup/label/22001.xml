@@ -1,0 +1,7 @@
+<labels>
+  <label label_CZ="basis metatarsi I. - mediální strana" text_CZ="UPÍNÁ SE ZDE:&#xD;M. tibialis anterior" label="basis metatarsi I. - medial part" text="INSERTION:&#xD;M. tibialis anterior" priority="2" x="-81.9605698484153" y="-41.75198447383199" z="-35.43903569295505" x2="-149.1152434508076" y2="-58.15016612300288" z2="-206.4385378692647"/>
+  <label label_CZ="basis metatarsi I. - laterální strana" text_CZ="UPÍNÁ SE ZDE:&#xD;M. fibularis longus" label="basis metatarsi I. - lateral part" text="INSERTION:&#xD;M. fibularis longus" priority="2" x="-103.38098565002782" y="22.58474624456982" z="-2.237639353447125" x2="-222.43151243558137" y2="6.614959013610043" z2="191.25309100435484"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os metatarsi II." label="articular surface" text="for os metatarsi II." priority="2" x="-109.1734719880596" y="27.24126328065066" z="28.58098899057908" x2="-131.0312892537893" y2="62.463981655451896" z2="229.36248643686483"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os cuneiforme mediale" label="articular surface" text="for os cuneiforme mediale" priority="2" x="-125.38916362020048" y="-32.35976250488567" z="-4.846666553212807" x2="-223.15381581392944" y2="-141.7294939507431" z2="100.0050183813052"/>
+  <label label_CZ="kloubní ploška " text_CZ="pro Phalanx proximalis hallucis" label="articular surface" text="for phalanx proximalis hallucis" priority="2" x="146.83371971817525" y="40.09865260773167" z="-0.7361198030817864" x2="289.25324921359186" y2="-30.828961384780985" z2="-150.76947328387777"/>
+</labels>

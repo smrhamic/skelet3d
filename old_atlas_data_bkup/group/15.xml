@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Hip bone" latin="Os coxae" id="15" parent="14" last="15001" name_CZ="Pánevní kost">
+  <children />
+  <bones>
+    <bone id="15001" name="Hip bone" latin="Os coxae" model="model/Os coxae.stl" cal_x="-111.65699768066406" cal_y="99.48774719238281" cal_z="887.9956665039063" cal_scale="1.530434955891639" name_CZ="Pánevní kost" />
+  </bones>
+</group>

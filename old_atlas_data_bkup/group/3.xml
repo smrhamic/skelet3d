@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Vertebral column" latin="Columna vertebralis" id="3" parent="0" last="3000" name_CZ="Páteř">
+  <children>
+    <child id="24" />
+    <child id="25" />
+    <child id="26" />
+    <child id="27" />
+    <child id="28" />
+  </children>
+  <bones />
+</group>

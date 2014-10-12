@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Metacarpals" latin="Ossa metacarpi" id="12" parent="10" last="12005" name_CZ="Záprstní kosti">
+  <children />
+  <bones>
+    <bone id="12001" name="Metacarpus II" latin="Os metacarpi II" model="model/Os metacarpale A.stl" cal_x="-237.4637908935547" cal_y="245.3455581665039" cal_z="-120.99979782104492" cal_scale="4.1072041105465615" name_CZ="Záprstní kost II" />
+    <bone id="12002" name="Metacarpus III" latin="Os metacarpi III" model="model/Os metacarpale B.stl" cal_x="-233.89359283447266" cal_y="245.81595611572266" cal_z="-90.99834823608398" cal_scale="4.069154600265292" name_CZ="Záprstní kost III" />
+    <bone id="12003" name="Metacarpus IV" latin="Os metacarpi IV" model="model/Os metacarpale C.stl" cal_x="-228.70059967041016" cal_y="249.85684967041016" cal_z="-47.004798889160156" cal_scale="5.6672840084458125" name_CZ="Záprstní kost IV" />
+    <bone id="12004" name="Metacarpus V" latin="Os metacarpi V" model="model/Os metacarpale D.stl" cal_x="3.4413013458251953" cal_y="39.43599891662598" cal_z="10.004549860954285" cal_scale="4.8882544140900315" name_CZ="Záprstní kost V" />
+    <bone id="12005" name="Metacarpus I" latin="Os metacarpi I" model="model/Os metacarpale I.stl" cal_x="-231.5178451538086" cal_y="247.19744873046875" cal_z="-167.9979019165039" cal_scale="6.125163209018765" name_CZ="Záprstní kost I" />
+  </bones>
+</group>

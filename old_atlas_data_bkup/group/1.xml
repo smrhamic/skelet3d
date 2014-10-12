@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of upper limb" latin="Ossa membri superioris" id="1" parent="0" last="1002" name_CZ="Kosti horní končetiny">
+  <children>
+    <child id="6" />
+    <child id="7" />
+  </children>
+  <bones />
+</group>

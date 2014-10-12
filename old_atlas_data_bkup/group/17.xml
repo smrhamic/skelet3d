@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Femur" latin="Femur" id="17" parent="16" last="17001" name_CZ="Stehenní kost">
+  <children />
+  <bones>
+    <bone id="17001" name="Femur" latin="Femur" model="model/Femur.stl" cal_x="-103.06529712677002" cal_y="73.47084903717041" cal_z="183.98985290527344" cal_scale="0.6197884797799872" name_CZ="Stehenní kost" />
+  </bones>
+</group>

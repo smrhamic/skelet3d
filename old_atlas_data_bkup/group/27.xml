@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Sacrum" latin="Os sacrum" id="27" parent="3" last="27002" name_CZ="Křížová kost">
+  <children />
+  <bones>
+    <bone id="27001" name="Sacrum" latin="Os sacrum" model="model/Os sacrum.stl" cal_x="-289.5112991333008" cal_y="160.08594512939453" cal_z="902.0065002441406" cal_scale="2.343809233612719" name_CZ="Křížová kost" />
+  </bones>
+</group>

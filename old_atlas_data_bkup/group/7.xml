@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Free part of upper limb" latin="Pars libera membri superioris" id="7" parent="1" last="7000" name_CZ="Kostra volné horní končetiny">
+  <children>
+    <child id="8" />
+    <child id="9" />
+    <child id="10" />
+  </children>
+  <bones />
+</group>

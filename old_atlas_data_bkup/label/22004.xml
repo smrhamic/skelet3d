@@ -1,0 +1,6 @@
+<labels>
+  <label label_CZ="kloubní ploška" text_CZ="pro Phalanx proximalis digiti quarti pedis" label="articular surface" text="for phalanx proximalis digiti quarti pedis" priority="2" x="-149.07455790369346" y="-27.941842923840102" z="6.577319717242865" x2="-203.60943390437535" y2="-232.9272120306701" z2="107.26605994385584"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os cuboideum" label="articular surface" text="for os cuboideum" priority="2" x="135.21035771871075" y="27.301890534959117" z="-1.877734239787053" x2="201.4379057512547" y2="237.7915038971482" z2="17.47038732187133"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os matatarsi III." label="articular surface" text="for os matatarsi III." priority="2" x="105.49551291847156" y="43.505956657612195" z="-19.169371175955543" x2="54.248018845629936" y2="39.4066872569454" z2="-204.7181337998762"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os metatarsi V. " label="articular surface" text="for os metatarsi V. " priority="2" x="131.17834531488398" y="-8.047876734384847" z="-15.272632111790056" x2="194.61565532987584" y2="-50.244459590446155" z2="-104.81392843766768"/>
+</labels>

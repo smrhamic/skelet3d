@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Sternum" latin="Sternum" id="30" parent="4" last="30001" name_CZ="Hrudní kost">
+  <children />
+  <bones>
+    <bone id="30001" name="Sternum" latin="Sternum" model="model/Sternum.stl" cal_x="-289.51170349121094" cal_y="188.98374938964844" cal_z="-167.0009536743164" cal_scale="1.5464259311390238" name_CZ="Hrudní kost" />
+  </bones>
+</group>
