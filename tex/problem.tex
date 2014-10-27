@@ -1,0 +1,153 @@
+The task is to develop a new version of the Atlas of Human Bones, an online database of bones including 3D models with labels and web pages with additional information. The Atlas will serve as a source of information and a study material, primarily for students of the Third Faculty of Medicine at Charles University in Prague. The existing version is insufficient and should be replaced by a new system while reusing the partially pre-filled data content.
+
+\sec Requirements
+
+\secc Functional Requirements - User
+
+Any visitor of the website is considered a user and should have access to following features:
+
+\vskip 10pt
+{\bf 3D Viewer with following features:}
+
+\begitems
+*Display 3D models of bones
+*Display labels for certain parts
+*Display detailed descriptions of parts when selected
+*3 display modes for labels: Full labels / Labels with hidden names / No labels
+*Adjustable view (move, rotate, zoom)
+\enditems
+
+\vskip 10pt
+{\bf Website with following features:}
+
+\begitems
+*Navigation to specific bones
+*Web page for each bone with a 3D model, relevant images, text and references
+\enditems
+
+\secc Functional Requirements – Editor
+
+Editors are authenticated users with access to following extra features:
+
+\begitems
+*Login into editorial system
+*Add, edit and delete pages (bones)
+*Upload 3D models
+*Add, edit and delete labels and descriptions of the models
+*Add, edit and delete textual information related to each bone
+*Add and delete images related to each bone
+\enditems
+
+\secc Functional Requirements – Administrator
+
+Administrators are authenticated users with access to following extra features:
+
+\begitems
+*Login into account management system
+*Create, edit or delete editor accounts
+\enditems
+
+\secc Non-functional Requirements
+
+\begitems
+*Browser-based online application
+*Multiplatform
+*Support for bilingual content (Czech, English)
+\enditems
+
+\sec Target Group
+
+The application is targeted at students of the Third Faculty of Medicine at Charles University in Prague. Other users are to be expected, but the focus should remain on medical students.
+
+TODO: Add details if there's a survey
+
+\sec Existing Solutions and Alternatives
+
+The following list is by no means complete. These are just several examples of the most relevant solutions and alternatives found online.
+
+\begitems
+*Skelet 3D (available at \cite[skelet3d]) is the previous version of our project, further discussed in the next section. Our intention is to rework and upgrade this solution.
+
+*Skeletopedia (available at \cite[skeletopedia]) seems to be the closest independent solution available. It provides interactive 3D models of bones in browser environment as well as simple labeling of certain parts, unfortunately not in great detail. The contribution of our project in comparison to this solution should be more detailed and far more numerous labeling of the models as well as further information about each label and each bone in general.
+
+*Zygote Body, Anatronica (available at \cite[zygote, anatronica]) and many other systems include 3D models of the human skeleton. However, they provide little to no additional information besides the name of each bone.
+
+*3D Science provides extremely detailed 3D models (available at \cite[3dscience]). However, these are not free, most likely not suitable for online display and most importantly provide no additional information.
+
+*Palacký University in Olomouc provides information on most bones in their online human anatomy as well as photography of human bones, sometimes including labels with short descriptions (available at \cite[upol]). The information, however, seems incomplete. Moreover, there is no 3D material available, which is the trademark of our project.
+
+*Wikipedia provides rather detailed information on human bones (available at \cite[wikibones]). English version includes simple 3D animations of most bones, but it doesn’t provide any connection of 3D models with labels and descriptions, which is the intended contribution of our project.
+
+\enditems
+
+\sec Analysis of the Current Version of the Atlas
+
+The Atlas project is not beginning with this thesis. It was initiated in 2012 and most of the development of the existing version happened in 2013.
+
+The application was developed on the fly and went through a series of overhauls without proper planning. Although it works, it suffers from a variety of flaws because of this. From a developer's point of view, the internal structure is unorganized and undocumented. While it might be sufficient for now, the lack of order and proper organization makes sustainability and further development an issue.
+
+The current version is a publicly available website running on the servers of the Third Faculty of Medicine, Charles University \cite[skelet3d]. It consists of a list of bones sorted in a hierarchy of groups based on parts of the human body, a 3D viewer of models of bones and a very simple editing page which isn’t public. An as-of-yet unreleased bilingual version allows editing in Czech and English (as opposed to Czech only).
+
+
+\secc Bone Selector
+
+The list of available bones is a Flash application written in ActionScript 3 that allows selection of a model and filtering using a hierarchy of predefined groups. It does what it’s supposed to do, although the layout might not be the most intuitive and there are no additional features such as “search”. The loading time is longer than expected due to inefficient use of XML files that define groups and bones.
+
+\secc 3D Viewer
+
+The model viewer is another Flash (ActionScript 3) application using a simple 3D engine called Sandy with two basic modes: view and edit. It allows the user to manipulate view freely, although not in the most intuitive way, utilizing only one mouse button. It allows users to display or hide labels and pins as it should.
+
+However, it suffers from graphical errors, most notably seeing labels through a bone while they should be behind it and vice versa. This is caused by Z-sorting algorithms used in Sandy 3D engine, which are too simple for the task.
+
+It is also missing some minor tweaks such as adjusting the label width to fit the length of the text.
+
+The edit mode is working, although not pretty to look at.
+
+The rendering speed of the application is subpar, greatly limiting the use on mobile devices and the quality of models. Some of the more complex models are reaching low FPS even on average desktop computers, while being virtually unusable on older machines and mobile devices. A tradeoff between model complexity and rendering speed is to be expected, but current application’s performance is nevertheless underwhelming. The technology used doesn’t provide easy solutions to some of the aforementioned flaws.
+
+\secc PHP Parts
+
+The Flash application is nested in a simple PHP page. The web page which is used to upload new models and enter the editing mode is implemented as a series of simple PHP scripts. Other PHP scripts are called by the Flash application to handle XML files on the server.
+
+\secc Editing
+
+There are two versions of the application, a public version with editing disabled and a separate version for editing only, whose location is not known to public, but which is not protected in any other way. The live version is updated manually by transferring data files from the editable version. Introduction of a login system would allow better sustainability through direct editing by privileged users as opposed to transfers by the website administrator.
+
+\secc Identified Flaws
+
+\clabel[flaws]{Identified Flaws}
+
+{\def\sizespec{at9pt} \resizeall \tenrm
+\ctable{llclc}{
+\hfil Itendified Flaw & Affects & Importance & Suggested Solution & Difficulty\crl \tskip4pt
+No images / text & Content value & High & Add editorial system & High \cr
+No authentication & Safety, sustainability & High & Add login system & Medium \cr
+Hardware demands & Availability, details & High & Change of 3D engine & High \cr
+Graphical errors & User experience & Medium & Change of 3D engine & High \cr
+Imperfect GUI & User experience & Medium & Rework GUI & Medium \cr
+Bad internal design & Future development & Medium & Proper design & Medium \cr
+No documentation & Future development & Medium & Add documentation & Low \cr
+No search & User experience & Low & Implement search & Low \cr
+Slow loading of lists & User experience & Low & Use DB over XML & Low \cr
+}
+}
+\caption/t Identified flaws of the current version of the Atlas. Author's subjective evaluation of their impact and solutions.
+
+
+\secc Conclusion
+
+Overall, the technologies used seem to be inefficient and partly outdated. A complete reworking of the system seems to be the best solution considering the extent of individual improvements, especially the change of 3D engine and introduction of an editorial system.
+
+The models and labels entered by medical students into the existing version should be valid and reusable in the new implementation.
+
+\sec Project's Contributions
+
+The main goal is to help medical students acquire knowledge of human bones. There are numerous sources available, ranging from lectures and printed textbooks to aforementioned online solutions. Our application cannot compete with the experience and insights of lecturers and it is not likely to replace textbooks because of the sheer volume of information included in those. But it can be a great study material, available anytime, hopefully better than other online sources.
+
+None of the known sources (other than the previous iteration of our Atlas) provide what we hope to achieve in this project: Exhaustive information linked to illustrative 3D models. There are 3D models and there is information. This project’s contribution is linking the two in an interactive manner, allowing students easy navigation and a mental link between spatial and textual information.
+
+This was attempted in the current version of the Atlas in a clumsy and imperfect manner. This version strives to be a more professional solution of the problem without all the flaws of the last version.
+
+The aim is to develop the application in an organized, orderly and documented way, using the best available technologies and methods chosen after careful consideration. We need to avoid the glitches and imperfections of the previous iteration, to make the display module more efficient, the interface more user-friendly. We need sustainability, most notably a proper editorial system with authentication to allow the application to grow and fill up with useful information.
+
+Moreover, there will be the new feature of web pages with additional information. They will contain any information seen fit by the editors, giving this project the potential to be a truly exhaustive source of knowledge regarding human bones, ranging from anatomy to pathology. Other new features might be added as well, given a time reserve.

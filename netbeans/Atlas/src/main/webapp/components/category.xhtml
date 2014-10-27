@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:component>
+            <h:outputStylesheet name="category.css" library="css" />
+            
+            <h2 id="categoryName">
+                <h:outputText value="#{categoryManager.currentCategory.name}" />
+            </h2>
+            
+            <h2 id="categoryLatin">
+                <h:outputText value="#{categoryManager.currentCategory.latin}" />
+            </h2>
+            
+            <div class="centered">
+            <h3>
+                <h:outputText value="#{strings.subcategories}"
+                              rendered="#{categoryManager.childCategories.size() > 0}" />
+            </h3>
+
+            <ul>
+                <ui:repeat value="#{categoryManager.childCategories}" var="sub">
+                    <li>
+                        <h:link outcome="browse">
+                            <h:outputText value ="#{sub.name}" />
+                            <h:outputText class="latin" value =" (#{sub.latin})" />
+                            <f:param name="id" value="#{sub.id}" />
+                        </h:link>
+                    </li>
+                </ui:repeat>
+            </ul>
+
+            <h3>
+                <h:outputText value="#{strings.pages}"
+                              rendered="#{categoryManager.pages.size() > 0}" />
+            </h3>            
+
+            <ul>
+                <ui:repeat value="#{categoryManager.pages}" var="page">
+                    <li>
+                        <h:link outcome="page" rendered="#{page.published}">
+                            <h:outputText value ="#{page.name}" />
+                            <h:outputText class="latin" value =" (#{page.latin})" />
+                            <f:param name="id" value="#{page.id}" />
+                        </h:link>
+                    </li>
+                </ui:repeat>
+            </ul>
+            </div>
+            
+            <div id="empty_category">
+                <h:outputText value="#{strings.emptyCategory}"
+                              rendered="#{categoryManager.pages.size() +
+                                           categoryManager.childCategories.size() == 0}" />
+            </div>
+        </ui:component>
+    </body>
+</html>
+

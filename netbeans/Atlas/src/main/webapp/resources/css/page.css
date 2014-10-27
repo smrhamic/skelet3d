@@ -1,0 +1,10 @@
+#pageName {text-align: center; font-size: 24pt; font-weight: bold; }
+
+#pageLatin {text-align: center; margin-top: -15px;
+                font-size: 16pt; font-weight: normal; font-style: italic; }
+
+.imageComp { margin: auto; text-align: center; }
+.imageDescription { font-size: 80%; font-weight: bold; }
+.imageComp img { display: block; max-width: 95%; margin: auto; }
+
+.modelDescription { font-size: 80%; font-weight: bold; }

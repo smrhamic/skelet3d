@@ -1,0 +1,259 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  6 OCT 2014 16:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+ encTeX v. Jun. 2004, reencoding enabled
+**dip
+(./dip.tex The format: csplain <Aug. 2014>.
+The cs-fonts are preloaded and A4 size implicitly defined.
+The utf8->iso8859-2 re-encoding of Czech+Slovak alphabet activated by encTeX
+(./ctustyle.tex
+CTUstyle: Thesis at Czech Technical University in Prague, v. <beta(z) Oct 2014>
+\testinput=\read0
+(c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac.tex
+This is OPmac (Olsak's Plain macros), version <Aug. 2014>
+\tmpnum=\count27
+\tmpdim=\dimen16
+\iindent=\dimen17
+\ttindent=\dimen18
+\colsep=\dimen19
+\mnoteindent=\dimen20
+\mnotesize=\dimen21
+\ptunit=\dimen22
+\fontdim=\dimen23
+(c:/texlive/2014/texmf-dist/tex/csplain/fonts/ams-math.tex
+FONT: AMS math fonts - \mathchardef's prepared, 12 math families preloaded.
+\ptmunit=\dimen24
+)
+The \^, \`, \', \v, \" and \r expands to characters by ISO-8859-2.
+\reffile=\write0
+\testin=\read1
+\chapnum=\count28
+\secnum=\count29
+\seccnum=\count30
+\nonumnum=\count31
+\remskipamount=\skip18
+\tnum=\count32
+\fnum=\count33
+\dnum=\count34
+\itemnum=\count35
+\lastpage=\count36
+\oulnum=\count37
+\ttline=\count38
+\viline=\count39
+\vifile=\read2
+\tabdata=\toks12
+\colnum=\count40
+\picwidth=\dimen25
+\picheight=\dimen26
+\fnotenum=\count41
+\fnotenumlocal=\count42
+\mnotenum=\count43
+\mnoteskip=\dimen27
+\auxfile=\write1
+\bibnum=\count44
+\bibmark=\toks13
+\lastcitenum=\count45
+\pgwidth=\dimen28
+\pgheight=\dimen29
+\shiftoffset=\dimen30
+ (./dip.ref)
+\openout0 = `dip.ref'.
+
+)
+\faculty=\toks14
+\department=\toks15
+\title=\toks16
+\subtitle=\toks17
+\author=\toks18
+\supervisor=\toks19
+\date=\toks20
+\studyinfo=\toks21
+\authorinfo=\toks22
+\workinfo=\toks23
+\workname=\toks24
+\pagetwo=\toks25
+\titleEN=\toks26
+\titleCZ=\toks27
+\titleSK=\toks28
+\subtitleEN=\toks29
+\subtitleCZ=\toks30
+\subtitleSK=\toks31
+\abstractEN=\toks32
+\abstractCZ=\toks33
+\abstractSK=\toks34
+\keywordsEN=\toks35
+\keywordsCZ=\toks36
+\keywordsSK=\toks37
+\thanks=\toks38
+\declaration=\toks39
+\specification=\toks40
+(c:/texlive/2014/texmf-dist/tex/csplain/fonts/lmfonts.tex
+FONT: Latin Modern fonts - \rm, \it, \bf, \bi, \caps\rm,... + math.
+(c:/texlive/2014/texmf-dist/tex/csplain/fonts/chars-8z.tex))
+\leftbox=\box16
+\rightbox=\box17
+\frontht=\dimen31
+\tocbox=\box18
+\tofbox=\box19
+\totbox=\box20
+\appnum=\count46
+\numA=\count47
+\numB=\count48
+\numC=\count49
+\numD=\count50
+\numE=\count51
+\maxglosindent=\dimen32
+\rfcnum=\count52
+)
+(c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib.tex
+(c:/texlive/2014/texmf-dist/tex/generic/librarian/librarian.tex
+\lb@entrycount=\count53
+\lb@namecount=\count54
+\lb@tempcount=\count55
+\lb@sortnumber=\count56
+\NameCount=\count57
+\lb@read=\read3
+ (./dip.lbr)
+\lb@write=\write2
+\openout2 = `dip.lbr'.
+
+))
+English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
+live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
+[-2] [-3] [-4] WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12)
+WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [1]
+(./problem.tex [2] [3] [4]) [5] (./technology.tex [6] [7] [8 <./perf1.png>]
+[9] [10 <./top-languages.png (PNG copy)>]) [11] [12] [13] [14] [15]
+(c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
+(./mybase.bib)
+Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
+[]\tentt http:[] /[] / www[] . infoworld[] . com[] / article[] / 2610420[] / ad
+obe-flash[] / adobe-flash--insecure--outdated--and-here-to-stay[] .|
+
+\hbox(6.9445+2.22223)x392.07898
+.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
+/Subtype/Link/A <</Type/Action/S/URI/URI(http://www.infoworld.com/art\ETC.}
+.\tentt h
+.\tentt t
+.\tentt t
+.\tentt p
+.\tentt :
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt w
+.\tentt w
+.\tentt w
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt .
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt i
+.\tentt n
+.\tentt f
+.\tentt o
+.\tentt w
+.etc.
+
+
+Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
+[]\tentt http:[] /[] / blogs[] . adobe[] . com[] / flashplayer[] / 2012[] / 06[
+] / flash-player-and-android-update[] .|
+
+\hbox(6.9445+2.22223)x392.07898
+.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
+/Subtype/Link/A <</Type/Action/S/URI/URI(http://blogs.adobe.com/flash\ETC.}
+.\tentt h
+.\tentt t
+.\tentt t
+.\tentt p
+.\tentt :
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt b
+.\tentt l
+.\tentt o
+.\tentt g
+.\tentt s
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt .
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt a
+.\tentt d
+.\tentt o
+.etc.
+
+[16]
+Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
+[]\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
+ choosing-java-vs-net-for-web-development[] /|
+
+\hbox(6.9445+2.22223)x392.07898
+.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
+/Subtype/Link/A <</Type/Action/S/URI/URI(http://southernpacificreview\ETC.}
+.\tentt h
+.\tentt t
+.\tentt t
+.\tentt p
+.\tentt :
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt s
+.\tentt o
+.\tentt u
+.\tentt t
+.\tentt h
+.\tentt e
+.\tentt r
+.\tentt n
+.\tentt p
+.\tentt a
+.\tentt c
+.\tentt i
+.\tentt f
+.\tentt i
+.etc.
+
+[17] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
+14/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}<c:/texlive/2014/texmf-dist/fonts/ty
+pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
+0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
+2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
+fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
+c/lm/lmtt10.pfb>
+Output written on dip.pdf (23 pages, 468154 bytes).
+PDF statistics:
+ 503 PDF objects out of 1000 (max. 8388607)
+ 463 compressed objects within 5 object streams
+ 97 named destinations out of 1000 (max. 500000)
+ 344 words of extra memory for PDF output out of 10000 (max. 10000000)
+

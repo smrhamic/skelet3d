@@ -1,0 +1,96 @@
+%% OPmac - REF file
+\Xpage{-1}
+\Xpage{-2}
+\Xpage{-3}
+\Xpage{-4}
+\Xpage{-5}
+\Xpage{-6}
+\Xpage{1}
+\Xchap{1}{Introduction }{1}
+\Xpage{2}
+\Xchap{2}{Problem Analysis }{2}
+\Xsec{2.1}{Requirements }{2}
+\Xsecc{2.1.1}{Functional Requirements - User }{2}
+\Xsecc{2.1.2}{Functional Requirements – Editor }{2}
+\Xsecc{2.1.3}{Functional Requirements – Administrator }{2}
+\Xpage{3}
+\Xsecc{2.1.4}{Non-functional Requirements }{3}
+\Xsec{2.2}{Target Group }{3}
+\Xsec{2.3}{Existing Solutions and Alternatives }{3}
+\Xsec{2.4}{Analysis of the Current Version of the Atlas }{3}
+\Xpage{4}
+\Xsecc{2.4.1}{Bone Selector }{4}
+\Xsecc{2.4.2}{3D Viewer }{4}
+\Xsecc{2.4.3}{PHP Parts }{4}
+\Xsecc{2.4.4}{Editing }{4}
+\Xpage{5}
+\Xsecc{2.4.5}{Identified Flaws }{5}
+\Xtab{flaws}{2.1}{Identified Flaws}
+\Xlabel{flaws}{2.1}
+\Xsecc{2.4.6}{Conclusion }{5}
+\Xsec{2.5}{Project's Contributions }{5}
+\Xpage{6}
+\Xchap{3}{Relevant Technology }{6}
+\Xsec{3.1}{3D Technology for the Web }{6}
+\Xsecc{3.1.1}{CSS 3D Transforms }{6}
+\Xsecc{3.1.2}{WebGL }{6}
+\Xpage{7}
+\Xsecc{3.1.3}{Flash }{7}
+\Xpage{8}
+\Xsecc{3.1.4}{Other Plug-in Technologies }{8}
+\Xsecc{3.1.5}{Performance Test 1: Cubes (WebGL and Flash) }{8}
+\Xfig{perf1}{3.1}{WebGL vs. Flash rendering frequency}
+\Xlabel{perf1}{3.1}
+\Xpage{9}
+\Xsecc{3.1.6}{Performance Test 2: Aquarium (WebGL) }{9}
+\Xsecc{3.1.7}{Frameworks (WebGL) }{9}
+\Xsecc{3.1.8}{Conclusion }{9}
+\Xpage{10}
+\Xsec{3.2}{Server-Side Language }{10}
+\Xsecc{3.2.1}{IEEE Spectrum Ranking }{10}
+\Xfig{top_language}{3.2}{IEEE Spectrum - Top Web Development Languages}
+\Xlabel{top_language}{3.2}
+\Xsecc{3.2.2}{Personal Experience }{10}
+\Xpage{11}
+\Xsecc{3.2.3}{Conclusion }{11}
+\Xpage{12}
+\Xchap{4}{Application Design }{12}
+\Xpage{13}
+\Xchap{5}{Implementation }{13}
+\Xpage{14}
+\Xchap{6}{Testing }{14}
+\Xpage{15}
+\Xchap{7}{Conclusion }{15}
+\Xbib{skelet3d}{1}{, }
+\Xbib{skeletopedia}{2}{, }
+\Xbib{zygote}{3}{, }
+\Xbib{anatronica}{4}{, }
+\Xbib{3dscience}{5}{, }
+\Xbib{upol}{6}{, }
+\Xbib{wikibones}{7}{, }
+\Xbib{webgl_caniuse}{8}{, }
+\Xbib{webgl_ie}{9}{, }
+\Xbib{webgl_ios}{10}{Shankland, }
+\Xbib{flash_stats}{11}{, }
+\Xbib{flash_control}{12}{Krcha, }
+\Xbib{flash_dead}{13}{Kruger, }
+\Xbib{flash_insecure}{14}{Yegulalp, }
+\Xbib{flash_builtwith}{15}{, }
+\Xbib{flash_desktop}{16}{, }
+\Xbib{flash_focus}{17}{Winokur, }
+\Xbib{flash_android}{18}{Aljaber, }
+\Xpage{16}
+\Xchap{!1}{References}{16}
+\Xbib{flash_apple}{19}{, }
+\Xbib{unity}{20}{, }
+\Xbib{shiva}{21}{, }
+\Xbib{tech_perf}{22}{Turner, }
+\Xbib{aquarium}{23}{, }
+\Xbib{frameworks}{24}{, }
+\Xbib{threejs}{25}{, }
+\Xbib{stackoverflow}{26}{, }
+\Xbib{spectrum}{27}{, }
+\Xbib{php_bad}{28}{, }
+\Xbib{java_net_1}{29}{Rowe, }
+\Xbib{java_net_2}{30}{Davu, }
+\Xpage{17}

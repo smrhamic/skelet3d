@@ -1,0 +1,129 @@
+\sec 3D Technology for the Web
+
+There are two main directions in development of hardware accelerated 3D for the web: Rendering directly in the browser with HTML5 and against it the traditional plug-in based approach.
+
+Certain technologies allow the application to be a built-in part of an HTML5 web. The main advantage is that users do not need to install any additional software. The application is fully integrated into the web page and its execution is managed by the browser, which might result in slight variations across browsers. In case of 3D technologies, even the use of underlying graphics API depends on the environment, such as browsers using ANGLE with WebGL to utilize DirectX over OpenGL on Windows.
+
+The advantage of plug-ins is that the application will look the same on every device and doesn’t need to be tweaked for different browsers. The reason behind that is that the application is executed by the plug-in, not the browser. The disadvantage is that users have to install a plug-in, which is usually an inconvenience and sometimes a real problem, especially on mobile devices. Also, the application is not fully integrated in the web page, which might result in behavior inconsistent with the rest of the web page.
+
+\secc CSS 3D Transforms
+
+CSS3 can apply 3D transforms to elements directly without using HTML5 Canvas. This can be used to create 3D objects and animations.
+
+All geometry is created by transforming rectangular elements, which is very restrictive compared to triangular faces created between vertices. This obstacle can be bypassed by using alpha textures and 3D transforms to create arbitrary shapes. Although it is possible to get creative and assemble complex 3D scenes this way, I feel like this was not the intended purpose and there are tools better suited for the task.
+
+I was not able to find examples demonstrating the use of CSS 3D transforms for displaying complex models comparable to those in our project. Even much simpler scenes often contained graphical errors and did not run smoothly in either Internet Explorer 11 or Firefox 32. The only advantage is superior availability.
+
+\secc WebGL
+
+WebGL (Web Graphics Library) is a JavaScript API for development of interactive 3D scenes for the web. It uses underlying low-level graphics API, typically OpenGL ES 2.0, to make full use of GPU acceleration.  It is a royalty-free, cross platform standard maintained by the non-profit Khronos Group. There are frameworks to simplify the use of WebGL, which itself can be considered a low-level API.
+
+WebGL uses HTML5 Canvas to display its content and does not require the use of a plug-in. It will work on any browser with WebGL support without additional software (although it might require appropriate GPU drivers).
+
+The required features such as advanced mouse controls and 3D acceleration are all present and comparable to those of Flash with possible minor benefits (such as consistency of user controls throughout the page).
+
+WebGL is a new technology compared to Flash and other plug-ins. WebGL 1.0 standard was issued in 2011 and in the following years, support by vendors and developers has been growing.  Firefox, Google Chrome and Safari have supported WebGL for some time as shown at \cite[webgl_caniuse]. Microsoft support starts with Internet Explorer 11 and according to \cite[webgl_ie] ‘‘WebGL is available on all IE11 devices’’. Apple announced support on their new iOS 8 (related article at \cite[webgl_ios]). Default Android browser doesn’t support it, but Firefox and Chrome for Android do.
+
+\secc Flash
+
+Adobe Flash is a multimedia and software platform widely used throughout Internet.
+
+Flash uses vector graphics, static or animated, supports streaming of videos, and offers other multimedia related features. The language typically associated with online Flash is ActionScript, although Haxe can be complied into Flash applications as well. Flash is a proprietary platform of Adobe. Freeware editing software exists, but arguably inferior to licensed Adobe Flash Professional.
+
+Flash requires a plug-in (Flash Player) to run in web browsers, which is enough of a reason to reject many competing technologies. However, the Flash Player is so prevalent today that most users have it installed regardless of our application. Adobe claimed to have 99\% penetration on desktop computers in 2011 \cite[flash_stats]. That makes the necessity of a plug-in a much smaller issue for our project.
+
+Since version 11.2 (2012), Flash Player allows advanced mouse control such as scrolling or right click \cite[flash_control], which was one of the main features missing in previous versions. Nevertheless, user input might be clashing with the rest of the HTML page, resulting in poor user experience.
+
+Flash Player 11 also introduced Scene3D, an API for development of hardware accelerated 3D content. Scene3D is one of the major candidates for our project’s 3D API. Previous Flash technologies relied on CPU rendering and were significantly slower than GPU accelerated alternatives. Such slower technologies were used in previous implementations of the Atlas.
+
+For several years, numerous writers and developers have claimed that Flash is insecure, a dying technology and a developmental dead end (examples at \cite[flash_dead, flash_insecure]. Despite these voices, Flash is still alive in 2014 and here to stay for some time. Although still widely used, the future of Flash is not all bright. According to statistics at builtwith.com \cite[flash_builtwith], the usage of Flash on major websites has been on the decline lately.
+
+According to \cite[flash_desktop] Adobe Flash is currently available on most desktop operating systems (Windows, OS X, Linux, Solaris), although the development for Linux and Solaris has been discontinued since Flash Player 11.2 (outside of Google Chrome).
+
+Flash Player for mobile browsers availability is controversial. It is not available on iOS devices (iPhone, iPad…), but it was officially available on Android 2.2-4.0 and BlackBerry (Tablet OS, BB10). However, in 2011 Adobe announced at \cite[flash_focus]: ‘‘We will no longer continue to develop Flash Player in the browser to work with new mobile device configurations’’ and admited that growing support makes ‘‘HTML5 the best solution for creating and deploying content in the browser across mobile platforms’’. A blog post at \cite[flash_android] confirms that Flash will not be installed on new Android devices and Flash Player for Android will no longer be updated. Apple’s (and formerly Steve Job’s) attitude and lack of support (more information at \cite[flash_apple]) also speaks against mobile Flash.
+
+\secc Other Plug-in Technologies
+
+There are several other plug-in based systems worth mentioning. All following examples suffer from the necessity of installing a plug-in which is not likely to be pre-installed.
+
+Unity \cite[unity] and ShiVa3D \cite[shiva] are fine examples of multiplatform 3D engines that allow development for desktops, mobile devices and browsers. However, the browser version is not supported on mobile devices, forcing the development of native applications for each mobile operating system (often at a substantial price). That is beyond the scope of this project and browser-based solutions for all platforms are preferred.
+
+Markup languages such as X3D (and its predecessor, VRML) used to be strictly plug-in based, but lately benefit from GPU acceleration in the form of WebGL through integration models such as X3DOM. When using X3D now, there is little reason to choose a plug-in viewer over WebGL rendering. The support for WebGL (see below) is comparable to that of plug-ins and there is no need of additional installation.
+
+\secc Performance Test 1: Cubes (WebGL and Flash)
+
+I carried out a simple performance test to compare the rendering speed of equivalent Flash and WebGL applications.
+
+A demo application (available at \cite[tech_perf]) displaying a number of semi-transparent cubes was used, implemented once using Flash Scene3D and once using WebGL. The experiment was run on a Dell Vostro 3460 machine.
+
+The number of cubes was gradually increased while noting FPS values for current number of cubes. There were minor fluctuations in the FPS and recorded values represent estimated medians over a period of several seconds.
+
+\midinsert
+\picw=15cm \clabel[perf1]{WebGL vs. Flash rendering frequency} \cinspic perf1.png
+\caption/f Performance of WebGL (blue) and Flash (red) when rendering a demo application in Firefox 32 (solid) and Internet Explorer 11 (dashed). Frames per second on vertical axis, number of displayed translucent elements on horizontal axis.
+\endinsert
+
+It is apparent from the results shown in figure \ref[perf1] that the performance is greatly dependent on the browser.
+
+WebGL in Firefox is by far the fastest combination in very complex scenes. Flash in Firefox is always slower than any other tested combination. In Internet Explorer, both Flash and WebGL show comparable performance with WebGL gaining in more complex scenes.
+
+Overall, WebGL did better in this performance test, especially with a large number of displayed elements.
+
+It is important to mention that this is an illustrative example rather than a rigorous experiment. The implementation used two different frameworks (Away 3D 4 for Flash, Three.js for Web GL) which might or might not be a source of bias. The performance might also be affected by hardware usage fluctuations in the testing machine.
+
+\secc Performance Test 2: Aquarium (WebGL)
+
+To further verify that WebGL can handle complex geometry at reasonable frame rates, a public WebGL demo “Aquarium” (available at \cite[aquarium]) was run at maximum complexity. It displays 4000 models of fish using normal maps, reflections and other effects. The scene geometry easily exceeds 100,000 vertices. Testing on Dell Vostro 3460, the scene was sufficiently smooth, displaying at 12 FPS in Internet Explorer 11 and 14 FPS in Firefox 32. For comparison, current implementation of the Atlas shows significantly worse performance when displaying models of 10,000 vertices.
+
+\secc Frameworks (WebGL)
+
+WebGL is a low-level graphics API. Though it is possible to work with it directly, it might be more convenient to use a higher level framework. A list of many available frameworks has been assembled at \cite[frameworks], although not all of them are relevant for our project.
+
+Upon brief research, I came to the conclusion that many of them were interesting solutions, but very few had a large and active community. In fact, out of those frameworks relevant to our project only {\it three.js} (available at \cite[threejs]) showed actual signs of active use throughout Internet. While several of the frameworks have tutorials on their websites, only {\it three.js} can boast a number of external tutorials as well. To verify my assumption, I searched for the frameworks on {\it StackOverflow} \cite[stackoverflow], arguably the biggest question \& answer site for programmers. The fact that {\it three.js} was tagged in 4775 questions while no other framework was tagged more than 60 times confirms that {\it three.js} is likely the most prevalent.
+
+The API of {\it three.js} seems suitable for our cause. It provides easy access to scenes, objects, cameras, materials, lightning, shaders and more, making the use of WebGL a lot less complex for the developer. The API is documented online.
+
+Considering all this, {\it three.js} seems to be the perfect framework for our project and there is no need to seek for a novelty solution.
+
+
+\secc Conclusion
+
+CSS3 is an interesting approach with great availability, which is however not very well suited for a complex 3D project. The technology clearly wasn’t meant to render detailed 3D models.
+
+The other technologies offer us what we need: GPU acceleration, sufficient interactivity, quality of user controls and an API suitable for displaying 3D scenes (sometimes using additional frameworks). All options seem to be perfectly viable for our purpose in terms of available features, so the main points to consider are performance and availability.
+
+Availability is probably the biggest concern. Most plug-in based solutions require an inconvenient installation and do not run in mobile browsers. That is a major drawback that hurts availability and a reason not to choose such solutions. The exception is Flash which is often pre-installed and has partial support in mobile browsers. The other suitable candidate left is WebGL.
+
+Both Flash and WebGL are available on most if not all up-to-date desktop browsers. Neither is available on every mobile device. The trend seems to be obvious though, the use of Flash in on a decline and Flash development shouldn’t focus on mobile browsing. On the other hand, more and more companies (including Microsoft and Apple) declare and implement support for WebGL. That is the main reason why WebGL seems to be the better candidate: Its future seems bright, which cannot be said about Flash.
+
+As for performance, simple tests on a laptop favored WebGL over Flash, although the results depend greatly on chosen browser. WebGL also proved its ability to render very complex scenes at reasonable frame rates in an “Aquarium” demo.
+
+After careful consideration, WebGL was chosen as the preferred technology for the 3D model viewer, even though it is not universally available. To simplify the implementation process, {\it three.js} framework will be used as a higher level API.
+
+\sec Server-Side Language
+
+There are many languages to choose from when developing the server side of a web application.
+
+\secc IEEE Spectrum Ranking
+
+To help evaluate the quality of the many languages, I consulted the results of a recent IEEE Spectrum ranking (available at \cite[spectrum]). It takes into consideration {\it Google} search results, {\it Google Trends} data, {\it StackOverflow} questions, demand for jobs on several job sites, {\it IEEE Xplore} journal articles and more. The top 10 results for web development are shown in figure \ref[top_language] with Java, Python and C\# taking the top (in this order).
+
+\midinsert
+\picw=10cm \clabel[top_language]{IEEE Spectrum - Top Web Development Languages} \cinspic top-languages.png
+\caption/f Top 10 web development languages, ranked by IEEE Spectrum in 2014 (taken from \cite[spectrum]).
+\endinsert
+
+\secc Personal Experience
+
+An important part of choosing the right language is my prior experience: I was introduced to PHP several years ago and have not used it much since. Later I worked on a desktop project in .NET C\#. Throughout university, a lot of my education involved Java, although I never used it in non-academic projects or web applications.
+
+Judging by my brief experience, I can say that I dislike PHP. My opinion is that it seems inconsistent, full of small surprises and traps for an inexperienced user. A more elaborate criticism by a more experienced developer is available at \cite[php_bad].
+
+On the other hand, Java and C\# felt like professional tools and I did not mind working with either, although I preferred Java for subjective reasons. An objective reason would be that it is multi-platform and open-source with several free IDEs to choose from.
+
+However, I have not developed a web application in either, so I looked for educated opinions online. Most comparisons and reviews agree that Java and .NET for web are comparable and the choice is mostly preferential (examples at \cite[java_net_1, java_net_2]).
+
+\secc Conclusion
+
+Considering that Java was ranked the best language for web development by IEEE Spectrum and at the same time is my preferred language from personal experience, the site will be developed in Java.
+
