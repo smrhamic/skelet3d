@@ -1,0 +1,147 @@
+-- languages
+
+INSERT INTO language (short, name, default_lang)
+    VALUES ('en', 'English', TRUE);
+
+INSERT INTO language (short, name, default_lang)
+    VALUES ('cs', 'Èeština', FALSE);
+
+
+-- user roles
+
+
+INSERT INTO userRole (role)
+    VALUES ('admin');
+
+INSERT INTO userRole (role)
+    VALUES ('editor');
+
+
+-- sample admin (pre-hash)
+
+INSERT INTO atlasUser (login, role, pass, salt, name)
+    SELECT 'admin', userRole.id, 'admin', '', 'Mr. Administrator'
+    FROM userRole WHERE role = 'admin';
+
+-- sample editor (pre-hash)
+
+INSERT INTO atlasUser (login, role, pass, salt, name)
+    SELECT 'editor', userRole.id, 'editor', '', 'Mr. Editor'
+    FROM userRole WHERE role = 'editor';
+
+
+
+-- test categories
+
+INSERT INTO category (parent, latin)
+    VALUES (NULL, 'Latin group 1');
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Group 1'
+    FROM category, language WHERE category.latin = 'Latin group 1' AND language.short = 'en';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Skupina 1'
+    FROM category, language WHERE category.latin = 'Latin group 1' AND language.short = 'cs';
+
+
+
+INSERT INTO category (parent, latin)
+    VALUES (NULL, 'Latin group 2');
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Group 2'
+    FROM category, language WHERE category.latin = 'Latin group 2' AND language.short = 'en';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Skupina 2'
+    FROM category, language WHERE category.latin = 'Latin group 2' AND language.short = 'cs';
+
+
+
+INSERT INTO category (parent, latin)
+    SELECT id, 'Latin sub group 1'
+    FROM category WHERE latin = 'Latin group 1';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Sub-group 1'
+    FROM category, language WHERE category.latin = 'Latin sub group 1' AND language.short = 'en';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Podskupina 1'
+    FROM category, language WHERE category.latin = 'Latin sub group 1' AND language.short = 'cs';
+
+
+
+INSERT INTO category (parent, latin)
+    SELECT id, 'Latin sub group 2'
+    FROM category WHERE latin = 'Latin group 1';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Sub-group 2'
+    FROM category, language WHERE category.latin = 'Latin sub group 2' AND language.short = 'en';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Podskupina 2'
+    FROM category, language WHERE category.latin = 'Latin sub group 2' AND language.short = 'cs';
+
+
+
+INSERT INTO category (parent, latin)
+    SELECT id, 'Latin sub-sub group 1'
+    FROM category WHERE latin = 'Latin sub group 1';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Sub-sub-group 1'
+    FROM category, language WHERE category.latin = 'Latin sub-sub group 1' AND language.short = 'en';
+
+INSERT INTO categoryInfo (category, language, name)
+    SELECT category.id, language.id, 'Podpodskupina 1'
+    FROM category, language WHERE category.latin = 'Latin sub-sub group 1' AND language.short = 'cs';
+
+
+
+-- test page
+
+INSERT INTO page (parent, latin)
+    SELECT category.id, 'Latin page 1'
+    FROM category WHERE category.latin = 'Latin sub group 1';
+
+INSERT INTO pageContent (page, language, name, published)
+    SELECT page.id, language.id, 'Page 1', 'true'
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+-- test content
+
+INSERT INTO image (filename, name)
+    VALUES ('bone1.jpg', 'Sample Image');
+
+
+INSERT INTO headlineComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Section 1', 1
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+INSERT INTO textComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices lectus in enim mattis mattis. Donec elit est, rhoncus vel eros at, malesuada lobortis magna. Nulla efficitur libero arcu, quis faucibus velit dignissim ac. Vestibulum ac arcu sit amet massa eleifend accumsan id vel quam. Morbi quis purus at erat ultricies gravida quis nec felis. Nunc sit amet sem laoreet, ornare ligula et, tempor nisi. Suspendisse eu pellentesque orci. Integer odio quam, pretium sed accumsan vel, aliquet vel nunc. Proin id est eget erat ornare faucibus vel ac velit. Sed vitae lobortis justo. Pellentesque eget tellus sit amet elit sollicitudin rhoncus. Curabitur ut consequat turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.', 2
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+INSERT INTO headlineComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Section 2', 3
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+INSERT INTO textComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices lectus in enim mattis mattis. Donec elit est, rhoncus vel eros at, malesuada lobortis magna. Nulla efficitur libero arcu, quis faucibus velit dignissim ac. Vestibulum ac arcu sit amet massa eleifend accumsan id vel quam. Morbi quis purus at erat ultricies gravida quis nec felis. Nunc sit amet sem laoreet, ornare ligula et, tempor nisi.', 4
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+INSERT INTO imageComponent (page, language, image, description, comp_order)
+    SELECT page.id, language.id, image.id, 'Image description.', 5
+    FROM page, language, image WHERE page.latin = 'Latin page 1' AND language.short = 'en' AND image.filename = 'bone1.jpg';
+
+INSERT INTO headlineComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Section 2', 6
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
+INSERT INTO textComponent (page, language, text, comp_order)
+    SELECT page.id, language.id, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices lectus in enim mattis mattis. Donec elit est, rhoncus vel eros at, malesuada lobortis magna. Nulla efficitur libero arcu, quis faucibus velit dignissim ac. Vestibulum ac arcu sit amet massa eleifend accumsan id vel quam. Morbi quis purus at erat ultricies gravida quis nec felis. Nunc sit amet sem laoreet, ornare ligula et, tempor nisi.', 7
+    FROM page, language WHERE page.latin = 'Latin page 1' AND language.short = 'en';
+
