@@ -37,11 +37,14 @@
             <h:panelGroup class="imageComp" layout="block"
                           rendered="#{component.componentType == 'model'}">
                 <!-- required js libraries -->
-                <h:outputScript library="js" name="jquery-1.11.1.js" />
-                <h:outputScript library="js" name="three.min.js" />
-                <h:outputScript library="js" name="OrbitControls.js" />
+                <h:outputScript name="js/jquery-1.11.1.js" />
+                <h:outputScript name="js/three.min.js" />
+                <h:outputScript name="js/OrbitControls.js" />
+                <h:outputScript name="js/STLLoader.js" />
+                <!-- container element for renderer -->
                 <div id="container">
-                    <h:outputScript library="js" name="view3d.js" />
+                    <!-- 3D rendering code -->
+                    <h:outputScript name="js/view3d.js" />
                 </div>
                 <h:outputText class="modelDescription" value="#{component.description}" />
             </h:panelGroup>
