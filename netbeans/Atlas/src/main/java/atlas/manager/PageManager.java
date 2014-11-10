@@ -4,6 +4,7 @@ import atlas.entity.ModelComponent;
 import atlas.entity.PageComponent;
 import atlas.entity.Page;
 import atlas.entity.PageContent;
+import atlas.entity.view.LabelView;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class PageManager implements Serializable {
     private String name;
     private PageContent pageContent;
     private List<PageComponent> components;
+    private List<LabelView> labels;
 
     /**
      * Initializes current Page and content based on bound "pageId".
@@ -84,18 +86,29 @@ public class PageManager implements Serializable {
         components.addAll(pageContent.getHeadlineComponentList());
         components.addAll(pageContent.getTextComponentList());
         components.addAll(pageContent.getImageComponentList());
-        components.addAll(pageContent.getModelComponentList());
-        
-        // TO REMOVE model component for testing
-        ModelComponent model1 = new ModelComponent();
-        model1.setCompOrder(0);
-        model1.setDescription("3D Model");
-        components.add(model1);
+        // only add one model component, multiples not supported yet
+        if (!pageContent.getModelComponentList().isEmpty()) {
+            components.add(pageContent.getModelComponentList().get(0));
+            labels = LabelView.getLabelViews(em,
+                    pageContent.getModelComponentList().get(0).getModel(),
+                    languageManager.getCurrentLanguage());
+        }
         
         // sort components by compOrder
         components.sort(null);
         
         return components;
+    }
+    
+    /**
+     * Returns localized model labels if there is a model component present.
+     * Returns null if there is no model component or if called prior to calling
+     * getComponents().
+     * 
+     * @return Labels for current model or null.
+     */
+    public List<LabelView> getLabels() {
+        return labels;
     }
 
     /**

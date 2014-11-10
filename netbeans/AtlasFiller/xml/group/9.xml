@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of forearm" latin="Ossa antebrachii" id="9" parent="7" last="9002" name_CZ="Kosti předloktí">
+  <children />
+  <bones>
+    <bone id="9001" name="Radius" latin="Radius" model="model/Radius.stl" cal_x="-145.3197479248047" cal_y="212.11339569091797" cal_z="531.9995422363281" cal_scale="1.3635565434041363" name_CZ="Vřetenní kost" />
+    <bone id="9002" name="Ulna" latin="Ulna" model="model/Ulna.stl" cal_x="-204.5145034790039" cal_y="211.73934936523438" cal_z="532.9944610595703" cal_scale="1.260397697630459" name_CZ="Loketní kost" />
+  </bones>
+</group>

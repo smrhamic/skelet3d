@@ -1,0 +1,6 @@
+<labels>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro discus articularis oddělující ulnu od ossa carpi" priority="2" x="-18.580840093597466" y="-20.305321764819535" z="-100.94987758991732" x2="90.51579257736424" y2="89.81679049754426" z2="-301.9437124199955" label_CZ="kloubní ploška" text_CZ="pro discus articularis oddělující ulnu od ossa carpi"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os pisiforme" priority="2" x="-62.11908280843812" y="-0.17804885374455637" z="96.30749520562179" x2="-70.117932453802" y2="222.7537938104883" z2="241.3307877806593" label_CZ="kloubní ploška" text_CZ="pro Os pisiforme"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os lunatum" priority="2" x="49.44239417157076" y="-69.75774077594765" z="-42.01228011380159" x2="202.88034589153258" y2="-130.03449345447225" z2="-79.10396994658095" label_CZ="kloubní ploška" text_CZ="pro Os lunatum"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os hamatum" priority="2" x="68.52514831454809" y="-10.78073082868362" z="66.51654365713397" x2="139.57782080504705" y2="-22.256099404205834" z2="135.94156542892605" label_CZ="kloubní ploška" text_CZ="pro Os hamatum"/>
+</labels>

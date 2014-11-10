@@ -1,0 +1,5 @@
+<labels>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os triquetrum" priority="2" x="-119.46388206712818" y="-43.928011889528605" z="-65.92767821623792" x2="-232.550504186961" y2="-41.118824375602244" z2="-160.23653125054594" label_CZ="kloubní ploška" text_CZ="pro Os triquetrum"/>
+  <label label="[CZ] kloubní jamka" text="[CZ] pro Caput ossis capitati" priority="2" x="5.281913708404155" y="17.414858841765497" z="45.81264084211092" x2="-90.45049247501021" y2="182.55673279431986" z2="200.65575888476374" label_CZ="kloubní jamka" text_CZ="pro Caput ossis capitati"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Os scaphoideum" priority="2" x="95.54956402579754" y="-2.448358254602675" z="-27.5996094963724" x2="273.7709104470154" y2="123.71734855333587" z2="-10.25835953297466" label_CZ="kloubní ploška" text_CZ="pro Os scaphoideum"/>
+</labels>

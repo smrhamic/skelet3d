@@ -1,0 +1,6 @@
+<labels>
+  <label label_CZ="kloubní ploška" text_CZ="pro Phalanx proximalis digiti minimi pedis" label="articular surface" text="for phalanx proximalis digiti minimi pedis" priority="2" x="-148.98875515441156" y="-32.00268189196374" z="12.15070728877402" x2="-205.37597349782328" y2="-152.3524221523624" z2="157.73542625016955"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os cuboideum" label="articular surface" text="for os cuboideum" priority="2" x="140.43880896675316" y="4.684467945031527" z="-6.811996151641398" x2="240.2493152187293" y2="8.60504721334874" z2="-11.55455874216902"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os metatarsi IV. " label="articular surface" text="for os metatarsi IV. " priority="2" x="104.8576778529582" y="-6.921487211125577" z="6.746208286982774" x2="126.72466104738784" y2="-152.4194267990767" z2="184.666734470549"/>
+  <label label_CZ="tuberositas ossis metatarsi quinti" text_CZ="UPÍNÁ SE ZDE:&#xD;M. fibularis brevis&#xD;M. abductor digiti minimi" label="tuberositas ossis metatarsi quinti" text="INSERTION:&#xD;M. fibularis brevis&#xD;a part of M. abductor digiti minimi" priority="2" x="133.00862789060454" y="29.184277813980813" z="-32.08060674402478" x2="211.8342658925556" y2="217.59154996092957" z2="-71.2780744689311"/>
+</labels>

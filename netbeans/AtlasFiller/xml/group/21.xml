@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Tarsal bones" latin="Ossa tarsi" id="21" parent="20" last="21009" name_CZ="Zánártní kosti">
+  <children />
+  <bones>
+    <bone id="21001" name="Calcaneus" latin="Calcaneus" model="model/Calcaneus.stl" cal_x="-55.57939910888672" cal_y="53.54154872894287" cal_z="219.9925537109375" cal_scale="3.4088781190138997" name_CZ="Patní kost" />
+    <bone id="21002" name="Cuboid" latin="Os cuboideum" model="model/Os cuboideum.stl" cal_x="-43.619099617004395" cal_y="42.88444900512695" cal_z="295.0111999511719" cal_scale="8.28075110642875" name_CZ="Krychlová kost" />
+    <bone id="21003" name="Intermediate cuneiform" latin="Os cuneiforme intermedium" model="model/Os cuneiforme intermedium.stl" cal_x="-13.661699950695038" cal_y="38.33150005340576" cal_z="340.9967956542969" cal_scale="12.572396133563984" name_CZ="Prostřední klínová kost " />
+    <bone id="21004" name="Lateral cuneiform" latin="Os cuneiforme laterale" model="model/Os cuneiforme laterale.stl" cal_x="22.192049026489258" cal_y="39.272650718688965" cal_z="357.99925231933594" cal_scale="11.79073849988748" name_CZ="Boční klínová kost" />
+    <bone id="21005" name="Medial cuneiform" latin="Os cuneiforme mediale" model="model/Os cuneiforme mediale.stl" cal_x="55.81694793701172" cal_y="48.1682014465332" cal_z="358.0028991699219" cal_scale="7.495722350831282" name_CZ="Přístřední klínová kost" />
+    <bone id="21006" name="Navicular" latin="Os naviculare" model="model/Os naviculare.stl" cal_x="-62.80060005187988" cal_y="44.336299896240234" cal_z="348.9967498779297" cal_scale="7.138691951470489" name_CZ="Loďková kost" />
+    <bone id="21009" name="Talus" latin="Talus" model="model/Talus.stl" cal_x="-60.933799743652344" cal_y="51.49219989776611" cal_z="144.9911994934082" cal_scale="4.836260738626364" name_CZ="Hlezenní kost" />
+  </bones>
+</group>

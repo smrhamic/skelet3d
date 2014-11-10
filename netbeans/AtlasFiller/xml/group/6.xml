@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Shoulder girdle" latin="Cingulum membri superioris" id="6" parent="1" last="6002" name_CZ="Pletenec horní končetiny">
+  <children />
+  <bones>
+    <bone id="6001" name="Clavicle" latin="Clavicula" model="model/Clavicula.stl" cal_x="-254.46730041503906" cal_y="204.4510040283203" cal_z="541.0009002685547" cal_scale="1.8985900597114145" name_CZ="Klíček" />
+    <bone id="6002" name="Scapula" latin="Scapula" model="model/Scapula.stl" cal_x="-255.7184066772461" cal_y="184.37740325927734" cal_z="733.0012817382813" cal_scale="1.7218637584759586" name_CZ="Lopatka" />
+  </bones>
+</group>

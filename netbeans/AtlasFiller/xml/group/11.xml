@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Carpal bones" latin="Ossa carpi" id="11" parent="10" last="11011" name_CZ="Zápěstní kosti">
+  <children />
+  <bones>
+    <bone id="11004" name="Capitate" latin="Os capitatum" model="model/Os capitatum.stl" cal_x="-162.6791534423828" cal_y="251.81114959716797" cal_z="-136.0017547607422" cal_scale="9.997366009728475" name_CZ="Hlavatá kost" />
+    <bone id="11005" name="Hamate" latin="Os hamatum" model="model/Os hamatum.stl" cal_x="-32.706199645996094" cal_y="39.49620056152344" cal_z="-20.998799800872803" cal_scale="11.595905620482513" name_CZ="Háková kost" />
+    <bone id="11006" name="Lunate" latin="Os lunatum" model="model/Os lunatum.stl" cal_x="-155.51924896240234" cal_y="250.14810180664063" cal_z="-81.9963493347168" cal_scale="13.626142555116578" name_CZ="Poloměsíčitá kost" />
+    <bone id="11007" name="Pisiform" latin="Os pisiforme" model="model/Os pisiforme.stl" cal_x="-156.86770629882813" cal_y="254.00939178466797" cal_z="-189.99324798583984" cal_scale="21.417390082387147" name_CZ="Hrášková kost" />
+    <bone id="11008" name="Scaphoid" latin="Os scaphoideum" model="model/Os scaphoideum.stl" cal_x="-172.58084869384766" cal_y="254.3144073486328" cal_z="-57.00564956665039" cal_scale="9.0381309942413" name_CZ="Člunková kost" />
+    <bone id="11009" name="Trapezium" latin="Os trapezium" model="model/Os trapezium.stl" cal_x="-222.46234893798828" cal_y="249.6365509033203" cal_z="-195.99600219726563" cal_scale="14.355653787263124" name_CZ="Sedlová kost" />
+    <bone id="11010" name="Trapezoid" latin="Os trapezoideum" model="model/Os trapezoideum.stl" cal_x="-165.0147476196289" cal_y="252.6304931640625" cal_z="-163.99034881591797" cal_scale="13.638775834404528" name_CZ="Botičková kost" />
+    <bone id="11011" name="Triquetrum" latin="Os triquetrum" model="model/Os triquetrum.stl" cal_x="-189.44509887695313" cal_y="253.89354705810547" cal_z="-202.0093994140625" cal_scale="13.640337123240911" name_CZ="Trojhranná kost" />
+  </bones>
+</group>

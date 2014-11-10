@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Metatarsals" latin="Ossa metatarsi" id="22" parent="20" last="22005" name_CZ="Nártní kosti">
+  <children />
+  <bones>
+    <bone id="22001" name="Metatarsus I" latin="Os metatarsi I" model="model/Os metatarsale I.stl" cal_x="45.399048805236816" cal_y="48.161048889160156" cal_z="308.99855041503906" cal_scale="4.526190998351409" name_CZ="Nártní kost I" />
+    <bone id="22002" name="Metatarsus II" latin="Os metatarsi II" model="model/Os metatarsale A.stl" cal_x="42.55299937725067" cal_y="45.27079963684082" cal_z="135.0025978088379" cal_scale="3.8369452328207903" name_CZ="Nártní kost II" />
+    <bone id="22003" name="Metatarsus III" latin="Os metatarsi III" model="model/Os metatarsale B.stl" cal_x="37.540600299835205" cal_y="43.924299240112305" cal_z="172.99620056152344" cal_scale="3.7453370183365577" name_CZ="Nártní kost III" />
+    <bone id="22004" name="Metatarsus IV" latin="Os metatarsi IV" model="model/Os metatarsale C.stl" cal_x="46.04290056228638" cal_y="44.05509948730469" cal_z="217.9989013671875" cal_scale="3.9742047514247827" name_CZ="Nártní kost IV" />
+    <bone id="22005" name="Metatarsus V" latin="Os metatarsi V" model="model/Os metatarsale D.stl" cal_x="52.70169925689697" cal_y="46.1463508605957" cal_z="254.99765014648438" cal_scale="4.1329260801014565" name_CZ="Nártní kost V" />
+  </bones>
+</group>

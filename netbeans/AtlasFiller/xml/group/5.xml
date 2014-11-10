@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Cranium" latin="Cranium" id="5" parent="0" last="5000" name_CZ="Lebka">
+  <children>
+    <child id="31" />
+    <child id="34" />
+  </children>
+  <bones />
+</group>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of foot" latin="Ossa pedis" id="20" parent="16" last="20000" name_CZ="Kosti nohy">
+  <children>
+    <child id="21" />
+    <child id="22" />
+    <child id="23" />
+  </children>
+  <bones />
+</group>

@@ -28,7 +28,8 @@
                     <li>
                         <h:link outcome="browse">
                             <h:outputText value ="#{sub.name}" />
-                            <h:outputText class="latin" value =" (#{sub.latin})" />
+                            <h:outputText class="latin" value =" - #{sub.latin}" />
+                            <h:outputText class="num" value =" (#{sub.numPages})" />
                             <f:param name="id" value="#{sub.id}" />
                         </h:link>
                     </li>

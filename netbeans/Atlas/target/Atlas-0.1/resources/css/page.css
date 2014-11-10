@@ -4,6 +4,8 @@
                 font-size: 16pt; font-weight: normal; font-style: italic; }
 
 #container { position: static; }
+//.relativeHolder { position: relative; }
+
 
 .imageComp { margin: auto; text-align: center; }
 .imageDescription { font-size: 80%; font-weight: bold; }

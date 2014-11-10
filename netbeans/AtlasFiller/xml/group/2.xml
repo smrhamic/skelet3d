@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of lower limb" latin="Ossa membri inferioris" id="2" parent="0" last="2000" name_CZ="Kosti dolní končetiny">
+  <children>
+    <child id="14" />
+    <child id="16" />
+  </children>
+  <bones />
+</group>

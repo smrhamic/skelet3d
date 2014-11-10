@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Neurocranium" latin="Neurocranium" id="31" parent="5" last="31000" name_CZ="Mozkovna">
+  <children>
+    <child id="32" />
+    <child id="33" />
+  </children>
+  <bones />
+</group>

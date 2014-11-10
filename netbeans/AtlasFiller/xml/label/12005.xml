@@ -1,0 +1,7 @@
+<labels>
+  <label label="[CZ] kloubní ploška" text="[CZ] sedlová kooubní ploška pro Os trapezium" priority="2" x="-136.54028787119955" y="-22.115900827759877" z="31.576425888231945" x2="-283.2058273709928" y2="-118.3174825955" z2="-58.49889955401531" label_CZ="kloubní ploška" text_CZ="sedlová kooubní ploška pro Os trapezium"/>
+  <label label="[CZ] kloubní ploška" text="[CZ] pro Phalanx proximalis pollicis" priority="2" x="134.84216357744745" y="42.97212365492026" z="-33.85932017658646" x2="212.54639906641512" y2="51.10940379248407" z2="-228.1609192990964" label_CZ="kloubní ploška" text_CZ="pro Phalanx proximalis pollicis"/>
+  <label label="[CZ] basis ossis metacarpi I" text="[CZ] " priority="2" x="-109.20681835854293" y="25.634794378113604" z="24.265743306412975" x2="-171.99510248756613" y2="70.166048915247" z2="-220.11319057855923" label_CZ="basis ossis metacarpi I" text_CZ=""/>
+  <label label="[CZ] caput ossis metacarpi I" text="[CZ] " priority="2" x="110.97831894186557" y="-25.359311525617166" z="-28.074848068902952" x2="246.44777351262545" y2="-71.48803555749394" z2="130.62657319673892" label_CZ="caput ossis metacarpi I" text_CZ=""/>
+  <label label="[CZ] corpus ossis metacarpi I" text="[CZ] UPÍNÁ SE ZDE:&#xD;M. opponens pollicis (na laterální hranu)" priority="2" x="-9.584582642959951" y="-22.172425175470515" z="-38.09543075064856" x2="-24.838102021969473" y2="-199.88032002863972" z2="-137.17320527231266" label_CZ="corpus ossis metacarpi I" text_CZ="UPÍNÁ SE ZDE:&#xD;M. opponens pollicis (na laterální hranu)"/>
+</labels>

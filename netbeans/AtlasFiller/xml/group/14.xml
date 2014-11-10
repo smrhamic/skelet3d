@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Pelvic girdle" latin="Cingulum membri inferioris" id="14" parent="2" last="14000" name_CZ="Pletenec dolní končetiny">
+  <children>
+    <child id="15" />
+  </children>
+  <bones />
+</group>

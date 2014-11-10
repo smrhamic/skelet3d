@@ -85,6 +85,21 @@ public class Category implements Serializable {
                 Category.class);
         return query.getResultList();
     }
+    
+    public int getNumberOfPages(Language lang, boolean publishedOnly) {
+        int numPages = 0;
+        for (Page page : pageList) {
+            for (PageContent pc : page.getPageContentList()) {
+                if (pc.getLanguage1().equals(lang) && (!publishedOnly || pc.getPublished())) {
+                    numPages++;
+                }
+            }
+        }
+        for (Category cat : categoryList) {
+            numPages += cat.getNumberOfPages(lang, publishedOnly);
+        }
+        return numPages;
+    }
 
     public Integer getId() {
         return id;

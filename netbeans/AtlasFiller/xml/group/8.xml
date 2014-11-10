@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Humerus" latin="Humerus" id="8" parent="7" last="8001" name_CZ="Pažní kost">
+  <children />
+  <bones>
+    <bone id="8001" name="Humerus" latin="Humerus" model="model/Humerus.stl" cal_x="-111.81869888305664" cal_y="195.326904296875" cal_z="557.9943389892578" cal_scale="0.8927819743483206" name_CZ="Pažní kost" />
+  </bones>
+</group>

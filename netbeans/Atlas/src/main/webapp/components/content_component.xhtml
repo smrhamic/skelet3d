@@ -43,6 +43,23 @@
                 <h:outputScript name="js/STLLoader.js" />
                 <!-- container element for renderer -->
                 <div id="container">
+                    <!-- setup JS variables -->
+                    <script type="text/javascript">
+                        var modelPath = './resources/models/${component.model.filename}';
+                        var labels = new Array(0);
+                        <ui:repeat var="label" value="#{pageManager.labels}" varStatus="status">
+                            var l = new Object();
+                            l.markX = #{label.markX};
+                            l.markY = #{label.markY};
+                            l.markZ = #{label.markZ};
+                            l.labelX = #{label.labelX};
+                            l.labelY = #{label.labelY};
+                            l.labelZ = #{label.labelZ};
+                            l.title = '#{label.title}';
+                            l.text = '#{label.text}';
+                            labels[#{status.index}] = l;
+                        </ui:repeat>
+                    </script>
                     <!-- 3D rendering code -->
                     <h:outputScript name="js/view3d.js" />
                 </div>

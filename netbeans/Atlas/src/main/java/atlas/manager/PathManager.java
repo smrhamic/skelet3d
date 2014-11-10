@@ -2,8 +2,8 @@ package atlas.manager;
 
 import atlas.entity.Category;
 import atlas.entity.Page;
-import atlas.entity.listview.CategoryView;
-import atlas.entity.listview.PageView;
+import atlas.entity.view.CategoryView;
+import atlas.entity.view.PageView;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

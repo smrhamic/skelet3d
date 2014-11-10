@@ -1,12 +1,13 @@
 // jQuery, three.js and OrbitControls.js must be loaded for this code to work!
 
 // basic 3D world objects
-var width, height;
+var width, height, container;
 var renderer, camera, scene, controls;
 var pointLight, ambientLight, lightOffset;
 var material1, lineMaterial, markMaterial;
 var sprites;
 var projector, mouseVector;
+var textBox, textBoxContent, defaultMessage;
 
 // currently selected label
 var selectedLabel = null;
@@ -20,12 +21,12 @@ render();
 // everything that happens before first render goes here
 function init() {
     // get containter element for canvas
-    var container = $('#container');
-
+    container = document.getElementById('container'); //container = $('#container');
     
     // set the scene size depending on container
-    width = container.width();
-    height = width * 0.75;
+    //width = container.offsetWidth; //width = container.width();
+    //height = width * 0.75;
+    //alert(width + "x" + height);
 
     // create a scene
     scene = new THREE.Scene();
@@ -33,7 +34,7 @@ function init() {
     sprites = new THREE.Object3D();
     scene.add( sprites );
     // create a camera
-    camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+    camera = new THREE.PerspectiveCamera(45, 0.75, 1, 10000);
     // add the camera to the scene
     scene.add(camera);
     // pull back the camera
@@ -41,10 +42,10 @@ function init() {
 
     // create renderer
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
+    //renderer.setSize(width, height);
+    renderer.setClearColor( 0xF0F0F0, 0 );
     // append renderer element to container
-    container.append(renderer.domElement);
-    
+    container.appendChild(renderer.domElement);
     // setup orbit controls
     controls = new THREE.OrbitControls( camera, renderer.domElement );
     controls.addEventListener( 'change', render );
@@ -75,28 +76,29 @@ function init() {
     projector = new THREE.Projector();
     mouseVector = new THREE.Vector3( 0, 0, 1);
     
+    // listeners
     window.addEventListener( 'click', onMouseClick, false );
+    window.addEventListener( 'resize', onWindowResize, false );
+    document.addEventListener("DOMContentLoaded", function() {
+        onWindowResize();
+    });
     
-    // load 3D model
-    loadModel();
-    
-    // test sprites
-   
-    makeLabel("S. Text",
-            new THREE.Vector3(0, 0, 10),
-            new THREE.Vector3(-10, 10, 10));
-    
-    makeLabel("Sample Text, medium",
-            new THREE.Vector3(0, 0, 5),
-            new THREE.Vector3(-10, 10, 5));
-    
-    makeLabel("Sample Text thats quite a bit longer",
-            new THREE.Vector3(0, 0, 0),
-            new THREE.Vector3(-10, 10, 0));
+    // test textbox
+    setupTextBox();
 
+    // load 3D model
+    //alert(modelPath);
+    loadModel( modelPath );
+    
+    // create labels
+    labels.forEach( function ( label ) {
+        makeLabel(label.title, label.text,
+            new THREE.Vector3(label.markX, label.markY, label.markZ), 
+            new THREE.Vector3(label.labelX, label.labelY, label.labelZ));
+    });
 }
 
-function loadModel() {
+function loadModel( path ) {
     var loader = new THREE.STLLoader();
     loader.addEventListener( 'load', function ( event ) {
         // get geometry
@@ -124,18 +126,52 @@ function loadModel() {
         scene.add( model );
         render();
     } );
-    loader.load( './resources/models/Clavicula.stl' );
+    loader.load( path );
     
 }
 
+function setupTextBox() {
+    
+    defaultMessage = "Select labels for details";
+    
+    var padding = 10;
+    
+    var holderDiv = document.createElement( 'div' );
+    holderDiv.style.position = 'absolute';
+    //holderDiv.style.width = w + 'px';
+    //holderDiv.style.maxHeight = h + 'px';
+    holderDiv.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    holderDiv.style.borderRadius = 10 + 'px';
+    //holderDiv.style.bottom = 0 + 'px';
+    //holderDiv.style.left = 0 + 'px';
+    //alert(container.style.bottom);
+    //holderDiv.style.top = container.offsetTop + height - h - 5 + 'px';
+    //holderDiv.style.left = container.offsetLeft + 0.5*( width - w ) + 'px';
+    //holderDiv.style.display = 'table';
+    holderDiv.style.overflowY = 'auto';
+    
+    var textDiv = document.createElement( 'div' );
+    textDiv.style.color = 'rgba(255, 255, 255, 1)';
+    textDiv.style.padding = padding + 'px';
+    textDiv.style.textAlign = 'left';
+    //textDiv.style.display = 'table-cell';
+    //textDiv.style.verticalAlign = 'middle';
+    textDiv.innerHTML = defaultMessage;
+    
+    holderDiv.appendChild( textDiv );
+    container.appendChild( holderDiv );
+    textBox = holderDiv;
+    textBoxContent = textDiv;
+}
 
-function makeLabel( text, markPosition, labelPosition ) {
-    makeSprite( text, labelPosition );
+
+function makeLabel( title, text, markPosition, labelPosition ) {
+    makeSprite( title, text, labelPosition );
     makeLine( markPosition, labelPosition );
     makeMark( markPosition );
 }
 
-function makeSprite( text, position ) {
+function makeSprite( title, text, position ) {
     
     // create canvas to draw texture on
     var canvas = document.createElement('canvas');
@@ -147,7 +183,7 @@ function makeSprite( text, position ) {
     var margin = 20;
     // calculate text width with current font
     context.font = fontsize + "px Arial";
-    var metrics = context.measureText( text );
+    var metrics = context.measureText( title );
     var textWidth = metrics.width;
     // texture dimensions
     var hSize = textWidth + 2*margin;
@@ -163,7 +199,7 @@ function makeSprite( text, position ) {
     roundRect(context, 0, 0, hSize, vSize, 15);
     
     context.fillStyle = "rgba(0,0,0,255)";
-    context.fillText(text, margin, fontsize);
+    context.fillText(title, margin, fontsize);
     
 
     //// use canvas contents as a texture
@@ -183,7 +219,11 @@ function makeSprite( text, position ) {
     geometry.faceVertexUvs[0][1] = [coords[0], coords[1], coords[2]];
     
     var sprite = new THREE.Mesh( geometry, material );
-    sprite.name = "Sprite: " + text;
+    
+    // replace new lines with <br />
+    var breakTag = '<br />';
+    sprite.name = title.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');    
+    sprite.text = text.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 
     sprite.scale.set( 2, 2, 1);
     sprite.position.copy( position );
@@ -192,20 +232,22 @@ function makeSprite( text, position ) {
 }
 
 function makeLine( start, end ) {
-    // common start for testing
-    //start = new THREE.Vector3( 5, 5, 5 );
     
     // a bit shorter looks better? best would be to always end at label edge
     var ratio = 0.9;
     var newEnd = new THREE.Vector3();
     newEnd.subVectors( start, end ).multiplyScalar( 1 - ratio );
     newEnd.add( end );
+    // add midpoint for better coloring
+    var mid = new THREE.Vector3();
+    mid.addVectors( start, newEnd ).multiplyScalar( 0.5 );
     
     var geometry = new THREE.Geometry();
     
-    geometry.vertices.push( start, newEnd );
-    geometry.colors[0] = new THREE.Color( 0xFF0000 );
-    geometry.colors[1] = new THREE.Color( 0x000000 );
+    geometry.vertices.push( start, mid, newEnd );
+    geometry.colors[0] = markMaterial.color;
+    geometry.colors[1] = markMaterial.color;
+    geometry.colors[2] = renderer.getClearColor();
     geometry.colorsNeedUpdate = true;
     var line = new THREE.Line( geometry, lineMaterial );
 
@@ -251,10 +293,15 @@ function select( label ) {
     
     if ( selectedLabel === label ) {
         selectedLabel = null;
+        textBoxContent.innerHTML = defaultMessage;
     } else {
         selectedLabel = label;
         selectedLabel.material.color.setHex( 0xFF3030 );
+        
+        textBoxContent.innerHTML =
+                "<h3>" + label.name + "</h3><p>" + label.text + "</p>";
     }
+
 }
 
 function onMouseClick( event ) {
@@ -300,6 +347,36 @@ function onMouseClick( event ) {
     //alert(alertString);
 }
 
+function onWindowResize() {    
+    // set dimensions to container size
+    width = container.offsetWidth;
+    // prefer fixed ratio
+    height = 0.75 * width;
+    // but fit to window if it would overflow / cause scrolling
+    width = Math.min( width, window.innerWidth );
+    height = Math.min( height, window.innerHeight );
+    // set renderer (canvas) size
+    renderer.setSize( width, height );
+    // fix camera aspect
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    
+    var w = Math.min( 400, width );
+    var h = Math.min( 200, height*0.4 );
+    var wMax = width;
+    textBox.style.width = w + 'px';
+    textBox.style.maxWidth = wMax + 'px';
+    textBox.style.maxHeight = h - 15 + 'px';
+    //alert(textBox.style.maxHeight);
+    textBox.style.bottom = window.innerHeight - height - container.offsetTop + 5 + 'px';
+    //holderDiv.style.left = 0 + 'px';
+    //alert(container.style.bottom);
+    //holderDiv.style.top = container.offsetTop + height - h - 5 + 'px';
+    textBox.style.left = container.offsetLeft +
+            0.5*( width - Math.min(w, wMax)) + 'px';
+    
+    render();
+}
 
 // render function
 // everything that happens every frame goes here

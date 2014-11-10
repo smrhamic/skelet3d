@@ -1,0 +1,6 @@
+<labels>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os cuneiforme mediale" label="articular surface" text="for os cuneiforme mediale" priority="2" x="-19.23446606133613" y="-91.8226075787111" z="31.811445733021557" x2="-191.07633102087445" y2="-181.7541691167839" z2="79.85423933800375"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os cuneiforme laterale" label="articular surface" text="for os cuneiforme laterale" priority="2" x="-65.74025245051891" y="103.08565575738044" z="62.68359498487341" x2="-302.9246786973732" y2="183.10961687964115" z2="-73.2640816003147"/>
+  <label label_CZ="kloubní ploška" text_CZ="pro Os naviculare" label="articular surface" text="for os naviculare" priority="2" x="108.3430480807396" y="12.61770648532552" z="24.990247126189633" x2="211.64732999998213" y2="-179.7781302474622" z2="-41.09419120774692"/>
+  <label label_CZ="kloubní ploška" text_CZ="po Os metatarsi II." label="articular surface" text="for os metatarsi II." priority="2" x="-141.71299574629344" y="6.309659747902319" z="39.41374663538714" x2="-254.69969413501647" y2="147.92091094591777" z2="215.59462229266117"/>
+</labels>

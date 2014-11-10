@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<group name="Bones of hand" latin="Ossa manus" id="10" parent="7" last="10000" name_CZ="Kosti ruky">
+  <children>
+    <child id="11" />
+    <child id="12" />
+    <child id="13" />
+  </children>
+  <bones />
+</group>
