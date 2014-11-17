@@ -1,10 +1,70 @@
-#page { width: 100%; max-width: 800px;
-        margin-left: auto; margin-right: auto; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #ccccff); }
+
+#page { width: 100%; max-width: 800px; min-height: 100%;
+        margin-left: auto; margin-right: auto;
+        background-color: white; position: relative; }
+
+
 
 #loginBar { margin-left: auto; margin-right: 0px; text-align: right; }
 
-#logo { margin-left: auto; margin-right: auto; text-align: center; }
+#languageBar { overflow: auto; }
+.flagDiv { float: right; padding: 2px; }
 
-#path { margin-left: auto; margin-right: auto; text-align: center; }
+#logoBar { margin-left: auto; margin-right: auto; text-align: center;
+        padding-bottom: 20px; }
+
+#pathBar { margin-left: auto; margin-right: auto; text-align: center;
+        font-weight: bold; font-size: 16pt; }
+#pathBar a { text-decoration: none; color: #0645ad; }
+#pathBar a:hover { text-decoration: underline; }
+
+
+#content { padding-bottom: 60px; }
+
+#footerBar { width: 100%; height: 40px; position: absolute;
+            bottom: 0; left: 0; text-align: center; }
+
+#logo { margin: auto; width: 400px; max-width: 80%;
+        margin-bottom: 10px; }
 
 .latin { font-style: italic; }
+
+
+
+/* Fancy Line, taken from
+http://stackoverflow.com/questions/15215556/create-a-beautiful-horizontal-line-with-css-only */
+
+hr.fancy-line { 
+    border: 0; 
+    height: 1px;
+    position: relative;
+    margin: 5px 0; /* Keep other elements away from pseudo elements*/
+    left: 0%;
+}
+hr.fancy-line:before {
+    top: -5px;
+    height: 10px;
+}
+hr.fancy-line:after {
+    content:'';
+    height: 5px;   /* half the height of :before */
+    top: 10px;        /* height of hr*/
+}
+
+hr.fancy-line:before, hr.fancy-line:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0%;
+}
+
+hr.fancy-line, hr.fancy-line:before {
+    background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 75%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 75%, color-stop(0%,rgba(0,0,0,0.1)), color-stop(75%,rgba(0,0,0,0)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 75%);
+}

@@ -36,8 +36,17 @@
             <!-- Display if MODEL component -->
             <h:panelGroup class="imageComp" layout="block"
                           rendered="#{component.componentType == 'model'}">
+                <!-- hidden input for recieving updated data -->
+                <h:form>
+                    <h:inputHidden id="labelUpdate"
+                                   value="#{pageManager.labelUpdates}"
+                                   binding="#{labelUpdateInput}"/>
+                    <h:commandButton id="labelUpdateButton"
+                                     action="#{pageManager.updateLabels()}"
+                                     binding="#{labelUpdateButton}"
+                                     style="display: none;" />
+                </h:form>
                 <!-- required js libraries -->
-                <h:outputScript name="js/jquery-1.11.1.js" />
                 <h:outputScript name="js/three.min.js" />
                 <h:outputScript name="js/OrbitControls.js" />
                 <h:outputScript name="js/STLLoader.js" />
@@ -45,10 +54,28 @@
                 <div id="container">
                     <!-- setup JS variables -->
                     <script type="text/javascript">
+                        var labelUpdateInput =
+                                document.getElementById('#{labelUpdateInput.clientId}');
+                        var labelUpdateButton =
+                                document.getElementById('#{labelUpdateButton.clientId}');
                         var modelPath = './resources/models/${component.model.filename}';
+                        var strings = {};
+                            strings['selectLabel'] = '#{strings.selectLabel}';
+                            strings['labels'] = '#{strings.showLabels}';
+                            strings['pins'] = '#{strings.showPins}';
+                            strings['none'] = '#{strings.showNoLabels}';
+                            strings['addLabel'] = '#{strings.addLabel}';
+                            strings['defaultTitle'] = '#{strings.defaultLabelTitle}';
+                            strings['defaultText'] = '#{strings.defaultLabelText}';
+                            strings['deleteLabel'] = '#{strings.deleteLabel}';
+                            strings['confirmDelete'] = '#{strings.confirmDeleteLabel}';
+                            strings['saveButton'] = '#{strings.saveButton}';
+                            strings['confirmSave'] = '#{strings.confirmSave}';
+                            strings['unsavedChanges'] = '#{strings.unsavedChanges}';
                         var labels = new Array(0);
                         <ui:repeat var="label" value="#{pageManager.labels}" varStatus="status">
                             var l = new Object();
+                            l.id = #{label.id};
                             l.markX = #{label.markX};
                             l.markY = #{label.markY};
                             l.markZ = #{label.markZ};

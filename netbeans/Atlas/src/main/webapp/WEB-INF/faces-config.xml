@@ -14,6 +14,7 @@
         </resource-bundle>
         <locale-config>
             <default-locale>en</default-locale>
+            <supported-locale>cs</supported-locale>
         </locale-config>
     </application>
 </faces-config>

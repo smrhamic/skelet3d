@@ -17,6 +17,8 @@
                 <h:outputText value="#{pageManager.page.latin}" />
             </h2>
             
+            <hr class="fancy-line" />
+            
             <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
                 <ui:include src="content_component.xhtml">
                     <ui:param name="listPosition" value="#{status.index}" />

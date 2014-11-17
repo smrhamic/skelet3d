@@ -33,10 +33,8 @@ public class CategoryManager implements Serializable {
     @PersistenceContext
     private EntityManager em;
     
-    // current Category Entity
-    private Category currentCategoryEntity;
     // bound properties
-    private int categoryId;
+    private int categoryId = -1;
     private CategoryView currentCategory;
     private List<CategoryView> childCategories;
     private List<PageView> pages;
@@ -47,9 +45,53 @@ public class CategoryManager implements Serializable {
      * Initializes current Category based on bound "categoryId".
      */
     public void init() {
-        currentCategoryEntity = Category.getCategoryById(em, categoryId);
-        // only for testing - comment out later
-        em.getEntityManagerFactory().getCache().evictAll();
+        // reload all - only for testing - comment out later
+        //em.getEntityManagerFactory().getCache().evictAll();
+        
+        // get category ("entity", not "view")
+        Category currentCategoryEntity = Category.getCategoryById(em, categoryId);
+        
+        // get CategoryView if entity is set, otherwise default
+        if (currentCategoryEntity != null) {
+            currentCategory = CategoryView.getCategoryView(
+                em, currentCategoryEntity, languageManager.getCurrentLanguage());
+        } else {
+            currentCategory = CategoryView.getDefaultCategoryView();
+        }
+        
+        // get root categories
+        rootCategories = new ArrayList<>();
+        // add root CategoryViews to list
+        for ( Category entity : Category.getRootCategories(em) ) {
+            rootCategories.add(CategoryView.getCategoryView(
+                    em, entity, languageManager.getCurrentLanguage()));
+        }
+        
+        // get child categories
+        // if no ID is set, get root categories instead
+        if (categoryId == -1) {
+            childCategories = rootCategories;
+        } else {
+            // otherwise proceed to get children
+            childCategories = new ArrayList<>();
+            // add child CategoryViews to list if entity is set, otherwise remain empty
+            if (currentCategoryEntity != null) {
+                for ( Category entity : currentCategoryEntity.getCategoryList() ) {
+                    childCategories.add(CategoryView.getCategoryView(
+                            em, entity, languageManager.getCurrentLanguage()));
+                }
+            }
+        }
+        
+        // get pages
+        pages = new ArrayList<>();
+        // add child PageViews to list if entity is set, otherwise remain empty
+        if (currentCategoryEntity != null) {
+            for ( Page entity : currentCategoryEntity.getPageList() ) {
+                pages.add(PageView.getPageView(
+                        em, entity, languageManager.getCurrentLanguage()));
+            }
+        }
     }
     
     /**
@@ -59,18 +101,6 @@ public class CategoryManager implements Serializable {
      * @return Currently active category.  Default info if current entity is null.
      */
     public CategoryView getCurrentCategory() {
-        // return old value if already set
-        if (currentCategory != null) {
-            return currentCategory;
-        }
-        // get CategoryView if entity is set, otherwise default
-        if (currentCategoryEntity != null) {
-            currentCategory = CategoryView.getCategoryView(
-                em, currentCategoryEntity, languageManager.getCurrentLanguage());
-        } else {
-            currentCategory = CategoryView.getDefaultCategoryView();
-        }
-        
         return currentCategory;
     }
 
@@ -82,20 +112,6 @@ public class CategoryManager implements Serializable {
      * @return List of subcategories of currently active category. Empty list if current entity is null.
      */
     public List<CategoryView> getChildCategories() {
-        // return old value if already set
-        if (childCategories != null) {
-            return childCategories;
-        }
-        
-        childCategories = new ArrayList<>();
-        // add child CategoryViews to list if entity is set, otherwise remain empty
-        if (currentCategoryEntity != null) {
-            for ( Category entity : currentCategoryEntity.getCategoryList() ) {
-                childCategories.add(CategoryView.getCategoryView(
-                        em, entity, languageManager.getCurrentLanguage()));
-            }
-        }
-        
         return childCategories;
     }
 
@@ -107,18 +123,6 @@ public class CategoryManager implements Serializable {
      * @return List of top level categories. Empty list if current entity is null.
      */
     public List<CategoryView> getRootCategories() {
-        // return old value if already set
-        if (rootCategories != null) {
-            return rootCategories;
-        }
-        
-        rootCategories = new ArrayList<>();
-        // add root CategoryViews to list
-        for ( Category entity : Category.getRootCategories(em) ) {
-            rootCategories.add(CategoryView.getCategoryView(
-                    em, entity, languageManager.getCurrentLanguage()));
-        }
-        
         return rootCategories;
     }
     
@@ -135,14 +139,7 @@ public class CategoryManager implements Serializable {
             return pages;
         }
         
-        pages = new ArrayList<>();
-        // add child PageViews to list if entity is set, otherwise remain empty
-        if (currentCategoryEntity != null) {
-            for ( Page entity : currentCategoryEntity.getPageList() ) {
-                pages.add(PageView.getPageView(
-                        em, entity, languageManager.getCurrentLanguage()));
-            }
-        }
+        
         
         return pages;
     }

@@ -3,7 +3,6 @@ package atlas.manager;
 import atlas.entity.Category;
 import atlas.entity.Page;
 import atlas.entity.view.CategoryView;
-import atlas.entity.view.PageView;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,9 +34,33 @@ public class PathManager implements Serializable {
     
     // bound properties
     private int id;
-    private boolean isPage;
     private List<CategoryView> pathToCurrent;
-
+    
+    public void init(boolean isPage) {
+        // setup the path
+        pathToCurrent = new ArrayList<>();
+        Category parentEntity = null;
+        // if currently at a page, start with its parent
+        // else start with category's parent
+        if (isPage) {
+            Page thisPage = Page.getPageById(em, id);
+            if (thisPage != null) {
+                parentEntity = thisPage.getCategory();
+            }
+        } else {
+            parentEntity = Category.getCategoryById(em, id);
+            if (parentEntity != null) {
+                parentEntity = parentEntity.getParentCategory();
+            }            
+        }   
+        // loop for parents all the way to root, add to beginning for correct order
+        while (parentEntity != null){
+            pathToCurrent.add(0, CategoryView.getCategoryView(
+                    em, parentEntity, languageManager.getCurrentLanguage()));
+            parentEntity = parentEntity.getParentCategory();
+        }
+    }
+    
     /**
      * Gets categories that are current category's / page's ancestors
      * in the form of a list of CaregoryViews.
@@ -45,32 +68,6 @@ public class PathManager implements Serializable {
      * @return List of ancestors sorted from root to current's parent.
      */
     public List<CategoryView> getPathToCurrent() {
-        // return old value if already set
-        if (pathToCurrent != null) {
-            return pathToCurrent;
-        }
-        
-        pathToCurrent = new ArrayList<>();
-        Category parentEntity;
-        
-        // if currently at a page, start with its parent
-        // else start with category's parent
-        if (isPage) {
-            parentEntity = Page.getPageById(em, id).getCategory();
-        } else {
-            parentEntity = Category.getCategoryById(em, id);
-            if (parentEntity != null) {
-                parentEntity = parentEntity.getParentCategory();
-            }            
-        }
-        
-        // loop for parents all the way to root, add to beginning for correct order
-        while (parentEntity != null){
-            pathToCurrent.add(0, CategoryView.getCategoryView(
-                    em, parentEntity, languageManager.getCurrentLanguage()));
-            parentEntity = parentEntity.getParentCategory();
-        }
-
         return pathToCurrent;
     }
 
@@ -86,15 +83,6 @@ public class PathManager implements Serializable {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * Sets the type of current location to get path for.
-     * 
-     * @param isPage True for path to page, false for path to category.
-     */
-    public void setIsPage(boolean isPage) {
-        this.isPage = isPage;
-    }   
+    } 
     
 }

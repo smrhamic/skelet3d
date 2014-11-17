@@ -28,6 +28,19 @@ public class LoginManager implements Serializable {
 
     private String userName, password;
 
+    public String login() {
+        currentUser = AtlasUser.login(em, userName, password);
+        mismatched = currentUser == null;
+        return "";
+    }
+
+    public String logout() {
+        HttpSession session = (HttpSession)
+          FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        session.invalidate();
+        return "/index.xhtml?faces-redirect=true";
+    }
+    
     public AtlasUser getCurrentUser() {
         return currentUser;
     }
@@ -56,16 +69,4 @@ public class LoginManager implements Serializable {
         return mismatched;
     }
     
-    public String login() {
-        currentUser = AtlasUser.login(em, userName, password);
-        mismatched = currentUser == null;
-        return "";
-    }
-
-    public String logout() {
-        HttpSession session = (HttpSession)
-          FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        session.invalidate();
-        return "/index.xhtml?faces-redirect=true";
-    }
 }

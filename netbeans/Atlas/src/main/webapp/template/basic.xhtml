@@ -2,9 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      >
- 
+      xmlns:ui="http://java.sun.com/jsf/facelets"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <f:view locale="#{languageManager.locale}">
+    
     <h:head>
 	<h:outputStylesheet name="basic.css" library="css" />
         <title>
@@ -15,22 +17,27 @@
     </h:head>
  
     <h:body>
- 
-	<div id="page">
+        <div id="page">
  
 	    <div id="loginBar">
 		<ui:insert name="loginBar" >
 		  <ui:include src="../components/login_bar.xhtml" />
 		</ui:insert>
 	    </div>
+            
+            <div id="languageBar">
+		<ui:insert name="languageBar" >
+		  <ui:include src="../components/language_bar.xhtml" />
+		</ui:insert>
+	    </div>
  
-            <div id="logo">
+            <div id="logoBar">
 		<ui:insert name="logo" >
 		  <ui:include src="../components/logo.xhtml" />
 		</ui:insert>
 	    </div>
             
-            <div id="path">
+            <div id="pathBar">
 		<ui:insert name="path" />
 	    </div>
             
@@ -39,8 +46,16 @@
 	 	  <ui:include src="../components/welcome.xhtml" />
 	   	</ui:insert>
 	    </div>
+            
+            <div id="footerBar">
+	  	<ui:insert name="footer" >
+	 	  <ui:include src="../components/footer.xhtml" />
+	   	</ui:insert>
+	    </div>
 
         </div>
- 
+        
     </h:body>
+        
+    </f:view>
 </html>

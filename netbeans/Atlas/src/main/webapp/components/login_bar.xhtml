@@ -6,6 +6,8 @@
 
     <h:body>
         <ui:component>
+            <h:panelGroup rendered="false">
+            
             <h:form id="loginForm" rendered = "#{!loginManager.logged}">
                 <h:outputText value="#{strings.badLogin}" rendered="#{loginManager.mismatched}"/>
                 <h:outputText value="#{strings.userNameLabel}" />
@@ -19,6 +21,8 @@
                 <h:outputText value= "#{strings.loggedLabel} #{loginManager.currentUser.name}" />
                 <h:commandButton action="#{loginManager.logout}" value="#{strings.logoutButton}"></h:commandButton>
             </h:form>
+                
+            </h:panelGroup>
         </ui:component>
     </h:body>
 </html>

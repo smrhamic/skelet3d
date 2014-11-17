@@ -16,18 +16,23 @@ import javax.persistence.TypedQuery;
  * Namely, attributes needed for displaying labels such as localized
  * title, text and label position.
  * 
+ * Also used to persist updates made in the view.
+ * 
  * @author Michal
  */
 public class LabelView {
         
+    private int id;
     private String title;
     private String text;
+    private String action;
     private double markX, markY, markZ;
     private double labelX, labelY, labelZ;
 
-    public LabelView(String title, String text,
+    public LabelView(int id, String title, String text,
             double markX, double markY, double markZ,
             double labelX, double labelY, double labelZ) {
+        this.id = id;
         this.title = title;
         this.text = text;
         this.markX = markX;
@@ -43,7 +48,7 @@ public class LabelView {
         // find labels for model in language
 
         TypedQuery<LabelView> query = em.createQuery(
-                "SELECT NEW atlas.entity.view.LabelView(lc.title, lc.text, "
+                "SELECT NEW atlas.entity.view.LabelView(l.id, lc.title, lc.text, "
                         + "l.markX, l.markY, l.markZ, "
                         + "l.labelX, l.labelY, l.labelZ) "
                         + "FROM Label l JOIN l.labelContentList lc "
@@ -53,6 +58,22 @@ public class LabelView {
                 .getResultList();
 
         return lvs;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
     }
 
     public String getTitle() {

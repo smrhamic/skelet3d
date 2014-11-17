@@ -8,9 +8,6 @@
 
     <body>
         <ui:component>
-            <c:if test="#{source == 'page'}" >
-                <c:set target="#{pathManager}" property="isPage" value="#{true}" />
-            </c:if>
             <h:link value="#{strings.homePath}" outcome="index" />
             <ui:repeat value="#{pathManager.pathToCurrent}" var="parent">
                 <h:outputText value=" &gt; " />
