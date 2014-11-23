@@ -37,6 +37,14 @@
                               rendered="#{categoryManager.pages.size() > 0}" />
             </h3>
             
+            <div class="newPageButtonDiv">
+                <h:form rendered="#{loginManager.editor}">
+                    <h:commandButton class="newPageButton"
+                                     value="#{strings.addPage}"
+                                     action="#{pageManager.addNewPage(categoryManager.categoryId)}"/>
+                </h:form>
+            </div>
+            
             <ui:repeat value="#{categoryManager.pages}"
                            var="sub" varStatus="status">
                 <ui:include src="category_item.xhtml">

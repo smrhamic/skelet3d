@@ -43,22 +43,22 @@ public class LabelView {
         this.labelZ = labelZ;
     }
 
-    public static List<LabelView> getLabelViews(
-        EntityManager em, Model model, Language lang) {
-        // find labels for model in language
-
-        TypedQuery<LabelView> query = em.createQuery(
-                "SELECT NEW atlas.entity.view.LabelView(l.id, lc.title, lc.text, "
-                        + "l.markX, l.markY, l.markZ, "
-                        + "l.labelX, l.labelY, l.labelZ) "
-                        + "FROM Label l JOIN l.labelContentList lc "
-                        + "WHERE l.model = :model AND lc.language1 = :lang",
-                LabelView.class);
-        List<LabelView> lvs = query.setParameter("model", model).setParameter("lang", lang)
-                .getResultList();
-
-        return lvs;
-    }
+//    public static List<LabelView> getLabelViews(
+//        EntityManager em, Model model, Language lang) {
+//        // find labels for model in language
+//
+//        TypedQuery<LabelView> query = em.createQuery(
+//                "SELECT NEW atlas.entity.view.LabelView(l.id, lc.title, lc.text, "
+//                        + "l.markX, l.markY, l.markZ, "
+//                        + "l.labelX, l.labelY, l.labelZ) "
+//                        + "FROM Label l JOIN l.labelContentList lc "
+//                        + "WHERE l.model = :model AND lc.language1 = :lang",
+//                LabelView.class);
+//        List<LabelView> lvs = query.setParameter("model", model).setParameter("lang", lang)
+//                .getResultList();
+//
+//        return lvs;
+//    }
 
     public int getId() {
         return id;

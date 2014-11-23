@@ -19,6 +19,10 @@ h2 {text-align: center; font-size: 20pt; font-weight: bold; }
 
 .categoryItem:hover { background-color: #dee6f5; }
 
+.unpublishedItem { border-color: #ff9999; background-color: #faf3ee; }
+
+.unpublishedItem:hover { background-color: #f5e6de; }
+
 .categoryIcon { width: 50px; height: 50px; vertical-align: middle; }
 .categoryItemIconCell { display: table-cell; vertical-align: middle;
                         width: 50px; height: 50px; }
@@ -30,3 +34,11 @@ h2 {text-align: center; font-size: 20pt; font-weight: bold; }
                       text-align: right; padding-right: 15px;
                       font-size: 12pt; }
 
+.pageItemEdit { display: table-cell; vertical-align: middle;
+                      text-align: right; padding-right: 15px;
+                      font-size: 12pt; width: 100px; }
+.pageItemEdit input[type=submit] { width: 100%; }
+
+
+.newPageButtonDiv { text-align: center; }
+.newPageButton { width: 600px; max-width: 100%; font-size: 18pt; margin: 10px; }

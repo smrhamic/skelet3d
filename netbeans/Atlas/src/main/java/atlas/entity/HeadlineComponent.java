@@ -81,6 +81,7 @@ public class HeadlineComponent extends PageComponent implements Serializable{
         return compOrder;
     }
 
+    @Override
     public void setCompOrder(Integer compOrder) {
         this.compOrder = compOrder;
     }

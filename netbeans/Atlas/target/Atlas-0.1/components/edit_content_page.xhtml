@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:component>
+            <h:outputStylesheet name="page.css" library="css" />
+            
+            <h2 id="pageName">
+                <h:outputText value="#{strings.pageEditor}" />
+            </h2>
+            
+            <hr class="fancy-line" />
+            
+            <div class="editColumn">
+                editor tools <br />
+                <h:form>
+                    Name:<h:inputText class="simpleField" value="#{pageManager.pageContent.name}"/>
+                    <br />
+                    Latin:<h:inputText class="simpleField" value="#{pageManager.page.latin}"/>
+                    <br />
+                    Published:<h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
+                    <br />
+                    <h:commandButton value="add text" action="#{pageManager.addComponent()}">
+                        <f:ajax render=":contentBlock" />
+                    </h:commandButton>
+                    <br />
+                    <h:commandButton value="save changes" action="#{pageManager.updatePage()}" />
+                </h:form>
+            </div>
+            <h:panelGroup id="contentBlock" class="contentBlock">
+                <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
+                    <ui:include src="edit_content_component.xhtml">
+                        <ui:param name="listPosition" value="#{status.index}" />
+                    </ui:include>
+                </ui:repeat>
+            </h:panelGroup>                
+        </ui:component>
+    </body>
+</html>
+

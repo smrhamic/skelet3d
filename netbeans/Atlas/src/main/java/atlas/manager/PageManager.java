@@ -1,27 +1,27 @@
 package atlas.manager;
 
-import atlas.entity.Label;
-import atlas.entity.LabelContent;
-import atlas.entity.LabelContentPK;
 import atlas.entity.Language;
 import atlas.entity.Model;
 import atlas.entity.PageComponent;
 import atlas.entity.Page;
 import atlas.entity.PageContent;
+import atlas.entity.PageContentPK;
+import atlas.entity.TextComponent;
 import atlas.entity.view.LabelView;
-import atlas.services.LabelContentService;
-import atlas.services.LabelService;
-import com.google.gson.Gson;
+import atlas.service.CategoryService;
+import atlas.service.LabelContentService;
+import atlas.service.LabelService;
+import atlas.service.PageContentService;
+import atlas.service.PageService;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Controller of content_page.xhtml component.
@@ -39,16 +39,21 @@ public class PageManager implements Serializable {
     @Inject
     LanguageManager languageManager;
     
-    // EntityManager responsible for model persistence
-    // TO BE REPLACED BY SERVICES
-    @PersistenceContext
-    private EntityManager em;
+    // current session's LoginManager to verify the right to edit
+    @Inject
+    LoginManager loginManager;
     
     // persistence services
     @EJB
     LabelService labelService;
     @EJB
     LabelContentService labelContentService;
+    @EJB
+    CategoryService categoryService;
+    @EJB
+    PageService pageService;
+    @EJB
+    PageContentService pageContentService;
     
     // 3D model used on the page if any
     private Model model;
@@ -56,7 +61,6 @@ public class PageManager implements Serializable {
     // bound properties
     private int pageId;
     private Page page;
-    private String name;
     private PageContent pageContent;
     private List<PageComponent> components;
     private List<LabelView> labels;
@@ -66,28 +70,137 @@ public class PageManager implements Serializable {
      * Initializes current Page and content based on bound "pageId".
      */
     public void init() {
-        page = Page.getPageById(em, pageId);
-        // fetch content
-        pageContent = PageContent.getPageContentByPageAndLanguage(
-                em, page, languageManager.getCurrentLanguage());
+        page = pageService.find(pageId);
+        // null check the page
+        if (page == null) {
+            pageContent = null;
+        } else {
+            // fetch content
+            pageContent = pageContentService.find(new PageContentPK(
+                page.getId(), languageManager.getCurrentLanguage().getId()));
+        }    
         
         // get components
-        components = new ArrayList<>();
-        // only get components if content exists
+        components = new ArrayList<>(); // empty by default
+        // only get content if it exists
         if(pageContent != null) {
+            // components
             components.addAll(pageContent.getHeadlineComponentList());
             components.addAll(pageContent.getTextComponentList());
             components.addAll(pageContent.getImageComponentList());
-            // only add one model component, multiples not supported yet
+            // only add one model component, multiples not supported
             if (!pageContent.getModelComponentList().isEmpty()) {
                 components.add(pageContent.getModelComponentList().get(0));
                 model = pageContent.getModelComponentList().get(0).getModel();
-                labels = LabelView.getLabelViews(em, model,
-                        languageManager.getCurrentLanguage());
+                labels = labelService.getLabelViews(
+                        model, languageManager.getCurrentLanguage());
             }
-            // sort components by compOrder
+            // sort components by compOrder and replace order values by 0, 1, 2..
             components.sort(null);
+            for(int i = 0; i < components.size(); i++) {
+                components.get(i).setCompOrder(i);
+            }
         }
+    }
+    
+    public String goEditPage(int pageId) {
+        // go to edit page if editor is logged, else stay (refresh)
+        if (loginManager.isEditor()) {
+            return "edit_page.xhtml?id=" + pageId + "&faces-redirect=true&includeViewParams=true";
+        } else {
+            return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+        }
+    }
+    
+    public String addNewPage(int categoryId) {
+        // if page is to be created and editor not logged, abort
+        // this should not happen other than very rare session timeouts
+        if (!loginManager.isEditor()) {
+            return "/index.xhtml?faces-redirect=true";
+        }
+        
+        // create new page
+        pageService.createNewPage(categoryId);
+        
+        // just refresh after
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
+    public String deletePage(int pageId) {
+        // if page is to be deleted and editor not logged, abort
+        // this should not happen other than very rare session timeouts
+        if (!loginManager.isEditor()) {
+            return "/index.xhtml?faces-redirect=true";
+        }
+        
+        // delete page
+        pageService.delete(pageService.find(pageId));
+        
+        // just refresh after
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
+    public String updatePage() {
+        // if page is to be changed and editor not logged, abort
+        // this should not happen other than very rare session timeouts
+        if (!loginManager.isEditor()) {
+            return "/index.xhtml?faces-redirect=true";
+        }
+        
+        // update page
+        pageService.update(page);
+        // update page content
+        pageContentService.updateWithComponents(pageContent, components);
+        
+        // just refresh after
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
+    public String addComponent() {
+
+        TextComponent comp = new TextComponent();
+        comp.setCompOrder(components.size());
+        comp.setPageContent(pageContent);
+        comp.setId(0); // will be generated
+        comp.setText("...");
+        components.add(comp);
+        
+        // do not refresh, this is done by ajax
+        return null;
+    }
+    
+    public String bumpComponentUp(PageComponent component) {
+        int i = components.indexOf(component);
+        // swap with previous, not much to do if component is at the top
+        if(i > 0) {
+            components.get(i).setCompOrder(i-1);
+            components.get(i-1).setCompOrder(i);
+            Collections.swap(components, i, i-1);
+        }        
+        // do not refresh, this is done by ajax
+        return null;
+    }
+    
+    public String bumpComponentDown(PageComponent component) {
+        int i = components.indexOf(component);
+        // swap with next, not much to do if component is at the top
+        if(i < components.size()-1) {
+            components.get(i).setCompOrder(i+1);
+            components.get(i+1).setCompOrder(i);
+            Collections.swap(components, i, i+1);
+        }        
+        // do not refresh, this is done by ajax
+        return null;
+    }
+    
+    public String removeComponent(PageComponent component) {
+        components.remove(component);
+        // do not refresh, this is done by ajax
+        return null;
     }
     
     /**
@@ -96,6 +209,11 @@ public class PageManager implements Serializable {
      * @return URL string to current view including parameters.
      */
     public String updateLabels() {
+        // if changes are commited and editor not logged, abort
+        // this should not happen other than very rare session timeouts during edit
+        if (!loginManager.isEditor()) {
+            return "/index.xhtml?faces-redirect=true";
+        }
         // refreshing url
         String url = FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
@@ -104,67 +222,7 @@ public class PageManager implements Serializable {
         if (model == null) return url;
         Language lang = languageManager.getCurrentLanguage();
         
-        System.out.println("Got JSON: " + labelUpdates);
-        
-        // parse JSON
-        Gson gson = new Gson();
-        LabelView[] updates = gson.fromJson(labelUpdates, LabelView[].class);
-        
-        // treat each change according to "action"
-        for(LabelView update:updates) {
-            switch (update.getAction()) {
-                // create a new label + contents
-                case "create":
-                case "update":
-                    // populate label
-                    Label label = new Label();
-                    label.setLabelX(update.getLabelX());
-                    label.setLabelY(update.getLabelY());
-                    label.setLabelZ(update.getLabelZ());
-                    label.setMarkX(update.getMarkX());
-                    label.setMarkY(update.getMarkY());
-                    label.setMarkZ(update.getMarkZ());
-                    label.setModel(model);
-                    // here it splits for create and update
-                    if (update.getAction().equals("create")) {
-                        // add id and persist
-                        label.setId(0); // will be generated
-                        labelService.save(label);
-                        // populate content for all languages
-                        for(Language anyLang:languageManager.getSupportedLanguages()) {
-                            LabelContent lc = new LabelContent();
-                            lc.setLabelContentPK(
-                                    new LabelContentPK(label.getId(), anyLang.getId()));
-                            lc.setLabel1(label);
-                            lc.setLanguage1(anyLang);
-                            if(lang.equals(anyLang)) {
-                                lc.setTitle(update.getTitle());
-                                lc.setText(update.getText());
-                            } else {
-                                lc.setTitle("[" + lang.getShort1() + "] " + update.getTitle());
-                                lc.setText("[" + lang.getShort1() + "] " + update.getText());
-                            }
-                            labelContentService.save(lc);
-                        }
-                    } else {
-                        // copy id and persist
-                        label.setId(update.getId());
-                        labelService.update(label);
-                        // populate content for current language
-                        LabelContent lc = labelContentService.find(
-                                label.getId(), lang.getId());
-                        
-                        lc.setTitle(update.getTitle());
-                        lc.setText(update.getText());
-                        // persist
-                        labelContentService.update(lc);
-                    }
-                    break;
-                case "delete":
-                    labelService.delete(labelService.find(update.getId()));
-            }
-   
-        }
+        labelService.updateLabelsFromJSON(labelUpdates, model, lang);
         
         return url;
     }
@@ -228,10 +286,10 @@ public class PageManager implements Serializable {
     }
 
     /**
-     * @return Localized name of current page.
+     * @return Localized content of current page.
      */
-    public String getName() {
-        return pageContent.getName();
+    public PageContent getPageContent() {
+        return pageContent;
     }
 
 }

@@ -11,15 +11,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.NoResultException;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -42,7 +39,7 @@ public class PageContent implements Serializable {
     private String name;
     @Column(name = "PUBLISHED")
     private Boolean published;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pageContent")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, mappedBy = "pageContent")
     private List<ImageComponent> imageComponentList;
     @JoinColumn(name = "LANGUAGE", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
@@ -50,11 +47,11 @@ public class PageContent implements Serializable {
     @JoinColumn(name = "PAGE", referencedColumnName = "ID", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Page page1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pageContent")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, mappedBy = "pageContent")
     private List<HeadlineComponent> headlineComponentList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pageContent")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, mappedBy = "pageContent")
     private List<TextComponent> textComponentList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pageContent")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval=true, mappedBy = "pageContent")
     private List<ModelComponent> modelComponentList;
 
     public PageContent() {
@@ -66,24 +63,6 @@ public class PageContent implements Serializable {
 
     public PageContent(int page, int language) {
         this.pageContentPK = new PageContentPK(page, language);
-    }
-
-    public static PageContent getPageContentByPageAndLanguage(
-            EntityManager em, Page page, Language language) {
-        
-            // find content for page in language
-            // if nothing matches, null is returned
-            try {
-                TypedQuery<PageContent> query = em.createQuery(
-                        "SELECT c FROM PageContent c "
-                                + "WHERE c.page1 = :page AND c.language1 = :lang",
-                        PageContent.class);
-                return query.setParameter("page", page).setParameter("lang", language)
-                        .getSingleResult();
-            } catch (NoResultException e) {
-                return null;
-            }
-
     }
     
     public PageContentPK getPageContentPK() {
@@ -133,6 +112,9 @@ public class PageContent implements Serializable {
 
     public void setPage1(Page page1) {
         this.page1 = page1;
+        if (!page1.getPageContentList().contains(this)) {
+            page1.getPageContentList().add(this);
+        }
     }
 
     @XmlTransient

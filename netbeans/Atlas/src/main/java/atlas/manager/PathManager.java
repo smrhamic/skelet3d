@@ -3,14 +3,15 @@ package atlas.manager;
 import atlas.entity.Category;
 import atlas.entity.Page;
 import atlas.entity.view.CategoryView;
+import atlas.service.CategoryService;
+import atlas.service.PageService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Controller of path.xhtml component.
@@ -28,9 +29,11 @@ public class PathManager implements Serializable {
     @Inject
     LanguageManager languageManager;
     
-    // EntityManager responsible for model persistence
-    @PersistenceContext
-    private EntityManager em;
+    // persistence services
+    @EJB
+    CategoryService categoryService;
+    @EJB
+    PageService pageService;
     
     // bound properties
     private int id;
@@ -43,20 +46,20 @@ public class PathManager implements Serializable {
         // if currently at a page, start with its parent
         // else start with category's parent
         if (isPage) {
-            Page thisPage = Page.getPageById(em, id);
+            Page thisPage = pageService.find(id);
             if (thisPage != null) {
                 parentEntity = thisPage.getCategory();
             }
         } else {
-            parentEntity = Category.getCategoryById(em, id);
+            parentEntity = categoryService.find(id);
             if (parentEntity != null) {
                 parentEntity = parentEntity.getParentCategory();
             }            
         }   
         // loop for parents all the way to root, add to beginning for correct order
         while (parentEntity != null){
-            pathToCurrent.add(0, CategoryView.getCategoryView(
-                    em, parentEntity, languageManager.getCurrentLanguage()));
+            pathToCurrent.add(0, categoryService.getCategoryView(
+                    parentEntity, languageManager.getCurrentLanguage()));
             parentEntity = parentEntity.getParentCategory();
         }
     }

@@ -85,6 +85,9 @@ public class LabelContent implements Serializable {
 
     public void setLabel1(Label label1) {
         this.label1 = label1;
+        if (!label1.getLabelContentList().contains(this)) {
+            label1.getLabelContentList().add(this);
+        }
     }
 
     public Language getLanguage1() {

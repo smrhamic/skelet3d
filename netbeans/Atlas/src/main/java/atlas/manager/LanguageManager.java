@@ -1,15 +1,15 @@
 package atlas.manager;
 
 import atlas.entity.Language;
+import atlas.service.LanguageService;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Manages internationalization (locales and site languages)
@@ -22,9 +22,8 @@ public class LanguageManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // EntityManager responsible for model persistence
-    @PersistenceContext
-    private EntityManager em;
+    @EJB
+    private LanguageService languageService;
     
     // bound properties
     private Language currentLanguage;
@@ -38,15 +37,15 @@ public class LanguageManager implements Serializable {
         locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
         String langCode = locale.getLanguage();
         
-        currentLanguage = Language.getLanguageByISO639(em, langCode);
+        currentLanguage = languageService.getLanguageByISO639(langCode);
         
         // set to default if it fails
         if (currentLanguage == null) {
-            currentLanguage = Language.getDefaultLanguage(em);
+            currentLanguage = languageService.getDefaultLanguage();
         }
         
         // get all supported languages
-        supportedLanguages = Language.getAllLanguages(em);
+        supportedLanguages = languageService.findAll();
     }
 
     /**

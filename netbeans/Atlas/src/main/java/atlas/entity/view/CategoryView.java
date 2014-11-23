@@ -6,11 +6,6 @@
 package atlas.entity.view;
 
 import atlas.entity.Category;
-import atlas.entity.CategoryInfo;
-import atlas.entity.Language;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 
 /**
  * Represents a set of attributes of CategoryInfo and its related Category.
@@ -67,31 +62,11 @@ public class CategoryView {
         this.numPages = numPages;
     }
     
-    
-
     public static CategoryView getDefaultCategoryView() {
         CategoryView cv = new CategoryView();
         cv.id = 0;
         cv.latin = "no name";
         cv.name = "no name";
         return cv;
-    }
-
-    public static CategoryView getCategoryView(
-        EntityManager em, Category cat, Language lang) {
-        // find info for category in language: localized name
-        String nameTemp;
-        try {
-            TypedQuery<CategoryInfo> query = em.createQuery(
-                    "SELECT i FROM CategoryInfo i "
-                            + "WHERE i.category1 = :cat AND i.language1 = :lang",
-                    CategoryInfo.class);
-            nameTemp = query.setParameter("cat", cat).setParameter("lang", lang)
-                    .getSingleResult().getName();
-        } catch (NoResultException e) {
-            nameTemp = "missing language variant";
-        }
-        // count visible models for this language variant and create         
-        return new CategoryView(cat, nameTemp, cat.getNumberOfPages(lang, true));
     }
 }

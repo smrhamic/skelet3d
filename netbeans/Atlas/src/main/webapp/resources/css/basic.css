@@ -6,8 +6,8 @@ body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #c
         background-color: white; position: relative; }
 
 
-
 #loginBar { margin-left: auto; margin-right: 0px; text-align: right; }
+.fieldLabel { padding-left: 5px; padding-right: 5px; }
 
 #languageBar { overflow: auto; }
 .flagDiv { float: right; padding: 2px; }
@@ -30,7 +30,8 @@ body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #c
         margin-bottom: 10px; }
 
 .latin { font-style: italic; }
-
+.warning { color: red; font-weight: bold; }
+.unresizable { resize: none; }
 
 
 /* Fancy Line, taken from

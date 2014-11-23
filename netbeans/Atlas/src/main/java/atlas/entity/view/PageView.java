@@ -21,43 +21,43 @@ import javax.persistence.TypedQuery;
  */
 public class PageView {
         
-        private int id;
-        private String name;
-        private String latin;
-        private Boolean published;
-        
-        public PageView() {}
-        
-        public PageView(Page p, String name, boolean published) {
-            this.id = p.getId();
-            this.latin = p.getLatin();
-            this.name = name;
-            this.published = published;
-        }
+    private int id;
+    private String name;
+    private String latin;
+    private Boolean published;
 
-        public int getId() {
-            return id;
-        }
+    public PageView() {}
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    public PageView(Page p, String name, boolean published) {
+        this.id = p.getId();
+        this.latin = p.getLatin();
+        this.name = name;
+        this.published = published;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-        public String getLatin() {
-            return latin;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public void setLatin(String latin) {
-            this.latin = latin;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLatin() {
+        return latin;
+    }
+
+    public void setLatin(String latin) {
+        this.latin = latin;
+    }
 
     public Boolean getPublished() {
         return published;
@@ -67,26 +67,28 @@ public class PageView {
         this.published = published;
     }
         
-        public static PageView getPageView(
-            EntityManager em, Page page, Language lang) {
-            // find info for page in language
-            String nameTemp;
-            Boolean publishedTemp;
-            PageContent pcTemp;
-            try {
-                TypedQuery<PageContent> query = em.createQuery(
-                        "SELECT c FROM PageContent c "
-                                + "WHERE c.page1 = :page AND c.language1 = :lang "
-                                + "AND c.published = TRUE",
-                        PageContent.class);
-                pcTemp = query.setParameter("page", page).setParameter("lang", lang)
-                        .getSingleResult();
-                nameTemp = pcTemp.getName();
-                publishedTemp = pcTemp.getPublished();
-            } catch (NoResultException e) {
-                nameTemp = "missing language variant";
-                publishedTemp = false;
-            }
-            return new PageView(page, nameTemp, publishedTemp);
-        }
-    }
+//    public static PageView getPageView(
+//        EntityManager em, Page page, Language lang, boolean publishedOnly) {
+//        // find info for page in language
+//        String nameTemp;
+//        Boolean publishedTemp;
+//        PageContent pcTemp;
+//        try {
+//            String queryString = "SELECT c FROM PageContent c "
+//                            + "WHERE c.page1 = :page AND c.language1 = :lang";
+//            if (publishedOnly) {
+//               queryString += " AND c.published = TRUE";
+//            }
+//            TypedQuery<PageContent> query = em.createQuery(
+//                    queryString, PageContent.class);
+//            pcTemp = query.setParameter("page", page).setParameter("lang", lang)
+//                    .getSingleResult();
+//            nameTemp = pcTemp.getName();
+//            publishedTemp = pcTemp.getPublished();
+//        } catch (NoResultException e) {
+//            nameTemp = "missing language variant";
+//            publishedTemp = false;
+//        }
+//        return new PageView(page, nameTemp, publishedTemp);
+//    }
+}

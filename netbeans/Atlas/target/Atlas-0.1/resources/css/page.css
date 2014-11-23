@@ -4,7 +4,6 @@
                 font-size: 16pt; font-weight: normal; font-style: italic; }
 
 #container { position: static; }
-//.relativeHolder { position: relative; }
 
 
 .imageComp { margin: auto; text-align: center; }
@@ -12,3 +11,19 @@
 .imageComp img { display: block; max-width: 95%; margin: auto; }
 
 .modelDescription { font-size: 80%; font-weight: bold; }
+
+/* editor */
+.editColumn { text-align: right; width: 200px; padding: 5px;
+             float: left; background-color: #eeeeee; }
+.contentBlock { display: block; margin-left: 210px; }
+
+.simpleField { width: 100px; margin-left: 5px; margin-bottom: 5px; }
+
+.editComp { width: 95%; display: table;
+            padding: 5px; margin: auto; margin-bottom: 10px;
+            border-width: 1px; border-style: solid; border-color: #999999; border-radius: 8px;
+            background-color: #fafafa; }
+.topBar { font-weight: bold; }
+
+.textCompArea { width: 98%; }
+

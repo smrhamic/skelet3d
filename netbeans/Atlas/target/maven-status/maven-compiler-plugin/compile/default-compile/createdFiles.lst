@@ -1,6 +1,6 @@
 atlas\entity\PageContent.class
-atlas\services\LabelService.class
 atlas\entity\TextComponent.class
+atlas\service\LabelContentService.class
 atlas\entity\CategoryInfo.class
 atlas\entity\CategoryInfoPK.class
 atlas\entity\Language.class
@@ -17,9 +17,12 @@ atlas\entity\UserRole_.class
 atlas\entity\ImageComponent.class
 atlas\entity\LabelContent_.class
 atlas\entity\HeadlineComponent.class
+atlas\service\CategoryService.class
 atlas\manager\PageManager.class
 atlas\entity\LabelContentPK.class
+atlas\service\LanguageService.class
 atlas\entity\Image.class
+atlas\service\LabelService.class
 atlas\entity\Image_.class
 atlas\entity\LabelContentPK_.class
 atlas\entity\Page.class
@@ -38,9 +41,11 @@ atlas\entity\PageComponent.class
 atlas\entity\Model_.class
 atlas\manager\LanguageManager.class
 atlas\entity\ModelComponent.class
+atlas\service\BasicService.class
 atlas\entity\AtlasUser_.class
 atlas\entity\view\LabelView.class
 atlas\entity\Model.class
 atlas\entity\LabelContent.class
 atlas\entity\view\PageView.class
 atlas\entity\Category_.class
+atlas\service\PageService.class

@@ -59,20 +59,20 @@ public class AtlasUser implements Serializable {
         this.login = login;
     }
 
-    public static AtlasUser login(EntityManager em, String login, String pass) {
-        // find user with this login, password
-        // if nothing matches, null is returned
-        try {
-            TypedQuery<AtlasUser> query = em.createQuery(
-                    "SELECT u FROM AtlasUser u "
-                            + "WHERE u.login = :login AND u.pass = :pass",
-                    AtlasUser.class);
-            return query.setParameter("login", login).setParameter("pass", pass)
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
+//    public static AtlasUser login(EntityManager em, String login, String pass) {
+//        // find user with this login, password
+//        // if nothing matches, null is returned
+//        try {
+//            TypedQuery<AtlasUser> query = em.createQuery(
+//                    "SELECT u FROM AtlasUser u "
+//                            + "WHERE u.login = :login AND u.pass = :pass",
+//                    AtlasUser.class);
+//            return query.setParameter("login", login).setParameter("pass", pass)
+//                    .getSingleResult();
+//        } catch (NoResultException e) {
+//            return null;
+//        }
+//    }
     
     public String getLogin() {
         return login;

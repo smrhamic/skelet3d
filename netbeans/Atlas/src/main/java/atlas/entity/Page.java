@@ -59,19 +59,19 @@ public class Page implements Serializable {
         this.id = id;
     }
     
-    public static Page getPageById(EntityManager em, int id) {
-        // find category by id
-        // if nothing matches, null is returned
-        try {
-            TypedQuery<Page> query = em.createQuery(
-                    "SELECT p FROM Page p "
-                            + "WHERE p.id = :id",
-                    Page.class);
-            return query.setParameter("id", id).getSingleResult();
-        } catch (NoResultException e) {
-            return null;
-        }
-    }
+//    public static Page getPageById(EntityManager em, int id) {
+//        // find category by id
+//        // if nothing matches, null is returned
+//        try {
+//            TypedQuery<Page> query = em.createQuery(
+//                    "SELECT p FROM Page p "
+//                            + "WHERE p.id = :id",
+//                    Page.class);
+//            return query.setParameter("id", id).getSingleResult();
+//        } catch (NoResultException e) {
+//            return null;
+//        }
+//    }
 
     public Integer getId() {
         return id;
@@ -104,6 +104,9 @@ public class Page implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+        if (!category.getPageList().contains(this)) {
+            category.getPageList().add(this);
+        }
     }
 
     @Override

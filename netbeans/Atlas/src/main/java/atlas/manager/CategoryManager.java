@@ -4,14 +4,15 @@ import atlas.entity.Category;
 import atlas.entity.Page;
 import atlas.entity.view.CategoryView;
 import atlas.entity.view.PageView;
+import atlas.service.CategoryService;
+import atlas.service.PageService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Controller for category.xhtml component.
@@ -29,9 +30,15 @@ public class CategoryManager implements Serializable {
     @Inject
     LanguageManager languageManager;
     
-    // EntityManager responsible for model persistence
-    @PersistenceContext
-    private EntityManager em;
+    // current session's LoginManager to verify the right to edit
+    @Inject
+    LoginManager loginManager;
+    
+    // persistence services
+    @EJB
+    CategoryService categoryService;
+    @EJB
+    PageService pageService;
     
     // bound properties
     private int categoryId = -1;
@@ -49,12 +56,12 @@ public class CategoryManager implements Serializable {
         //em.getEntityManagerFactory().getCache().evictAll();
         
         // get category ("entity", not "view")
-        Category currentCategoryEntity = Category.getCategoryById(em, categoryId);
+        Category currentCategoryEntity = categoryService.find(categoryId);
         
         // get CategoryView if entity is set, otherwise default
         if (currentCategoryEntity != null) {
-            currentCategory = CategoryView.getCategoryView(
-                em, currentCategoryEntity, languageManager.getCurrentLanguage());
+            currentCategory = categoryService.getCategoryView(
+                    currentCategoryEntity, languageManager.getCurrentLanguage());
         } else {
             currentCategory = CategoryView.getDefaultCategoryView();
         }
@@ -62,9 +69,9 @@ public class CategoryManager implements Serializable {
         // get root categories
         rootCategories = new ArrayList<>();
         // add root CategoryViews to list
-        for ( Category entity : Category.getRootCategories(em) ) {
-            rootCategories.add(CategoryView.getCategoryView(
-                    em, entity, languageManager.getCurrentLanguage()));
+        for (Category entity : categoryService.getRootCategories()) {
+            rootCategories.add(categoryService.getCategoryView(
+                    entity, languageManager.getCurrentLanguage()));
         }
         
         // get child categories
@@ -77,8 +84,8 @@ public class CategoryManager implements Serializable {
             // add child CategoryViews to list if entity is set, otherwise remain empty
             if (currentCategoryEntity != null) {
                 for ( Category entity : currentCategoryEntity.getCategoryList() ) {
-                    childCategories.add(CategoryView.getCategoryView(
-                            em, entity, languageManager.getCurrentLanguage()));
+                    childCategories.add(categoryService.getCategoryView(
+                    entity, languageManager.getCurrentLanguage()));
                 }
             }
         }
@@ -87,9 +94,14 @@ public class CategoryManager implements Serializable {
         pages = new ArrayList<>();
         // add child PageViews to list if entity is set, otherwise remain empty
         if (currentCategoryEntity != null) {
-            for ( Page entity : currentCategoryEntity.getPageList() ) {
-                pages.add(PageView.getPageView(
-                        em, entity, languageManager.getCurrentLanguage()));
+            PageView pv;
+            for (Page entity : currentCategoryEntity.getPageList()) {
+                pv = pageService.getPageView(
+                        entity, languageManager.getCurrentLanguage());
+                // add if published OR add all if editor is logged
+                if(loginManager.isEditor() || pv.getPublished()) {
+                    pages.add(pv);
+                }
             }
         }
     }
@@ -134,13 +146,6 @@ public class CategoryManager implements Serializable {
      * @return List of pages in active category. Empty list if current entity is null.
      */
     public List<PageView> getPages() {
-        // return old value if already set
-        if (pages != null) {
-            return pages;
-        }
-        
-        
-        
         return pages;
     }
 

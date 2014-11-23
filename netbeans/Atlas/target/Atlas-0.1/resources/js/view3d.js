@@ -2,7 +2,7 @@
 // modelPath, strings[] and labels[] must be pre-set
 
 // basic 3D world objects
-var width, height, container;
+var container;
 var renderer, camera, scene;
 var controls, mouseMode = 'view';
 var projector, hitOffset, lastMouseX, lastMouseY;
@@ -10,10 +10,9 @@ var pointLight, ambientLight, lightOffset;
 var boneMaterial, lineMaterial, markMaterial,
         pinMaterial, pinSelectedMaterial, greyMaterial;
 var model, labelHolder, invisiboard, newMark;
-var textBox, textBoxContent, modeSelect, newLabelButton, saveButton;
+var textBox, textBoxContent, modeSelect, newLabelButton, saveButton, loading;
 var lastIntersect = null;
 var mode = 'labels';
-var editable = true;
 
 // currently selected label
 var selectedLabel = null;
@@ -51,7 +50,7 @@ function init() {
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render);
 
-    // create a materials
+    // create materials
     boneMaterial = new THREE.MeshLambertMaterial({color: 0xFFFF99});
     pinMaterial = new THREE.MeshLambertMaterial({color: 0xAAAAAA});
     pinSelectedMaterial = new THREE.MeshLambertMaterial({color: 0xFF0000});
@@ -65,7 +64,7 @@ function init() {
     pointLight = new THREE.PointLight(0xFFFFFF);
     // set offset from camera position (used on render)
     lightOffset = new THREE.Vector3(300, 300, 300);
-    // create an embient light
+    // create an ambient light
     ambientLight = new THREE.AmbientLight(0x333333);
     // add lights to the scene
     scene.add(pointLight);
@@ -106,14 +105,12 @@ function init() {
     // save button
     setupSaveButton();
 
+    // loading mesh / text
+    setupLoading();
+
     // load 3D model
-    //alert(modelPath);
+    // label creation is in loader's listener to avoid labels with no model
     loadModel(modelPath);
-    
-    // create labels
-    labels.forEach(function (label) {
-        labelHolder.add(makeLabel(label, false));
-    });
     
     // create invisible sprite for moving labels
     var geometry = new THREE.PlaneGeometry(1000, 1000);
@@ -158,11 +155,29 @@ function loadModel(path) {
                 
         // add model and render
         scene.add(model);
+        
+        // create labels
+        labels.forEach(function (label) {
+            labelHolder.add(makeLabel(label, false));
+        });
+        
+        // make loading disappear
+        loading.style.display = 'none';
+        
         render();
     } );
-    loader.load(path);
-    
+    loader.load(path); 
 }
+
+function setupLoading() {
+    var loadingDiv = document.createElement('div');
+    loadingDiv.style.fontSize = '20pt';
+    loadingDiv.style.position = 'absolute';
+    loadingDiv.innerHTML = 'LOADING';
+    
+    container.appendChild(loadingDiv);
+    loading = loadingDiv;
+} 
 
 function setupTextBox() {
     
@@ -781,6 +796,10 @@ function onWindowResize() {
             - saveButton.offsetHeight - 5 + 'px';
     saveButton.style.left = container.offsetLeft + width
             - saveButton.offsetWidth - 5 + 'px';
+    
+    // loading text
+    loading.style.left = container.offsetLeft + 0.5*(width-loading.offsetWidth) + 'px';
+    loading.style.top = container.offsetTop + 0.5*(height-loading.offsetHeight) + 'px';
     
     render();
 }

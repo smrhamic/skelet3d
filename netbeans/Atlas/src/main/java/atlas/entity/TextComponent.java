@@ -81,6 +81,7 @@ public class TextComponent extends PageComponent implements Serializable {
         return compOrder;
     }
 
+    @Override
     public void setCompOrder(Integer compOrder) {
         this.compOrder = compOrder;
     }

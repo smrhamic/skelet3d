@@ -11,8 +11,9 @@ package atlas.entity;
  */
 public abstract class PageComponent implements Comparable<PageComponent> {
     
-    abstract Integer getCompOrder();
-    abstract String getComponentType();
+    public abstract Integer getCompOrder();
+    public abstract void setCompOrder(Integer componentOrder);
+    public abstract String getComponentType();
     
     @Override
     public int compareTo(PageComponent c) {
