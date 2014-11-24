@@ -16,32 +16,48 @@
             <hr class="fancy-line" />
             
             <div class="editColumn">
-                lang: #{languageManager.currentLanguage.name}
+                #{strings.languageVariant}
                 <br />
+                <h:panelGroup class="bold bottomSpace" layout="block">
+                    #{languageManager.currentLanguage.name}
+                </h:panelGroup>
                 <h:form>
-                    Name:<h:inputText class="simpleField" value="#{pageManager.pageContent.name}"/>
+                    #{strings.pageName}
                     <br />
-                    Latin:<h:inputText class="simpleField" value="#{pageManager.page.latin}"/>
+                    <h:inputText class="longField bottomSpace" value="#{pageManager.pageContent.name}"/>
                     <br />
-                    Published:<h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
+                    #{strings.pageLatin}
                     <br />
-                    <h:commandButton value="add text" action="#{pageManager.addComponent('text')}">
-                        <f:ajax render=":contentBlock" />
-                    </h:commandButton>
+                    <h:inputText class="longField bottomSpace" value="#{pageManager.page.latin}"/>
                     <br />
-                    <h:commandButton value="add headline" action="#{pageManager.addComponent('headline')}">
-                        <f:ajax render=":contentBlock" />
-                    </h:commandButton>
-                    <br />
-                    <h:commandButton value="add image" action="#{pageManager.addComponent('image')}">
-                        <f:ajax render=":contentBlock" />
-                    </h:commandButton>
-                    <br />
-                    <h:commandButton value="add model" action="#{pageManager.addComponent('model')}">
-                        <f:ajax render=":contentBlock" />
-                    </h:commandButton>
-                    <br />
-                    <h:commandButton value="save changes" action="#{pageManager.updatePage()}" />
+                    #{strings.addComponent}
+                    <h:panelGroup class="bottomSpace" layout="block">
+                        <h:commandButton class="addButton" value="#{strings.text}"
+                                         action="#{pageManager.addComponent('text')}">
+                            <f:ajax render=":contentBlock" />
+                        </h:commandButton>
+                        <br />
+                        <h:commandButton class="addButton" value="#{strings.headline}"
+                                         action="#{pageManager.addComponent('headline')}">
+                            <f:ajax render=":contentBlock" />
+                        </h:commandButton>
+                        <br />
+                        <h:commandButton class="addButton" value="#{strings.image}"
+                                         action="#{pageManager.addComponent('image')}">
+                            <f:ajax render=":contentBlock" />
+                        </h:commandButton>
+                        <br />
+                        <h:commandButton class="addButton" value="#{strings.model}"
+                                         action="#{pageManager.addComponent('model')}">
+                            <f:ajax render=":contentBlock" />
+                        </h:commandButton>
+                    </h:panelGroup>
+                    <h:panelGroup class="bottomSpace" layout="block">
+                        #{strings.published}
+                        <h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
+                    </h:panelGroup>
+                    <h:commandButton class="saveButton" value="#{strings.saveButton}"
+                                     action="#{pageManager.updatePage()}" />
                 </h:form>
             </div>
             <h:panelGroup id="contentBlock" class="contentBlock">

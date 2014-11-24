@@ -14,8 +14,8 @@
 .modelDescription { font-size: 80%; font-weight: bold; }
 
 /* editor */
-.editColumn { text-align: right; width: 200px; padding: 5px;
-             float: left; background-color: #eeeeee; }
+.editColumn { text-align: center; width: 200px; padding: 5px;
+             float: left; border-right: solid #999999; }
 .contentBlock { display: block; margin-left: 210px; }
 
 .simpleField { width: 100px; margin-left: 5px; margin-bottom: 5px; }
@@ -23,8 +23,14 @@
 .editComp { width: 95%; display: table;
             padding: 5px; margin: auto; margin-bottom: 10px;
             border-width: 1px; border-style: solid; border-color: #999999; border-radius: 8px;
-            background-color: #fafafa; }
-.topBar { font-weight: bold; }
+            background-color: #dfdfdf; }
+.topBar { display: table; width: 100%; }
+.componentType { font-weight: bold; display: table-cell; }
+.componentTopButtons { text-align: right; display: table-cell; }
 
-.textCompArea { width: 98%; }
+.longField { width: 98%; }
+.bottomSpace { margin-bottom: 10px; }
+
+.addButton { width: 150px; }
+.saveButton { color: #aa0000; font-weight: bold; width: 150px; height: 30px; }
 

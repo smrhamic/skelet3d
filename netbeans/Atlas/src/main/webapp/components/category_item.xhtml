@@ -45,7 +45,7 @@
                         <span class="latin">#{item.latin}</span>
                     </div>
                     <div class="pageItemEdit">
-                        <h:form rendered="false">
+                        <h:form rendered="#{loginManager.editor}">
                             <h:commandButton value="#{strings.edit}"
                                              action="#{pageManager.goEditPage(item.id)}"/>
                             <br />
