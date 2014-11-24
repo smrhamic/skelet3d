@@ -1,5 +1,5 @@
-// three.js, STLLoader and OrbitControls.js must be loaded for this code to work!
-// modelPath, strings[] and labels[] must be pre-set
+// three.js, STLLoader and TrackbaalControls.js must be loaded for this code to work!
+// editable, modelPath, strings[] and labels[] must be pre-set
 
 // basic 3D world objects
 var container;
@@ -47,11 +47,16 @@ function init() {
     // append renderer element to container
     container.appendChild(renderer.domElement);
     // setup orbit controls
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new THREE.TrackballControls(camera, renderer.domElement);
+    controls.staticMoving = true;
+    controls.rotateSpeed = 3;
+    controls.zoomSpeed = 3;
+    controls.panSpeed = 1;
     controls.addEventListener('change', render);
 
     // create materials
-    boneMaterial = new THREE.MeshLambertMaterial({color: 0xFFFF99});
+    boneMaterial = new THREE.MeshLambertMaterial({color: 0xFFF7AC});
     pinMaterial = new THREE.MeshLambertMaterial({color: 0xAAAAAA});
     pinSelectedMaterial = new THREE.MeshLambertMaterial({color: 0xFF0000});
     lineMaterial = new THREE.LineBasicMaterial({
@@ -61,9 +66,9 @@ function init() {
     greyMaterial = new THREE.MeshBasicMaterial({color: 0xAAAAAA});
 
     // create a point light
-    pointLight = new THREE.PointLight(0xFFFFFF);
+    pointLight = new THREE.PointLight(0xCCCCCC);
     // set offset from camera position (used on render)
-    lightOffset = new THREE.Vector3(300, 300, 300);
+    lightOffset = new THREE.Vector3(300, 300, 1000);
     // create an ambient light
     ambientLight = new THREE.AmbientLight(0x333333);
     // add lights to the scene
@@ -800,6 +805,9 @@ function onWindowResize() {
     // loading text
     loading.style.left = container.offsetLeft + 0.5*(width-loading.offsetWidth) + 'px';
     loading.style.top = container.offsetTop + 0.5*(height-loading.offsetHeight) + 'px';
+    
+    // controls
+    controls.handleResize();
     
     render();
 }
