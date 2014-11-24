@@ -22,7 +22,7 @@
             <h:panelGroup class="textComp" layout="block"
                           rendered="#{component.componentType == 'text'}">
                 <p>
-                    <h:outputText value="#{component.text}" />
+                    <h:outputText class="fixNewLines" value="#{component.text}" />
                 </p>
             </h:panelGroup>
             

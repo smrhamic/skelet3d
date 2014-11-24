@@ -9,21 +9,18 @@
     <body>
         <ui:component>
             <c:set var="component" value="#{pageManager.components[listPosition]}" />
-            
-            <!-- Display if HEADLINE component -->
-            <h:panelGroup class="headlineComp" layout="block"
-                          rendered="#{component.componentType == 'headline'}">
-                <h3>
-                    <h:outputText value="#{component.text}" />
-                </h3>
-            </h:panelGroup>
-            
-            <!-- Display if TEXT component -->
-            <h:panelGroup class="editComp textComp" layout="block"
-                          rendered="#{component.componentType == 'text'}">
+            <h:panelGroup class="editComp" layout="block">
                 <h:form>
                     <div class="topBar">
-                        Text
+                        <!-- Display type of component -->
+                        <h:outputText rendered="#{component.componentType == 'text'}"
+                                      value="Text"/>
+                        <h:outputText rendered="#{component.componentType == 'headline'}"
+                                      value="Headline"/>
+                        <h:outputText rendered="#{component.componentType == 'model'}"
+                                      value="3D Model"/>
+                        <h:outputText rendered="#{component.componentType == 'image'}"
+                                      value="Image"/>
                         <h:commandButton value="delete"
                                          action="#{pageManager.removeComponent(component)}">
                             <f:ajax render=":contentBlock"/>
@@ -37,26 +34,54 @@
                             <f:ajax render=":contentBlock"/>
                         </h:commandButton>
                     </div>
-                    <h:inputTextarea class="textCompArea unresizable"
-                                     rows="8" value="#{component.text}">
-                        <f:ajax render=":contentBlock"/>
-                    </h:inputTextarea>
+                    <!-- Display if TEXT component -->
+                    <h:panelGroup rendered="#{component.componentType == 'text'}">
+                        <h:inputTextarea class="textCompArea unresizable"
+                                         rows="8" value="#{component.text}">
+                            <f:ajax render=":contentBlock"/>
+                        </h:inputTextarea>
+                    </h:panelGroup>
+                    
+                    <!-- Display if HEADLINE component -->
+                    <h:panelGroup rendered="#{component.componentType == 'headline'}">
+                        <h:inputText class="simpleField" value="#{component.text}">
+                            <f:ajax render=":contentBlock"/>
+                        </h:inputText>
+                    </h:panelGroup>
+                    
+                    <!-- Display if MODEL component -->
+                    <h:panelGroup rendered="#{component.componentType == 'model'}">
+                        Warning: one per page
+                        <br /> Model:
+                        <h:selectOneMenu value="#{component.model}" converter="#{modelConverter}">
+                            <f:selectItem itemValue="#{null}" itemLabel="---" />
+                            <f:selectItems value="#{modelManager.allModels}" var="m"
+                                           itemLabel="#{m.name}" itemValue="#{m}"/>
+                            <f:ajax render=":contentBlock"/>
+                        </h:selectOneMenu>
+                        <br /> Descr.:
+                        <h:inputText class="simpleField" value="#{component.description}">
+                            <f:ajax render=":contentBlock"/>
+                        </h:inputText>                        
+                    </h:panelGroup>
+                    
+                    <!-- Display if IMAGE component -->
+                    <h:panelGroup rendered="#{component.componentType == 'image'}">
+                        <br /> Image:
+                        <h:selectOneMenu value="#{component.image}" converter="#{imageConverter}">
+                            <f:selectItem itemValue="#{null}" itemLabel="---" />
+                            <f:selectItems value="#{imageManager.allImages}" var="im"
+                                           itemLabel="#{im.name}" itemValue="#{im}"/>
+                            <f:ajax render=":contentBlock"/>
+                        </h:selectOneMenu>
+                        <br /> Descr.:
+                        <h:inputText class="simpleField" value="#{component.description}">
+                            <f:ajax render=":contentBlock"/>
+                        </h:inputText>                        
+                    </h:panelGroup>
                 </h:form>
             </h:panelGroup>
             
-            <!-- Display if IMAGE component -->
-            <h:panelGroup class="imageComp" layout="block"
-                          rendered="#{component.componentType == 'image'}">
-                <h:graphicImage library="images" name="content/bone1.jpg" alt="#{component.description}" />
-                <h:outputText class="imageDescription" value="#{component.description}" />
-            </h:panelGroup>
-            
-            <!-- Display if MODEL component -->
-            <h:panelGroup class="imageComp" layout="block"
-                          rendered="#{component.componentType == 'model'}">
-                This is totally a model component you might want to edit.
-                <h:outputText class="modelDescription" value="#{component.description}" />
-            </h:panelGroup>
         </ui:component>
     </body>
 </html>

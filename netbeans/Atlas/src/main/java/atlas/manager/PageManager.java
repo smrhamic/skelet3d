@@ -1,7 +1,10 @@
 package atlas.manager;
 
+import atlas.entity.HeadlineComponent;
+import atlas.entity.ImageComponent;
 import atlas.entity.Language;
 import atlas.entity.Model;
+import atlas.entity.ModelComponent;
 import atlas.entity.PageComponent;
 import atlas.entity.Page;
 import atlas.entity.PageContent;
@@ -90,10 +93,13 @@ public class PageManager implements Serializable {
             components.addAll(pageContent.getImageComponentList());
             // only add one model component, multiples not supported
             if (!pageContent.getModelComponentList().isEmpty()) {
-                components.add(pageContent.getModelComponentList().get(0));
                 model = pageContent.getModelComponentList().get(0).getModel();
-                labels = labelService.getLabelViews(
-                        model, languageManager.getCurrentLanguage());
+                // don't want a null model
+                if (model != null) {
+                    components.add(pageContent.getModelComponentList().get(0));
+                    labels = labelService.getLabelViews(
+                            model, languageManager.getCurrentLanguage());
+                }
             }
             // sort components by compOrder and replace order values by 0, 1, 2..
             components.sort(null);
@@ -160,14 +166,44 @@ public class PageManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
-    public String addComponent() {
+    public String addComponent(String type) {
 
-        TextComponent comp = new TextComponent();
-        comp.setCompOrder(components.size());
-        comp.setPageContent(pageContent);
-        comp.setId(0); // will be generated
-        comp.setText("...");
-        components.add(comp);
+        switch (type) {
+            case "text":
+                TextComponent tc = new TextComponent();
+                tc.setCompOrder(components.size());
+                tc.setPageContent(pageContent);
+                tc.setId(0); // will be generated
+                tc.setText("...");
+                components.add(tc);
+                break;
+            case "headline":
+                HeadlineComponent hc = new HeadlineComponent();
+                hc.setCompOrder(components.size());
+                hc.setPageContent(pageContent);
+                hc.setId(0); // will be generated
+                hc.setText("...");
+                components.add(hc);
+                break;
+            case "model":
+                ModelComponent mc = new ModelComponent();
+                mc.setCompOrder(components.size());
+                mc.setPageContent(pageContent);
+                mc.setId(0); // will be generated
+                mc.setDescription("");
+                mc.setModel(null);
+                components.add(mc);
+                break;
+            case "image":
+                ImageComponent ic = new ImageComponent();
+                ic.setCompOrder(components.size());
+                ic.setPageContent(pageContent);
+                ic.setId(0); // will be generated
+                ic.setDescription("");
+                ic.setImage(null);
+                components.add(ic);
+                break;
+        }
         
         // do not refresh, this is done by ajax
         return null;

@@ -44,10 +44,18 @@ public class PageContentService extends BasicService<PageContent, PageContentPK>
                     break;
                 case "image":
                     ImageComponent ic = (ImageComponent)comp;
+                    // don't try to add null images
+                    if(ic.getImage() == null) {
+                        break;
+                    }
                     pageContent.getImageComponentList().add(ic);
                     break;
                 case "model":
                     ModelComponent mc = (ModelComponent)comp;
+                    // don't try to add null models
+                    if(mc.getModel() == null) {
+                        break;
+                    }
                     pageContent.getModelComponentList().add(mc);
                     break;
             }

@@ -19,11 +19,13 @@
             
             <hr class="fancy-line" />
             
-            <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
-                <ui:include src="content_component.xhtml">
-                    <ui:param name="listPosition" value="#{status.index}" />
-                </ui:include>
-            </ui:repeat>
+            <h:panelGroup class="pageContent" layout="block">
+                <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
+                    <ui:include src="content_component.xhtml">
+                        <ui:param name="listPosition" value="#{status.index}" />
+                    </ui:include>
+                </ui:repeat>
+            </h:panelGroup>
                 
         </ui:component>
     </body>

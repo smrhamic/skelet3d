@@ -16,7 +16,8 @@
             <hr class="fancy-line" />
             
             <div class="editColumn">
-                editor tools <br />
+                lang: #{languageManager.currentLanguage.name}
+                <br />
                 <h:form>
                     Name:<h:inputText class="simpleField" value="#{pageManager.pageContent.name}"/>
                     <br />
@@ -24,7 +25,19 @@
                     <br />
                     Published:<h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
                     <br />
-                    <h:commandButton value="add text" action="#{pageManager.addComponent()}">
+                    <h:commandButton value="add text" action="#{pageManager.addComponent('text')}">
+                        <f:ajax render=":contentBlock" />
+                    </h:commandButton>
+                    <br />
+                    <h:commandButton value="add headline" action="#{pageManager.addComponent('headline')}">
+                        <f:ajax render=":contentBlock" />
+                    </h:commandButton>
+                    <br />
+                    <h:commandButton value="add image" action="#{pageManager.addComponent('image')}">
+                        <f:ajax render=":contentBlock" />
+                    </h:commandButton>
+                    <br />
+                    <h:commandButton value="add model" action="#{pageManager.addComponent('model')}">
                         <f:ajax render=":contentBlock" />
                     </h:commandButton>
                     <br />
