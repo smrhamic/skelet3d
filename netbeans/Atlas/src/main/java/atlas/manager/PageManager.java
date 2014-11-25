@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -87,24 +88,33 @@ public class PageManager implements Serializable {
         components = new ArrayList<>(); // empty by default
         // only get content if it exists
         if(pageContent != null) {
-            // components
-            components.addAll(pageContent.getHeadlineComponentList());
-            components.addAll(pageContent.getTextComponentList());
-            components.addAll(pageContent.getImageComponentList());
-            // only add one model component, multiples not supported
-            if (!pageContent.getModelComponentList().isEmpty()) {
-                model = pageContent.getModelComponentList().get(0).getModel();
-                // don't want a null model
-                if (model != null) {
-                    components.add(pageContent.getModelComponentList().get(0));
-                    labels = labelService.getLabelViews(
-                            model, languageManager.getCurrentLanguage());
+            // display content if published or for editor
+            if(pageContent.getPublished() || loginManager.isEditor()) {
+                // components
+                components.addAll(pageContent.getHeadlineComponentList());
+                components.addAll(pageContent.getTextComponentList());
+                components.addAll(pageContent.getImageComponentList());
+                // only add one model component, multiples not supported
+                if (!pageContent.getModelComponentList().isEmpty()) {
+                    model = pageContent.getModelComponentList().get(0).getModel();
+                    // don't want a null model
+                    if (model != null) {
+                        components.add(pageContent.getModelComponentList().get(0));
+                        labels = labelService.getLabelViews(
+                                model, languageManager.getCurrentLanguage());
+                    }
                 }
-            }
-            // sort components by compOrder and replace order values by 0, 1, 2..
-            components.sort(null);
-            for(int i = 0; i < components.size(); i++) {
-                components.get(i).setCompOrder(i);
+                // sort components by compOrder and replace order values by 0, 1, 2..
+                components.sort(null);
+                for(int i = 0; i < components.size(); i++) {
+                    components.get(i).setCompOrder(i);
+                }
+            } else {
+                // if not published nor editor, tell them
+                FacesContext context = FacesContext.getCurrentInstance();
+                String msg = context.getApplication()
+                        .evaluateExpressionGet(context, "#{strings.notPublished}", String.class);
+                context.addMessage(null, new FacesMessage(msg));
             }
         }
     }
@@ -120,10 +130,14 @@ public class PageManager implements Serializable {
     }
     
     public String addNewPage(int categoryId) {
-        // if page is to be created and editor not logged, abort
-        // this should not happen other than very rare session timeouts
+        // check edit rights
         if (!loginManager.isEditor()) {
-            return "/index.xhtml?faces-redirect=true";
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
         }
         
         // create new page
@@ -135,10 +149,14 @@ public class PageManager implements Serializable {
     }
     
     public String deletePage(int pageId) {
-        // if page is to be deleted and editor not logged, abort
-        // this should not happen other than very rare session timeouts
+        // check edit rights
         if (!loginManager.isEditor()) {
-            return "/index.xhtml?faces-redirect=true";
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
         }
         
         // delete page
@@ -150,10 +168,14 @@ public class PageManager implements Serializable {
     }
     
     public String updatePage() {
-        // if page is to be changed and editor not logged, abort
-        // this should not happen other than very rare session timeouts
+        // check edit rights
         if (!loginManager.isEditor()) {
-            return "/index.xhtml?faces-redirect=true";
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
         }
         
         // update page
@@ -245,10 +267,14 @@ public class PageManager implements Serializable {
      * @return URL string to current view including parameters.
      */
     public String updateLabels() {
-        // if changes are commited and editor not logged, abort
-        // this should not happen other than very rare session timeouts during edit
+        // check edit rights
         if (!loginManager.isEditor()) {
-            return "/index.xhtml?faces-redirect=true";
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
         }
         // refreshing url
         String url = FacesContext.getCurrentInstance().getViewRoot().getViewId()

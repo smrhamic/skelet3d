@@ -32,11 +32,12 @@ public class ImageManager implements Serializable {
     private void init() {
         // get all images
         allImages = imageService.findAll();
-        // sort by name
+        // sort by name, alphabetical, not case sensitive
         Collections.sort(allImages, new Comparator<Image>() {
             @Override
             public int compare(Image im1, Image im2 ) {
-                return im1.getName().compareTo(im2.getName());
+                return im1.getName().toLowerCase()
+                        .compareTo(im2.getName().toLowerCase());
             }
         });
     }
