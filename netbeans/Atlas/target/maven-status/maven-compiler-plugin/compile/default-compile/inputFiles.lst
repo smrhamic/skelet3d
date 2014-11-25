@@ -21,7 +21,6 @@ C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\Atla
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\PageContentPK.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\manager\LoginManager.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\TextComponent.java
-C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\manager\converter\ImageManager.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\filter\NoCacheFilter.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\manager\LanguageManager.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\CategoryInfo.java
@@ -29,6 +28,7 @@ C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\manager\Cat
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\Category.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\Language.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\ModelComponent.java
+C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\manager\ImageManager.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\entity\view\CategoryView.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\service\UserService.java
 C:\Users\Michal\Documents\NetBeansProjects\Atlas\src\main\java\atlas\service\ModelService.java

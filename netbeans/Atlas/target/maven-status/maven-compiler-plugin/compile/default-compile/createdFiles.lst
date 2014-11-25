@@ -1,3 +1,4 @@
+atlas\manager\ImageManager.class
 atlas\entity\PageContent.class
 atlas\entity\TextComponent.class
 atlas\service\LabelContentService.class
@@ -20,7 +21,6 @@ atlas\service\PageContentService.class
 atlas\service\ModelService.class
 atlas\entity\LabelContent_.class
 atlas\entity\HeadlineComponent.class
-atlas\manager\converter\ImageManager.class
 atlas\service\CategoryService.class
 atlas\filter\NoCacheFilter.class
 atlas\manager\PageManager.class
@@ -42,12 +42,14 @@ atlas\manager\LoginManager.class
 atlas\service\UserService.class
 atlas\manager\PathManager.class
 atlas\entity\CategoryInfo_.class
+atlas\manager\ImageManager$1.class
 atlas\entity\PageContent_.class
 atlas\entity\PageContentPK_.class
 atlas\service\ImageService.class
 atlas\entity\PageComponent.class
 atlas\entity\Model_.class
 atlas\manager\LanguageManager.class
+atlas\manager\ModelManager$1.class
 atlas\entity\ModelComponent.class
 atlas\manager\converter\ModelConverter.class
 atlas\service\BasicService.class

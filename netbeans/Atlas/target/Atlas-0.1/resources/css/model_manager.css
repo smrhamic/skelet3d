@@ -1,0 +1,21 @@
+.smallHeadline { text-align: center; font-size: 16pt; }
+
+.uploadBox { width: 600px; max-width: 100%; padding: 5px; margin: auto; margin-bottom: 10px;
+                border-width: 1px; border-style: solid; border-color: #999999; border-radius: 8px;
+                background-color: #dddddd; text-align: center; }
+
+.mediumInput { width: 200px; margin-bottom: 5px; }
+
+.item { width: 600px; max-width: 100%; display: table;
+                padding: 5px; margin: auto; margin-bottom: 10px;
+                border-width: 1px; border-style: solid; border-color: #9999ff; border-radius: 8px;
+                background-color: #eef3fa; }
+
+.icon { width: 30px; height: 30px; vertical-align: middle; }
+.iconCell { display: table-cell; vertical-align: middle;
+                        width: 30px; height: 30px; }
+.textCell { display: table-cell; vertical-align: middle;
+                    padding-left: 10px; font-size: 16pt; }
+.deleteCell { display: table-cell; vertical-align: middle;
+                      text-align: right; padding-right: 15px;
+                      font-size: 12pt; width: 100px; }

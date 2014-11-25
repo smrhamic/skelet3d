@@ -6,9 +6,9 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,13 +25,13 @@ public class LoginManager implements Serializable {
     UserService userService;
 
     // bound properties
-    private boolean logged, mismatched, editor;
+    private boolean logged, editor;
     private AtlasUser currentUser;
     private String userName, password;
 
     @PostConstruct
     private void init() {
-        logged = mismatched = editor = false;
+        logged = editor = false;
         currentUser = null;
     }
     
@@ -40,16 +40,27 @@ public class LoginManager implements Serializable {
         if (currentUser != null) {
             editor = currentUser.getUserRole().getRole().equals("editor");
         }
-        mismatched = currentUser == null;
+        if (currentUser == null) {
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.badLogin}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
+        }
         return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
     }
 
     public String logout() {
-        HttpSession session = (HttpSession)
-          FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        session.invalidate();
-        return "/index.xhtml?faces-redirect=true";
+//        HttpSession session = (HttpSession)
+//          FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+//        session.invalidate();
+        currentUser = null;
+        editor = false;
+        logged = false;
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
     }
     
     public AtlasUser getCurrentUser() {
@@ -78,10 +89,6 @@ public class LoginManager implements Serializable {
     
     public boolean isEditor() {
         return editor;
-    }
-    
-    public boolean isMismatched() {
-        return mismatched;
     }
     
 }

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:component>
+            <h:outputStylesheet name="model_manager.css" library="css" />
+            
+            <h1 class="mainHeadline">
+                <h:outputText value="manage models" />
+            </h1>
+            
+            <hr class="fancy-line" />
+            
+            <h3 class="smallHeadline"> add </h3>
+            
+            <div class="uploadBox">
+                <h:form enctype="multipart/form-data">
+                    file
+                    <h:inputFile class="mediumInput" value="#{modelManager.modelFile}"/>
+                    <br />
+                    name
+                    <h:inputText class="mediumInput" value="#{modelManager.newName}"/>
+                    <br />
+                    <h:commandButton value="Upload"
+                        action="#{modelManager.upload()}"/>
+                </h:form>
+            </div>
+            
+            <h3 class="smallHeadline"> list </h3>
+            
+            <ui:repeat value="#{modelManager.allModels}"
+                           var="item">
+                <ui:include src="model_item.xhtml" >
+                    <ui:param name="item" value="#{item}" />
+                </ui:include>
+            </ui:repeat>
+
+        </ui:component>
+    </body>
+</html>
+

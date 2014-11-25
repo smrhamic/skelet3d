@@ -41,6 +41,12 @@
 		<ui:insert name="path" />
 	    </div>
             
+            <div id="messageBar">
+		<ui:insert name="messages">
+                    <ui:include src="../components/messages.xhtml" />
+	   	</ui:insert>
+	    </div>
+            
 	    <div id="content">
 	  	<ui:insert name="content" >
 	 	  <ui:include src="../components/welcome.xhtml" />

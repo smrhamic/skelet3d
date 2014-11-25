@@ -29,7 +29,7 @@
             <!-- Display if IMAGE component -->
             <h:panelGroup class="imageComp" layout="block"
                           rendered="#{component.componentType == 'image'}">
-                <h:graphicImage library="images" name="content/bone1.jpg" alt="#{component.description}" />
+                <h:graphicImage value="/images/#{component.image.filename}" alt="#{component.description}" />
                 <h:outputText class="imageDescription" value="#{component.description}" />
             </h:panelGroup>
             
@@ -59,7 +59,7 @@
                                 document.getElementById('#{labelUpdateInput.clientId}');
                         var labelUpdateButton =
                                 document.getElementById('#{labelUpdateButton.clientId}');
-                        var modelPath = './resources/models/${component.model.filename}';
+                        var modelPath = './models/${component.model.filename}';
                         var strings = {};
                             strings['selectLabel'] = '#{strings.selectLabel}';
                             strings['labels'] = '#{strings.showLabels}';

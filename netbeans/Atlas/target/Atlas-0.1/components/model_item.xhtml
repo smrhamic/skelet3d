@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+        <ui:component>
+            <div class="item">
+                <div class="iconCell">
+                    <h:graphicImage class="icon" alt="model"
+                                library="images" name="bone_icon.png" />
+                </div>
+                <div class="textCell">
+                    #{item.name}
+                </div>
+                <div class="deleteCell">
+                    <h:form>
+                        <h:commandButton onclick="if(!confirm('srsly?')) return false"
+                                         value="#{strings.delete}"
+                                         action="#{modelManager.removeModel(item)}"/>
+                    </h:form>
+                </div>
+            </div>
+        </ui:component>
+    </body>
+</html>
+

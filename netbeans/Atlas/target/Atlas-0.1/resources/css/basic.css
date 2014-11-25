@@ -29,11 +29,13 @@ body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #c
 #logo { margin: auto; width: 400px; max-width: 80%;
         margin-bottom: 10px; }
 
+.centered { text-align: center; }
 .bold { font-weight: bold; }
 .latin { font-style: italic; }
 .warning { color: red; font-weight: bold; }
 .unresizable { resize: none; }
 .fixNewLines { white-space: pre-wrap; }
+.mainHeadline { text-align: center; font-size: 24pt; font-weight: bold; }
 
 
 /* Fancy Line, taken from

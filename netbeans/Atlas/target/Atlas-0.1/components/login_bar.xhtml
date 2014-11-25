@@ -7,7 +7,6 @@
     <h:body>
         <ui:component>
             <h:form id="loginForm" rendered = "#{!loginManager.logged}">
-                <h:outputText class="warning" value="#{strings.badLogin}" rendered="#{loginManager.mismatched}"/>
                 <h:outputText class="fieldLabel" value="#{strings.userNameLabel}" />
                 <h:inputText id="username" value="#{loginManager.userName}" ></h:inputText>
                 <h:outputText class="fieldLabel" value="#{strings.passLabel}" />

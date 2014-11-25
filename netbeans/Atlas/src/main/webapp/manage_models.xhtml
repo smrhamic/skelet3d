@@ -8,20 +8,8 @@
  
     	<ui:composition template="/template/basic.xhtml">
  
-            <f:metadata>
-                <f:viewParam name="id" value="#{pageManager.pageId}" />
-                <f:viewAction action="#{pageManager.init}" />
-                <f:viewParam name="id" value="#{pathManager.id}" />
-            </f:metadata>
-            
-            
-            <ui:define name="path">
-                <ui:include src="components/path.xhtml">
-                    <ui:param name="source" value="page" />
-                </ui:include>
-            </ui:define>
             <ui:define name="content">
-                <ui:include src="components/content_page.xhtml" />
+                <ui:include src="components/models.xhtml" />
             </ui:define>
  
     	</ui:composition>

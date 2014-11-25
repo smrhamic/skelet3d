@@ -16,6 +16,9 @@ public class BasicService<E, PK> {
     @PersistenceContext
     protected EntityManager em;
     
+    // storage path (I don't like hardwiring this... but it works for now)
+    protected String uploadFolder = "/var/atlas-webapp/uploads/";
+    
     // generic entity type
     private final Class<E> type;
     
