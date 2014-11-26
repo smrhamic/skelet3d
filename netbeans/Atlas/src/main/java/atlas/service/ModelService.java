@@ -1,6 +1,5 @@
 package atlas.service;
 
-import atlas.entity.AtlasUser;
 import atlas.entity.Label;
 import atlas.entity.Model;
 import atlas.entity.ModelComponent;
@@ -70,12 +69,11 @@ public class ModelService extends BasicService<Model, Integer> {
     
     public boolean isUsed(Model model) {
         // check if any component uses the model
-        TypedQuery<AtlasUser> query = em.createQuery(
+        TypedQuery<ModelComponent> query = em.createQuery(
                 "SELECT mc FROM ModelComponent mc "
                         + "WHERE mc.model = :model",
-                AtlasUser.class);
+                ModelComponent.class);
         return !query.setParameter("model", model).getResultList().isEmpty();
-
     }
 
 }

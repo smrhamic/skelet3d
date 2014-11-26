@@ -10,8 +10,8 @@
         <ui:component>
             <div class="item">
                 <div class="iconCell">
-                    <h:graphicImage class="icon" alt="model"
-                                library="images" name="bone_icon.png" />
+                    <h:graphicImage class="icon" alt="image"
+                                library="images" name="image_icon.png" />
                 </div>
                 <h:form>
                     <div class="textCell">
@@ -21,10 +21,10 @@
                     </div>
                     <div class="buttonCell">
                         <h:commandButton value="#{strings.changeName}"
-                                         action="#{modelManager.updateModel(item)}"/>
+                                         action="#{imageManager.updateImage(item)}"/>
                         <h:commandButton onclick="if(!confirm('#{strings.confirmDelete}')) return false"
                                          value="#{strings.delete}"
-                                         action="#{modelManager.removeModel(item)}"/>
+                                         action="#{imageManager.removeImage(item)}"/>
                     </div>
                 </h:form>
             </div>

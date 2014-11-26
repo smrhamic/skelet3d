@@ -84,7 +84,6 @@ public class ModelManager implements Serializable {
             return null;
         }
         // simple update
-        System.out.println(model.getName());
         modelService.update(model);
         // refresh
         return FacesContext.getCurrentInstance().getViewRoot().getViewId()

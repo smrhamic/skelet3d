@@ -22,7 +22,7 @@
                     <div class="buttonCell">
                         <h:commandButton value="#{strings.changeName}"
                                          action="#{modelManager.updateModel(item)}"/>
-                        <h:commandButton onclick="if(!confirm('srsly?')) return false"
+                        <h:commandButton onclick="if(!confirm('#{strings.confirmDelete}')) return false"
                                          value="#{strings.delete}"
                                          action="#{modelManager.removeModel(item)}"/>
                     </div>

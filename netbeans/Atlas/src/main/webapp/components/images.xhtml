@@ -10,33 +10,33 @@
             <h:outputStylesheet name="manager.css" library="css" />
             
             <h1 class="mainHeadline">
-                <h:outputText value="#{strings.modelManager}" />
+                <h:outputText value="#{strings.imageManager}" />
             </h1>
             
             <hr class="fancy-line" />
             
-            <h3 class="smallHeadline"> #{strings.newModel} </h3>
+            <h3 class="smallHeadline"> #{strings.newImage} </h3>
             
             <div class="uploadBox">
                 <h:form enctype="multipart/form-data">
-                    #{strings.modelFile}:
+                    #{strings.imageFile}:
                     <h:inputFile class="mediumInput bottomSmallMargin"
-                                 value="#{modelManager.modelFile}"/>
+                                 value="#{imageManager.imageFile}"/>
                     <br />
-                    #{strings.modelName}:
+                    #{strings.imageName}:
                     <h:inputText class="mediumInput bottomSmallMargin"
-                                 value="#{modelManager.newName}"/>
+                                 value="#{imageManager.newName}"/>
                     <br />
                     <h:commandButton value="#{strings.upload}"
-                        action="#{modelManager.upload()}"/>
+                        action="#{imageManager.upload()}"/>
                 </h:form>
             </div>
             
-            <h3 class="smallHeadline"> #{strings.uploadedModels} </h3>
+            <h3 class="smallHeadline"> #{strings.uploadedImages} </h3>
             
-            <ui:repeat value="#{modelManager.allModels}"
+            <ui:repeat value="#{imageManager.allImages}"
                            var="item">
-                <ui:include src="model_item.xhtml" >
+                <ui:include src="image_item.xhtml" >
                     <ui:param name="item" value="#{item}" />
                 </ui:include>
             </ui:repeat>
