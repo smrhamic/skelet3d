@@ -10,27 +10,29 @@
             <h:outputStylesheet name="model_manager.css" library="css" />
             
             <h1 class="mainHeadline">
-                <h:outputText value="manage models" />
+                <h:outputText value="#{strings.modelManager}" />
             </h1>
             
             <hr class="fancy-line" />
             
-            <h3 class="smallHeadline"> add </h3>
+            <h3 class="smallHeadline"> #{strings.newModel} </h3>
             
             <div class="uploadBox">
                 <h:form enctype="multipart/form-data">
-                    file
-                    <h:inputFile class="mediumInput" value="#{modelManager.modelFile}"/>
+                    #{strings.modelFile}:
+                    <h:inputFile class="mediumInput bottomSmallMargin"
+                                 value="#{modelManager.modelFile}"/>
                     <br />
-                    name
-                    <h:inputText class="mediumInput" value="#{modelManager.newName}"/>
+                    #{strings.modelName}:
+                    <h:inputText class="mediumInput bottomSmallMargin"
+                                 value="#{modelManager.newName}"/>
                     <br />
-                    <h:commandButton value="Upload"
+                    <h:commandButton value="#{strings.upload}"
                         action="#{modelManager.upload()}"/>
                 </h:form>
             </div>
             
-            <h3 class="smallHeadline"> list </h3>
+            <h3 class="smallHeadline"> #{strings.uploadedModels} </h3>
             
             <ui:repeat value="#{modelManager.allModels}"
                            var="item">

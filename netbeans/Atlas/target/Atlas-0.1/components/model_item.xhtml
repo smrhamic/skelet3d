@@ -13,16 +13,20 @@
                     <h:graphicImage class="icon" alt="model"
                                 library="images" name="bone_icon.png" />
                 </div>
-                <div class="textCell">
-                    #{item.name}
-                </div>
-                <div class="deleteCell">
-                    <h:form>
+                <h:form>
+                    <div class="textCell">
+                        <h:inputText class="longInput" value="#{item.name}">
+                            <f:ajax />
+                        </h:inputText>
+                    </div>
+                    <div class="buttonCell">
+                        <h:commandButton value="#{strings.changeName}"
+                                         action="#{modelManager.updateModel(item)}"/>
                         <h:commandButton onclick="if(!confirm('srsly?')) return false"
                                          value="#{strings.delete}"
                                          action="#{modelManager.removeModel(item)}"/>
-                    </h:form>
-                </div>
+                    </div>
+                </h:form>
             </div>
         </ui:component>
     </body>

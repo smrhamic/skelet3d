@@ -73,6 +73,24 @@ public class ModelManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    public String updateModel(Model model) {
+        // check edit rights
+        if (!loginManager.isEditor()) {
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
+        }
+        // simple update
+        System.out.println(model.getName());
+        modelService.update(model);
+        // refresh
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
     public String removeModel(Model model) {
         // check edit rights
         if (!loginManager.isEditor()) {
