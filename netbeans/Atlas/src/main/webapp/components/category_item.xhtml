@@ -10,7 +10,7 @@
         <ui:component>
 
             <!-- Display if CATEGORY item -->
-            <h:link class="itemLink" outcome="browse" rendered="#{type == 'category'}">
+            <h:link class="undecoratedLink" outcome="browse" rendered="#{type == 'category'}">
                 <c:set var="item" value="#{categoryManager.childCategories[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="categoryItem">
@@ -30,7 +30,7 @@
             </h:link>
             
             <!-- Display if PAGE item -->
-            <h:link class="itemLink" outcome="page" rendered="#{type == 'page'}">
+            <h:link class="undecoratedLink" outcome="page" rendered="#{type == 'page'}">
                 <c:set var="item" value="#{categoryManager.pages[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="#{item.published?'categoryItem':

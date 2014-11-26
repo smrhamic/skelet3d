@@ -8,15 +8,16 @@
 
     <body>
         <ui:component>
-            <h:link value="#{strings.homePath}" outcome="index" />
-            <ui:repeat value="#{pathManager.pathToCurrent}" var="parent">
-                <h:outputText value=" &gt; " />
-                    <h:link value="#{parent.name}" outcome="browse">
-                        <f:param name="id" value="#{parent.id}" />
-                    </h:link>
-            </ui:repeat>
-            <h:outputText value=" :" />
-            
+            <div>
+                <h:link value="#{strings.homePath}" outcome="index" />
+                <ui:repeat value="#{pathManager.pathToCurrent}" var="parent">
+                    <h:outputText value=" &gt; " />
+                        <h:link value="#{parent.name}" outcome="browse">
+                            <f:param name="id" value="#{parent.id}" />
+                        </h:link>
+                </ui:repeat>
+                <h:outputText value=" :" />
+            </div>
         </ui:component>
     </body>
 </html>
