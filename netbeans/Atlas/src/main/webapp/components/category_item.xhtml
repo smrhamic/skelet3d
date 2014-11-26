@@ -47,11 +47,11 @@
                     <div class="pageItemEdit">
                         <h:form rendered="#{loginManager.editor}">
                             <h:commandButton value="#{strings.edit}"
-                                             action="#{pageManager.goEditPage(item.id)}"/>
+                                             action="#{categoryManager.goEditPage(item.id)}"/>
                             <br />
                             <h:commandButton onclick="if(!confirm('#{strings.confirmDeletePage}')) return false"
                                              value="#{strings.delete}"
-                                             action="#{pageManager.deletePage(item.id)}"/>
+                                             action="#{categoryManager.deletePage(item.id)}"/>
                         </h:form>
                     </div>
                 </div>

@@ -16,6 +16,9 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 /**
+ * Controller for models.xhtml component.
+ * Provides methods to manage models and delegate related
+ * user requests to service layer.
  *
  * @author Michal
  */
@@ -52,6 +55,15 @@ public class ModelManager implements Serializable {
         });
     }
     
+    /**
+     * Uploads a new model file and adds it to the database.
+     * File and name are taken from bound properties "modelFile" and "newName".
+     * Checks if editor is logged and file is selected.
+     * If these checks fail, FacesMessage is set and redirect is null.
+     * If all checks pass, file is uploaded and page is reloaded.
+     *
+     * @return Redirection string.
+     */
     public String upload() {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -73,6 +85,15 @@ public class ModelManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    /**
+     * Updates a database entry of a model.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, entry is updated and redirect reloads page.
+     *
+     * @param model Model entity to be updated.
+     * @return Redirection string.
+     */
     public String updateModel(Model model) {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -90,6 +111,16 @@ public class ModelManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    /**
+     * Deletes a model.
+     * Deletes both the file and database entry.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, image is deleted and redirect reloads page.
+     *
+     * @param model Model entity to be removed.
+     * @return Redirection string.
+     */
     public String removeModel(Model model) {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -116,22 +147,41 @@ public class ModelManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
 
+    /**
+     * @return List of all available Model entities.
+     */
     public List<Model> getAllModels() {
         return allModels;
     }
 
+    /**
+     * @return File of a new Model in form of "Part" instance.
+     */
     public Part getModelFile() {
         return modelFile;
     }
 
+    /**
+     * Sets the model file to be uploaded by the "upload()" method.
+     *
+     * @param modelFile Model file in form of "Part" instance.
+     */
     public void setModelFile(Part modelFile) {
         this.modelFile = modelFile;
     }
 
+    /**
+     * @return Name of a new Model.
+     */
     public String getNewName() {
         return newName;
     }
 
+    /**
+     * Sets the name of the model to be persisted by the "upload()" method.
+     *
+     * @param newName Model name.
+     */
     public void setNewName(String newName) {
         this.newName = newName;
     }

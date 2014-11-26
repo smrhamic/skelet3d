@@ -22,6 +22,7 @@ public class LanguageManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
+    // persistence service
     @EJB
     private LanguageService languageService;
     

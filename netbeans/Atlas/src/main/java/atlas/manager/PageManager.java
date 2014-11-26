@@ -11,8 +11,6 @@ import atlas.entity.PageContent;
 import atlas.entity.PageContentPK;
 import atlas.entity.TextComponent;
 import atlas.entity.view.LabelView;
-import atlas.service.CategoryService;
-import atlas.service.LabelContentService;
 import atlas.service.LabelService;
 import atlas.service.PageContentService;
 import atlas.service.PageService;
@@ -51,10 +49,6 @@ public class PageManager implements Serializable {
     @EJB
     LabelService labelService;
     @EJB
-    LabelContentService labelContentService;
-    @EJB
-    CategoryService categoryService;
-    @EJB
     PageService pageService;
     @EJB
     PageContentService pageContentService;
@@ -72,6 +66,8 @@ public class PageManager implements Serializable {
 
     /**
      * Initializes current Page and content based on bound "pageId".
+     * Doesn't include content if page is not published and user is not editor.
+     * Limits model componenets to 1 (multiples not supported).
      */
     public void init() {
         page = pageService.find(pageId);
@@ -119,54 +115,15 @@ public class PageManager implements Serializable {
         }
     }
     
-    public String goEditPage(int pageId) {
-        // go to edit page if editor is logged, else stay (refresh)
-        if (loginManager.isEditor()) {
-            return "edit_page.xhtml?id=" + pageId + "&faces-redirect=true&includeViewParams=true";
-        } else {
-            return FacesContext.getCurrentInstance().getViewRoot().getViewId()
-                + "?faces-redirect=true&includeViewParams=true";
-        }
-    }
-    
-    public String addNewPage(int categoryId) {
-        // check edit rights
-        if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
-            return null;
-        }
-        
-        // create new page
-        pageService.createNewPage(categoryId);
-        
-        // just refresh after
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
-                + "?faces-redirect=true&includeViewParams=true";
-    }
-    
-    public String deletePage(int pageId) {
-        // check edit rights
-        if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
-            return null;
-        }
-        
-        // delete page
-        pageService.delete(pageService.find(pageId));
-        
-        // just refresh after
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
-                + "?faces-redirect=true&includeViewParams=true";
-    }
-    
+    /**
+     * Updates Page and PageContent including components based on bound fields.
+     * Page info and "components" collection are persisted.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, page is updated and redirect reloads page.
+     * 
+     * @return Redirection string.
+     */
     public String updatePage() {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -188,6 +145,12 @@ public class PageManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    /**
+     * Adds a new PageComponent of given type to bound collection "components".
+     *
+     * @param type Type of component to add. Supported: text | headline | model | image
+     * @return Null (Redirection string)
+     */
     public String addComponent(String type) {
 
         switch (type) {
@@ -231,6 +194,14 @@ public class PageManager implements Serializable {
         return null;
     }
     
+    /**
+     * Moves PageComponent one slot up.
+     * Changes component order in bound collection "components"
+     * to move a component up by one.
+     *
+     * @param component Component to move up.
+     * @return Null (Redirection string)
+     */
     public String bumpComponentUp(PageComponent component) {
         int i = components.indexOf(component);
         // swap with previous, not much to do if component is at the top
@@ -243,6 +214,14 @@ public class PageManager implements Serializable {
         return null;
     }
     
+    /**
+     * Moves PageComponent one slot down.
+     * Changes component order in bound collection "components"
+     * to move a component down by one.
+     *
+     * @param component Component to move down.
+     * @return Null (Redirection string)
+     */
     public String bumpComponentDown(PageComponent component) {
         int i = components.indexOf(component);
         // swap with next, not much to do if component is at the top
@@ -255,6 +234,12 @@ public class PageManager implements Serializable {
         return null;
     }
     
+    /**
+     * Remove PageComponent from bound collection "components".
+     *
+     * @param component Component to remove.
+     * @return Null (Redirection string)
+     */
     public String removeComponent(PageComponent component) {
         components.remove(component);
         // do not refresh, this is done by ajax
@@ -262,9 +247,13 @@ public class PageManager implements Serializable {
     }
     
     /**
-     * Update and persist model, then refresh the page.
+     * Update and persist model's labels based on bound "labelUpdates".
+     * "labelUpdates" is a JSON string representing changed LabelViews.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, labels are updated and redirect reloads page.
      * 
-     * @return URL string to current view including parameters.
+     * @return Redirection string.
      */
     public String updateLabels() {
         // check edit rights
@@ -332,7 +321,7 @@ public class PageManager implements Serializable {
     }
 
     /**
-     * Set a JSON String of label updates.
+     * Set a JSON String representing LabelViews to update.
      *
      * @param labelUpdates JSON String from label editor.
      */

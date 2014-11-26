@@ -39,6 +39,11 @@ public class PathManager implements Serializable {
     private int id;
     private List<CategoryView> pathToCurrent;
     
+    /**
+     * Initializes path based on bound "id".
+     *
+     * @param isPage True if making path for a page, otherwise false (for a category).
+     */
     public void init(boolean isPage) {
         // setup the path
         pathToCurrent = new ArrayList<>();

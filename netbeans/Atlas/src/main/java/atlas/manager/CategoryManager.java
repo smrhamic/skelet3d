@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -107,6 +109,79 @@ public class CategoryManager implements Serializable {
     }
     
     /**
+     * Creates new blank page in current category.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, page is created and redirect reloads page.
+     *
+     * @return Redirection string.
+     */
+    public String addNewPage() {
+        // check edit rights
+        if (!loginManager.isEditor()) {
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
+        }
+        
+        // create new page
+        pageService.createNewPage(categoryId);
+        
+        // just refresh after
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
+    /**
+     * Deletes Page entity of matching ID.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, page is deleted and redirect reloads page.
+     *
+     * @param pageId ID of the page to be deleted.
+     * @return Redirection string.
+     */
+    public String deletePage(int pageId) {
+        // check edit rights
+        if (!loginManager.isEditor()) {
+            // add localized message if bad login
+            FacesContext context = FacesContext.getCurrentInstance();
+            String msg = context.getApplication()
+                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
+            context.addMessage(null, new FacesMessage(msg));
+            return null;
+        }
+        
+        // delete page
+        pageService.delete(pageService.find(pageId));
+        
+        // just refresh after
+        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+                + "?faces-redirect=true&includeViewParams=true";
+    }
+    
+    /**
+     * Redirects to page editor of a page with matching ID.
+     * Checks if editor is logged.
+     * If this check fails, redirect is null.
+     * If all checks pass, redirect points to editor.
+     * 
+     * @param pageId ID of page to edit.
+     * @return Redirection string.
+     */
+    public String goEditPage(int pageId) {
+        // go to edit page if editor is logged, else stay
+        if (loginManager.isEditor()) {
+            return "edit_page.xhtml?id=" + pageId + "&faces-redirect=true&includeViewParams=true";
+        } else {
+            return null;
+        }
+    }
+    
+    /**
      * Gets currentCategory, which contains basic localized information
      * about current category in the form of CategoryView.
      * 
@@ -139,7 +214,7 @@ public class CategoryManager implements Serializable {
     }
     
     /**
-     * Gets pages, which contains basic localized information
+     * Gets "pages", which contains basic localized information
      * about pages directly nested in current category in the form
      * of a list of PageViews.
      * 

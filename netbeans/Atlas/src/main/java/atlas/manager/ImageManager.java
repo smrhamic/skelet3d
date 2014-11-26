@@ -16,6 +16,9 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 /**
+ * Controller for images.xhtml component.
+ * Provides methods to manage images and delegate related
+ * user requests to service layer.
  *
  * @author Michal
  */
@@ -52,6 +55,15 @@ public class ImageManager implements Serializable {
         });
     }
     
+    /**
+     * Uploads a new image file and adds it to the database.
+     * File and name are taken from bound properties "imageFile" and "newName".
+     * Checks if editor is logged and file is selected.
+     * If these checks fail, FacesMessage is set and redirect is null.
+     * If all checks pass, file is uploaded and page is reloaded.
+     *
+     * @return Redirection string.
+     */
     public String upload() {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -73,6 +85,15 @@ public class ImageManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    /**
+     * Updates a database entry of an image.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, entry is updated and redirect reloads page.
+     *
+     * @param image Image entity to be updated.
+     * @return Redirection string.
+     */
     public String updateImage(Image image) {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -90,6 +111,16 @@ public class ImageManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
+    /**
+     * Deletes an image.
+     * Deletes both the file and database entry.
+     * Checks if editor is logged.
+     * If this check fails, FacesMessage is set and redirect is null.
+     * If all checks pass, image is deleted and redirect reloads page.
+     *
+     * @param image Image entity to be removed.
+     * @return Redirection string.
+     */
     public String removeImage(Image image) {
         // check edit rights
         if (!loginManager.isEditor()) {
@@ -116,22 +147,41 @@ public class ImageManager implements Serializable {
                 + "?faces-redirect=true&includeViewParams=true";
     }
 
+    /**
+     * @return List of all available Image entities.
+     */
     public List<Image> getAllImages() {
         return allImages;
     }
     
+    /**
+     * @return File of a new Image in form of "Part" instance.
+     */
     public Part getImageFile() {
         return imageFile;
     }
 
+    /**
+     * Sets the image file to be uploaded by the "upload()" method.
+     *
+     * @param imageFile Image file in form of "Part" instance.
+     */
     public void setImageFile(Part imageFile) {
         this.imageFile = imageFile;
     }
 
+    /**
+     * @return Name of a new Image.
+     */
     public String getNewName() {
         return newName;
     }
 
+    /**
+     * Sets the name of the image to be persisted by the "upload()" method.
+     *
+     * @param newName Image name.
+     */
     public void setNewName(String newName) {
         this.newName = newName;
     }
