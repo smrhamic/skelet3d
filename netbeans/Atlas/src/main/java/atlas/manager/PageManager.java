@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -33,7 +33,7 @@ import javax.inject.Named;
  */
 @ViewScoped
 @Named("pageManager")
-public class PageManager implements Serializable {
+public class PageManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -63,6 +63,7 @@ public class PageManager implements Serializable {
     private List<PageComponent> components;
     private List<LabelView> labels;
     private String labelUpdates;
+    private UIComponent saveButton;
 
     /**
      * Initializes current Page and content based on bound "pageId".
@@ -107,31 +108,26 @@ public class PageManager implements Serializable {
                 }
             } else {
                 // if not published nor editor, tell them
-                FacesContext context = FacesContext.getCurrentInstance();
-                String msg = context.getApplication()
-                        .evaluateExpressionGet(context, "#{strings.notPublished}", String.class);
-                context.addMessage(null, new FacesMessage(msg));
+                showWarning("#{messages.notPublished}");
             }
         }
     }
     
     /**
-     * Updates Page and PageContent including components based on bound fields.
+     * Updates Page and PageContent entities including components based on bound fields.
      * Page info and "components" collection are persisted.
      * Checks if editor is logged.
-     * If this check fails, FacesMessage is set and redirect is null.
-     * If all checks pass, page is updated and redirect reloads page.
+     * If this check fails, warning is set and changes not saved.
+     * If all checks pass, page is updated and info is set.
      * 
-     * @return Redirection string.
+     * @param ajax True if called by ajax, false if refresh is needed.
+     * @return Redirection string, null if ajax.
      */
-    public String updatePage() {
+    public String updatePage(boolean ajax) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         
@@ -140,13 +136,24 @@ public class PageManager implements Serializable {
         // update page content
         pageContentService.updateWithComponents(pageContent, components);
         
-        // just refresh after
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+        // set message
+        showInfo(saveButton, "#{messages.changesSaved}");
+        
+        // refresh or not depending on ajax
+        if (ajax) {
+            // update content
+            init();
+            return null;
+        } else {
+            // refresh
+            return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
+        }
     }
     
     /**
      * Adds a new PageComponent of given type to bound collection "components".
+     * Info message is set.
      *
      * @param type Type of component to add. Supported: text | headline | model | image
      * @return Null (Redirection string)
@@ -190,7 +197,10 @@ public class PageManager implements Serializable {
                 break;
         }
         
-        // do not refresh, this is done by ajax
+        // add message
+        showInfo(saveButton, "#{messages.addedComponent}");
+        
+        // no way we would like to refresh and lose the component
         return null;
     }
     
@@ -209,7 +219,7 @@ public class PageManager implements Serializable {
             components.get(i).setCompOrder(i-1);
             components.get(i-1).setCompOrder(i);
             Collections.swap(components, i, i-1);
-        }        
+        }
         // do not refresh, this is done by ajax
         return null;
     }
@@ -258,11 +268,8 @@ public class PageManager implements Serializable {
     public String updateLabels() {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // refreshing url
@@ -343,4 +350,17 @@ public class PageManager implements Serializable {
         return pageContent;
     }
 
+    /**
+     * @return Save button component, target of certain messages.
+     */
+    public UIComponent getSaveButton() {
+        return saveButton;
+    }
+
+    /**
+     * @param saveButton Save button component, target of certain messages.
+     */
+    public void setSaveButton(UIComponent saveButton) {
+        this.saveButton = saveButton;
+    }
 }

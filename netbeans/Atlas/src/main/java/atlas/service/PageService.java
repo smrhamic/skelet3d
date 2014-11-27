@@ -29,9 +29,9 @@ public class PageService extends BasicService<Page, Integer> {
         super(Page.class);
     }
 
-    public void createNewPage(int categoryId) {
-        // populate main fields
+    public Page createNewPage(int categoryId) {
         Page page = new Page();
+        // populate main fields
         page.setCategory(categoryService.find(categoryId));
         page.setLatin("");
         page.setId(0); // will be generated
@@ -50,7 +50,8 @@ public class PageService extends BasicService<Page, Integer> {
         // update to make sure children were added
         update(page);
         categoryService.update(categoryService.find(categoryId));
-
+        
+        return page;
     }
     
     public PageView getPageView(Page page, Language lang) {
@@ -61,9 +62,6 @@ public class PageService extends BasicService<Page, Integer> {
         try {
             String queryString = "SELECT c FROM PageContent c "
                             + "WHERE c.page1 = :page AND c.language1 = :lang";
-//            if (publishedOnly) {
-//               queryString += " AND c.published = TRUE";
-//            }
             TypedQuery<PageContent> query = em.createQuery(
                     queryString, PageContent.class);
             pc = query.setParameter("page", page).setParameter("lang", lang)

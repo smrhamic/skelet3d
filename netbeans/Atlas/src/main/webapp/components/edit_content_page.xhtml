@@ -21,7 +21,7 @@
                 <h:panelGroup class="bold bottomSpace" layout="block">
                     #{languageManager.currentLanguage.name}
                 </h:panelGroup>
-                <h:form>
+                <h:form id="editPageForm">
                     #{strings.pageName}
                     <br />
                     <h:inputText class="longField bottomSpace" value="#{pageManager.pageContent.name}"/>
@@ -34,30 +34,35 @@
                     <h:panelGroup class="bottomSpace" layout="block">
                         <h:commandButton class="addButton" value="#{strings.text}"
                                          action="#{pageManager.addComponent('text')}">
-                            <f:ajax render=":contentBlock" />
+                            <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings.headline}"
                                          action="#{pageManager.addComponent('headline')}">
-                            <f:ajax render=":contentBlock" />
+                            <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings.image}"
                                          action="#{pageManager.addComponent('image')}">
-                            <f:ajax render=":contentBlock" />
+                            <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings.model}"
                                          action="#{pageManager.addComponent('model')}">
-                            <f:ajax render=":contentBlock" />
+                            <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                     </h:panelGroup>
                     <h:panelGroup class="bottomSpace" layout="block">
                         #{strings.published}
                         <h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
                     </h:panelGroup>
-                    <h:commandButton class="saveButton" value="#{strings.saveButton}"
-                                     action="#{pageManager.updatePage()}" />
+                    <h:commandButton id="saveButton" class="saveButton"
+                                     binding="#{pageManager.saveButton}" value="#{strings.saveButton}"
+                                     action="#{pageManager.updatePage(true)}">
+                        <f:ajax render=":contentBlock :message saveMessage" />
+                    </h:commandButton>
+                    <br />
+                    <h:message id="saveMessage" for="saveButton" warnClass="warning" infoClass="info" />
                 </h:form>
             </div>
             <h:panelGroup id="contentBlock" class="contentBlock">

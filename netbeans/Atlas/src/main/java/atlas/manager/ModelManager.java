@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -24,7 +23,7 @@ import javax.servlet.http.Part;
  */
 @ViewScoped
 @Named("modelManager")
-public class ModelManager implements Serializable {
+public class ModelManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -67,11 +66,8 @@ public class ModelManager implements Serializable {
     public String upload() {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // do nothing if no file uploaded
@@ -80,9 +76,13 @@ public class ModelManager implements Serializable {
         }
         // send to service
         modelService.uploadModel(newName, modelFile);
-        // refresh
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
-                + "?faces-redirect=true&includeViewParams=true";
+        
+        // set message
+        showInfo("#{messages.uploadedFile} "+modelFile.getSubmittedFileName());
+        
+        // refresh without really refreshing...
+        init();
+        return "";
     }
     
     /**
@@ -97,11 +97,8 @@ public class ModelManager implements Serializable {
     public String updateModel(Model model) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // simple update
@@ -124,20 +121,14 @@ public class ModelManager implements Serializable {
     public String removeModel(Model model) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // check if model is used somewhere
         if (modelService.isUsed(model)) {
             // add localized message if used
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.modelIsUsed}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            showWarning("#{messages.modelIsUsed}");
             return null;
         }
         // service does the dirty job

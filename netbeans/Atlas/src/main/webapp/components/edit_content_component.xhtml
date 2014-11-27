@@ -26,15 +26,15 @@
                         <h:panelGroup class="componentTopButtons">
                             <h:commandButton value="&#x2191;"
                                              action="#{pageManager.bumpComponentUp(component)}">
-                                <f:ajax render=":contentBlock"/>
+                                <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                             <h:commandButton value="&#x2193;"
                                              action="#{pageManager.bumpComponentDown(component)}">
-                                <f:ajax render=":contentBlock"/>
+                                <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                             <h:commandButton value="#{strings.delete}"
                                              action="#{pageManager.removeComponent(component)}">
-                                <f:ajax render=":contentBlock"/>
+                                <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                         </h:panelGroup>
                     </div>
@@ -43,14 +43,14 @@
                     <h:panelGroup rendered="#{component.componentType == 'text'}">
                         <h:inputTextarea class="longField unresizable"
                                          rows="8" value="#{component.text}">
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:inputTextarea>
                     </h:panelGroup>
                     
                     <!-- Display if HEADLINE component -->
                     <h:panelGroup rendered="#{component.componentType == 'headline'}">
                         <h:inputText class="longField" value="#{component.text}">
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:inputText>
                     </h:panelGroup>
                     
@@ -61,7 +61,7 @@
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
                             <f:selectItems value="#{modelManager.allModels}" var="m"
                                            itemLabel="#{m.name}" itemValue="#{m}"/>
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>
                         <br />
                         <h:outputText class="warning" value="#{strings.oneModelPerPage}"/>
@@ -70,7 +70,7 @@
                         <br />
                         <h:inputTextarea class="longField unresizable" rows="3"
                                          value="#{component.description}">
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:inputTextarea>                       
                     </h:panelGroup>
                     
@@ -81,14 +81,14 @@
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
                             <f:selectItems value="#{imageManager.allImages}" var="im"
                                            itemLabel="#{im.name}" itemValue="#{im}"/>
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>
                         <br /><br />
                         #{strings.description}
                         <br />
                         <h:inputTextarea class="longField unresizable" rows="3"
                                          value="#{component.description}">
-                            <f:ajax render=":contentBlock"/>
+                            <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:inputTextarea>
                     </h:panelGroup>
                 </h:form>

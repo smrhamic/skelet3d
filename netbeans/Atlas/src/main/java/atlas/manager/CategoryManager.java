@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -24,7 +23,7 @@ import javax.inject.Named;
  */
 @ViewScoped
 @Named("categoryManager")
-public class CategoryManager implements Serializable {
+public class CategoryManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -109,58 +108,76 @@ public class CategoryManager implements Serializable {
     }
     
     /**
-     * Creates new blank page in current category.
+     * Creates new blank page in current category and sets FacesMessage.
      * Checks if editor is logged.
-     * If this check fails, FacesMessage is set and redirect is null.
-     * If all checks pass, page is created and redirect reloads page.
+     * If this check fails, nothing is created and warning is set.
+     * If all checks pass, page is created and info is set..
      *
-     * @return Redirection string.
+     * @param ajax True if called by ajax, false if refresh is needed.
+     * @return Redirection string, null if ajax.
      */
-    public String addNewPage() {
+    public String addNewPage(boolean ajax) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         
-        // create new page
+        // create new page and set suitable message
         pageService.createNewPage(categoryId);
+        showInfo("#{messages.pageAdded}");
         
-        // just refresh after
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+        // refresh or not depending on ajax
+        if (ajax) {
+            // update content
+            init();
+            return null;
+        } else {
+            // refresh
+            return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
+        }
     }
     
     /**
      * Deletes Page entity of matching ID.
      * Checks if editor is logged.
-     * If this check fails, FacesMessage is set and redirect is null.
-     * If all checks pass, page is deleted and redirect reloads page.
+     * If this check fails, nothing is deleted and warning is set.
+     * If all checks pass, page is deleted and info is set.
      *
      * @param pageId ID of the page to be deleted.
-     * @return Redirection string.
+     * @param ajax True if called by ajax, false if refresh is needed.
+     * @return Redirection string, null if ajax.
      */
-    public String deletePage(int pageId) {
+    public String deletePage(int pageId, boolean ajax) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         
-        // delete page
-        pageService.delete(pageService.find(pageId));
+        // save name for msg
+        String pageName = pageService.getPageView(
+                pageService.find(pageId), languageManager.getCurrentLanguage())
+                .getName();
         
-        // just refresh after
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
+        // delete page
+        pageService.delete(pageService.find(pageId));        
+        // show message
+        showInfo("#{messages.pageDeleted} " + pageName + ".");
+        
+        // refresh or not depending on ajax
+        if (ajax) {
+            // update content
+            init();
+            return null;
+        } else {
+            // refresh
+            return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
+        }
     }
     
     /**

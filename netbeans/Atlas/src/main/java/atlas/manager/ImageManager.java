@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
@@ -24,7 +23,7 @@ import javax.servlet.http.Part;
  */
 @ViewScoped
 @Named("imageManager")
-public class ImageManager implements Serializable {
+public class ImageManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -67,11 +66,8 @@ public class ImageManager implements Serializable {
     public String upload() {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // do nothing if no file uploaded
@@ -80,9 +76,13 @@ public class ImageManager implements Serializable {
         }
         // send to service
         imageService.uploadImage(newName, imageFile);
-        // refresh
-        return FacesContext.getCurrentInstance().getViewRoot().getViewId()
-                + "?faces-redirect=true&includeViewParams=true";
+        
+        // set message
+        showInfo("#{messages.uploadedFile} "+imageFile.getSubmittedFileName());
+        
+        // refresh without really refreshing...
+        init();
+        return "";
     }
     
     /**
@@ -97,11 +97,8 @@ public class ImageManager implements Serializable {
     public String updateImage(Image image) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // simple update
@@ -115,7 +112,8 @@ public class ImageManager implements Serializable {
      * Deletes an image.
      * Deletes both the file and database entry.
      * Checks if editor is logged.
-     * If this check fails, FacesMessage is set and redirect is null.
+     * Checks that image is not used in any component.
+     * If these checks fail, FacesMessage is set and redirect is null.
      * If all checks pass, image is deleted and redirect reloads page.
      *
      * @param image Image entity to be removed.
@@ -124,20 +122,14 @@ public class ImageManager implements Serializable {
     public String removeImage(Image image) {
         // check edit rights
         if (!loginManager.isEditor()) {
-            // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.noRights}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            // add localized message if lacking edit rights
+            showWarning("#{messages.noRights}");
             return null;
         }
         // check if image is used somewhere
         if (imageService.isUsed(image)) {
             // add localized message if used
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.imageIsUsed}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            showWarning("#{messages.imageIsUsed}");
             return null;
         }
         // service does the dirty job

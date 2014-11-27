@@ -21,7 +21,7 @@ import javax.inject.Named;
  */
 @RequestScoped
 @Named("pathManager")
-public class PathManager implements Serializable {
+public class PathManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

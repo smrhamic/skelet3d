@@ -6,7 +6,6 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 import javax.faces.context.FacesContext;
 
@@ -17,7 +16,7 @@ import javax.faces.context.FacesContext;
  */
 @SessionScoped
 @Named("loginManager")
-public class LoginManager implements Serializable {
+public class LoginManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -51,10 +50,7 @@ public class LoginManager implements Serializable {
         }
         if (currentUser == null) {
             // add localized message if bad login
-            FacesContext context = FacesContext.getCurrentInstance();
-            String msg = context.getApplication()
-                    .evaluateExpressionGet(context, "#{strings.badLogin}", String.class);
-            context.addMessage(null, new FacesMessage(msg));
+            showWarning("#{messages.badLogin}");
             return null;
         }
         return FacesContext.getCurrentInstance().getViewRoot().getViewId()

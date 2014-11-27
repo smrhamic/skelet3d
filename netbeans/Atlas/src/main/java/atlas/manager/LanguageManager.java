@@ -18,7 +18,7 @@ import javax.inject.Named;
  */
 @SessionScoped
 @Named("languageManager")
-public class LanguageManager implements Serializable {
+public class LanguageManager extends BasicManager implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

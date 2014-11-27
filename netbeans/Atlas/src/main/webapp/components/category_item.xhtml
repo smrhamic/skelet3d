@@ -51,7 +51,9 @@
                             <br />
                             <h:commandButton onclick="if(!confirm('#{strings.confirmDeletePage}')) return false"
                                              value="#{strings.delete}"
-                                             action="#{categoryManager.deletePage(item.id)}"/>
+                                             action="#{categoryManager.deletePage(item.id, true)}">
+                                <f:ajax render=":pageList :message" />
+                            </h:commandButton>
                         </h:form>
                     </div>
                 </div>

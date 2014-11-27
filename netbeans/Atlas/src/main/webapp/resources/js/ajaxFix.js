@@ -1,11 +1,13 @@
 // Fix for JSF ajax not retrieving view state
 // provided by BalusC
 
-jsf.ajax.addOnEvent(function(data) {
-    if (data.status == "success") {
-        fixViewState(data.responseXML);
-    }
-});
+if (typeof jsf !== 'undefined') {
+    jsf.ajax.addOnEvent(function(data) {
+        if (data.status == "success") {
+            fixViewState(data.responseXML);
+        }
+    });
+}
 
 function fixViewState(responseXML) {
     var viewState = getViewState(responseXML);
