@@ -11,31 +11,27 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.NoResultException;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Represents a page with content.
+ * This entity class is mapped to "PAGE" database table.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
  */
 @Entity
 @Table(name = "PAGE")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Page.findAll", query = "SELECT p FROM Page p")})
 public class Page implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,20 +54,6 @@ public class Page implements Serializable {
     public Page(Integer id) {
         this.id = id;
     }
-    
-//    public static Page getPageById(EntityManager em, int id) {
-//        // find category by id
-//        // if nothing matches, null is returned
-//        try {
-//            TypedQuery<Page> query = em.createQuery(
-//                    "SELECT p FROM Page p "
-//                            + "WHERE p.id = :id",
-//                    Page.class);
-//            return query.setParameter("id", id).getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
 
     public Integer getId() {
         return id;

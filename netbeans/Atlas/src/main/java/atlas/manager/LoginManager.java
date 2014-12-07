@@ -11,8 +11,9 @@ import javax.faces.context.FacesContext;
 
 /**
  * Manages user login and privileges.
+ * SessionScoped managed bean, controller for login_bar.xhtml component.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @SessionScoped
 @Named("loginManager")

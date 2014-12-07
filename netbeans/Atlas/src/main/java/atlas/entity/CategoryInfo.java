@@ -9,26 +9,23 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.NoResultException;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents localized information about a category.
+ * This entity class is mapped to "CATEGORYINFO" database table.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Category
+ * @see atlas.entity.view.CategoryView
  */
 @Entity
 @Table(name = "CATEGORYINFO")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "CategoryInfo.findAll", query = "SELECT c FROM CategoryInfo c")})
 public class CategoryInfo implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
@@ -52,22 +49,6 @@ public class CategoryInfo implements Serializable {
 
     public CategoryInfo(int category, int language) {
         this.categoryInfoPK = new CategoryInfoPK(category, language);
-    }
-    
-    public static String getCategoryName(
-            EntityManager em, Category cat, Language lang) {
-        // find info for category in language
-        // if nothing matches, null is returned
-        try {
-            TypedQuery<CategoryInfo> query = em.createQuery(
-                    "SELECT i FROM CategoryInfo i "
-                            + "WHERE i.category1 = :cat AND i.language1 = :lang",
-                    CategoryInfo.class);
-            return query.setParameter("cat", cat).setParameter("lang", lang)
-                    .getSingleResult().name;
-        } catch (NoResultException e) {
-            return null;
-        }
     }
 
     public CategoryInfoPK getCategoryInfoPK() {

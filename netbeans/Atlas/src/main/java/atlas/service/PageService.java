@@ -12,23 +12,39 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 /**
+ * Provides CRUD persistence for Page entity.
+ * This is an EJB Stateless session bean.
+ * It can also create PageViews.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Page
+ * @see atlas.service.BasicService
  */
 @Stateless
 public class PageService extends BasicService<Page, Integer> {
     
     @EJB
-    CategoryService categoryService;
+    private CategoryService categoryService;
     @EJB
-    LanguageService languageService;
+    private LanguageService languageService;
     @EJB
-    PageContentService pageContentService;
+    private PageContentService pageContentService;
     
+    /**
+     * Constructs a PageService.
+     */
     public PageService() {
         super(Page.class);
     }
 
+    /**
+     * Creates a new Page entity in given Category.
+     * Also generates a blank unpublished PageContent for each available language.
+     * Default name is "NEW PAGE", other fields are blank.
+     *
+     * @param categoryId ID of the parent Category.
+     * @return Created blank Page.
+     */
     public Page createNewPage(int categoryId) {
         Page page = new Page();
         // populate main fields
@@ -54,7 +70,16 @@ public class PageService extends BasicService<Page, Integer> {
         return page;
     }
     
-    public PageView getPageView(Page page, Language lang) {
+    /**
+     * Creates a localized PageView for given Page.
+     * This is done by reading persisted information about
+     * Page and related PageContent.
+     *
+     * @param page Page to get a view for.
+     * @param lang Language to get a view in.
+     * @return View of the Page in the Language.
+     */
+    public PageView createPageView(Page page, Language lang) {
         // find info for page in language
         String name;
         Boolean published;
@@ -85,6 +110,5 @@ public class PageService extends BasicService<Page, Integer> {
         // update parent category (why doesn't JPA do it for me?!)
         categoryService.update(cat);
     }
-    
-    
+        
 }

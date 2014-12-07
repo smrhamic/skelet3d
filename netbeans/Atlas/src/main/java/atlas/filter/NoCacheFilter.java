@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Simple Filter implementation to disable browser caching.
+ * Mostly used to avoid errors with ajax and the back button.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @WebFilter(servletNames={"facesServlet"})
 public class NoCacheFilter implements Filter {

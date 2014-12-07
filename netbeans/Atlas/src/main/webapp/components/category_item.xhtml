@@ -24,7 +24,7 @@
                         <span class="latin">#{item.latin}</span>
                     </div>
                     <div class="categoryItemNumCell">
-                        #{strings.containsPages} #{item.numPages}
+                        #{strings['category.containsPages']} #{item.numPages}
                     </div>
                 </div>
             </h:link>
@@ -46,11 +46,11 @@
                     </div>
                     <div class="pageItemEdit">
                         <h:form rendered="#{loginManager.editor}">
-                            <h:commandButton value="#{strings.edit}"
+                            <h:commandButton value="#{strings['edit']}"
                                              action="#{categoryManager.goEditPage(item.id)}"/>
                             <br />
-                            <h:commandButton onclick="if(!confirm('#{strings.confirmDeletePage}')) return false"
-                                             value="#{strings.delete}"
+                            <h:commandButton onclick="if(!confirm('#{strings['category.confirmDeletePage']}')) return false"
+                                             value="#{strings['delete']}"
                                              action="#{categoryManager.deletePage(item.id, true)}">
                                 <f:ajax render=":pageList :message" />
                             </h:commandButton>

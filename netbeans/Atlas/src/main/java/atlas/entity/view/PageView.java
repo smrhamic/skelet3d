@@ -5,19 +5,18 @@
  */
 package atlas.entity.view;
 
-import atlas.entity.Language;
 import atlas.entity.Page;
-import atlas.entity.PageContent;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 
 /**
- * Represents a set of attributes of PageContent and its related Page.
- * Namely, attributes needed for generating lists and links such as localized
- * name and category ID.
+ * Represents a localized view of a page.
+ * Basically a set of attributes of PageContent and its related Page.
+ * Namely, attributes useful for generating page lists and links
+ * (ID, localized name, latin name, if page is published).
+ * Actual page content other than name is not included!
  * 
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Page
+ * @see atlas.entity.PageContent
  */
 public class PageView {
         
@@ -26,8 +25,18 @@ public class PageView {
     private String latin;
     private Boolean published;
 
+    /**
+     * Constructs a blank PageView.
+     */
     public PageView() {}
 
+    /**
+     * Constructs a populated PageView based on given values.
+     *
+     * @param p Page to construct a view for.
+     * @param name Localized name of the page.
+     * @param published True if page is published, false otherwise.
+     */
     public PageView(Page p, String name, boolean published) {
         this.id = p.getId();
         this.latin = p.getLatin();
@@ -66,29 +75,5 @@ public class PageView {
     public void setPublished(Boolean published) {
         this.published = published;
     }
-        
-//    public static PageView getPageView(
-//        EntityManager em, Page page, Language lang, boolean publishedOnly) {
-//        // find info for page in language
-//        String nameTemp;
-//        Boolean publishedTemp;
-//        PageContent pcTemp;
-//        try {
-//            String queryString = "SELECT c FROM PageContent c "
-//                            + "WHERE c.page1 = :page AND c.language1 = :lang";
-//            if (publishedOnly) {
-//               queryString += " AND c.published = TRUE";
-//            }
-//            TypedQuery<PageContent> query = em.createQuery(
-//                    queryString, PageContent.class);
-//            pcTemp = query.setParameter("page", page).setParameter("lang", lang)
-//                    .getSingleResult();
-//            nameTemp = pcTemp.getName();
-//            publishedTemp = pcTemp.getPublished();
-//        } catch (NoResultException e) {
-//            nameTemp = "missing language variant";
-//            publishedTemp = false;
-//        }
-//        return new PageView(page, nameTemp, publishedTemp);
-//    }
+
 }

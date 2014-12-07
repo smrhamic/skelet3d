@@ -16,6 +16,10 @@
             <base-name>atlas.web.WebMessages</base-name>
             <var>messages</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>atlas.web.View3DStrings</base-name>
+            <var>strings3d</var>
+        </resource-bundle>
         <locale-config>
             <default-locale>en</default-locale>
             <supported-locale>cs</supported-locale>

@@ -10,30 +10,30 @@
             <h:outputStylesheet name="manager.css" library="css" />
             
             <h1 class="mainHeadline">
-                <h:outputText value="#{strings.imageManager}" />
+                <h:outputText value="#{strings['image.imageManager']}" />
             </h1>
             
             <hr class="fancy-line" />
             
-            <h3 class="smallHeadline"> #{strings.newImage} </h3>
+            <h3 class="smallHeadline"> #{strings['image.newImage']} </h3>
             
             <div class="uploadBox">
                 <h:form enctype="multipart/form-data">
-                    #{strings.imageFile}:
+                    #{strings['image.imageFile']}:
                     <h:inputFile class="mediumInput bottomSmallMargin"
                                  value="#{imageManager.imageFile}"/>
                     <br />
-                    #{strings.imageName}:
+                    #{strings['image.imageName']}:
                     <h:inputText class="mediumInput bottomSmallMargin"
                                  value="#{imageManager.newName}"/>
                     <br />
-                    <h:commandButton value="#{strings.upload}"
+                    <h:commandButton value="#{strings['upload']}"
                                      action="#{imageManager.upload()}">
                     </h:commandButton>
                 </h:form>
             </div>
             
-            <h3 class="smallHeadline"> #{strings.uploadedImages} </h3>
+            <h3 class="smallHeadline"> #{strings['image.uploadedImages']} </h3>
             <h:panelGroup id="imageList">
                 <ui:repeat value="#{imageManager.allImages}"
                                var="item">

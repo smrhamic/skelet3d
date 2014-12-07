@@ -15,21 +15,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents a section headline in page content.
+ * This entity class is mapped to "HEADLINECOMPONENT" database table.
+ * In addition to mapped properties, common PageComponent properties
+ * are present.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
+ * @see atlas.entity.PageComponent
  */
 @Entity
 @Table(name = "HEADLINECOMPONENT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "HeadlineComponent.findAll", query = "SELECT h FROM HeadlineComponent h")})
 public class HeadlineComponent extends PageComponent implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id

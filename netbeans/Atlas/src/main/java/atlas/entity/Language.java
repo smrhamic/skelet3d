@@ -9,27 +9,22 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.NoResultException;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents a language used in localization.
+ * This entity class is mapped to "LANGUAGE" database table.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @Entity
 @Table(name = "LANGUAGE")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Language.findAll", query = "SELECT l FROM Language l")})
 public class Language implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,42 +50,6 @@ public class Language implements Serializable {
     public Language(Integer id) {
         this.id = id;
     }
-    
-//    public static List<Language> getAllLanguages(EntityManager em) {
-//        // get all supported languages from db
-//        TypedQuery<Language> query = em.createQuery(
-//                "SELECT l FROM Language l ",
-//                Language.class);
-//        return query.getResultList();
-//    }
-    
-//    public static Language getDefaultLanguage(EntityManager em) {
-//        // get default flagged language
-//        // if none, null
-//        try {
-//            TypedQuery<Language> query = em.createQuery(
-//                    "SELECT l FROM Language l "
-//                            + "WHERE l.defaultLang = TRUE",
-//                    Language.class);
-//            return query.getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
-//    
-//    public static Language getLanguageByISO639(EntityManager em, String code) {
-//        // get language with matching code
-//        // if none, null
-//        try {
-//            TypedQuery<Language> query = em.createQuery(
-//                    "SELECT l FROM Language l "
-//                            + "WHERE l.short1 = :code",
-//                    Language.class);
-//            return query.setParameter("code", code).getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
 
     public Integer getId() {
         return id;

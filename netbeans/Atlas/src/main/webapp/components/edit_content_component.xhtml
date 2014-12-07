@@ -15,13 +15,13 @@
                         <!-- Display type of component -->
                         <h:panelGroup class="componentType">
                             <h:outputText rendered="#{component.componentType == 'text'}"
-                                          value="#{strings.text}"/>
+                                          value="#{strings['editor.text']}"/>
                             <h:outputText rendered="#{component.componentType == 'headline'}"
-                                          value="#{strings.headline}"/>
+                                          value="#{strings['editor.headline']}"/>
                             <h:outputText rendered="#{component.componentType == 'model'}"
-                                          value="#{strings.model}"/>
+                                          value="#{strings['editor.model']}"/>
                             <h:outputText rendered="#{component.componentType == 'image'}"
-                                          value="#{strings.image}"/>
+                                          value="#{strings['editor.image']}"/>
                         </h:panelGroup>
                         <h:panelGroup class="componentTopButtons">
                             <h:commandButton value="&#x2191;"
@@ -32,7 +32,7 @@
                                              action="#{pageManager.bumpComponentDown(component)}">
                                 <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
-                            <h:commandButton value="#{strings.delete}"
+                            <h:commandButton value="#{strings['delete']}"
                                              action="#{pageManager.removeComponent(component)}">
                                 <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
@@ -56,7 +56,7 @@
                     
                     <!-- Display if MODEL component -->
                     <h:panelGroup rendered="#{component.componentType == 'model'}">
-                        #{strings.model}:
+                        #{strings['editor.model']}:
                         <h:selectOneMenu value="#{component.model}" converter="#{modelConverter}">
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
                             <f:selectItems value="#{modelManager.allModels}" var="m"
@@ -64,9 +64,9 @@
                             <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>
                         <br />
-                        <h:outputText class="warning" value="#{strings.oneModelPerPage}"/>
+                        <h:outputText class="warning" value="#{strings['editor.oneModelPerPage']}"/>
                         <br />
-                        #{strings.description}
+                        #{strings['editor.description']}
                         <br />
                         <h:inputTextarea class="longField unresizable" rows="3"
                                          value="#{component.description}">
@@ -76,7 +76,7 @@
                     
                     <!-- Display if IMAGE component -->
                     <h:panelGroup rendered="#{component.componentType == 'image'}">
-                        #{strings.image}:
+                        #{strings['editor.image']}:
                         <h:selectOneMenu value="#{component.image}" converter="#{imageConverter}">
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
                             <f:selectItems value="#{imageManager.allImages}" var="im"
@@ -84,7 +84,7 @@
                             <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>
                         <br /><br />
-                        #{strings.description}
+                        #{strings['editor.description']}
                         <br />
                         <h:inputTextarea class="longField unresizable" rows="3"
                                          value="#{component.description}">

@@ -15,11 +15,13 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 /**
- * Controller for images.xhtml component.
+ * Provides ways to manage images.
+ * ViewScoped managed bean, controller for images.xhtml component.
  * Provides methods to manage images and delegate related
- * user requests to service layer.
+ * client requests to service layer.
+ * Initializes list of available images post-construct.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @ViewScoped
 @Named("imageManager")

@@ -20,10 +20,10 @@
                         </h:inputText>
                     </div>
                     <div class="buttonCell">
-                        <h:commandButton value="#{strings.changeName}"
+                        <h:commandButton value="#{strings['changeName']}"
                                          action="#{imageManager.updateImage(item)}"/>
-                        <h:commandButton onclick="if(!confirm('#{strings.confirmDelete}')) return false"
-                                         value="#{strings.delete}"
+                        <h:commandButton onclick="if(!confirm('#{strings['confirmDelete']}')) return false"
+                                         value="#{strings['delete']}"
                                          action="#{imageManager.removeImage(item)}"/>
                     </div>
                 </h:form>

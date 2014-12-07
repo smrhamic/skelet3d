@@ -14,10 +14,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Controller of path.xhtml component.
  * Provides path to current page.
+ * RequestScoped managed bean, controller of path.xhtml component.
+ * Should be initialized by calling the init() method.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @RequestScoped
 @Named("pathManager")
@@ -63,7 +64,7 @@ public class PathManager extends BasicManager implements Serializable {
         }   
         // loop for parents all the way to root, add to beginning for correct order
         while (parentEntity != null){
-            pathToCurrent.add(0, categoryService.getCategoryView(
+            pathToCurrent.add(0, categoryService.createCategoryView(
                     parentEntity, languageManager.getCurrentLanguage()));
             parentEntity = parentEntity.getParentCategory();
         }

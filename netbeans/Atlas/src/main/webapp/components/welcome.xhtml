@@ -9,12 +9,12 @@
         <ui:component>
             <h:outputStylesheet name="category.css" library="css" />
             
-            <h2><h:outputText value="#{strings.welcome}" /></h2>
+            <h2><h:outputText value="#{strings['welcome.welcome']}" /></h2>
 
             <hr class="fancy-line" />
             
             <h3 id="subcategoryHeadline">
-                <h:outputText value="#{strings.mainCategories}" />
+                <h:outputText value="#{strings['welcome.mainCategories']}" />
             </h3>
                 
             <ui:repeat value="#{categoryManager.childCategories}"

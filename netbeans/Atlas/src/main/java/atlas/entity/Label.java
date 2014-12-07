@@ -16,22 +16,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Represents a label for a point in a 3D model.
+ * This entity class is mapped to "LABEL" database table.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.LabelContent
+ * @see atlas.entity.view.LabelView
  */
 @Entity
 @Table(name = "LABEL")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Label.findAll", query = "SELECT l FROM Label l")})
 public class Label implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

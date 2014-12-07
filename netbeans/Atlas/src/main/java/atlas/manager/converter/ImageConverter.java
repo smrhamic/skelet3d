@@ -10,8 +10,11 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 /**
+ * Simple converter implementation for Image.
+ * Converts between Image entity and Image.id string
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Image
  */
 @Named("imageConverter")
 @RequestScoped

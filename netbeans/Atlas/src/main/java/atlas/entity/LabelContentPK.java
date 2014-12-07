@@ -12,8 +12,10 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Primary key for LabelContent.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.LabelContent
  */
 @Embeddable
 public class LabelContentPK implements Serializable {

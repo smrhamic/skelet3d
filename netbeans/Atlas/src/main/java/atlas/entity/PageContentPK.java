@@ -12,8 +12,10 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Primary key for PageContent.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
  */
 @Embeddable
 public class PageContentPK implements Serializable {

@@ -13,8 +13,6 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -22,14 +20,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
+ * Represents localized content of a page.
+ * This entity class is mapped to "PAGECONTENT" database table.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Page
+ * @see atlas.entity.PageComponent
  */
 @Entity
 @Table(name = "PAGECONTENT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "PageContent.findAll", query = "SELECT p FROM PageContent p")})
 public class PageContent implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

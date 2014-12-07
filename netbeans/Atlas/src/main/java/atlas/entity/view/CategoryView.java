@@ -8,11 +8,14 @@ package atlas.entity.view;
 import atlas.entity.Category;
 
 /**
- * Represents a set of attributes of CategoryInfo and its related Category.
- * Namely, attributes needed for generating lists and links such as localized
- * name and category ID.
+ * Represents a localized view of a category.
+ * Basically a set of attributes of CategoryInfo and its related Category.
+ * Namely, attributes useful for generating category lists and links
+ * (ID, localized name, latin name, number of pages).
  * 
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Category
+ * @see atlas.entity.CategoryInfo
  */
 public class CategoryView {
         
@@ -21,8 +24,18 @@ public class CategoryView {
     private String latin;
     private int numPages;
 
+    /**
+     * Constructs a blank CategoryView.
+     */
     public CategoryView() {}
 
+    /**
+     * Constructs a populated CategoryView based on given values.
+     *
+     * @param c Category to construct a view for.
+     * @param name Localized name of the category.
+     * @param numPages Number of pages in the category.
+     */
     public CategoryView(Category c, String name, int numPages) {
         this.id = c.getId();
         this.latin = c.getLatin();
@@ -62,11 +75,4 @@ public class CategoryView {
         this.numPages = numPages;
     }
     
-    public static CategoryView getDefaultCategoryView() {
-        CategoryView cv = new CategoryView();
-        cv.id = 0;
-        cv.latin = "no name";
-        cv.name = "no name";
-        return cv;
-    }
 }

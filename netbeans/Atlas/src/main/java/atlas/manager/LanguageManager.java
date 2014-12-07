@@ -12,9 +12,12 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
- * Manages internationalization (locales and site languages)
+ * Manages internationalization (locales and site languages).
+ * SessionScoped managed bean, controller for language_bar.xhtml component.
+ * Locale, language and list of available languages are initialized
+ * post-construct. Language matches browser preference or resorts to default.
  * 
- * @author Michal
+ * @author Michal Smrha
  */
 @SessionScoped
 @Named("languageManager")
@@ -38,11 +41,11 @@ public class LanguageManager extends BasicManager implements Serializable {
         locale = FacesContext.getCurrentInstance().getViewRoot().getLocale();
         String langCode = locale.getLanguage();
         
-        currentLanguage = languageService.getLanguageByISO639(langCode);
+        currentLanguage = languageService.findLanguageByISO639(langCode);
         
         // set to default if it fails
         if (currentLanguage == null) {
-            currentLanguage = languageService.getDefaultLanguage();
+            currentLanguage = languageService.findDefaultLanguage();
         }
         
         // get all supported languages

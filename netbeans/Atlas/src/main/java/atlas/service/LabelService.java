@@ -13,8 +13,14 @@ import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 
 /**
+ * Provides CRUD persistence and other methods for Label entity.
+ * This is an EJB Stateless session bean.
+ * It can also create LabelViews for a model and update labels
+ * from a JSON string.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Label
+ * @see atlas.service.BasicService
  */
 @Stateless
 public class LabelService extends BasicService<Label, Integer> {
@@ -24,11 +30,23 @@ public class LabelService extends BasicService<Label, Integer> {
     @EJB
     LabelContentService labelContentService;
     
+    /**
+     * Constructs a LabelService.
+     */
     public LabelService() {
         super(Label.class);
     }
     
-    public List<LabelView> getLabelViews(Model model, Language lang) {
+    /**
+     * Creates LabelViews for a given Model in given Language.
+     *
+     * @param model Model to create LabelViews for.
+     * @param lang Language to create LabelViews in.
+     * @return LabelViews for all Labels of given Model in given Language.
+     * @see atlas.entity.Label
+     * @see atlas.entity.view.LabelView
+     */
+    public List<LabelView> createLabelViews(Model model, Language lang) {
         // find labels for model in language
         TypedQuery<LabelView> query = em.createQuery(
                 "SELECT NEW atlas.entity.view.LabelView(l.id, lc.title, lc.text, "
@@ -42,6 +60,15 @@ public class LabelService extends BasicService<Label, Integer> {
         return lvs;
     }
     
+    /**
+     * Updates Labels for a Model based on a JSON String.
+     * The changes include creation, deletion and updates.
+     * Changes are persisted.
+     *
+     * @param json JSON String representing an array of changed LabelViews.
+     * @param model Model whose Labels should be updated.
+     * @param lang For which Language the Labels should be updated.
+     */
     public void updateLabelsFromJSON(String json, Model model, Language lang) {
         // parse JSON
         Gson gson = new Gson();

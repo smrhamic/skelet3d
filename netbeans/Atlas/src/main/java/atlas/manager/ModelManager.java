@@ -15,11 +15,13 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 /**
- * Controller for models.xhtml component.
+ * Provides ways to manage 3D models.
+ * ViewScoped managed bean, controller for models.xhtml component.
  * Provides methods to manage models and delegate related
- * user requests to service layer.
+ * client requests to service layer.
+ * Initializes list of available models post-construct.
  *
- * @author Michal
+ * @author Michal SmrhaInitialized list of available models post-construct.
  */
 @ViewScoped
 @Named("modelManager")

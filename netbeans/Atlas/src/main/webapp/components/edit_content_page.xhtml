@@ -10,54 +10,54 @@
             <h:outputStylesheet name="page.css" library="css" />
             
             <h2 id="pageName">
-                <h:outputText value="#{strings.pageEditor}" />
+                <h:outputText value="#{strings['editor.pageEditor']}" />
             </h2>
             
             <hr class="fancy-line" />
             
             <div class="editColumn">
-                #{strings.languageVariant}
+                #{strings['editor.languageVariant']}
                 <br />
                 <h:panelGroup class="bold bottomSpace" layout="block">
                     #{languageManager.currentLanguage.name}
                 </h:panelGroup>
                 <h:form id="editPageForm">
-                    #{strings.pageName}
+                    #{strings['editor.pageName']}
                     <br />
                     <h:inputText class="longField bottomSpace" value="#{pageManager.pageContent.name}"/>
                     <br />
-                    #{strings.pageLatin}
+                    #{strings['editor.pageLatin']}
                     <br />
                     <h:inputText class="longField bottomSpace" value="#{pageManager.page.latin}"/>
                     <br />
-                    #{strings.addComponent}
+                    #{strings['editor.addComponent']}
                     <h:panelGroup class="bottomSpace" layout="block">
-                        <h:commandButton class="addButton" value="#{strings.text}"
+                        <h:commandButton class="addButton" value="#{strings['editor.text']}"
                                          action="#{pageManager.addComponent('text')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
-                        <h:commandButton class="addButton" value="#{strings.headline}"
+                        <h:commandButton class="addButton" value="#{strings['editor.headline']}"
                                          action="#{pageManager.addComponent('headline')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
-                        <h:commandButton class="addButton" value="#{strings.image}"
+                        <h:commandButton class="addButton" value="#{strings['editor.image']}"
                                          action="#{pageManager.addComponent('image')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
-                        <h:commandButton class="addButton" value="#{strings.model}"
+                        <h:commandButton class="addButton" value="#{strings['editor.model']}"
                                          action="#{pageManager.addComponent('model')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                     </h:panelGroup>
                     <h:panelGroup class="bottomSpace" layout="block">
-                        #{strings.published}
+                        #{strings['editor.published']}
                         <h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
                     </h:panelGroup>
                     <h:commandButton id="saveButton" class="saveButton"
-                                     binding="#{pageManager.saveButton}" value="#{strings.saveButton}"
+                                     binding="#{pageManager.saveButton}" value="#{strings['saveButton']}"
                                      action="#{pageManager.updatePage(true)}">
                         <f:ajax render=":contentBlock :message saveMessage" />
                     </h:commandButton>

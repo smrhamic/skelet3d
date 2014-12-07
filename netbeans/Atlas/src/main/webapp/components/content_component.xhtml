@@ -54,26 +54,24 @@
                 <div id="container">
                     <!-- setup JS variables -->
                     <script type="text/javascript">
+                        // display editor GUI?
                         var editable = #{loginManager.editor};
+                        // input and submit for posting updates to server
                         var labelUpdateInput =
                                 document.getElementById('#{labelUpdateInput.clientId}');
                         var labelUpdateButton =
                                 document.getElementById('#{labelUpdateButton.clientId}');
+                        // path to the 3D model
                         var modelPath = './models/${component.model.filename}';
+                        
                         var strings = {};
-                            strings['selectLabel'] = '#{strings.selectLabel}';
-                            strings['labels'] = '#{strings.showLabels}';
-                            strings['pins'] = '#{strings.showPins}';
-                            strings['none'] = '#{strings.showNoLabels}';
-                            strings['addLabel'] = '#{strings.addLabel}';
-                            strings['defaultTitle'] = '#{strings.defaultLabelTitle}';
-                            strings['defaultText'] = '#{strings.defaultLabelText}';
-                            strings['deleteLabel'] = '#{strings.deleteLabel}';
-                            strings['confirmDelete'] = '#{strings.confirmDeleteLabel}';
-                            strings['saveButton'] = '#{strings.saveButton}';
-                            strings['confirmSave'] = '#{strings.confirmSave}';
-                            strings['unsavedChanges'] = '#{strings.unsavedChanges}';
+                        // get all the relevant localized strings
+                        <ui:repeat var="key" value="#{strings3d.keySet().toArray()}">
+                            strings['#{key}'] = '#{strings3d.getString(key)}';
+                        </ui:repeat>
+                
                         var labels = new Array(0);
+                        // get all the localized labels (LabelViews)
                         <ui:repeat var="label" value="#{pageManager.labels}" varStatus="status">
                             var l = new Object();
                             l.id = #{label.id};

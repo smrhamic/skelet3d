@@ -7,16 +7,19 @@
     <h:body>
         <ui:component>
             <h:form id="loginForm" rendered = "#{!loginManager.logged}">
-                <h:outputText class="fieldLabel" value="#{strings.userNameLabel}" />
+                <h:outputText class="fieldLabel" value="#{strings['login.userNameLabel']}" />
                 <h:inputText id="username" value="#{loginManager.userName}" ></h:inputText>
-                <h:outputText class="fieldLabel" value="#{strings.passLabel}" />
+                <h:outputText class="fieldLabel" value="#{strings['login.passLabel']}" />
                 <h:inputSecret id="password" value="#{loginManager.password}"></h:inputSecret>
-                <h:commandButton action="#{loginManager.login}" value="#{strings.loginButton}"></h:commandButton>
+                <h:commandButton action="#{loginManager.login}"
+                                 value="#{strings['login.loginButton']}"></h:commandButton>
             </h:form>
 
             <h:form id="logoutForm" rendered = "#{loginManager.logged}">      
-                <h:outputText class="fieldLabel" value= "#{strings.loggedLabel} #{loginManager.currentUser.name}" />
-                <h:commandButton action="#{loginManager.logout}" value="#{strings.logoutButton}"></h:commandButton>
+                <h:outputText class="fieldLabel"
+                              value= "#{strings['login.loggedLabel']} #{loginManager.currentUser.name}" />
+                <h:commandButton action="#{loginManager.logout}"
+                                 value="#{strings['login.logoutButton']}"></h:commandButton>
             </h:form>
         </ui:component>
     </h:body>

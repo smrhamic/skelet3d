@@ -26,10 +26,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Controller of content_page.xhtml component.
  * Provides content for the page.
+ * ViewScoped managed bean, controller of content_page.xhtml component.
+ * Should be initialized by calling the init() method.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @ViewScoped
 @Named("pageManager")
@@ -97,7 +98,7 @@ public class PageManager extends BasicManager implements Serializable {
                     // don't want a null model
                     if (model != null) {
                         components.add(pageContent.getModelComponentList().get(0));
-                        labels = labelService.getLabelViews(
+                        labels = labelService.createLabelViews(
                                 model, languageManager.getCurrentLanguage());
                     }
                 }

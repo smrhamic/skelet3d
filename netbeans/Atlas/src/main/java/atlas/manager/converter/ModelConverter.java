@@ -10,8 +10,11 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 /**
+ * Simple converter implementation for Model.
+ * Converts between Model entity and Model.id string
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Model
  */
 @Named("modelConverter")
 @RequestScoped

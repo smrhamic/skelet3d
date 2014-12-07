@@ -5,20 +5,13 @@
  */
 package atlas.entity.view;
 
-import atlas.entity.Language;
-import atlas.entity.Model;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
 /**
- * Represents a set of attributes of LabelContent and its related Label.
- * Namely, attributes needed for displaying labels such as localized
- * title, text and label position.
+ * Represents a localized view of label.
+ * Basically a set of attributes of LabelContent and its related Label.
  * 
- * Also used to persist updates made in the view.
- * 
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Label
+ * @see atlas.entity.LabelContent
  */
 public class LabelView {
         
@@ -29,6 +22,19 @@ public class LabelView {
     private double markX, markY, markZ;
     private double labelX, labelY, labelZ;
 
+    /**
+     * Constructs a populated LabelView.
+     *
+     * @param id Label ID
+     * @param title Localized title
+     * @param text Localized text (description, details)
+     * @param markX X coordinate of the mark (point on 3D model)
+     * @param markY Y coordinate of the mark (point on 3D model)
+     * @param markZ Z coordinate of the mark (point on 3D model)
+     * @param labelX X coordinate of the label (where label floats)
+     * @param labelY Y coordinate of the label (where label floats)
+     * @param labelZ Z coordinate of the label (where label floats)
+     */
     public LabelView(int id, String title, String text,
             double markX, double markY, double markZ,
             double labelX, double labelY, double labelZ) {
@@ -42,23 +48,6 @@ public class LabelView {
         this.labelY = labelY;
         this.labelZ = labelZ;
     }
-
-//    public static List<LabelView> getLabelViews(
-//        EntityManager em, Model model, Language lang) {
-//        // find labels for model in language
-//
-//        TypedQuery<LabelView> query = em.createQuery(
-//                "SELECT NEW atlas.entity.view.LabelView(l.id, lc.title, lc.text, "
-//                        + "l.markX, l.markY, l.markZ, "
-//                        + "l.labelX, l.labelY, l.labelZ) "
-//                        + "FROM Label l JOIN l.labelContentList lc "
-//                        + "WHERE l.model = :model AND lc.language1 = :lang",
-//                LabelView.class);
-//        List<LabelView> lvs = query.setParameter("model", model).setParameter("lang", lang)
-//                .getResultList();
-//
-//        return lvs;
-//    }
 
     public int getId() {
         return id;

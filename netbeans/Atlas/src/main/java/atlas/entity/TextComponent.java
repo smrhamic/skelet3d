@@ -16,20 +16,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents a block of text in page content.
+ * This entity class is mapped to "TEXTCOMPONENT" database table.
+ * In addition to mapped properties, common PageComponent properties
+ * are present.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
+ * @see atlas.entity.PageComponent
  */
 @Entity
 @Table(name = "TEXTCOMPONENT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TextComponent.findAll", query = "SELECT t FROM TextComponent t")})
 public class TextComponent extends PageComponent implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

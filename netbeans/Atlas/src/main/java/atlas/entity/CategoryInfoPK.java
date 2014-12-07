@@ -12,8 +12,10 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Primary key for CategoryInfo.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.CategoryInfo
  */
 @Embeddable
 public class CategoryInfoPK implements Serializable {

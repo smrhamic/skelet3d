@@ -11,16 +11,31 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 /**
+ * Provides CRUD persistence for PageContent entity.
+ * This is an EJB Stateless session bean.
+ * It also updates the PageComponents related to the PageContent.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
+ * @see atlas.service.BasicService
  */
 @Stateless
 public class PageContentService extends BasicService<PageContent, PageContentPK> {
 
+    /**
+     * Construct PageContentService
+     */
     public PageContentService() {
         super(PageContent.class);
     }
     
+    /**
+     * Updates a PageContent including its PageComponents.
+     * Components are replaced by the list passed to this method.
+     *
+     * @param pageContent PageContent to be updated.
+     * @param components PageComponents to be replace the old ones.
+     */
     public void updateWithComponents(
             PageContent pageContent, List<PageComponent> components) {
 

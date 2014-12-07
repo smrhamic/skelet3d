@@ -9,28 +9,23 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.NoResultException;
 import javax.persistence.Table;
-import javax.persistence.TypedQuery;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents a registered user of the application.
+ * This entity class is mapped to "ATLASUSER" database table.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @Entity
 @Table(name = "ATLASUSER")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "AtlasUser.findAll", query = "SELECT a FROM AtlasUser a")})
 public class AtlasUser implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,21 +53,6 @@ public class AtlasUser implements Serializable {
     public AtlasUser(String login) {
         this.login = login;
     }
-
-//    public static AtlasUser login(EntityManager em, String login, String pass) {
-//        // find user with this login, password
-//        // if nothing matches, null is returned
-//        try {
-//            TypedQuery<AtlasUser> query = em.createQuery(
-//                    "SELECT u FROM AtlasUser u "
-//                            + "WHERE u.login = :login AND u.pass = :pass",
-//                    AtlasUser.class);
-//            return query.setParameter("login", login).setParameter("pass", pass)
-//                    .getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
     
     public String getLogin() {
         return login;

@@ -7,7 +7,7 @@ import javax.faces.context.FacesContext;
 /**
  * Contains basic methods useful for all inheriting Managers.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 public abstract class BasicManager {
     

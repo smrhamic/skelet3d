@@ -12,21 +12,21 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents localized content of a label.
+ * This entity class is mapped to "LABELCONTENT" database table.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.Label
+ * @see atlas.entity.view.LabelView
  */
 @Entity
 @Table(name = "LABELCONTENT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "LabelContent.findAll", query = "SELECT l FROM LabelContent l")})
 public class LabelContent implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId

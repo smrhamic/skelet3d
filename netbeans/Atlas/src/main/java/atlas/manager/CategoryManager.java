@@ -16,10 +16,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- * Controller for category.xhtml component.
- * Provides content for browsing categories. 
+ * Provides content for browsing categories.
+ * ViewScoped managed bean, controller for category.xhtml component.
+ * Should be initialized by calling the init() method.
  *
- * @author Michal
+ * @author Michal Smrha
  */
 @ViewScoped
 @Named("categoryManager")
@@ -51,6 +52,8 @@ public class CategoryManager extends BasicManager implements Serializable {
   
     /**
      * Initializes current Category based on bound "categoryId".
+     * Creates localized views of current Category, its subcategories
+     * and pages. Also creates views of root categories.
      */
     public void init() {
         // reload all - only for testing - comment out later
@@ -61,17 +64,21 @@ public class CategoryManager extends BasicManager implements Serializable {
         
         // get CategoryView if entity is set, otherwise default
         if (currentCategoryEntity != null) {
-            currentCategory = categoryService.getCategoryView(
+            currentCategory = categoryService.createCategoryView(
                     currentCategoryEntity, languageManager.getCurrentLanguage());
         } else {
-            currentCategory = CategoryView.getDefaultCategoryView();
+            CategoryView emptyCV = new CategoryView();
+            emptyCV.setId(0);
+            emptyCV.setName("");
+            emptyCV.setLatin("");
+            currentCategory = emptyCV;
         }
         
         // get root categories
         rootCategories = new ArrayList<>();
         // add root CategoryViews to list
-        for (Category entity : categoryService.getRootCategories()) {
-            rootCategories.add(categoryService.getCategoryView(
+        for (Category entity : categoryService.findRootCategories()) {
+            rootCategories.add(categoryService.createCategoryView(
                     entity, languageManager.getCurrentLanguage()));
         }
         
@@ -85,7 +92,7 @@ public class CategoryManager extends BasicManager implements Serializable {
             // add child CategoryViews to list if entity is set, otherwise remain empty
             if (currentCategoryEntity != null) {
                 for ( Category entity : currentCategoryEntity.getCategoryList() ) {
-                    childCategories.add(categoryService.getCategoryView(
+                    childCategories.add(categoryService.createCategoryView(
                     entity, languageManager.getCurrentLanguage()));
                 }
             }
@@ -97,7 +104,7 @@ public class CategoryManager extends BasicManager implements Serializable {
         if (currentCategoryEntity != null) {
             PageView pv;
             for (Page entity : currentCategoryEntity.getPageList()) {
-                pv = pageService.getPageView(
+                pv = pageService.createPageView(
                         entity, languageManager.getCurrentLanguage());
                 // add if published OR add all if editor is logged
                 if(loginManager.isEditor() || pv.getPublished()) {
@@ -111,7 +118,7 @@ public class CategoryManager extends BasicManager implements Serializable {
      * Creates new blank page in current category and sets FacesMessage.
      * Checks if editor is logged.
      * If this check fails, nothing is created and warning is set.
-     * If all checks pass, page is created and info is set..
+     * If all checks pass, page is created and info is set.
      *
      * @param ajax True if called by ajax, false if refresh is needed.
      * @return Redirection string, null if ajax.
@@ -159,7 +166,7 @@ public class CategoryManager extends BasicManager implements Serializable {
         }
         
         // save name for msg
-        String pageName = pageService.getPageView(
+        String pageName = pageService.createPageView(
                 pageService.find(pageId), languageManager.getCurrentLanguage())
                 .getName();
         

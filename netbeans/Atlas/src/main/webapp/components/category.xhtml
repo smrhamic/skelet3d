@@ -20,7 +20,7 @@
             <hr class="fancy-line" />
             
             <h3 id="subcategoryHeadline">
-                <h:outputText value="#{strings.subcategories}"
+                <h:outputText value="#{strings['category.subcategories']}"
                               rendered="#{categoryManager.childCategories.size() > 0}" />
             </h3>
                 
@@ -33,14 +33,14 @@
             </ui:repeat>
             
             <h3 id="subcategoryHeadline">
-                <h:outputText value="#{strings.pages}"
+                <h:outputText value="#{strings['category.pages']}"
                               rendered="#{categoryManager.pages.size() > 0}" />
             </h3>
             
             <div class="newPageButtonDiv">
                 <h:form rendered="#{loginManager.editor}">
                     <h:commandButton class="newPageButton"
-                                     value="#{strings.addPage}"
+                                     value="#{strings['category.addPage']}"
                                      action="#{categoryManager.addNewPage(true)}">
                         <f:ajax render=":pageList :message" />
                     </h:commandButton>
@@ -58,7 +58,7 @@
             </h:panelGroup>
             
             <div id="empty_category">
-                <h:outputText value="#{strings.emptyCategory}"
+                <h:outputText value="#{strings['category.emptyCategory']}"
                               rendered="#{categoryManager.pages.size() +
                                            categoryManager.childCategories.size() == 0}" />
             </div>

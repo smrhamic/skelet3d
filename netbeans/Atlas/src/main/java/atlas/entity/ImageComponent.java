@@ -16,20 +16,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Represents an image (with description) in page content.
+ * This entity class is mapped to "IMAGECOMPONENT" database table.
+ * In addition to mapped properties, common PageComponent properties
+ * are present.
  *
- * @author Michal
+ * @author Michal Smrha
+ * @see atlas.entity.PageContent
+ * @see atlas.entity.PageComponent
  */
 @Entity
 @Table(name = "IMAGECOMPONENT")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "ImageComponent.findAll", query = "SELECT i FROM ImageComponent i")})
 public class ImageComponent extends PageComponent implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
