@@ -1,6 +1,9 @@
 html, body { margin: 0; padding: 0; height: 100%; }
 body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #ccccff); }
 
+h2 { text-align: center; font-size: 20pt; font-weight: bold; }
+h3 { text-align: left; font-size: 16pt; font-weight: bold; }
+
 #page { width: 100%; max-width: 800px; min-height: 100%;
         margin-left: auto; margin-right: auto;
         background-color: white; position: relative; }
@@ -28,7 +31,8 @@ body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #c
 #pathBar div { margin-top: 20px; }
 
 
-#content { padding-bottom: 60px; overflow: auto; }
+#content { padding-bottom: 60px; overflow: auto; 
+           margin-left: 5px; margin-right: 5px; }
 
 #footerBar { width: 100%; height: 40px; position: absolute;
             bottom: 0; left: 0; text-align: center; }
@@ -45,6 +49,9 @@ body { background: linear-gradient(90deg, #ccccff, #ffffff, #ffffff, #ffffff, #c
 .fixNewLines { white-space: pre-wrap; }
 .mainHeadline { text-align: center; font-size: 24pt; font-weight: bold; }
 .undecoratedLink { color: black; text-decoration: none; }
+.mediumImage { width: 500px; max-width: 100%;
+              margin-left: auto; margin-right: auto; display: block; }
+.marginRight { margin-right: 50px; }
 
 
 /* Fancy Line, taken from
