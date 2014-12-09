@@ -10,17 +10,17 @@
             <h:outputStylesheet name="page.css" library="css" />
             
             <h2 id="pageName">
-                <h:outputText value="#{pageManager.pageContent.name}" />
+                <h:outputText value="#{pageController.pageContent.name}" />
             </h2>
             
             <h2 id="pageLatin">
-                <h:outputText value="#{pageManager.page.latin}" />
+                <h:outputText value="#{pageController.page.latin}" />
             </h2>
             
             <hr class="fancy-line" />
             
             <h:panelGroup class="pageContent" layout="block">
-                <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
+                <ui:repeat var="c" value="#{pageController.components}" varStatus="status">
                     <ui:include src="content_component.xhtml">
                         <ui:param name="listPosition" value="#{status.index}" />
                     </ui:include>

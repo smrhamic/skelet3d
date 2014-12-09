@@ -21,20 +21,20 @@
                 <h:form enctype="multipart/form-data">
                     #{strings['model.modelFile']}:
                     <h:inputFile class="mediumInput bottomSmallMargin"
-                                 value="#{modelManager.modelFile}"/>
+                                 value="#{modelController.modelFile}"/>
                     <br />
                     #{strings['model.modelName']}:
                     <h:inputText class="mediumInput bottomSmallMargin"
-                                 value="#{modelManager.newName}"/>
+                                 value="#{modelController.newName}"/>
                     <br />
                     <h:commandButton value="#{strings['upload']}"
-                        action="#{modelManager.upload()}"/>
+                        action="#{modelController.upload()}"/>
                 </h:form>
             </div>
             
             <h3 class="smallHeadline"> #{strings['model.uploadedModels']} </h3>
             
-            <ui:repeat value="#{modelManager.allModels}"
+            <ui:repeat value="#{modelController.allModels}"
                            var="item">
                 <ui:include src="model_item.xhtml" >
                     <ui:param name="item" value="#{item}" />

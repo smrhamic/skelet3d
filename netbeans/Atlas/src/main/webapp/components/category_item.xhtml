@@ -11,7 +11,7 @@
 
             <!-- Display if CATEGORY item -->
             <h:link class="undecoratedLink" outcome="browse" rendered="#{type == 'category'}">
-                <c:set var="item" value="#{categoryManager.childCategories[listPosition]}" />
+                <c:set var="item" value="#{categoryController.childCategories[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="categoryItem">
                     <div class="categoryItemIconCell">
@@ -31,7 +31,7 @@
             
             <!-- Display if PAGE item -->
             <h:link class="undecoratedLink" outcome="page" rendered="#{type == 'page'}">
-                <c:set var="item" value="#{categoryManager.pages[listPosition]}" />
+                <c:set var="item" value="#{categoryController.pages[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="#{item.published?'categoryItem':
                               'categoryItem unpublishedItem'}">
@@ -45,13 +45,13 @@
                         <span class="latin">#{item.latin}</span>
                     </div>
                     <div class="pageItemEdit">
-                        <h:form rendered="#{loginManager.editor}">
+                        <h:form rendered="#{loginController.editor}">
                             <h:commandButton value="#{strings['edit']}"
-                                             action="#{categoryManager.goEditPage(item.id)}"/>
+                                             action="#{categoryController.goEditPage(item.id)}"/>
                             <br />
                             <h:commandButton onclick="if(!confirm('#{strings['category.confirmDeletePage']}')) return false"
                                              value="#{strings['delete']}"
-                                             action="#{categoryManager.deletePage(item.id, true)}">
+                                             action="#{categoryController.deletePage(item.id, true)}">
                                 <f:ajax render=":pageList :message" />
                             </h:commandButton>
                         </h:form>

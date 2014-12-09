@@ -21,21 +21,21 @@
                 <h:form enctype="multipart/form-data">
                     #{strings['image.imageFile']}:
                     <h:inputFile class="mediumInput bottomSmallMargin"
-                                 value="#{imageManager.imageFile}"/>
+                                 value="#{imageController.imageFile}"/>
                     <br />
                     #{strings['image.imageName']}:
                     <h:inputText class="mediumInput bottomSmallMargin"
-                                 value="#{imageManager.newName}"/>
+                                 value="#{imageController.newName}"/>
                     <br />
                     <h:commandButton value="#{strings['upload']}"
-                                     action="#{imageManager.upload()}">
+                                     action="#{imageController.upload()}">
                     </h:commandButton>
                 </h:form>
             </div>
             
             <h3 class="smallHeadline"> #{strings['image.uploadedImages']} </h3>
             <h:panelGroup id="imageList">
-                <ui:repeat value="#{imageManager.allImages}"
+                <ui:repeat value="#{imageController.allImages}"
                                var="item">
                     <ui:include src="image_item.xhtml" >
                         <ui:param name="item" value="#{item}" />

@@ -1,15 +1,15 @@
-package atlas.manager;
+package atlas.controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
 /**
- * Contains basic methods useful for all inheriting Managers.
+ * Contains basic methods useful for all inheriting Controllers.
  *
  * @author Michal Smrha
  */
-public abstract class BasicManager {
+public abstract class BasicController {
     
     /**
      * Sets message with info severity to current FacesContext.

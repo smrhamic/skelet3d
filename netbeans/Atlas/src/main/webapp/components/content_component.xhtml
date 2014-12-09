@@ -8,7 +8,7 @@
 
     <body>
         <ui:component>
-            <c:set var="component" value="#{pageManager.components[listPosition]}" />
+            <c:set var="component" value="#{pageController.components[listPosition]}" />
             
             <!-- Display if HEADLINE component -->
             <h:panelGroup class="headlineComp" layout="block"
@@ -39,10 +39,10 @@
                 <!-- hidden input for recieving updated data -->
                 <h:form>
                     <h:inputHidden id="labelUpdate"
-                                   value="#{pageManager.labelUpdates}"
+                                   value="#{pageController.labelUpdates}"
                                    binding="#{labelUpdateInput}"/>
                     <h:commandButton id="labelUpdateButton"
-                                     action="#{pageManager.updateLabels()}"
+                                     action="#{pageController.updateLabels()}"
                                      binding="#{labelUpdateButton}"
                                      style="display: none;" />
                 </h:form>
@@ -55,7 +55,7 @@
                     <!-- setup JS variables -->
                     <script type="text/javascript">
                         // display editor GUI?
-                        var editable = #{loginManager.editor};
+                        var editable = #{loginController.editor};
                         // input and submit for posting updates to server
                         var labelUpdateInput =
                                 document.getElementById('#{labelUpdateInput.clientId}');
@@ -72,7 +72,7 @@
                 
                         var labels = new Array(0);
                         // get all the localized labels (LabelViews)
-                        <ui:repeat var="label" value="#{pageManager.labels}" varStatus="status">
+                        <ui:repeat var="label" value="#{pageController.labels}" varStatus="status">
                             var l = new Object();
                             l.id = #{label.id};
                             l.markX = #{label.markX};

@@ -1,7 +1,7 @@
-package atlas.manager;
+package atlas.controller;
 
-import atlas.entity.Model;
-import atlas.service.ModelService;
+import atlas.entity.Image;
+import atlas.service.ImageService;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,50 +15,50 @@ import javax.inject.Inject;
 import javax.servlet.http.Part;
 
 /**
- * Provides ways to manage 3D models.
- * ViewScoped managed bean, controller for models.xhtml component.
- * Provides methods to manage models and delegate related
+ * Provides ways to manage images.
+ * ViewScoped managed bean, controller for images.xhtml component.
+ * Provides methods to manage images and delegate related
  * client requests to service layer.
- * Initializes list of available models post-construct.
+ * Initializes list of available images post-construct.
  *
- * @author Michal SmrhaInitialized list of available models post-construct.
+ * @author Michal Smrha
  */
 @ViewScoped
-@Named("modelManager")
-public class ModelManager extends BasicManager implements Serializable {
+@Named("imageController")
+public class ImageController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // current session's LoginManager to verify the right to edit
+    // current session's LoginController to verify the right to edit
     @Inject
-    LoginManager loginManager;
+    LoginController loginController;
     
     // persistence services
     @EJB
-    ModelService modelService;
+    ImageService imageService;
 
     // bound properties
-    private List<Model> allModels;
-    private Part modelFile;
+    private List<Image> allImages;
+    private Part imageFile;
     private String newName;
 
     @PostConstruct
     private void init() {
-        // get all models
-        allModels = modelService.findAll();
+        // get all images
+        allImages = imageService.findAll();
         // sort by name, alphabetical, not case sensitive
-        Collections.sort(allModels, new Comparator<Model>() {
+        Collections.sort(allImages, new Comparator<Image>() {
             @Override
-            public int compare(Model m1, Model m2 ) {
-                return m1.getName().toLowerCase()
-                        .compareTo(m2.getName().toLowerCase());
+            public int compare(Image im1, Image im2 ) {
+                return im1.getName().toLowerCase()
+                        .compareTo(im2.getName().toLowerCase());
             }
         });
     }
     
     /**
-     * Uploads a new model file and adds it to the database.
-     * File and name are taken from bound properties "modelFile" and "newName".
+     * Uploads a new image file and adds it to the database.
+     * File and name are taken from bound properties "imageFile" and "newName".
      * Checks if editor is logged and file is selected.
      * If these checks fail, FacesMessage is set and redirect is null.
      * If all checks pass, file is uploaded and page is reloaded.
@@ -67,20 +67,20 @@ public class ModelManager extends BasicManager implements Serializable {
      */
     public String upload() {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
         }
         // do nothing if no file uploaded
-        if (modelFile == null) {
+        if (imageFile == null) {
             return null;
         }
         // send to service
-        modelService.uploadModel(newName, modelFile);
+        imageService.uploadImage(newName, imageFile);
         
         // set message
-        showInfo("#{messages.uploadedFile} "+modelFile.getSubmittedFileName());
+        showInfo("#{messages.uploadedFile} "+imageFile.getSubmittedFileName());
         
         // refresh without really refreshing...
         init();
@@ -88,92 +88,93 @@ public class ModelManager extends BasicManager implements Serializable {
     }
     
     /**
-     * Updates a database entry of a model.
+     * Updates a database entry of an image.
      * Checks if editor is logged.
      * If this check fails, FacesMessage is set and redirect is null.
      * If all checks pass, entry is updated and redirect reloads page.
      *
-     * @param model Model entity to be updated.
+     * @param image Image entity to be updated.
      * @return Redirection string.
      */
-    public String updateModel(Model model) {
+    public String updateImage(Image image) {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
         }
         // simple update
-        modelService.update(model);
+        imageService.update(image);
         // refresh
         return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
     }
     
     /**
-     * Deletes a model.
+     * Deletes an image.
      * Deletes both the file and database entry.
      * Checks if editor is logged.
-     * If this check fails, FacesMessage is set and redirect is null.
+     * Checks that image is not used in any component.
+     * If these checks fail, FacesMessage is set and redirect is null.
      * If all checks pass, image is deleted and redirect reloads page.
      *
-     * @param model Model entity to be removed.
+     * @param image Image entity to be removed.
      * @return Redirection string.
      */
-    public String removeModel(Model model) {
+    public String removeImage(Image image) {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
         }
-        // check if model is used somewhere
-        if (modelService.isUsed(model)) {
+        // check if image is used somewhere
+        if (imageService.isUsed(image)) {
             // add localized message if used
-            showWarning("#{messages.modelIsUsed}");
+            showWarning("#{messages.imageIsUsed}");
             return null;
         }
         // service does the dirty job
-        modelService.deleteModel(model);
+        imageService.deleteImage(image);
         // refresh
         return FacesContext.getCurrentInstance().getViewRoot().getViewId()
                 + "?faces-redirect=true&includeViewParams=true";
     }
 
     /**
-     * @return List of all available Model entities.
+     * @return List of all available Image entities.
      */
-    public List<Model> getAllModels() {
-        return allModels;
+    public List<Image> getAllImages() {
+        return allImages;
+    }
+    
+    /**
+     * @return File of a new Image in form of "Part" instance.
+     */
+    public Part getImageFile() {
+        return imageFile;
     }
 
     /**
-     * @return File of a new Model in form of "Part" instance.
-     */
-    public Part getModelFile() {
-        return modelFile;
-    }
-
-    /**
-     * Sets the model file to be uploaded by the "upload()" method.
+     * Sets the image file to be uploaded by the "upload()" method.
      *
-     * @param modelFile Model file in form of "Part" instance.
+     * @param imageFile Image file in form of "Part" instance.
      */
-    public void setModelFile(Part modelFile) {
-        this.modelFile = modelFile;
+    public void setImageFile(Part imageFile) {
+        this.imageFile = imageFile;
     }
 
     /**
-     * @return Name of a new Model.
+     * @return Name of a new Image.
      */
     public String getNewName() {
         return newName;
     }
 
     /**
-     * Sets the name of the model to be persisted by the "upload()" method.
+     * Sets the name of the image to be persisted by the "upload()" method.
      *
-     * @param newName Model name.
+     * @param newName Image name.
      */
     public void setNewName(String newName) {
         this.newName = newName;

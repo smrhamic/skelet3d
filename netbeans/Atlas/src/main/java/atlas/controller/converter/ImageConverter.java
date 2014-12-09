@@ -1,7 +1,7 @@
-package atlas.manager.converter;
+package atlas.controller.converter;
 
-import atlas.entity.Model;
-import atlas.service.ModelService;
+import atlas.entity.Image;
+import atlas.service.ImageService;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
@@ -10,18 +10,18 @@ import javax.faces.convert.Converter;
 import javax.inject.Named;
 
 /**
- * Simple converter implementation for Model.
- * Converts between Model entity and Model.id string
+ * Simple converter implementation for Image.
+ * Converts between Image entity and Image.id string
  *
  * @author Michal Smrha
- * @see atlas.entity.Model
+ * @see atlas.entity.Image
  */
-@Named("modelConverter")
+@Named("imageConverter")
 @RequestScoped
-public class ModelConverter implements Converter {
+public class ImageConverter implements Converter {
 
     @EJB
-    private ModelService modelService;
+    private ImageService imageService;
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
@@ -37,7 +37,7 @@ public class ModelConverter implements Converter {
             return null; 
         }
 
-        return modelService.find(id);
+        return imageService.find(id);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class ModelConverter implements Converter {
             return "";
         }
 
-        if (modelValue instanceof Model) {
-            return String.valueOf(((Model) modelValue).getId());
+        if (modelValue instanceof Image) {
+            return String.valueOf(((Image) modelValue).getId());
         } else {
             return "";
         }

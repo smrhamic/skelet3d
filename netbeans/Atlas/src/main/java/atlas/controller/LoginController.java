@@ -1,4 +1,4 @@
-package atlas.manager;
+package atlas.controller;
 
 import atlas.entity.AtlasUser;
 import atlas.service.UserService;
@@ -16,8 +16,8 @@ import javax.faces.context.FacesContext;
  * @author Michal Smrha
  */
 @SessionScoped
-@Named("loginManager")
-public class LoginManager extends BasicManager implements Serializable {
+@Named("loginController")
+public class LoginController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

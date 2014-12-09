@@ -1,4 +1,4 @@
-package atlas.manager;
+package atlas.controller;
 
 import atlas.entity.Category;
 import atlas.entity.Page;
@@ -21,14 +21,14 @@ import javax.inject.Named;
  * @author Michal Smrha
  */
 @RequestScoped
-@Named("pathManager")
-public class PathManager extends BasicManager implements Serializable {
+@Named("pathController")
+public class PathController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // current session's LanguageManager to get current language
+    // current session's LanguageController to get current language
     @Inject
-    LanguageManager languageManager;
+    LanguageController languageController;
     
     // persistence services
     @EJB
@@ -65,7 +65,7 @@ public class PathManager extends BasicManager implements Serializable {
         // loop for parents all the way to root, add to beginning for correct order
         while (parentEntity != null){
             pathToCurrent.add(0, categoryService.createCategoryView(
-                    parentEntity, languageManager.getCurrentLanguage()));
+                    parentEntity, languageController.getCurrentLanguage()));
             parentEntity = parentEntity.getParentCategory();
         }
     }

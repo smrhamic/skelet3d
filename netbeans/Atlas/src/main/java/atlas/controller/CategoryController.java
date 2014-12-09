@@ -1,4 +1,4 @@
-package atlas.manager;
+package atlas.controller;
 
 import atlas.entity.Category;
 import atlas.entity.Page;
@@ -23,18 +23,18 @@ import javax.inject.Named;
  * @author Michal Smrha
  */
 @ViewScoped
-@Named("categoryManager")
-public class CategoryManager extends BasicManager implements Serializable {
+@Named("categoryController")
+public class CategoryController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // current session's LanguageManager to get current language
+    // current session's LanguageController to get current language
     @Inject
-    LanguageManager languageManager;
+    LanguageController languageController;
     
-    // current session's LoginManager to verify the right to edit
+    // current session's LoginController to verify the right to edit
     @Inject
-    LoginManager loginManager;
+    LoginController loginController;
     
     // persistence services
     @EJB
@@ -65,7 +65,7 @@ public class CategoryManager extends BasicManager implements Serializable {
         // get CategoryView if entity is set, otherwise default
         if (currentCategoryEntity != null) {
             currentCategory = categoryService.createCategoryView(
-                    currentCategoryEntity, languageManager.getCurrentLanguage());
+                    currentCategoryEntity, languageController.getCurrentLanguage());
         } else {
             CategoryView emptyCV = new CategoryView();
             emptyCV.setId(0);
@@ -79,7 +79,7 @@ public class CategoryManager extends BasicManager implements Serializable {
         // add root CategoryViews to list
         for (Category entity : categoryService.findRootCategories()) {
             rootCategories.add(categoryService.createCategoryView(
-                    entity, languageManager.getCurrentLanguage()));
+                    entity, languageController.getCurrentLanguage()));
         }
         
         // get child categories
@@ -93,7 +93,7 @@ public class CategoryManager extends BasicManager implements Serializable {
             if (currentCategoryEntity != null) {
                 for ( Category entity : currentCategoryEntity.getCategoryList() ) {
                     childCategories.add(categoryService.createCategoryView(
-                    entity, languageManager.getCurrentLanguage()));
+                    entity, languageController.getCurrentLanguage()));
                 }
             }
         }
@@ -105,9 +105,9 @@ public class CategoryManager extends BasicManager implements Serializable {
             PageView pv;
             for (Page entity : currentCategoryEntity.getPageList()) {
                 pv = pageService.createPageView(
-                        entity, languageManager.getCurrentLanguage());
+                        entity, languageController.getCurrentLanguage());
                 // add if published OR add all if editor is logged
-                if(loginManager.isEditor() || pv.getPublished()) {
+                if(loginController.isEditor() || pv.getPublished()) {
                     pages.add(pv);
                 }
             }
@@ -125,7 +125,7 @@ public class CategoryManager extends BasicManager implements Serializable {
      */
     public String addNewPage(boolean ajax) {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
@@ -159,7 +159,7 @@ public class CategoryManager extends BasicManager implements Serializable {
      */
     public String deletePage(int pageId, boolean ajax) {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
@@ -167,7 +167,7 @@ public class CategoryManager extends BasicManager implements Serializable {
         
         // save name for msg
         String pageName = pageService.createPageView(
-                pageService.find(pageId), languageManager.getCurrentLanguage())
+                pageService.find(pageId), languageController.getCurrentLanguage())
                 .getName();
         
         // delete page
@@ -198,7 +198,7 @@ public class CategoryManager extends BasicManager implements Serializable {
      */
     public String goEditPage(int pageId) {
         // go to edit page if editor is logged, else stay
-        if (loginManager.isEditor()) {
+        if (loginController.isEditor()) {
             return "edit_page.xhtml?id=" + pageId + "&faces-redirect=true&includeViewParams=true";
         } else {
             return null;

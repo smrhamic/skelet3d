@@ -23,7 +23,7 @@
                 <h:outputText value="#{strings['welcome.mainCategories']}" />
             </h3>
                 
-            <ui:repeat value="#{categoryManager.childCategories}"
+            <ui:repeat value="#{categoryController.childCategories}"
                            var="sub" varStatus="status">
                 <ui:include src="category_item.xhtml">
                     <ui:param name="listPosition" value="#{status.index}" />

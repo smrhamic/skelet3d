@@ -1,4 +1,4 @@
-package atlas.manager;
+package atlas.controller;
 
 import atlas.entity.HeadlineComponent;
 import atlas.entity.ImageComponent;
@@ -33,18 +33,18 @@ import javax.inject.Named;
  * @author Michal Smrha
  */
 @ViewScoped
-@Named("pageManager")
-public class PageManager extends BasicManager implements Serializable {
+@Named("pageController")
+public class PageController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    // current session's LanguageManager to get current language
+    // current session's LanguageController to get current language
     @Inject
-    LanguageManager languageManager;
+    LanguageController languageController;
     
-    // current session's LoginManager to verify the right to edit
+    // current session's LoginController to verify the right to edit
     @Inject
-    LoginManager loginManager;
+    LoginController loginController;
     
     // persistence services
     @EJB
@@ -79,7 +79,7 @@ public class PageManager extends BasicManager implements Serializable {
         } else {
             // fetch content
             pageContent = pageContentService.find(new PageContentPK(
-                page.getId(), languageManager.getCurrentLanguage().getId()));
+                page.getId(), languageController.getCurrentLanguage().getId()));
         }    
         
         // get components
@@ -87,7 +87,7 @@ public class PageManager extends BasicManager implements Serializable {
         // only get content if it exists
         if(pageContent != null) {
             // display content if published or for editor
-            if(pageContent.getPublished() || loginManager.isEditor()) {
+            if(pageContent.getPublished() || loginController.isEditor()) {
                 // components
                 components.addAll(pageContent.getHeadlineComponentList());
                 components.addAll(pageContent.getTextComponentList());
@@ -99,7 +99,7 @@ public class PageManager extends BasicManager implements Serializable {
                     if (model != null) {
                         components.add(pageContent.getModelComponentList().get(0));
                         labels = labelService.createLabelViews(
-                                model, languageManager.getCurrentLanguage());
+                                model, languageController.getCurrentLanguage());
                     }
                 }
                 // sort components by compOrder and replace order values by 0, 1, 2..
@@ -126,7 +126,7 @@ public class PageManager extends BasicManager implements Serializable {
      */
     public String updatePage(boolean ajax) {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
@@ -268,7 +268,7 @@ public class PageManager extends BasicManager implements Serializable {
      */
     public String updateLabels() {
         // check edit rights
-        if (!loginManager.isEditor()) {
+        if (!loginController.isEditor()) {
             // add localized message if lacking edit rights
             showWarning("#{messages.noRights}");
             return null;
@@ -279,7 +279,7 @@ public class PageManager extends BasicManager implements Serializable {
 
         // don't do anything if 3D model is unset
         if (model == null) return url;
-        Language lang = languageManager.getCurrentLanguage();
+        Language lang = languageController.getCurrentLanguage();
         
         labelService.updateLabelsFromJSON(labelUpdates, model, lang);
         

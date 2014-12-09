@@ -10,7 +10,7 @@
         <ui:component>
             <div>
                 <h:link value="#{strings['homePath']}" outcome="index" />
-                <ui:repeat value="#{pathManager.pathToCurrent}" var="parent">
+                <ui:repeat value="#{pathController.pathToCurrent}" var="parent">
                     <h:outputText value=" &gt; " />
                         <h:link value="#{parent.name}" outcome="browse">
                             <f:param name="id" value="#{parent.id}" />

@@ -7,10 +7,10 @@
     <h:body>
         <ui:component>
             <h:panelGroup>
-                <ui:repeat var="lang" value="#{languageManager.supportedLanguages}">                    
+                <ui:repeat var="lang" value="#{languageController.supportedLanguages}">                    
                     <h:form>
                         <div class="flagDiv">
-                        <h:commandLink action="#{languageManager.switchLanguage(lang)}">
+                        <h:commandLink action="#{languageController.switchLanguage(lang)}">
                         <h:graphicImage alt="#{lang.name}" title="#{lang.name}"
                                         library="images" name="flags/#{lang.flagFile}" />
                         </h:commandLink>

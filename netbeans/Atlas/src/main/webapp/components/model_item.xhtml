@@ -21,10 +21,10 @@
                     </div>
                     <div class="buttonCell">
                         <h:commandButton value="#{strings['changeName']}"
-                                         action="#{modelManager.updateModel(item)}"/>
+                                         action="#{modelController.updateModel(item)}"/>
                         <h:commandButton onclick="if(!confirm('#{strings['confirmDelete']}')) return false"
                                          value="#{strings['delete']}"
-                                         action="#{modelManager.removeModel(item)}"/>
+                                         action="#{modelController.removeModel(item)}"/>
                     </div>
                 </h:form>
             </div>

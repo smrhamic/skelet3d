@@ -19,54 +19,54 @@
                 #{strings['editor.languageVariant']}
                 <br />
                 <h:panelGroup class="bold bottomSpace" layout="block">
-                    #{languageManager.currentLanguage.name}
+                    #{languageController.currentLanguage.name}
                 </h:panelGroup>
                 <h:form id="editPageForm">
                     #{strings['editor.pageName']}
                     <br />
-                    <h:inputText class="longField bottomSpace" value="#{pageManager.pageContent.name}"/>
+                    <h:inputText class="longField bottomSpace" value="#{pageController.pageContent.name}"/>
                     <br />
                     #{strings['editor.pageLatin']}
                     <br />
-                    <h:inputText class="longField bottomSpace" value="#{pageManager.page.latin}"/>
+                    <h:inputText class="longField bottomSpace" value="#{pageController.page.latin}"/>
                     <br />
                     #{strings['editor.addComponent']}
                     <h:panelGroup class="bottomSpace" layout="block">
                         <h:commandButton class="addButton" value="#{strings['editor.text']}"
-                                         action="#{pageManager.addComponent('text')}">
+                                         action="#{pageController.addComponent('text')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings['editor.headline']}"
-                                         action="#{pageManager.addComponent('headline')}">
+                                         action="#{pageController.addComponent('headline')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings['editor.image']}"
-                                         action="#{pageManager.addComponent('image')}">
+                                         action="#{pageController.addComponent('image')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                         <br />
                         <h:commandButton class="addButton" value="#{strings['editor.model']}"
-                                         action="#{pageManager.addComponent('model')}">
+                                         action="#{pageController.addComponent('model')}">
                             <f:ajax render=":contentBlock :message saveMessage" />
                         </h:commandButton>
                     </h:panelGroup>
                     <h:panelGroup class="bottomSpace" layout="block">
                         #{strings['editor.published']}
-                        <h:selectBooleanCheckbox value="#{pageManager.pageContent.published}"/>
+                        <h:selectBooleanCheckbox value="#{pageController.pageContent.published}"/>
                     </h:panelGroup>
                     <h:commandButton id="saveButton" class="saveButton"
-                                     binding="#{pageManager.saveButton}" value="#{strings['saveButton']}"
-                                     action="#{pageManager.updatePage(true)}">
-                        <f:ajax render=":contentBlock :message saveMessage" />
+                                     binding="#{pageController.saveButton}" value="#{strings['saveButton']}"
+                                     action="#{pageController.updatePage(true)}">
+                        <f:ajax execute="@form" render=":contentBlock :message saveMessage" />
                     </h:commandButton>
                     <br />
                     <h:message id="saveMessage" for="saveButton" warnClass="warning" infoClass="info" />
                 </h:form>
             </div>
             <h:panelGroup id="contentBlock" class="contentBlock">
-                <ui:repeat var="c" value="#{pageManager.components}" varStatus="status">
+                <ui:repeat var="c" value="#{pageController.components}" varStatus="status">
                     <ui:include src="edit_content_component.xhtml">
                         <ui:param name="listPosition" value="#{status.index}" />
                     </ui:include>

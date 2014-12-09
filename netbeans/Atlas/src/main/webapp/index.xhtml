@@ -9,8 +9,8 @@
     	<ui:composition template="/template/basic.xhtml">
  
             <f:metadata>
-                <f:viewParam name="id" value="#{categoryManager.categoryId}" />
-                <f:viewAction action="#{categoryManager.init}" />
+                <f:viewParam name="id" value="#{categoryController.categoryId}" />
+                <f:viewAction action="#{categoryController.init}" />
             </f:metadata>
             
             <ui:define name="path">

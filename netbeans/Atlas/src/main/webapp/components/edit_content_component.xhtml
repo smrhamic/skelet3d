@@ -8,7 +8,7 @@
 
     <body>
         <ui:component>
-            <c:set var="component" value="#{pageManager.components[listPosition]}" />
+            <c:set var="component" value="#{pageController.components[listPosition]}" />
             <h:panelGroup class="editComp" layout="block">
                 <h:form>
                     <div class="topBar">
@@ -25,15 +25,15 @@
                         </h:panelGroup>
                         <h:panelGroup class="componentTopButtons">
                             <h:commandButton value="&#x2191;"
-                                             action="#{pageManager.bumpComponentUp(component)}">
+                                             action="#{pageController.bumpComponentUp(component)}">
                                 <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                             <h:commandButton value="&#x2193;"
-                                             action="#{pageManager.bumpComponentDown(component)}">
+                                             action="#{pageController.bumpComponentDown(component)}">
                                 <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                             <h:commandButton value="#{strings['delete']}"
-                                             action="#{pageManager.removeComponent(component)}">
+                                             action="#{pageController.removeComponent(component)}">
                                 <f:ajax render=":contentBlock :message :editPageForm:saveMessage" />
                             </h:commandButton>
                         </h:panelGroup>
@@ -59,7 +59,7 @@
                         #{strings['editor.model']}:
                         <h:selectOneMenu value="#{component.model}" converter="#{modelConverter}">
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
-                            <f:selectItems value="#{modelManager.allModels}" var="m"
+                            <f:selectItems value="#{modelController.allModels}" var="m"
                                            itemLabel="#{m.name}" itemValue="#{m}"/>
                             <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>
@@ -79,7 +79,7 @@
                         #{strings['editor.image']}:
                         <h:selectOneMenu value="#{component.image}" converter="#{imageConverter}">
                             <f:selectItem itemValue="#{null}" itemLabel="---" />
-                            <f:selectItems value="#{imageManager.allImages}" var="im"
+                            <f:selectItems value="#{imageController.allImages}" var="im"
                                            itemLabel="#{im.name}" itemValue="#{im}"/>
                             <f:ajax render=":contentBlock :message :editPageForm:saveMessage"/>
                         </h:selectOneMenu>

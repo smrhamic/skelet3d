@@ -10,21 +10,21 @@
             <h:outputStylesheet name="category.css" library="css" />
             
             <h2 id="categoryName">
-                <h:outputText value="#{categoryManager.currentCategory.name}" />
+                <h:outputText value="#{categoryController.currentCategory.name}" />
             </h2>
             
             <h2 id="categoryLatin">
-                <h:outputText value="#{categoryManager.currentCategory.latin}" />
+                <h:outputText value="#{categoryController.currentCategory.latin}" />
             </h2>
             
             <hr class="fancy-line" />
             
             <h3 id="subcategoryHeadline">
                 <h:outputText value="#{strings['category.subcategories']}"
-                              rendered="#{categoryManager.childCategories.size() > 0}" />
+                              rendered="#{categoryController.childCategories.size() > 0}" />
             </h3>
                 
-            <ui:repeat value="#{categoryManager.childCategories}"
+            <ui:repeat value="#{categoryController.childCategories}"
                            var="sub" varStatus="status">
                 <ui:include src="category_item.xhtml">
                     <ui:param name="listPosition" value="#{status.index}" />
@@ -34,21 +34,21 @@
             
             <h3 id="subcategoryHeadline">
                 <h:outputText value="#{strings['category.pages']}"
-                              rendered="#{categoryManager.pages.size() > 0}" />
+                              rendered="#{categoryController.pages.size() > 0}" />
             </h3>
             
             <div class="newPageButtonDiv">
-                <h:form rendered="#{loginManager.editor}">
+                <h:form rendered="#{loginController.editor}">
                     <h:commandButton class="newPageButton"
                                      value="#{strings['category.addPage']}"
-                                     action="#{categoryManager.addNewPage(true)}">
+                                     action="#{categoryController.addNewPage(true)}">
                         <f:ajax render=":pageList :message" />
                     </h:commandButton>
                 </h:form>
             </div>
             
             <h:panelGroup id="pageList">
-                <ui:repeat value="#{categoryManager.pages}"
+                <ui:repeat value="#{categoryController.pages}"
                                var="sub" varStatus="status">
                     <ui:include src="category_item.xhtml">
                         <ui:param name="listPosition" value="#{status.index}" />
@@ -59,8 +59,8 @@
             
             <div id="empty_category">
                 <h:outputText value="#{strings['category.emptyCategory']}"
-                              rendered="#{categoryManager.pages.size() +
-                                           categoryManager.childCategories.size() == 0}" />
+                              rendered="#{categoryController.pages.size() +
+                                           categoryController.childCategories.size() == 0}" />
             </div>
         </ui:component>
     </body>

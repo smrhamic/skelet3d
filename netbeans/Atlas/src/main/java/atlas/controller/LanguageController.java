@@ -1,4 +1,4 @@
-package atlas.manager;
+package atlas.controller;
 
 import atlas.entity.Language;
 import atlas.service.LanguageService;
@@ -20,8 +20,8 @@ import javax.inject.Named;
  * @author Michal Smrha
  */
 @SessionScoped
-@Named("languageManager")
-public class LanguageManager extends BasicManager implements Serializable {
+@Named("languageController")
+public class LanguageController extends BasicController implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
