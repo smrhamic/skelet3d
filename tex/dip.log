@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  6 OCT 2014 16:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  14 DEC 2014 16:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
  encTeX v. Jun. 2004, reencoding enabled
-**dip
+**dip.tex
 (./dip.tex The format: csplain <Aug. 2014>.
 The cs-fonts are preloaded and A4 size implicitly defined.
 The utf8->iso8859-2 re-encoding of Czech+Slovak alphabet activated by encTeX
@@ -124,7 +124,9 @@ live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
 [-2] [-3] [-4] WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12)
 WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [1]
 (./problem.tex [2] [3] [4]) [5] (./technology.tex [6] [7] [8 <./perf1.png>]
-[9] [10 <./top-languages.png (PNG copy)>]) [11] [12] [13] [14] [15]
+[9] [10 <./top-languages.png (PNG copy)>]) [11] (./design.tex [12 <./usecase.pd
+f>] [13] [14] [15] [16] [17] [18] [19 <./atlas_db.png (PNG copy)>] [20 <./preli
+m_class.pdf>]) [21] [22 <./mature_class.pdf>] [23] [24] [25]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
@@ -204,7 +206,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[16]
+[26]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -243,17 +245,17 @@ Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 .\tentt i
 .etc.
 
-[17] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
+[27] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
 14/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (23 pages, 468154 bytes).
+Output written on dip.pdf (33 pages, 1469918 bytes).
 PDF statistics:
- 503 PDF objects out of 1000 (max. 8388607)
- 463 compressed objects within 5 object streams
- 97 named destinations out of 1000 (max. 500000)
- 344 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 745 PDF objects out of 1000 (max. 8388607)
+ 685 compressed objects within 7 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 564 words of extra memory for PDF output out of 10000 (max. 10000000)
 

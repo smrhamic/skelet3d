@@ -53,14 +53,58 @@
 \Xsecc{3.2.2}{Personal Experience }{10}
 \Xpage{11}
 \Xsecc{3.2.3}{Conclusion }{11}
+\Xsec{3.3}{Server-side Framework }{11}
+\Xsecc{3.3.1}{JavaServer Faces }{11}
 \Xpage{12}
 \Xchap{4}{Application Design }{12}
+\Xsec{4.1}{Use Cases }{12}
+\Xfig{usecase}{4.1}{Use Case Diagram}
+\Xlabel{usecase}{4.1}
 \Xpage{13}
-\Xchap{5}{Implementation }{13}
+\Xsecc{4.1.1}{User: Select Language }{13}
+\Xsecc{4.1.2}{User: Navigate to Page }{13}
 \Xpage{14}
-\Xchap{6}{Testing }{14}
+\Xsecc{4.1.3}{User: View Page }{14}
+\Xsecc{4.1.4}{User: View Model }{14}
+\Xsecc{4.1.5}{Registered User: Login }{14}
+\Xsecc{4.1.6}{Registered User: Logout }{14}
 \Xpage{15}
-\Xchap{7}{Conclusion }{15}
+\Xsecc{4.1.7}{Registered User: Change Password }{15}
+\Xsecc{4.1.8}{Editor: Create page }{15}
+\Xsecc{4.1.9}{Editor: Edit Page }{15}
+\Xpage{16}
+\Xsecc{4.1.10}{Editor: Delete Page }{16}
+\Xsecc{4.1.11}{Editor: Managing Models }{16}
+\Xsecc{4.1.12}{Editor: Manage Images }{16}
+\Xsecc{4.1.13}{Editor: Manage Model's Labels }{16}
+\Xpage{17}
+\Xsecc{4.1.14}{Administrator: Manage Users }{17}
+\Xpage{18}
+\Xsec{4.2}{Graphical User Interface }{18}
+\Xsec{4.3}{Business Objects }{18}
+\Xsec{4.4}{Overall Architecture and Classes }{18}
+\Xpage{19}
+\Xfig{er_diagram}{4.2}{ER Diagram}
+\Xlabel{er_diagram}{4.2}
+\Xsecc{4.4.1}{Client Side }{19}
+\Xsecc{4.4.2}{Servlet }{19}
+\Xpage{20}
+\Xfig{class_diag1}{4.3}{Preliminary Design of the Application}
+\Xlabel{class_diag1}{4.3}
+\Xsecc{4.4.3}{Managed Beans }{20}
+\Xsecc{4.4.4}{Entities }{20}
+\Xpage{21}
+\Xsecc{4.4.5}{Persistence }{21}
+\Xsec{4.5}{Architecture and Classes - Mature }{21}
+\Xpage{22}
+\Xfig{class_diag2}{4.4}{Mature Design of the Server Side}
+\Xlabel{class_diag2}{4.4}
+\Xpage{23}
+\Xchap{5}{Implementation }{23}
+\Xpage{24}
+\Xchap{6}{Testing }{24}
+\Xpage{25}
+\Xchap{7}{Conclusion }{25}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }
@@ -79,8 +123,8 @@
 \Xbib{flash_desktop}{16}{, }
 \Xbib{flash_focus}{17}{Winokur, }
 \Xbib{flash_android}{18}{Aljaber, }
-\Xpage{16}
-\Xchap{!1}{References}{16}
+\Xpage{26}
+\Xchap{!1}{References}{26}
 \Xbib{flash_apple}{19}{, }
 \Xbib{unity}{20}{, }
 \Xbib{shiva}{21}{, }
@@ -93,4 +137,5 @@
 \Xbib{php_bad}{28}{, }
 \Xbib{java_net_1}{29}{Rowe, }
 \Xbib{java_net_2}{30}{Davu, }
-\Xpage{17}
+\Xbib{jsf}{31}{, }
+\Xpage{27}

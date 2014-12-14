@@ -1,0 +1,705 @@
+\sec Use Cases
+
+\midinsert
+\picw=12cm \clabel[usecase]{Use Case Diagram} \cinspic usecase.pdf
+\caption/f Simple use case diagram of the Atlas
+\endinsert
+
+This project’s design phase begins with a simple use case diagram to better visualize our goals. It can be seen in diagram \ref[usecase]. It shows basic actions that can be taken by the users in different roles: Unregistered users can browse all the content of the website, while registered editors are in charge of providing the content. Administrators get to manage editors’ accounts.
+
+Individual more detailed use case scenarios are following.
+
+\secc User: Select Language
+
+{\bf Basic flow of events:}
+
+\begitems \style n
+
+*User clicks a flag representing his preferred language
+
+*Client informs server about changed preferences for this session
+
+*Page is refreshed and displayed in selected language
+
+\enditems
+
+\secc User: Navigate to Page
+
+{\bf Sub-scenarios:}
+
+\begitems
+
+*Go to a subcategory:
+
+\begitems \style n
+
+*User selects a subcategory from a list of items
+
+*Content of selected subcategory is displayed
+
+\enditems
+
+*Return to an ancestor category:
+
+\begitems \style n
+
+*User selects a category in the “path” to current category / page
+
+*Content of selected ancestor category is displayed
+
+\enditems
+
+*Return to main page:
+
+\begitems \style n
+
+*User clicks the main logo
+
+*Main page is displayed
+
+\enditems
+
+\enditems
+
+{\bf Basic flow of events:}
+
+\begitems \style n
+
+*User selects a main category
+
+*Content of the category is displayed
+
+*User goes to a subcategory
+
+*Step 3 is repeated until the category containing desired page is reached
+
+*User selects desired page from a list of items
+
+*Desired page is displayed
+
+\enditems
+
+{\bf Alternative flow:} 1a. User is already browsing a category
+
+\begitems \style n
+
+*\begitems \style a
+
+*User continues by step 3
+
+*User returns to an ancestor category
+
+*User returns to main page
+
+\enditems
+
+*User continues by step 3
+
+\enditems
+
+{\bf Alternative flow:} 1b. User uses search function instead
+
+\begitems \style n
+
+*User enters a search term
+
+*List of matching pages and categories is displayed
+
+*User selects desired item
+
+*Desired page is displayed
+
+\enditems
+
+{\bf Alternative flow:} 3a. User goes to wrong subcategory
+
+\begitems \style a
+
+*User returns to an ancestor category
+
+*User returns to main page
+
+\enditems
+
+\secc User: View Page
+
+{\bf Basic flow of events:}
+
+\begitems \style n
+
+*User clicks a link to a content page
+
+*Content of the page is displayed, 3D model is eventually loaded
+
+*User scrolls through the page, views content
+
+*User interacts with 3D scene
+
+\enditems
+
+\secc User: View Model
+
+{\bf Starting condition:} User is viewing a page with 3D content
+
+{\bf Sub-scenarios:}
+
+\begitems
+
+*Rotating view:
+
+\begitems \style n
+
+*User drags with left mouse button inside 3D area
+
+*3D scene responds in real time and rotates
+
+\enditems
+
+*Panning view:
+
+\begitems \style n
+
+*User drags with right mouse button inside 3D area
+
+*3D scene responds in real time and pans
+
+\enditems
+
+*Zooming:
+
+\begitems \style n
+
+*User rolls mouse wheel inside 3D area
+
+*3D scene responds in real time and zooms
+
+\enditems
+
+*Selecting labels:
+
+\begitems \style n
+
+*User clicks a label
+
+*Details of the label are shown
+
+*User clicks selected label again
+
+*Details of the label are hidden
+
+\enditems
+
+*Switching label mode:
+
+\begitems \style n
+
+*User selects mode from a dropdown menu
+
+*Labels are shown, hidden or redrawn depending on mode
+
+\enditems
+
+\enditems
+
+\secc Registered User: Login
+
+{\bf Starting condition:} User is currently logged out
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*User enters username and password, clicks login
+
+*System verifies user’s account
+
+*User is logged in, page is reloaded
+
+\enditems
+
+{\bf Alternative flow:} 2a. Username and password do not match an account
+
+\begitems \style n
+
+*User it not logged in, informative message is displayed
+
+\enditems
+
+\secc Registered User: Logout
+
+{\bf Starting condition:} User is currently logged in
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*User clicks logout
+
+*User is logged out, page is reloaded
+
+\enditems
+
+\secc Registered User: Change Password
+
+{\bf Starting condition:} User is currently logged in
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*User clicks a link to password change
+
+*User enters old and new password and confirms
+
+*System verifies the input
+
+*Password is changed
+
+\enditems
+
+{\bf Alternative flow:} 3a. Input is incorrect
+
+\begitems \style n
+
+*Password is not changed, informative message is displayed
+
+\enditems
+
+\secc Editor: Create page
+
+{\bf Starting condition:} Editor is currently logged in
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*Editor navigates to a category
+
+*Editor clicks “Add new page”
+
+*System verifies user’s rights to edit, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*New unpublished blank page is created in the category
+
+\enditems
+
+\secc Editor: Edit Page
+
+{\bf Starting condition:} Editor is currently logged in
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*Editor navigates to a category
+
+*Editor clicks “Edit page” at selected page
+
+*Editable page with selected page’s content is displayed
+
+*Editor changes page's basic properties
+
+*Editor clicks “Add component” to add a component of chosen type
+
+*Component is added to content
+
+*Editor changes component’s properties
+
+\begitems \style a
+
+*Text component: Text content
+
+*Headline component: Text content
+
+*Image component: Image from database, description
+
+*Model component: 3D Model from database, description
+
+*{\it Common for all}: Position in page 
+
+\enditems
+
+*Repeat from step 5 until content is ready
+
+*Editor clicks “Saves changes”
+
+*System verifies user’s rights to edit, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*Changes are saved
+
+\enditems
+
+{\bf Alternative flow:} 5a. Editor works with existing components
+
+\begitems \style n
+
+*Continue by step 7
+
+\enditems
+
+{\bf Alternative flow:} 5b. Editor clicks “Delete” at selected component
+
+\begitems \style n
+
+*Component is removed
+
+*Continue by step 8
+
+\enditems
+
+\secc Editor: Delete Page
+
+{\bf Starting condition:} Editor is currently logged in
+
+{\bf Basic flow:}
+
+\begitems \style n
+
+*Editor navigates to a category
+
+*Editor clicks “Delete” at selected page
+
+*System asks for confirmation
+
+*Editor confirms deletion
+
+(Abort operation otherwise)
+
+*System verifies user’s rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*Page is deleted
+
+\enditems
+
+\secc Editor: Managing Models
+
+{\bf Sub-scenarios:}
+
+\begitems
+
+*Enter Model Manager
+
+{\bf Starting condition:} Editor is currently logged in
+
+\begitems \style n
+
+*Editor clicks Model Manager
+
+*Model Manager is displayed
+
+\enditems
+
+*Upload model in Model Manager
+
+\begitems \style n
+
+*Editor selects a file from his computer
+
+*Editor enters a name to identify the model in the future
+
+*Editor hits upload
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*File is uploaded into the system
+
+\enditems
+
+*Delete model in Model Manager
+
+\begitems \style n
+
+*Editor clicks “Delete” next to an existing model
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*System checks if model is used in a page, continues if not
+
+(Abort operation and display warning otherwise)
+
+*File is deleted from the system
+
+\enditems
+
+\enditems
+
+\secc Editor: Manage Images
+
+Images are managed the same way models are, so the scenarios would be analogical to “Manage Models”.
+
+\secc Editor: Manage Model's Labels
+
+{\bf Starting condition:} Editor is logged in and viewing a page with 3D content
+
+{\bf Sub-scenarios:}
+
+\begitems
+
+*Create new label
+
+\begitems \style n
+
+*Editor clicks “New label”
+
+*Editor is prompted to choose a location
+
+*Editor chooses a location by clicking on the 3D model’s surface
+
+*New blank label is created in that location and selected
+
+\enditems
+
+*Edit a label
+
+\begitems \style n
+
+*Editor selects a label
+
+*Editor changes label’s properties
+
+\begitems \style a
+
+*Title by overwriting old title in its textbox
+
+*Text content by overwriting old content in its textbox
+
+*Position of “nametag” by dragging it with left mouse button
+
+\enditems
+
+\enditems
+
+*Delete a label
+
+\begitems \style n
+
+*Editor selects a label
+
+*Editor clicks “Delete label”
+
+*System asks for confirmation
+
+*Editor confirms deletion
+
+(Abort operation otherwise)
+
+*Label is deleted
+
+\enditems
+
+*Save changes
+
+\begitems \style n
+
+*Editor clicks “Save changes”
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*Changes are saved
+
+\enditems
+
+\enditems
+
+\secc Administrator: Manage Users
+
+{\bf Starting condition:} Administrator is currently logged in
+
+{\bf Sub-scenarios:}
+
+\begitems
+
+*Enter User Manager
+
+\begitems \style n
+
+*Administrator clicks User Manager
+
+*User Manager is displayed
+
+\enditems
+
+*Create new user in User Manager
+
+\begitems \style n
+
+*Administrator fills in name, username, default password, role
+
+*Administrator clicks “Add user”
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*New user is added to the system
+
+\enditems
+
+*Edit user in User Manager
+
+\begitems \style n
+
+*Administrator changes name, password or role of an existing user
+
+*Administrator clicks “Save changes”
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*Changes are saved
+
+\enditems
+
+*Delete user in User Manager
+
+\begitems \style n
+
+*Administrator clicks “Delete” next to an existing user
+
+*System asks for confirmation
+
+*Administrator confirms deletion
+
+(Abort operation otherwise)
+
+*System verifies user rights, continues if they match
+
+(Abort operation and display warning otherwise)
+
+*User is deleted from the system
+
+\enditems
+
+\enditems
+
+
+\sec Graphical User Interface
+
+A simple mockup of a possible graphical user interface (GUI) was created in early stages of the design. It was a series of simplified images and it focused on “what features” rather than actual graphical design. It helped define what we want to implement in order to cover our use cases.
+
+\sec Business Objects
+
+The application will work with numerous business objects, also known as Entities. These objects represent mostly content of the application, but also miscellaneous entities such as users and languages.
+
+All our business objects are permanent in the sense that they should be available in all instances of the application, survive server restarts and so on. This means we will be persisting these object and the obvious choice for persistence is a relational database for most records and a file system for binary files such as 3D models and images.
+
+It is a common theme that localizable “real life” objects are represented by two Entities – one contains properties shared by all language variants such as ID, parent category or Latin name. The other Entity contains localized properties for a given language such as title or text content.
+
+\midinsert
+\picw=15cm \clabel[er_diagram]{ER Diagram} \cinspic atlas_db.png
+\caption/f ER diagram of application's Entities
+\endinsert
+
+These are the Entities used in our application as shown in ER diagram \ref[er_diagram]:
+
+\begitems
+
+*{\bf User} represents a registered user of the application (editor, administrator) and provides properties relevant for authentication. It also has a {\bf UserRole} which determines its rights and privileges.
+
+*{\bf Language} represents an available language for the website and its content.
+
+*{\bf Category} represents a group of pages and other categories (presumably a body part). It can point to its parent category, creating a tree of categories.
+
+*{\bf CategoryInfo} represents localized properties of a Category for a given language.
+
+*{\bf Page} represents a content page (presumably a bone in the Atlas).
+
+*{\bf PageContent} represents the localized content of a Page. It consists of any number of “Content Components”
+
+*{\bf TextComponent, HeadlineComponent, ImageComponent and ModelComponent} are “Content Components”, localized units of content
+
+*{\bf Image} represents an image file (used by ImageComponent)
+
+*{\bf Model} represents a 3D model file (used by ModelComponent)
+
+*{\bf Label} represents a label pointing out an important location in a Model
+
+*{\bf LabelContent} represents the localized content of a Label
+
+\enditems
+
+\sec Overall Architecture and Classes
+
+The preliminary design of the application is shown in diagram \ref[class_diag1]. Individual components are described below.
+
+\midinsert
+\picw=15cm \clabel[class_diag1]{Preliminary Design of the Application} \cinspic prelim_class.pdf
+\caption/f Preliminary design of the application.
+\endinsert
+
+\secc Client Side
+
+The client side (leftmost grey box in diagram \ref[class_diag1]) represents the View in our MVC architecture.
+
+It will consist of XHTML pages generated by JSF Facelets. JSF supports reusable components, so we can create a template file and fill it with common components such as login bar, language bar or navigation bar as well as custom content for the page. 
+
+The 3D viewer will be a JavaScript file attached to one of the content components.
+
+\secc Servlet
+
+A Servlet (labeled as “JSF Binding” in diagram \ref[class_diag1]) represent the Controller in our MVC architecture.
+
+ A server communicates with a client by generating HTTP responses based on client’s HTTP requests. In Java, the unit responsible for this communication is called a Servlet. JSF takes care of this for us by implementing a FacesServlet.
+
+The FacesServlet intercepts HTTP requests and generates the proper HTTP responses to present the correct View (XHTML page including data from Model).
+
+\secc Managed Beans
+
+Managed beans (first darker grey block inside the central block in diagram \ref[class_diag1]) also belong to the Controller, although the “real” controller is indeed a FacesServlet.
+
+Managed beans are Java classes registered with the JSF framework. This allows binding between the bean’s properties and a View. An example of this would be always displaying current user’s name in the login bar, while current user is a bound property of LoginManager (a session scoped managed bean).
+
+The link between Model and View that a managed bean provides works both ways. It fetches entities for the View to display and it notifies the Model when changes should be made to it (initiated by user interaction with the View).
+
+These managed beans are also called “backing beans” and each of them should be associated with a View page or component (rather than a business entity).
+
+\secc Entities
+
+Entities (second darker grey block inside the central block in diagram \ref[class_diag1]) are the business objects of our application, the Model. These objects include users, pages, 3D models, labels, languages and many others.
+
+They are Java classes implementing all properties of the object (such as name, username, password… for user) and providing methods to Create, Read, Update and Delete (CRUD) their respective objects in the database.
+
+These data-representing classes can travel through many layers of the application, from persistence to View and back.
+
+\secc Persistence
+
+Persistence (rightmost part in diagram \ref[class_diag1]) will be realized mostly by a database. The default Java DB (formerly Derby) will be sufficient for our needs.
+
+The database connections, transactions and everything related will be left to Java Persistence API (JPA) as opposed to manually using JDBC. JPA with its EntityManager is a great (and ready to go) way to ensure that everything works and nothing clashed in our multi-user environment. What is more, entities properly mapped to database tables save us the hassle of writing SQL queries manually.
+
+\sec Architecture and Classes - Mature
+
+During the development of our application, it became apparent that while the original architecture might be sufficient, there is a lot of space for improvement.
+
+The overall design remained quite similar to the initial plan. Client side, JSF and JPA persistence were largely unchanged.
+
+The most notable changes happened between Controller and Model. A more mature version of the Java server’s class diagram is shown in diagram \ref[class_diag2].
+
+\midinsert
+\picw=15cm \clabel[class_diag2]{Mature Design of the Server Side} \cinspic mature_class.pdf
+\caption/f Mature design of the application's server side (without Servlets and persistence).
+\endinsert
+
+The original design used Entities which provided their own CRUD methods. That way Controller classes (previously called Managers) would call CRUD methods directly on the instances of business objects.
+
+In the mature design, Entities are kept as slim as possible. They only provide access to their properties and leave out all additional business logic. It feels more natural to keep entities “dumb” as they represent data rather than logic. Separating the two concepts seems like a better practice than bundling them together.
+
+The CRUD methods have to go somewhere, of course. Putting them in the Controllers would be poor design as this is clearly a responsibility of the Model. Because of that, a new set of business classes called Services was created. Each Service is related to an Entity type (while Controllers are related to their respective Views, all the more reason not to mix the two) and provides relevant business logic. Most notably, it implements the CRUD methods.
+
+Because the CRUD methods mostly follow the same pattern for all Entity types, a generic {\tt BasicService<Entity, PK>} class was created. It provides basic implementation of CRUD methods that works for all Entity types. All other Services, in addition to their own methods, inherit from this Basic Service and either use the generic CRUD implementation of their ancestor or override the methods with an implementation specific for their Entity type.
+
+An important benefit of having a designated Service class is that it can (and should) be an Enterprise JavaBean (EJB), which among other things allows container-managed transactions. We simply inject an EntityManager and each method of the EJB will be treated as a transaction.
+
