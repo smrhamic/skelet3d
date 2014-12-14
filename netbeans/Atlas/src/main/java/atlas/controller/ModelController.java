@@ -21,7 +21,7 @@ import javax.servlet.http.Part;
  * client requests to service layer.
  * Initializes list of available models post-construct.
  *
- * @author Michal SmrhaInitialized list of available models post-construct.
+ * @author Michal Smrha
  */
 @ViewScoped
 @Named("modelController")

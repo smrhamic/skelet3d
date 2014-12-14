@@ -28,7 +28,7 @@ public class BasicService<E, PK> {
      * Path to uploaded files.
      * TO DO: Not have this hardwired
      */
-    protected String uploadFolder = "/var/atlas-webapp/uploads/";
+    protected String uploadFolder = "/home/glassfish/atlas-webapp/uploads/";
     
     // generic entity type
     private final Class<E> type;

@@ -37,13 +37,14 @@ public class ImageService extends BasicService<Image, Integer> {
      */
     public void uploadImage(String name, Part imageFile) {
         String folder = uploadFolder + "images/";
+        String safeName = imageFile.getSubmittedFileName().replaceAll("[\\W+&&[^.]]", "_");
         // new file
-        File file = new File(folder + imageFile.getSubmittedFileName());
+        File file = new File(folder + safeName);
         // if exists, append numbers
         if (file.exists()) {
             int i = 1;
             while (file.exists()) {
-                file = new File(folder + imageFile.getSubmittedFileName() + "_" + i);
+                file = new File(folder + safeName + "_" + i);
                 i++;
             }
         }

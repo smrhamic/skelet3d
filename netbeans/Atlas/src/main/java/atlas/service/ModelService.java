@@ -38,13 +38,14 @@ public class ModelService extends BasicService<Model, Integer> {
      */
     public void uploadModel(String name, Part modelFile) {
         String folder = uploadFolder + "models/";
+        String safeName = modelFile.getSubmittedFileName().replaceAll("[\\W+&&[^.]]", "_");
         // new file
-        File file = new File(folder + modelFile.getSubmittedFileName());
+        File file = new File(folder + safeName);
         // if exists, append numbers
         if (file.exists()) {
             int i = 1;
             while (file.exists()) {
-                file = new File(folder + modelFile.getSubmittedFileName() + "_" + i);
+                file = new File(folder + safeName + "_" + i);
                 i++;
             }
         }

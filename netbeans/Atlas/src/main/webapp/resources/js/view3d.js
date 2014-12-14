@@ -1,4 +1,4 @@
-// three.js, STLLoader and TrackbaalControls.js must be loaded for this code to work!
+// three.js, STLLoader and TrackballControls.js must be loaded for this code to work!
 // editable, modelPath, strings[] and labels[] must be pre-set
 
 // basic 3D world objects
@@ -83,6 +83,7 @@ function init() {
     window.addEventListener('mouseup', onMouseUp, false);
     window.addEventListener('mousemove', onMouseMove, false);
     window.addEventListener('resize', onWindowResize, false);
+    window.addEventListener('load', onWindowResize, false);
     document.addEventListener("DOMContentLoaded", function() {
         onWindowResize();
     });
@@ -298,10 +299,10 @@ function setupSaveButton() {
                     tempLabel.action = 'create';
                 } else if (label.isDeleted) {
                     tempLabel.action = 'delete';
-                    tempLabel.id = label.id;
+                    tempLabel.id = label.entityId;
                 } else {
                     tempLabel.action = 'update';
-                    tempLabel.id = label.id;
+                    tempLabel.id = label.entityId;
                 }
                 labelUpdates.push(tempLabel);
             }
@@ -330,7 +331,7 @@ function makeLabel(label, isNew) {
     // other attribs
     newLabel.markPosition = new THREE.Vector3(label.markX, label.markY, label.markZ); 
     newLabel.labelPosition = new THREE.Vector3(label.labelX, label.labelY, label.labelZ);
-    newLabel.id = label.id;
+    newLabel.entityId = label.id;
     // replace new lines with <br /> and add content
     var breakTag = '<br />';
     newLabel.title = label.title.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');    
