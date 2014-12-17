@@ -693,6 +693,8 @@ The most notable changes happened between Controller and Model. A more mature ve
 \caption/f Mature design of the application's server side (without Servlets and persistence).
 \endinsert
 
+\secc Service Layer
+
 The original design used Entities which provided their own CRUD methods. That way Controller classes (previously called Managers) would call CRUD methods directly on the instances of business objects.
 
 In the mature design, Entities are kept as slim as possible. They only provide access to their properties and leave out all additional business logic. It feels more natural to keep entities “dumb” as they represent data rather than logic. Separating the two concepts seems like a better practice than bundling them together.
@@ -703,3 +705,38 @@ Because the CRUD methods mostly follow the same pattern for all Entity types, a 
 
 An important benefit of having a designated Service class is that it can (and should) be an Enterprise JavaBean (EJB), which among other things allows container-managed transactions. We simply inject an EntityManager and each method of the EJB will be treated as a transaction.
 
+\secc Entities and Page Components
+
+Entity classes provide public getters and setters for all their properties, which include attributes and relations of their database counterparts. Information about a relation is held at both ends as a simple reference or collection of references. In early stages of the development, these classes also provided methods related to persistence, which were later moved to the service layer.
+
+Our business objects include page components, namely {\tt HeadlineComponent}, {\tt TextComponent}, {\tt ImageComponent} and {\tt ModelComponent}. These components are all used in a similar way, they belong to a page and they have a property determining their order in the page.
+
+To allow keeping the components in a single collection and sorting them by their order, an abstract common ancestor {\tt PageComponent} was introduced. It implements {\tt Comparable<PageComponent>} to sort components and defines the properties for component order and component type of the instance.
+
+All component Entities inherit from this ancestor and implement its abstract methods. Other than that, they behave just like the other Entities.
+
+\secc Special View Classes
+
+These are not shown in diagram \ref[class_diag2], but they are closely related to Entities.
+
+Several business objects are represented by a pair of Entities, one holding language-independent properties and the other holding localized data. While this makes localization easy to implement in the database, in Java working with a pair of objects rather than a single object can be inconvenient.
+
+Our solution is to introduce special “View” entity-like classes that represent a localized view of the business object with both its localized and non-localized properties.
+
+The more conservative alternative is to use a reference to the localized Entity and access language-independent properties through its reference to its “main” Entity (other way around is impractical because of the necessity to iterate through all language variants).
+
+Both approaches have their merits. Only using existing Entities leads to fewer objects being created and there is no need to convert two representations. Using an additional class lets us work with a much simpler structure in Controllers (and Views) at the expense of additional work in Model. We can also filter the properties to fit the needs of Views and introduce meta-information not present in the database tables (which could however be added to the original Entities as well).
+
+Looking back, this choice is questionable and worth revising especially if performance becomes an issue.
+
+Three of these classes were introduced:
+
+\begitems
+
+*{\tt CategoryView} represents a localized summary of category’s properties. Namely its ID, localized name, Latin name and a number of pages (derived). It is mostly used to display lists of subcategories when browsing the categories.
+
+*{\tt PageView} represents a localized summary of page’s properties. Namely its ID, localized name, Latin name and whether it is published. It is mostly used to display lists of pages when browsing the categories.
+
+*{\tt LabelView} represents a localized summary of label’s properties. Namely its ID, localized title, localized text, position and “action”. It is used for two purposes: primarily displaying labels in 3D scenes, but also sending back editorial changes to be persisted (since label editing happens on the client until changes are saved). That is when the action meta-property comes into play, telling the server if a label needs to be created, updated or deleted.
+
+\enditems

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  14 DEC 2014 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  17 DEC 2014 20:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -122,11 +122,138 @@ FONT: Latin Modern fonts - \rm, \it, \bf, \bi, \caps\rm,... + math.
 English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
 live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
 [-2] [-3] [-4] WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12)
-WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [1]
-(./problem.tex [2] [3] [4]) [5] (./technology.tex [6] [7] [8 <./perf1.png>]
-[9] [10 <./top-languages.png (PNG copy)>]) [11] (./design.tex [12 <./usecase.pd
-f>] [13] [14] [15] [16] [17] [18] [19 <./atlas_db.png (PNG copy)>] [20 <./preli
-m_class.pdf>]) [21] [22 <./mature_class.pdf>] [23] [24] [25]
+WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [-7]
+[-8] [1] (./problem.tex [2] [3] [4]) [5] (./technology.tex [6] [7] [8 <./perf1.
+png>] [9] [10 <./top-languages.png (PNG copy)>]) [11] (./design.tex [12 <./usec
+ase.pdf>] [13] [14] [15] [16] [17] [18] [19 <./atlas_db.png (PNG copy)>]
+[20 <./prelim_class.pdf>] [21]
+Underfull \hbox (badness 1701) in paragraph at lines 712--713
+[]\tenrm Our busi-ness ob-jects in-clude page com-po-nents, namely \tentt Head-
+lineCom-po-nent\tenrm ,
+
+\hbox(7.57762+2.44446)x415.41025, glue set 2.57353
+.\hbox(0.0+0.0)x11.66563
+.\tenrm O
+.\tenrm u
+.\tenrm r
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm b
+.\tenrm u
+.\tenrm s
+.\tenrm i
+.\discretionary
+..\tenrm -
+.\tenrm n
+.\tenrm e
+.\tenrm s
+.\tenrm s
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm o
+.\discretionary replacing 2
+..\tenrm b
+..\tenrm -
+.\tenrm b
+.\kern0.30556
+.\tenrm j
+.\tenrm e
+.\tenrm c
+.\tenrm t
+.\tenrm s
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm i
+.\tenrm n
+.\discretionary
+..\tenrm -
+.\tenrm c
+.\tenrm l
+.etc.
+
+[22 <./mature_class.pdf>]) [23] (./implementation.tex [24]
+Underfull \hbox (badness 1237) in paragraph at lines 58--59
+ []\tenrm persist a pre-vi-ously un-per-sisted En-tity us-ing \tentt En-ti-ty-M
+an-ager\tenrm 's \tentt per-sist(^^80)
+
+\hbox(7.63895+2.44446)x415.41025, glue set 2.31586
+.\glue(\leftskip) 11.66563
+.\hbox(0.0+0.0)x11.66563
+.\tenrm p
+.\kern0.30556
+.\tenrm e
+.\tenrm r
+.\tenrm s
+.\tenrm i
+.\tenrm s
+.\tenrm t
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm a
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm p
+.\tenrm r
+.\tenrm e
+.\discretionary
+..\tenrm -
+.\tenrm v
+.\tenrm i
+.\discretionary
+..\tenrm -
+.\tenrm o
+.\tenrm u
+.\tenrm s
+.\tenrm l
+.\tenrm y
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm u
+.\tenrm n
+.\discretionary
+..\tenrm -
+.\tenrm p
+.etc.
+
+[25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+ []\tentt countNumberOfPages(Category cat, Lan-guage lang, boolean pub-lishe-dO
+-
+
+\hbox(7.63895+2.44446)x415.41025
+.\glue(\leftskip) 11.66563
+.\hbox(4.56946+0.0)x0.0, glue set - 12.19423fil
+..\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfliteral{1 .43 0 0 k}
+..\thefont .
+..\kern -4.0
+..\pdfliteral{0 0 0 1 k}
+..\kern 5.5
+.\tentt c
+.\tentt o
+.\tentt u
+.\tentt n
+.\tentt t
+.\tentt N
+.\tentt u
+.\tentt m
+.\tentt b
+.\tentt e
+.\tentt r
+.\tentt O
+.\tentt f
+.\tentt P
+.\tentt a
+.\tentt g
+.\tentt e
+.\tentt s
+.\tentt (
+.\tentt C
+.\tentt a
+.\tentt t
+.\tentt e
+.\tentt g
+.\tentt o
+.\tentt r
+.\tentt y
+.\glue 5.775
+.etc.
+
+) [27] [28] [29]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
@@ -206,7 +333,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[26]
+[30]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -245,17 +372,56 @@ Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 .\tentt i
 .etc.
 
-[27] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
+
+Overfull \hbox (93.97514pt too wide) in paragraph at lines 43--43
+[]\tentt http:[] /[] / stackoverflow[] . com[] / questions[] / 21154400[] / una
+ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
+
+\hbox(6.9445+2.22223)x392.07898
+.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
+/Subtype/Link/A <</Type/Action/S/URI/URI(http://stackoverflow.com/que\ETC.}
+.\tentt h
+.\tentt t
+.\tentt t
+.\tentt p
+.\tentt :
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\hbox(0.0+0.0)x0.0
+.\penalty 10000
+.\glue 0.0 plus 0.52502
+.\tentt /
+.\penalty 100
+.\glue 0.0 plus 0.52502
+.\tentt s
+.\tentt t
+.\tentt a
+.\tentt c
+.\tentt k
+.\tentt o
+.\tentt v
+.\tentt e
+.\tentt r
+.\tentt f
+.\tentt l
+.\tentt o
+.\tentt w
+.\hbox(0.0+0.0)x0.0
+.etc.
+
+[31] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
 14/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (33 pages, 1469918 bytes).
+Output written on dip.pdf (39 pages, 1490834 bytes).
 PDF statistics:
- 745 PDF objects out of 1000 (max. 8388607)
- 685 compressed objects within 7 object streams
- 138 named destinations out of 1000 (max. 500000)
- 564 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 876 PDF objects out of 1000 (max. 8388607)
+ 808 compressed objects within 9 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 684 words of extra memory for PDF output out of 10000 (max. 10000000)
 

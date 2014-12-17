@@ -1,0 +1,189 @@
+Implementation was done in NetBeans IDE 8.0.1 \cite[netbeans], a free open source development environment mostly focused on Java.
+
+For development purposes, a local Glassfish 4.1 server was installed and integrated into NetBeans for easy “on save” deployment in real time.
+
+\sec Data Model
+
+The first step of implementation was creating a data model. As mentioned in previous chapter, our business objects will be persisted in a relational database. Images and models will also be using a file system to save their possibly large binary data.
+
+\secc Setting Up a Local Database
+
+Glassfish server comes with a pre-installed Java DB and NetBeans made it easy to setup a connection.
+
+The only pitfall lay in Java’s default security policy, which did not allow access to Java DB on standard port 1527. See StackOverflow question \cite[so_java_permits] for details.
+
+\secc Creating Tables
+
+I used the ER diagram from design phase to generate an SQL script for table creation. I had to make syntactic changes because generated script was in MySQL, which differs from Java DB syntax. After solving all syntactic issues, all tables were successfully created. The working script was saved for later use.
+
+\secc Generating Entities
+
+NetBeans offers a feature for generating Entity classes from a registered database. I gladly used this feature to generate properly annotated, JPA-compatible classes for all Entities.
+
+In later stages of development, Entities returned to being thin data-holding classes without much logic of their own. Other than several simple changes (see below) and removing a small amount of generated ballast, they were largely the same as the originally generated ones.
+
+\secc PageComponent Abstract Class
+
+Page components, namely {\tt HeadlineComponent}, {\tt TextComponent}, {\tt ImageComponent} and {\tt ModelComponent} share 
+this common ancestror.
+
+It implements {\tt Comparable<PageComponent>} and a {\tt compareTo(PageComponent c)} method which sorts components by their order. It also defines an abstract getter and setter for {\tt compOrder} and a getter for {\tt componentType}, which is to return a string representation of component type such as “text” or “image”.
+
+\sec Service Layer
+
+Services are in charge of business logic, in case of our Atlas mostly handling persistence and relations between business objects. All service classes are EJBs to allow container-managed transactions. This is important, because otherwise all transactions need to be handled manually and JPA {\tt EntityManager} cannot be simply injected.
+
+\secc BasicService
+
+All service classes inherit from this common ancestor. It is a generic class {\tt BasicService<E, PK>} where {\tt E} is an Entity class and PK is the primary key class of the Entity.
+
+It injects an {\tt EntityManager} using the {\tt @PersistenceContext} annotation, leaving it to the descendant services to make sure this injection is possible (simply being EJB fulfills this requirement) or creating their own {\tt EntityManager}.
+
+It provides a {\tt BasicService(Class<E> entityType)} constructor, which takes the Entity class as a parameter. This might seem unnecessary when using generic classes, but I found no better way to access the Entity’s type in method calls other than keeping a {\tt type : Class<E>} property and assigning it explicitly in the constructor.
+
+{\tt BasicService} implements 5 default CRUD methods:
+
+\begitems
+
+*{\tt find(PK key) : E}
+
+finds an Entity by its primary key, using {\tt EntityManager}’s {\tt find(…)} method.
+
+*{\tt findAll() : List<E>}
+
+finds all Entities of a type {E} using a simple JPQL query on {\tt EntityManager}.
+
+*{\tt save(E entity)}
+
+persist a previously unpersisted Entity using {\tt EntityManager}’s {\tt persist(…)} method.
+
+*{\tt update(E entity)}
+
+updates a persisted Entity using {\tt EntityManager}’s {\tt merge(…)} method.
+
+*{\tt delete(E entity)}
+
+deletes a persisted Entity using {\tt EntityManager}’s {\tt remove(…)} method. In order for the deletion to work, it first needs to get a managed instance of the entity by referencing the output of {\tt merge(entity)}.
+
+\enditems
+
+\secc Common Traits and LanguageService Example
+
+The inheriting services implement different methods, but follow certain similar patterns. They are {\tt @Stateless} EJBs, they are related to an Entity class and have a no-argument constructor which calls {\tt BasicService(entityType)}.
+
+Below you can see the actual code of {\tt LanguageService}, one of the simplest service classes in our application. Note how it extends {\tt BasicService}, calls its super-class’s constructor and uses inherited {\tt Entity Manager em} to perform operations related to persistence (in this case it executes “find” queries). Other methods such as {\tt findAll()} or {\tt save(Language lang)} are inherited from {\tt BasicService} and not overridden, since their default implementation is sufficient for {\tt Language}.
+
+\vfil \break
+
+\begtt
+
+@Stateless
+public class LanguageService extends BasicService<Language, Integer> {
+
+    /**
+     * Constructs a LanguageService.
+     */
+    public LanguageService() {
+        super(Language.class);
+    }
+    
+    /**
+     * Finds the default persisted Language.
+     *
+     * @return First result of a "default" flagged Language; or null.
+     */
+    public Language findDefaultLanguage() {
+        // get default flagged language
+        try {
+            TypedQuery<Language> query = em.createQuery(
+                    "SELECT l FROM Language l "
+                            + "WHERE l.defaultLang = TRUE",
+                    Language.class);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            // if none, null
+            return null;
+        }
+    }
+    
+    /**
+     * Finds persisted Language by ISO short code.
+     *
+     * @param code ISO code to search for. Examples: "en", "cs"
+     * @return Language matching the ISO code, null if no match.
+     */
+    public Language findLanguageByISO639(String code) {
+        // get language with matching code
+        try {
+            TypedQuery<Language> query = em.createQuery(
+                    "SELECT l FROM Language l "
+                            + "WHERE l.short1 = :code",
+                    Language.class);
+            return query.setParameter("code", code).getSingleResult();
+        } catch (NoResultException e) {
+            // if none, null
+            return null;
+        }
+    }
+}
+\endtt
+
+\vfil \break
+
+\secc UserService
+
+\begitems
+
+*{\tt login(String login, String pass) : User}
+
+Validates login credentials, uses a JPQL query and either returns a matching user or {\tt null}.
+
+\enditems
+
+Unfortunately, advanced user management is not implemented as of yet. One of the next steps is making the stored passwords safer by hashing them with salt. The database was created with this in mind, so the implementation should be easy.
+
+\secc CategoryService
+
+\begitems
+
+*{\tt findRootCategories() : List<Category>}
+
+Uses a JPQL query which returns all categories without a parent (top-level categories).
+
+*{\tt createCategoryView(Category cat, Language lang) : CategoryView}
+
+Creates a {\tt CategoryView} based on {\tt cat} argument and queried {\tt CategoryInfo}. It also calculates the number of pages.
+
+*{\tt countNumberOfPages(Category cat, Language lang, boolean publishedOnly) : int}
+
+Recursively counts the number of pages inside category and its child categories. The recursion can be costly, but this will hopefully prove insignificant due to a low number of categories in the tree. If this ever becomes an issue, the solution is keeping a “numPages” property in the database. This would mean updating all ancestor categories whenever a page is created / removed, but it would speed up regular browsing. It is worth noting that thanks to JPA, this recursion accesses objects in memory and does not cause database hits.
+
+\enditems
+
+\secc PageService
+
+\begitems
+
+*{\tt createNewPage(int categoryId) : Page}
+
+Creates a blank, unpublished {\tt Page} including {\tt PageContent}s for all language variants. Persists all this and also updates the parent category to recognize the new page.
+
+*{\tt createPageView(Page page, Language lang) : PageView}
+
+Creates a {\tt PageView} based on {\tt page} argument and queried {\tt PageContent}.
+
+\enditems
+
+It is also worth noting that this service overrides {\tt delete(page)} and updates the parent category’s page collection, which would otherwise still include a reference to the deleted page.
+
+\secc PageContentService
+
+\begitems
+
+*{\tt updateWithComponents(pageContent, List<PageComponent> components)}
+
+Replaces all {\tt PageComponent}s with new ones (passed in argument). Iterates through the {\tt components} collection and adds each component to {\tt PageContent}’s respective collection (text, image…). Changes are persisted using inherited {\tt update(pageContent)}.
+
+\enditems
+
+
