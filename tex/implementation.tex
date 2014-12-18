@@ -186,4 +186,63 @@ Replaces all {\tt PageComponent}s with new ones (passed in argument). Iterates t
 
 \enditems
 
+\secc ModelService
+
+\begitems
+
+*{\tt uploadModel(String name, Part modelFile)}
+
+Creates and persists a {\tt Model} entity and also saves the uploaded file to server. The filename is taken from uploaded file, but non-standard characters are replaced and in case of duplicity, numbers are appended. Models are persisted in a designated folder which the server recognizes as an “alternate document root” for easy access on the website.
+
+*{\tt deleteModel(Model model)}
+
+Calls the default {\tt delete(model)} and also deletes the model’s binary file.
+
+*{\tt isUsed(Model model) : boolean}
+
+Runs a JPQL query to find out whether this model is used in any component.
+
+\enditems
+
+\secc ImageService
+
+Works very much like {\tt ModelService} but with {\tt Image} entities and image files.
+
+\secc LabelService
+
+\begitems
+
+*{\tt createLabelViews(Model model, Language lang) : List<LabelView>}
+
+Creates all {\tt LabelView}s for a model in given language using a JPQL query. JPQL lets us create instances of any class if we map the query results to a constructor. That feature was used here so that the “JOIN” query returns a list of {\tt LabelView}s directly.
+
+*{\tt updateLabelsFromJSON(String json, Model model, Language lang)}
+
+Labels are edited in client side JavaScript and changes to be saved are sent to the server as a JSON string. The string represents an array of {\tt LabelViews}. This method parses the string using Google’s open source library GSON \cite[gson]. Then it treats each {\tt LabelView} appropriately to its {\tt action} property and either creates, deletes or removes a {\tt Label} including its {\tt LabelContent}. {\it  Note: It could be argued that the conversion from JSON to LabelView objects should be done in Controller rather than the Service layer.}
+
+\enditems
+
+\secc LabelContentService
+
+This service does not implement any new methods, but overrides {\tt save(labelContent)} and {\tt update(labelContent)} to escape all textual data before persisting. This is necessary, because labels are displayed in JavaScript, which easily breaks if unsafe characters are present.  This is achieved by {\tt StringEscapeUtils.escapeJavaScript(text)}, which is a method of the Apache Commons Lang \cite[apache_commons] library.
+
+\sec Backing Beans
+
+Backing beans are the next layer of our application, one step closer to the client. In our application they are called Controllers (although the real Controller is in fact a {\tt FacesServlet} working behind the scenes).
+
+Each backing bean belongs to a View component (a reusable piece of HTML), provides content from the Model and methods for manipulating it.
+
+Backing beans are annotated with their “scope”, which defines the bean’s lifespan. Most beans are either {\tt @ViewScoped}, which means they’re recreated when a new page is displayed, or {\tt @SessionScoped}, which means the bean lives and holds its state as long as a session with a client is maintained.
+
+\secc BasicController
+
+This is an abstract class which backing beans can inherit from.
+
+Backing beans do not have too much in common, so this ancestor is not really necessary. It was introduced in later stages of development to make the other backing beans’ code a little neater and easier to read.
+
+It implements methods for displaying messages in the View. Messages are passed as a string argument and set as {\tt FacesMessage} in current {\tt FacesContext}. Because the messages can be (and typically will be) localized strings from a resource bundle, these methods evaluate their string input as an EL expression. That way, simple strings are displayed directly, but EL expressions can be used just like they would be used in a Facelets page.
+
+Displaying messages is a common task especially during content editing. This originally created chunks of repeated, verbose code. Implementing a common ancestor reduced these chunks to one-line method calls, which look like this for localized messages:
+
+ {\tt showWarning(\char`\"\#\char`\{messages.noRights\char`\}\char`\")}.
 

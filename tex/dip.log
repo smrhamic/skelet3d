@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  17 DEC 2014 20:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  18 DEC 2014 20:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -253,7 +253,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 .\glue 5.775
 .etc.
 
-) [27] [28] [29]
+[27] [28]) [29] [30] [31]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
@@ -333,7 +333,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[30]
+[32]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -411,17 +411,17 @@ ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
 .\hbox(0.0+0.0)x0.0
 .etc.
 
-[31] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
+[33] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
 14/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (39 pages, 1490834 bytes).
+Output written on dip.pdf (41 pages, 1497215 bytes).
 PDF statistics:
- 876 PDF objects out of 1000 (max. 8388607)
- 808 compressed objects within 9 object streams
- 161 named destinations out of 1000 (max. 500000)
- 684 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 933 PDF objects out of 1000 (max. 8388607)
+ 863 compressed objects within 9 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 740 words of extra memory for PDF output out of 10000 (max. 10000000)
 

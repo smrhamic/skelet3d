@@ -123,9 +123,17 @@
 \Xsecc{5.2.5}{PageService }{27}
 \Xsecc{5.2.6}{PageContentService }{27}
 \Xpage{28}
-\Xchap{6}{Testing }{28}
+\Xsecc{5.2.7}{ModelService }{28}
+\Xsecc{5.2.8}{ImageService }{28}
+\Xsecc{5.2.9}{LabelService }{28}
+\Xsecc{5.2.10}{LabelContentService }{28}
+\Xsec{5.3}{Backing Beans }{28}
 \Xpage{29}
-\Xchap{7}{Conclusion }{29}
+\Xsecc{5.3.1}{BasicController }{29}
+\Xpage{30}
+\Xchap{6}{Testing }{30}
+\Xpage{31}
+\Xchap{7}{Conclusion }{31}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }
@@ -144,8 +152,8 @@
 \Xbib{flash_desktop}{16}{, }
 \Xbib{flash_focus}{17}{Winokur, }
 \Xbib{flash_android}{18}{Aljaber, }
-\Xpage{30}
-\Xchap{!1}{References}{30}
+\Xpage{32}
+\Xchap{!1}{References}{32}
 \Xbib{flash_apple}{19}{, }
 \Xbib{unity}{20}{, }
 \Xbib{shiva}{21}{, }
@@ -161,4 +169,6 @@
 \Xbib{jsf}{31}{, }
 \Xbib{netbeans}{32}{, }
 \Xbib{so_java_permits}{33}{, }
-\Xpage{31}
+\Xbib{gson}{34}{, }
+\Xbib{apache_commons}{35}{, }
+\Xpage{33}
