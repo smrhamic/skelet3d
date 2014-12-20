@@ -234,6 +234,26 @@ Each backing bean belongs to a View component (a reusable piece of HTML), provid
 
 Backing beans are annotated with their “scope”, which defines the bean’s lifespan. Most beans are either {\tt @ViewScoped}, which means they’re recreated when a new page is displayed, or {\tt @SessionScoped}, which means the bean lives and holds its state as long as a session with a client is maintained.
 
+It is important to note that proper annotation and import is required, for example {\tt @SessionScoped @Named("loginController")}. The correct imports would be {\tt javax.faces.view.ViewScoped} and {\tt javax.inject.Named}. Some older tutorials use {\tt @ManagedBean} annotation and different imports, which is an outdated approach and CDI annotations mentioned above should be used instead. If you happen to mix the wrong annotations and imports, your code will break.
+
+The typical life cycle of a backing bean is this:
+
+\begitems
+
+*Initialization, when relevant data is fetched from Model
+
+*Providing methods and data for View
+
+*End of life (depends on scope)
+
+\enditems
+
+Most beans’ initialization methods are called using {\tt @PostConstruct} annotation, but several need an attribute from View (typically page ID) to initialize properly. This is realized by Facelets, which calls the {\tt init(…)} method when bound properties are already set. We tell Facelets to do this by setting {\tt f:viewAction} and {\tt f:viewParam} tags.
+
+Implementing “bound properties” is really easy in a CDI annotated bean. All you have to do is have a private field with public getter/setter and the property is bound. It can then be accessed in a Facelets page like {\tt value=\char`\"\#\char`\{loginController.userName\char`\}\char`\"}.
+
+Action methods are public methods which can be called from Facelets pages such as {\tt action=\char`\"\#\char`\{loginController.login()\char`\}\char`\"}. These methods can have parameters and should return a {\tt String} (redirection rule) or {\tt void}. They are sometimes called within Ajax context and sometimes not. For this reason many action methods in our application specify a {\tt boolean ajax} parameter which determines whether the page should be reloaded at the end of the method run. If {\tt ajax} is {\tt true}, returned redirection string is {\tt null} so that Ajax can take care of the view update.
+
 \secc BasicController
 
 This is an abstract class which backing beans can inherit from.
@@ -245,4 +265,96 @@ It implements methods for displaying messages in the View. Messages are passed a
 Displaying messages is a common task especially during content editing. This originally created chunks of repeated, verbose code. Implementing a common ancestor reduced these chunks to one-line method calls, which look like this for localized messages:
 
  {\tt showWarning(\char`\"\#\char`\{messages.noRights\char`\}\char`\")}.
+
+\secc LanguageController
+
+This session bean is initialized post-construct. It communicates with Model through {\tt LanguageService}. During initialization, it takes the preferred locale from client browser and either assigns a matching language or resorts to default language if no match is found. It also loads all supported languages.
+
+During its life it holds the current language, current locale, a list of available languages and provides a method for switching languages, which simply sets the {\tt currentLanguage}, locale and reloads the page.
+
+Many other backing beans refer to this one to find out what language should be used and it is their responsibility to choose the appropriate content, not {\tt LanguageController}’s.
+
+\secc LoginController
+
+This is the second of our two session beans and is also initialized post-construct. It communicates with Model through {\tt UserService}. During initialization, it sets current user to {\tt null} and user privileges to {\tt false}.
+
+During its life it holds the current user, a flag denoting “edit rights”, properties bound to login input fields and provides methods for login and logout.
+
+Again, many other backing beans refer to this one to confirm user rights and it’s their responsibility to take appropriate actions, not {\tt LoginManager}’s.
+
+\secc PathController
+
+This request scoped backing bean provides a path to current page or category, simply put a page’s parent, grandparent etc. all the way to a root category. It is initialized by Facelets and requires an {\tt isPage} argument (to define whether it’s working with a page or category) and the ID of current page/category (which is in fact a bound property, although we could have made it a method argument).
+
+It uses {\tt PageService} or {\tt CategoryService} to find the page/category by ID and then adds its ancestors in a loop: While “current” page has a parent, add it to path and make it “current”. The path is a list of {\tt CategoryView}.
+
+\secc CategoryController
+
+This view scoped backing bean is initialized by Facelets so it can access current category ID (bound property) during initialization. It provides content of current category (including “views” of its children, non-recursive) and methods for managing pages in this category. Management of categories as such has not been implemented yet. It also provides root categories instead of children in case current category is unset. It uses both {\tt CategoryService} and {\tt PageService}.
+
+Methods {\tt addNewPage(…)} and {\tt deletePage(…)} check user rights, call corresponding service methods, display a message and reload the page (or not if Ajax is used). {\tt goEditPage(…)} is just a redirect which checks user rights.
+
+\secc PageController
+
+This view scoped backing bean is initialized by Facelets so it can access current page ID (bound property) during initialization. It provides content of the page and methods for editing the page including labels of the page’s 3D model. It uses {\tt PageService}, {\tt PageContentService} and {\tt LabelService} to communicate with Model.
+
+Page components are fetched during initialization and sorted. Once sorted, their {\tt compOrder} is set to increment by one (0, 1, 2 .. n) to allow easy manipulation of component order during editing.
+
+3D models get a bit of special treatment because of the need to handle label editing. In current implementation only one 3D model is allowed in a page (if more are present for some reason, only first one is processed).  Thanks to {\tt PageComponent}’s interface, all components are held in a single collection and the same methods are used to manipulate all of them.
+
+During page editing, changes are held in this backing bean and only uploaded to database when saved using {\tt updatePage(…)}, which persists current page and its component collection. Because of this, all editing requests are required to update the page using Ajax; otherwise the view, this bean and all unsaved changes would be reset.
+
+{\tt addComponent(String type)} method is implemented as a switch which pre-fills a default component of given type and places is at the end of collection. Methods for changing component order swap two components in the collection and adjust their {\tt compOrder} appropriately. Components are removed simply by removing them from the collection. No methods for editing the content of individual components are needed, because being managed properties, they can be edited directly in Facelets pages.
+
+A method for persisting changes of 3D model’s labels was implemented. It passes a JSON String generated by JavaScript to {\tt LabelService}, where all the magic happens.
+
+\secc ModelController
+
+Note that this takes care of a “Model Manager” page, not displaying models in pages (backing beans are related to a particular view/page rather than Entities). This view scoped backing bean is initialized post-construct and fetches all 3D models from {\tt ModelService} and sorts them alphabetically.
+
+In addition to more standard properties, a {\tt Part modelFile} is bound. It is used to upload files into the system and {\tt Part} is the object generated by Facelets’ upload file component. Methods to upload, edit (meta-data, not geometry) and delete models check user rights and call corresponding service methods. Deletion is preceded by making sure the model is not used in a component.
+
+\secc ImageController
+
+This bean is analogous to {\tt ModelController}, but works with images.
+
+\secc Converters
+
+{\tt ModelConverter} and {\tt ImageConverter} classes implementing {\tt Converter} interface were introduced to allow displaying Models and Images in drop-down lists. Implementation is trivial and maps Entity objects to their IDs.
+
+\sec View -- Facelets and HTML
+
+Since we are creating a web application and using JSF, the View is realized by a series of HTML (in fact, XHTML) pages generated by JSF’s presentation technology. In our case, that technology would be Facelets.
+
+Facelets is a page declaration language which can be used for creating templates, components and much more. It allows effective work with XHTML and uses Expression Language (EL) to access methods and properties of managed beans. It supports several tag libraries for generating UI components, templating etc. For more details see \cite[facelets].
+
+\secc Templating
+
+All our pages follow a single basic template located at {\tt webapp/template/basic.xhtml}. A template defines a basic skeleton of the page including interchangeable components placed in their respective locations.
+
+This is an example of inserting our main content component in the template and choosing {\tt welcome.xhtml} as the default component (which is used unless specifically overwritten):
+
+\begtt
+
+<ui:insert name=”content”>
+        <ui:include src="../components/welcome.xhtml" />
+</ui:insert>
+
+\endtt
+
+And this is how we would use this template in an actual page that uses {\tt content\_page.xhtml} as its main content (assuming other components stay default):
+
+\begtt
+
+<ui:composition template="/template/basic.xhtml">
+        <ui:define name=”content”>
+                <ui:include src="components/content_page.xhtml"/>
+        </ui:define>
+</ui:composition>
+
+\endtt
+
+Using such a template lets us reuse components and if the defaults are set correctly, we only need to define one or two components per page. This practice reduces writing a new page into writing a content component. It makes the pages easily maintainable, as changing a component affects all pages that are using it without disturbing the rest of the layout.
+
+
 
