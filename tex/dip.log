@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  20 DEC 2014 21:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  26 DEC 2014 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -123,11 +123,473 @@ English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
 live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
 [-2] [-3] [-4] WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12)
 WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [-7]
-[-8] [1] (./problem.tex [2] [3] [4]) [5] (./technology.tex [6] [7] [8 <./perf1.
-png>] [9] [10 <./top-languages.png (PNG copy)>]) [11] (./design.tex [12 <./usec
-ase.pdf>] [13] [14] [15] [16] [17] [18] [19 <./atlas_db.png (PNG copy)>]
-[20 <./prelim_class.pdf>] [21]
-Underfull \hbox (badness 1701) in paragraph at lines 712--713
+[-8] [1] (./problem.tex [2] [3] [4] [5]) [6] (./technology.tex [7] [8] [9 <./pe
+rf1.png>] [10] [11 <./top-languages.png (PNG copy)>]) [12] (./design.tex
+[13 <./usecase.pdf>] [14] [15] [16] [17] [18] [19]
+Underfull \vbox (badness 2894) has occurred while \output is active
+\vbox(674.33032+2.75)x415.41025, glue set 3.07236
+.\vbox(0.0+0.0)x0.0, glue set 25.0fil
+..\kern -25.0
+..\pdfdest name{pg:20} xyz
+..\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue(\splittopskip) 0.0
+.\vbox(512.29443+1.94443)x415.41025
+..\hbox(493.49443+0.0)x415.41025, glue set - 5.69055fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\hbox(493.49443+0.0)x426.79134
+....\pdfrefximage(493.49443+0.0)x426.79134
+...\glue 0.0 plus 1.0fil minus 1.0fil
+..\penalty 10000
+..\glue 6.8 plus 2.26653 minus 2.26653
+..\write0<3>{\string \Xfig {er_diagram}{4.2}{ER Diagram}}
+..\glue 0.0 plus -1.0
+..\glue(\parskip) 0.0 plus 1.0
+..\glue(\baselineskip) 5.0555
+..\hbox(6.9445+1.94443)x415.41025, glue set 31.08182fil
+...\glue(\leftskip) 11.66563 plus 1.0fil
+...\vbox(0.0+0.0)x0.0, glue set 13.99994fil
+....\kern -13.99994
+....\pdfdest name{ref:er_diagram} xyz
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\write0<3>{\Xlabel{er_diagram}{4.2}}
+...\mF F
+...\mF i
+...\mF g
+...\mF u
+...\mF r
+...\mF e
+...\glue 3.66666 plus 1.83331 minus 1.22223
+...\mF 4
+...\mF .
+...\mF 2
+...\mF .
+...\kern 5.0
+...\tenrm E
+...\tenrm R
+...\glue 3.33333 plus 1.66498 minus 1.11221
+...\tenrm d
+...\tenrm i
+...\tenrm a
+...\tenrm g
+...\tenrm r
+...\tenrm a
+...\tenrm m
+...\glue 3.33333 plus 1.66666 minus 1.11111
+...\tenrm o
+...\tenrm f
+...\glue 3.33333 plus 1.66666 minus 1.11111
+...\tenrm a
+...etc.
+.\penalty 10000
+.\glue 13.6 plus 4.53326 minus 4.53326
+.\glue(\topskip) 2.42238
+.\hbox(7.57762+2.13887)x415.41025, glue set 40.50159fil
+..\hbox(0.0+0.0)x11.66563
+..\tenrm T
+..\tenrm h
+..\tenrm e
+..\tenrm s
+..\tenrm e
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\tenrm r
+..\tenrm e
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm t
+..\tenrm h
+..\tenrm e
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm E
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\tenrm i
+..\tenrm t
+..\tenrm i
+..\tenrm e
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm u
+..\tenrm s
+..\tenrm e
+..\tenrm d
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..etc.
+.\glue 6.8 plus 2.26653 minus 2.26653
+.\glue 0.0
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 3.21114
+.\hbox(8.25+2.75)x415.41025, glue set 0.04393
+..\glue(\leftskip) 11.66563
+..\hbox(4.56946+0.0)x0.0, glue set - 12.19423fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\pdfliteral{1 .43 0 0 k}
+...\thefont .
+...\kern -4.0
+...\pdfliteral{0 0 0 1 k}
+...\kern 5.5
+..\mF U
+..\mF s
+..\mF e
+..\mF r
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm p
+..\discretionary
+...\tenrm -
+..\tenrm r
+..\tenrm e
+..\discretionary
+...\tenrm -
+..\tenrm s
+..\tenrm e
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm g
+..\discretionary
+...\tenrm -
+..\tenrm i
+..\tenrm s
+..\discretionary
+...\tenrm -
+..etc.
+.\penalty 10100
+.\glue(\baselineskip) 3.21106
+.\hbox(7.63895+2.13887)x415.41025, glue set - 0.51616
+..\glue(\leftskip) 11.66563
+..\tenrm v
+..\tenrm i
+..\tenrm d
+..\tenrm e
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm p
+..\tenrm r
+..\tenrm o
+..\discretionary replacing 2
+...\tenrm p
+...\tenrm -
+..\tenrm p
+..\kern0.30556
+..\tenrm e
+..\tenrm r
+..\discretionary
+...\tenrm -
+..\tenrm t
+..\tenrm i
+..\tenrm e
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm l
+..\discretionary
+...\tenrm -
+..\tenrm e
+..\discretionary
+...\tenrm -
+..\tenrm v
+..\kern-0.61111
+..\tenrm a
+..etc.
+.\penalty 10000
+.\glue(\baselineskip) 3.88351
+.\hbox(7.57762+2.13887)x415.41025, glue set 287.99991fil
+..\glue(\leftskip) 11.66563
+..\tenrm i
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm i
+..\tenrm g
+..\tenrm h
+..\kern-0.30557
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\tenrm n
+..\tenrm d
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm p
+..\tenrm r
+..\tenrm i
+..\tenrm v
+..\discretionary
+...\tenrm -
+..\tenrm i
+..\discretionary
+...\tenrm -
+..\tenrm l
+..\tenrm e
+..\tenrm g
+..\tenrm e
+..\tenrm s
+..\tenrm .
+..etc.
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 3.82219
+.\hbox(7.63895+2.13887)x415.41025, glue set 44.0449fil
+..\glue(\leftskip) 11.66563
+..\hbox(4.56946+0.0)x0.0, glue set - 12.19423fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\pdfliteral{1 .43 0 0 k}
+...\thefont .
+...\kern -4.0
+...\pdfliteral{0 0 0 1 k}
+...\kern 5.5
+..\mF L
+..\mF a
+..\mF n
+..\mF g
+..\mF u
+..\mF a
+..\mF g
+..\mF e
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm p
+..\tenrm r
+..\tenrm e
+..\tenrm s
+..\tenrm e
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\tenrm n
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\kern-0.30557
+..\tenrm v
+..\kern-0.61111
+..etc.
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 3.21114
+.\hbox(8.25+2.75)x415.41025, glue set - 0.57095
+..\glue(\leftskip) 11.66563
+..\hbox(4.56946+0.0)x0.0, glue set - 12.19423fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\pdfliteral{1 .43 0 0 k}
+...\thefont .
+...\kern -4.0
+...\pdfliteral{0 0 0 1 k}
+...\kern 5.5
+..\mF C
+..\mF a
+..\mF t
+..\mF e
+..\mF g
+..\mF o
+..\kern-0.33612
+..\mF r
+..\mF y
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm p
+..\tenrm r
+..\tenrm e
+..\tenrm s
+..\tenrm e
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm a
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm g
+..\tenrm r
+..\tenrm o
+..\tenrm u
+..etc.
+.\penalty 20000
+.\glue(\baselineskip) 3.27238
+.\hbox(7.57762+2.13887)x415.41025, glue set 96.9962fil
+..\glue(\leftskip) 11.66563
+..\tenrm I
+..\tenrm t
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm c
+..\tenrm a
+..\tenrm n
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm p
+..\kern0.30556
+..\tenrm o
+..\tenrm i
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm t
+..\tenrm o
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm i
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm p
+..\tenrm a
+..\tenrm r
+..\tenrm e
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..etc.
+.\glue(\parskip) 0.0
+.\glue(\baselineskip) 3.82219
+.\hbox(7.63895+2.13887)x415.41025, glue set 18.05705fil
+..\glue(\leftskip) 11.66563
+..\hbox(4.56946+0.0)x0.0, glue set - 12.19423fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\pdfliteral{1 .43 0 0 k}
+...\thefont .
+...\kern -4.0
+...\pdfliteral{0 0 0 1 k}
+...\kern 5.5
+..\mF C
+..\mF a
+..\mF t
+..\mF e
+..\mF g
+..\mF o
+..\kern-0.33612
+..\mF r
+..\mF y
+..\mF I
+..\mF n
+..\mF f
+..\mF o
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm r
+..\tenrm e
+..\tenrm p
+..\tenrm r
+..\tenrm e
+..\tenrm s
+..\tenrm e
+..\tenrm n
+..\kern-0.30557
+..\tenrm t
+..\tenrm s
+..\glue 3.66666 plus 1.83333 minus 1.22221
+..\tenrm l
+..\tenrm o
+..etc.
+.etc.
+
+ [20 <./atlas_db.png (PNG copy)>] [21]
+Underfull \vbox (badness 7397) has occurred while \output is active
+\vbox(674.33032+0.0)x415.41025, glue set 4.20145
+.\vbox(0.0+0.0)x0.0, glue set 25.0fil
+..\kern -25.0
+..\pdfdest name{pg:22} xyz
+..\glue 0.0 plus 1.0fil minus 1.0fil
+.\glue(\splittopskip) 0.0
+.\vbox(619.15315+1.94443)x415.41025
+..\hbox(600.35315+0.0)x415.41025, glue set - 5.69055fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
+...\hbox(600.35315+0.0)x426.79134
+....\pdfrefximage(600.35315+0.0)x426.79134
+...\glue 0.0 plus 1.0fil minus 1.0fil
+..\penalty 10000
+..\glue 6.8 plus 2.26653 minus 2.26653
+..\write0<3>{\string \Xfig {class_diag1}{4.3}{Preliminary Design of the Applica
+tio\ETC.}
+..\glue 0.0 plus -1.0
+..\glue(\parskip) 0.0 plus 1.0
+..\glue(\baselineskip) 5.0555
+..\hbox(6.9445+1.94443)x415.41025, glue set 86.2205fil
+...\glue(\leftskip) 11.66563 plus 1.0fil
+...\vbox(0.0+0.0)x0.0, glue set 13.99994fil
+....\kern -13.99994
+....\pdfdest name{ref:class_diag1} xyz
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\write0<3>{\Xlabel{class_diag1}{4.3}}
+...\mF F
+...\mF i
+...\mF g
+...\mF u
+...\mF r
+...\mF e
+...\glue 3.66666 plus 1.83331 minus 1.22223
+...\mF 4
+...\mF .
+...\mF 3
+...\mF .
+...\kern 5.0
+...\tenrm P
+...\tenrm r
+...\tenrm e
+...\tenrm l
+...\tenrm i
+...\tenrm m
+...\tenrm i
+...\tenrm n
+...\tenrm a
+...\tenrm r
+...\tenrm y
+...\glue 3.33333 plus 1.66666 minus 1.11111
+...\tenrm d
+...\tenrm e
+...\tenrm s
+...etc.
+.\penalty 10000
+.\glue 13.6 plus 4.53326 minus 4.53326
+.\glue(\topskip) 0.0
+.\hbox(11.57158+0.85358)x415.41025, glue set 11.3811fil
+..\pdfliteral{1 .43 0 0 k}
+..\rule(9.95845+0.85358)x11.38109
+..\pdfliteral{0 0 0 1 k}
+..\glue 0.0 plus 1.0fil minus 1.0fil
+..\vbox(11.57158+0.2494)x392.64806
+...\hbox(11.57158+4.7494)x392.64806, glue set 302.67018fil
+....\vbox(0.0+0.0)x0.0, glue set 20.32915fil
+.....\kern -20.32915
+.....\pdfdest name{toc:4.4.4} xyz
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\write0<3>{\string \Xsecc {4.4.4}{Entities }{\the \pageno }}
+....\mF 4
+....\mF .
+....\mF 4
+....\mF .
+....\mF 4
+....\glue 14.52089
+....\pdfliteral{1 .43 0 0 k}
+....\mF E
+....\mF n
+....\mF t
+....\mF i
+....\mF t
+....\mF i
+....\mF e
+....\mF s
+....\rule(11.57158+4.7494)x0.0
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\kern -4.5
+..\pdfliteral{0 0 0 1 k}
+.\penalty 10000
+.\glue 0.0
+.\glue 3.4 plus 1.13326 minus 1.13326
+
+ [22 <./prelim_class.pdf, page is rotated 270 degrees>] [23]
+Underfull \hbox (badness 1701) in paragraph at lines 719--720
 []\tenrm Our busi-ness ob-jects in-clude page com-po-nents, namely \tentt Head-
 lineCom-po-nent\tenrm ,
 
@@ -168,7 +630,7 @@ lineCom-po-nent\tenrm ,
 .\tenrm l
 .etc.
 
-[22 <./mature_class.pdf>]) [23] (./implementation.tex [24]
+[24 <./mature_class.pdf>]) [25] (./implementation.tex [26]
 Underfull \hbox (badness 1237) in paragraph at lines 58--59
  []\tenrm persist a pre-vi-ously un-per-sisted En-tity us-ing \tentt En-ti-ty-M
 an-ager\tenrm 's \tentt per-sist(^^80)
@@ -209,8 +671,8 @@ an-ager\tenrm 's \tentt per-sist(^^80)
 .\tenrm p
 .etc.
 
-[25] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+[27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
  []\tentt countNumberOfPages(Category cat, Lan-guage lang, boolean pub-lishe-dO
 -
 
@@ -253,7 +715,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 .\glue 5.775
 .etc.
 
-[27] [28] [29] [30] [31]) [32] [33] [34]
+[29] [30] [31] [32] [33] [34]
+Underfull \hbox (badness 2173) in paragraph at lines 396--397
+\tenrm (\tentt ui:component\tenrm ), how HTML com-po-nents can be de-fined us-i
+ng Facelets tags
+
+\hbox(8.25+2.75)x415.41025, glue set 2.79175
+.\tenrm (
+.\tentt u
+.\tentt i
+.\tentt :
+.\tentt c
+.\tentt o
+.\tentt m
+.\tentt p
+.\tentt o
+.\tentt n
+.\tentt e
+.\tentt n
+.\tentt t
+.\tenrm )
+.\tenrm ,
+.\glue 3.66666 plus 2.29166 minus 0.97777
+.\tenrm h
+.\tenrm o
+.\kern-0.30557
+.\tenrm w
+.\glue 3.66666 plus 1.83333 minus 1.22221
+.\tenrm H
+.\tenrm T
+.\tenrm M
+.\tenrm L
+.\glue 3.66666 plus 1.83148 minus 1.22343
+.\tenrm c
+.\tenrm o
+.\tenrm m
+.\discretionary
+..\tenrm -
+.etc.
+
+[35] [36]) [37] [38] [39]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
@@ -333,7 +834,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[35]
+[40]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -411,17 +912,17 @@ ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
 .\hbox(0.0+0.0)x0.0
 .etc.
 
-[36] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}{c:/texlive/20
-14/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}<c:/texlive/2014/texmf-dist/fonts/ty
+[41] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
+/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (44 pages, 1510207 bytes).
+Output written on dip.pdf (49 pages, 1529811 bytes).
 PDF statistics:
- 1013 PDF objects out of 1200 (max. 8388607)
- 939 compressed objects within 10 object streams
- 185 named destinations out of 1000 (max. 500000)
- 820 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1093 PDF objects out of 1200 (max. 8388607)
+ 1013 compressed objects within 11 object streams
+ 201 named destinations out of 1000 (max. 500000)
+ 884 words of extra memory for PDF output out of 10000 (max. 10000000)
 

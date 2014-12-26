@@ -11,142 +11,156 @@
 \Xchap{1}{Introduction }{1}
 \Xpage{2}
 \Xchap{2}{Problem Analysis }{2}
-\Xsec{2.1}{Requirements }{2}
-\Xsecc{2.1.1}{Functional Requirements - User }{2}
-\Xsecc{2.1.2}{Functional Requirements – Editor }{2}
-\Xsecc{2.1.3}{Functional Requirements – Administrator }{2}
+\Xsec{2.1}{Role Definition }{2}
+\Xsec{2.2}{Requirements }{2}
+\Xsecc{2.2.1}{Functional Requirements - User }{2}
+\Xsecc{2.2.2}{Functional Requirements – Editor }{2}
 \Xpage{3}
-\Xsecc{2.1.4}{Non-functional Requirements }{3}
-\Xsec{2.2}{Target Group }{3}
-\Xsec{2.3}{Existing Solutions and Alternatives }{3}
-\Xsec{2.4}{Analysis of the Current Version of the Atlas }{3}
+\Xsecc{2.2.3}{Functional Requirements – Administrator }{3}
+\Xsecc{2.2.4}{Non-functional Requirements }{3}
+\Xsec{2.3}{Target Group }{3}
+\Xsec{2.4}{Existing Solutions and Alternatives }{3}
 \Xpage{4}
-\Xsecc{2.4.1}{Bone Selector }{4}
-\Xsecc{2.4.2}{3D Viewer }{4}
-\Xsecc{2.4.3}{PHP Parts }{4}
-\Xsecc{2.4.4}{Editing }{4}
+\Xsec{2.5}{Analysis of the Current Version of the Atlas }{4}
+\Xsecc{2.5.1}{Bone Selector }{4}
+\Xsecc{2.5.2}{3D Viewer }{4}
 \Xpage{5}
-\Xsecc{2.4.5}{Identified Flaws }{5}
+\Xsecc{2.5.3}{PHP Parts }{5}
+\Xsecc{2.5.4}{Editing }{5}
+\Xsecc{2.5.5}{Identified Flaws }{5}
 \Xtab{flaws}{2.1}{Identified Flaws}
 \Xlabel{flaws}{2.1}
-\Xsecc{2.4.6}{Conclusion }{5}
-\Xsec{2.5}{Project's Contributions }{5}
+\Xsecc{2.5.6}{Conclusion }{5}
+\Xsec{2.6}{Project's Contributions }{5}
 \Xpage{6}
-\Xchap{3}{Relevant Technology }{6}
-\Xsec{3.1}{3D Technology for the Web }{6}
-\Xsecc{3.1.1}{CSS 3D Transforms }{6}
-\Xsecc{3.1.2}{WebGL }{6}
 \Xpage{7}
-\Xsecc{3.1.3}{Flash }{7}
+\Xchap{3}{Relevant Technology }{7}
+\Xsec{3.1}{3D Technology for the Web }{7}
+\Xsecc{3.1.1}{CSS 3D Transforms }{7}
+\Xsecc{3.1.2}{WebGL }{7}
 \Xpage{8}
-\Xsecc{3.1.4}{Other Plug-in Technologies }{8}
-\Xsecc{3.1.5}{Performance Test 1: Cubes (WebGL and Flash) }{8}
+\Xsecc{3.1.3}{Flash }{8}
+\Xpage{9}
+\Xsecc{3.1.4}{Other Plug-in Technologies }{9}
+\Xsecc{3.1.5}{Performance Test 1: Cubes (WebGL and Flash) }{9}
 \Xfig{perf1}{3.1}{WebGL vs. Flash rendering frequency}
 \Xlabel{perf1}{3.1}
-\Xpage{9}
-\Xsecc{3.1.6}{Performance Test 2: Aquarium (WebGL) }{9}
-\Xsecc{3.1.7}{Frameworks (WebGL) }{9}
-\Xsecc{3.1.8}{Conclusion }{9}
 \Xpage{10}
-\Xsec{3.2}{Server-Side Language }{10}
-\Xsecc{3.2.1}{IEEE Spectrum Ranking }{10}
+\Xsecc{3.1.6}{Performance Test 2: Aquarium (WebGL) }{10}
+\Xsecc{3.1.7}{Frameworks (WebGL) }{10}
+\Xsecc{3.1.8}{Conclusion }{10}
+\Xpage{11}
+\Xsec{3.2}{Server-Side Language }{11}
+\Xsecc{3.2.1}{IEEE Spectrum Ranking }{11}
 \Xfig{top_language}{3.2}{IEEE Spectrum - Top Web Development Languages}
 \Xlabel{top_language}{3.2}
-\Xsecc{3.2.2}{Personal Experience }{10}
-\Xpage{11}
-\Xsecc{3.2.3}{Conclusion }{11}
-\Xsec{3.3}{Server-side Framework }{11}
-\Xsecc{3.3.1}{JavaServer Faces }{11}
+\Xsecc{3.2.2}{Personal Experience }{11}
 \Xpage{12}
-\Xchap{4}{Application Design }{12}
-\Xsec{4.1}{Use Cases }{12}
+\Xsecc{3.2.3}{Conclusion }{12}
+\Xsec{3.3}{Server-side Framework }{12}
+\Xsecc{3.3.1}{JavaServer Faces }{12}
+\Xpage{13}
+\Xchap{4}{Application Design }{13}
+\Xsec{4.1}{Use Cases }{13}
 \Xfig{usecase}{4.1}{Use Case Diagram}
 \Xlabel{usecase}{4.1}
-\Xpage{13}
-\Xsecc{4.1.1}{User: Select Language }{13}
-\Xsecc{4.1.2}{User: Navigate to Page }{13}
 \Xpage{14}
-\Xsecc{4.1.3}{User: View Page }{14}
-\Xsecc{4.1.4}{User: View Model }{14}
-\Xsecc{4.1.5}{Registered User: Login }{14}
-\Xsecc{4.1.6}{Registered User: Logout }{14}
+\Xsecc{4.1.1}{User: Select Language }{14}
+\Xsecc{4.1.2}{User: Navigate to Page }{14}
 \Xpage{15}
-\Xsecc{4.1.7}{Registered User: Change Password }{15}
-\Xsecc{4.1.8}{Editor: Create page }{15}
-\Xsecc{4.1.9}{Editor: Edit Page }{15}
+\Xsecc{4.1.3}{User: View Page }{15}
+\Xsecc{4.1.4}{User: View Model }{15}
+\Xsecc{4.1.5}{Registered User: Login }{15}
+\Xsecc{4.1.6}{Registered User: Logout }{15}
 \Xpage{16}
-\Xsecc{4.1.10}{Editor: Delete Page }{16}
-\Xsecc{4.1.11}{Editor: Managing Models }{16}
-\Xsecc{4.1.12}{Editor: Manage Images }{16}
-\Xsecc{4.1.13}{Editor: Manage Model's Labels }{16}
+\Xsecc{4.1.7}{Registered User: Change Password }{16}
+\Xsecc{4.1.8}{Editor: Create page }{16}
+\Xsecc{4.1.9}{Editor: Edit Page }{16}
 \Xpage{17}
-\Xsecc{4.1.14}{Administrator: Manage Users }{17}
+\Xsecc{4.1.10}{Editor: Delete Page }{17}
+\Xsecc{4.1.11}{Editor: Managing Models }{17}
+\Xsecc{4.1.12}{Editor: Manage Images }{17}
+\Xsecc{4.1.13}{Editor: Manage Model's Labels }{17}
 \Xpage{18}
-\Xsec{4.2}{Graphical User Interface }{18}
-\Xsec{4.3}{Business Objects }{18}
-\Xsec{4.4}{Overall Architecture and Classes }{18}
+\Xsecc{4.1.14}{Administrator: Manage Users }{18}
 \Xpage{19}
+\Xsec{4.2}{Graphical User Interface }{19}
+\Xsec{4.3}{Business Objects }{19}
+\Xpage{20}
 \Xfig{er_diagram}{4.2}{ER Diagram}
 \Xlabel{er_diagram}{4.2}
-\Xsecc{4.4.1}{Client Side }{19}
-\Xsecc{4.4.2}{Servlet }{19}
-\Xpage{20}
+\Xpage{21}
+\Xsec{4.4}{Overall Architecture and Classes }{21}
+\Xsecc{4.4.1}{Client Side }{21}
+\Xsecc{4.4.2}{Servlet }{21}
+\Xsecc{4.4.3}{Managed Beans }{21}
+\Xpage{22}
 \Xfig{class_diag1}{4.3}{Preliminary Design of the Application}
 \Xlabel{class_diag1}{4.3}
-\Xsecc{4.4.3}{Managed Beans }{20}
-\Xsecc{4.4.4}{Entities }{20}
-\Xpage{21}
-\Xsecc{4.4.5}{Persistence }{21}
-\Xsec{4.5}{Architecture and Classes - Mature }{21}
-\Xsecc{4.5.1}{Service Layer }{21}
-\Xpage{22}
+\Xsecc{4.4.4}{Entities }{22}
+\Xpage{23}
+\Xsecc{4.4.5}{Persistence }{23}
+\Xsec{4.5}{Architecture and Classes - Mature }{23}
+\Xlabel{des-service}{4.5.1}
+\Xsecc{4.5.1}{Service Layer }{23}
+\Xpage{24}
 \Xfig{class_diag2}{4.4}{Mature Design of the Server Side}
 \Xlabel{class_diag2}{4.4}
-\Xsecc{4.5.2}{Entities and Page Components }{22}
-\Xpage{23}
-\Xsecc{4.5.3}{Special View Classes }{23}
-\Xpage{24}
-\Xchap{5}{Implementation }{24}
-\Xsec{5.1}{Data Model }{24}
-\Xsecc{5.1.1}{Setting Up a Local Database }{24}
-\Xsecc{5.1.2}{Creating Tables }{24}
-\Xsecc{5.1.3}{Generating Entities }{24}
-\Xsecc{5.1.4}{PageComponent Abstract Class }{24}
+\Xsecc{4.5.2}{Entities and Page Components }{24}
 \Xpage{25}
-\Xsec{5.2}{Service Layer }{25}
-\Xsecc{5.2.1}{BasicService }{25}
-\Xsecc{5.2.2}{Common Traits and LanguageService Example }{25}
+\Xsecc{4.5.3}{Special View Classes }{25}
 \Xpage{26}
+\Xchap{5}{Implementation }{26}
+\Xsec{5.1}{Data Model }{26}
+\Xsecc{5.1.1}{Setting Up a Local Database }{26}
+\Xsecc{5.1.2}{Creating Tables }{26}
+\Xsecc{5.1.3}{Generating Entities }{26}
+\Xsecc{5.1.4}{PageComponent Abstract Class }{26}
 \Xpage{27}
-\Xsecc{5.2.3}{UserService }{27}
-\Xsecc{5.2.4}{CategoryService }{27}
-\Xsecc{5.2.5}{PageService }{27}
-\Xsecc{5.2.6}{PageContentService }{27}
+\Xsec{5.2}{Service Layer }{27}
+\Xsecc{5.2.1}{BasicService }{27}
+\Xsecc{5.2.2}{LanguageService -- Example Service }{27}
 \Xpage{28}
-\Xsecc{5.2.7}{ModelService }{28}
-\Xsecc{5.2.8}{ImageService }{28}
-\Xsecc{5.2.9}{LabelService }{28}
-\Xsecc{5.2.10}{LabelContentService }{28}
-\Xsec{5.3}{Backing Beans }{28}
 \Xpage{29}
-\Xsecc{5.3.1}{BasicController }{29}
-\Xsecc{5.3.2}{LanguageController }{29}
+\Xsecc{5.2.3}{UserService }{29}
+\Xsecc{5.2.4}{CategoryService }{29}
+\Xsecc{5.2.5}{PageService }{29}
+\Xsecc{5.2.6}{PageContentService }{29}
 \Xpage{30}
-\Xsecc{5.3.3}{LoginController }{30}
-\Xsecc{5.3.4}{PathController }{30}
-\Xsecc{5.3.5}{CategoryController }{30}
-\Xsecc{5.3.6}{PageController }{30}
+\Xsecc{5.2.7}{ModelService }{30}
+\Xsecc{5.2.8}{ImageService }{30}
+\Xsecc{5.2.9}{LabelService }{30}
+\Xsecc{5.2.10}{LabelContentService }{30}
+\Xsec{5.3}{Backing Beans }{30}
 \Xpage{31}
-\Xsecc{5.3.7}{ModelController }{31}
-\Xsecc{5.3.8}{ImageController }{31}
-\Xsecc{5.3.9}{Converters }{31}
-\Xsec{5.4}{View -- Facelets and HTML }{31}
-\Xsecc{5.4.1}{Templating }{31}
+\Xsecc{5.3.1}{BasicController }{31}
+\Xsecc{5.3.2}{LanguageController }{31}
 \Xpage{32}
+\Xsecc{5.3.3}{LoginController }{32}
+\Xsecc{5.3.4}{PathController }{32}
+\Xsecc{5.3.5}{CategoryController }{32}
+\Xsecc{5.3.6}{PageController }{32}
 \Xpage{33}
-\Xchap{6}{Testing }{33}
+\Xsecc{5.3.7}{ModelController }{33}
+\Xsecc{5.3.8}{ImageController }{33}
+\Xsecc{5.3.9}{Converters }{33}
+\Xsec{5.4}{View -- Facelets and HTML }{33}
 \Xpage{34}
-\Xchap{7}{Conclusion }{34}
+\Xsecc{5.4.1}{Templating }{34}
+\Xsecc{5.4.2}{Page URLs }{34}
+\Xsecc{5.4.3}{Style -- CSS }{34}
+\Xpage{35}
+\Xsecc{5.4.4}{Ajax }{35}
+\Xsecc{5.4.5}{Localization }{35}
+\Xsecc{5.4.6}{Language Component -- Example Component }{35}
+\Xsecc{5.4.7}{Other Common Components }{35}
+\Xpage{36}
+\Xsecc{5.4.8}{Page Specific Components }{36}
+\Xpage{37}
+\Xpage{38}
+\Xchap{6}{Testing }{38}
+\Xpage{39}
+\Xchap{7}{Conclusion }{39}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }
@@ -165,8 +179,8 @@
 \Xbib{flash_desktop}{16}{, }
 \Xbib{flash_focus}{17}{Winokur, }
 \Xbib{flash_android}{18}{Aljaber, }
-\Xpage{35}
-\Xchap{!1}{References}{35}
+\Xpage{40}
+\Xchap{!1}{References}{40}
 \Xbib{flash_apple}{19}{, }
 \Xbib{unity}{20}{, }
 \Xbib{shiva}{21}{, }
@@ -185,4 +199,6 @@
 \Xbib{gson}{34}{, }
 \Xbib{apache_commons}{35}{, }
 \Xbib{facelets}{36}{, }
-\Xpage{36}
+\Xbib{prettyfaces}{37}{, }
+\Xbib{ajaxfix}{38}{, }
+\Xpage{41}

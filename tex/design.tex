@@ -590,18 +590,22 @@ Images are managed the same way models are, so the scenarios would be analogical
 
 A simple mockup of a possible graphical user interface (GUI) was created in early stages of the design. It was a series of simplified images and it focused on “what features” rather than actual graphical design. It helped define what we want to implement in order to cover our use cases.
 
+The mockup is not displayed here because of space constraints. Images from final application will be shown in an appendix.
+
 \sec Business Objects
 
-The application will work with numerous business objects, also known as Entities. These objects represent mostly content of the application, but also miscellaneous entities such as users and languages.
+The application is controlled by numerous business objects, also known as Entities. These objects represent mostly the content of the application, but also miscellaneous entities such as users and languages.
 
-All our business objects are permanent in the sense that they should be available in all instances of the application, survive server restarts and so on. This means we will be persisting these object and the obvious choice for persistence is a relational database for most records and a file system for binary files such as 3D models and images.
+All our business objects are persistent in the sense that they should be available in all instances of the application, survive server restarts and so on. This means we will be persisting these object and the obvious choice for persistence is a relational database for most records and a file system for binary files such as 3D models and images.
 
 It is a common theme that localizable “real life” objects are represented by two Entities – one contains properties shared by all language variants such as ID, parent category or Latin name. The other Entity contains localized properties for a given language such as title or text content.
 
 \midinsert
 \picw=15cm \clabel[er_diagram]{ER Diagram} \cinspic atlas_db.png
-\caption/f ER diagram of application's Entities
+\caption/f ER diagram of application's Entities in "crow's foot" notation.
 \endinsert
+
+\vfil \break
 
 These are the Entities used in our application as shown in ER diagram \ref[er_diagram]:
 
@@ -630,6 +634,8 @@ These are the Entities used in our application as shown in ER diagram \ref[er_di
 *{\bf LabelContent} represents the localized content of a Label
 
 \enditems
+
+All primary keys as well as foreign keys in the database are indexed to allow more efficient searching.
 
 \sec Overall Architecture and Classes
 
@@ -676,7 +682,7 @@ These data-representing classes can travel through many layers of the applicatio
 
 \secc Persistence
 
-Persistence (rightmost part in diagram \ref[class_diag1]) will be realized mostly by a database. The default Java DB (formerly Derby) will be sufficient for our needs.
+Persistence (rightmost part in diagram \ref[class_diag1]) will be realized mostly by a database. The default Java DB (formerly Derby) will be sufficient for our needs as no non-standard requirements are known and the expected workload is small. If necessary, the database engine can be easily switched later.
 
 The database connections, transactions and everything related will be left to Java Persistence API (JPA) as opposed to manually using JDBC. JPA with its EntityManager is a great (and ready to go) way to ensure that everything works and nothing clashed in our multi-user environment. What is more, entities properly mapped to database tables save us the hassle of writing SQL queries manually.
 
@@ -684,15 +690,16 @@ The database connections, transactions and everything related will be left to Ja
 
 During the development of our application, it became apparent that while the original architecture might be sufficient, there is a lot of space for improvement.
 
-The overall design remained quite similar to the initial plan. Client side, JSF and JPA persistence were largely unchanged.
+The overall design remained quite similar to the initial plan. Client side, managed beans and JPA persistence were mostly unchanged, subject to minor updates.
 
-The most notable changes happened between Controller and Model. A more mature version of the Java server’s class diagram is shown in diagram \ref[class_diag2].
+The most notable changes happened between Controller and Model, where a new service layer was introduced to better separate model and logic (further discussed in \ref[des-service]). A more mature version of the Java server’s class diagram is shown in diagram \ref[class_diag2].
 
 \midinsert
 \picw=15cm \clabel[class_diag2]{Mature Design of the Server Side} \cinspic mature_class.pdf
 \caption/f Mature design of the application's server side (without Servlets and persistence).
 \endinsert
 
+\label[des-service]
 \secc Service Layer
 
 The original design used Entities which provided their own CRUD methods. That way Controller classes (previously called Managers) would call CRUD methods directly on the instances of business objects.

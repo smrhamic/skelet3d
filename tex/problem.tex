@@ -1,18 +1,26 @@
 The task is to develop a new version of the Atlas of Human Bones, an online database of bones including 3D models with labels and web pages with additional information. The Atlas will serve as a source of information and a study material, primarily for students of the Third Faculty of Medicine at Charles University in Prague. The existing version is insufficient and should be replaced by a new system while reusing the partially pre-filled data content.
 
+\sec Role Definition
+
+The application will support three basic user roles:
+
+\begitems
+*{\bf User} -- Any visitor of the website. Users can browse all public content but not alter it in any way.
+*{\bf Editor} -- An authenticated user responsible for uploading and editing the content.
+*{\bf Administrator} -- An authenticated user responsible for managing user accounts.
+\enditems
+
 \sec Requirements
 
 \secc Functional Requirements - User
-
-Any visitor of the website is considered a user and should have access to following features:
 
 \vskip 10pt
 {\bf 3D Viewer with following features:}
 
 \begitems
 *Display 3D models of bones
-*Display labels for certain parts
-*Display detailed descriptions of parts when selected
+*Display labels for significant parts of the bones
+*Display detailed description of a part when label is selected
 *3 display modes for labels: Full labels / Labels with hidden names / No labels
 *Adjustable view (move, rotate, zoom)
 \enditems
@@ -21,26 +29,24 @@ Any visitor of the website is considered a user and should have access to follow
 {\bf Website with following features:}
 
 \begitems
-*Navigation to specific bones
+*Navigation to specific bones using a hierarchy of categories
+*Naviagation using a "Search" function
 *Web page for each bone with a 3D model, relevant images, text and references
 \enditems
 
 \secc Functional Requirements – Editor
 
-Editors are authenticated users with access to following extra features:
-
 \begitems
 *Login into editorial system
-*Add, edit and delete pages (bones)
-*Upload 3D models
-*Add, edit and delete labels and descriptions of the models
-*Add, edit and delete textual information related to each bone
-*Add and delete images related to each bone
+*Manually add, edit and delete pages (bones)
+*Upload 3D model files
+*Upload image files
+*Add uploaded 3D models and images to pages
+*Manually add, edit and delete textual information related to each bone
+*Manually add, edit and delete labels and descriptions of 3D models
 \enditems
 
 \secc Functional Requirements – Administrator
-
-Administrators are authenticated users with access to following extra features:
 
 \begitems
 *Login into account management system
@@ -59,32 +65,34 @@ Administrators are authenticated users with access to following extra features:
 
 The application is targeted at students of the Third Faculty of Medicine at Charles University in Prague. Other users are to be expected, but the focus should remain on medical students.
 
-TODO: Add details if there's a survey
+Medical students are young, non-technical users. However, high working knowledge with a web browser can be expected.
 
 \sec Existing Solutions and Alternatives
 
 The following list is by no means complete. These are just several examples of the most relevant solutions and alternatives found online.
 
 \begitems
-*Skelet 3D (available at \cite[skelet3d]) is the previous version of our project, further discussed in the next section. Our intention is to rework and upgrade this solution.
+*Skelet 3D (available at \cite[skelet3d]) is the previous version of our project, further discussed in the next section. Our intention is to redesign and upgrade this solution.
 
-*Skeletopedia (available at \cite[skeletopedia]) seems to be the closest independent solution available. It provides interactive 3D models of bones in browser environment as well as simple labeling of certain parts, unfortunately not in great detail. The contribution of our project in comparison to this solution should be more detailed and far more numerous labeling of the models as well as further information about each label and each bone in general.
+*Skeletopedia (available at \cite[skeletopedia]) seems to be the independent solution closest to our specification. It provides interactive 3D models of bones in browser environment as well as simple labeling of certain parts, unfortunately not in great detail. The contribution of our project in comparison to this solution should be more detailed and far more numerous labeling of the models as well as further information about each label and each bone in general.
 
 *Zygote Body, Anatronica (available at \cite[zygote, anatronica]) and many other systems include 3D models of the human skeleton. However, they provide little to no additional information besides the name of each bone.
 
 *3D Science provides extremely detailed 3D models (available at \cite[3dscience]). However, these are not free, most likely not suitable for online display and most importantly provide no additional information.
 
-*Palacký University in Olomouc provides information on most bones in their online human anatomy as well as photography of human bones, sometimes including labels with short descriptions (available at \cite[upol]). The information, however, seems incomplete. Moreover, there is no 3D material available, which is the trademark of our project.
+*Palacký University in Olomouc provides information on most bones in their online human anatomy as well as photography of human bones, sometimes including labels with short descriptions (available at \cite[upol]). The information, however, seems incomplete. Moreover, there is no 3D material available, which is the key feature of our project.
 
 *Wikipedia provides rather detailed information on human bones (available at \cite[wikibones]). English version includes simple 3D animations of most bones, but it doesn’t provide any connection of 3D models with labels and descriptions, which is the intended contribution of our project.
 
 \enditems
 
+Overall, each existing solution provides some interesting features, but none of them offers everything our project is aiming for. We will incorporate the best of each existing solution and add something extra: Interactive 3D models comparable to Zygote/Anatronica, labels more detailed than those of Skeletopedia, information comparable to Wikipedia but focused on medical students and up-to-date content in Czech.
+
 \sec Analysis of the Current Version of the Atlas
 
 The Atlas project is not beginning with this thesis. It was initiated in 2012 and most of the development of the existing version happened in 2013.
 
-The application was developed on the fly and went through a series of overhauls without proper planning. Although it works, it suffers from a variety of flaws because of this. From a developer's point of view, the internal structure is unorganized and undocumented. While it might be sufficient for now, the lack of order and proper organization makes sustainability and further development an issue.
+The application was developed on the fly and went through a series of overhauls without proper planning. Although it works, it suffers from a variety of flaws. From a developer's point of view, the internal structure is unorganized and undocumented. While it might had been sufficient, the lack of order and proper organization makes sustainability and further development a complicated issue.
 
 The current version is a publicly available website running on the servers of the Third Faculty of Medicine, Charles University \cite[skelet3d]. It consists of a list of bones sorted in a hierarchy of groups based on parts of the human body, a 3D viewer of models of bones and a very simple editing page which isn’t public. An as-of-yet unreleased bilingual version allows editing in Czech and English (as opposed to Czech only).
 
@@ -95,15 +103,15 @@ The list of available bones is a Flash application written in ActionScript 3 tha
 
 \secc 3D Viewer
 
-The model viewer is another Flash (ActionScript 3) application using a simple 3D engine called Sandy with two basic modes: view and edit. It allows the user to manipulate view freely, although not in the most intuitive way, utilizing only one mouse button. It allows users to display or hide labels and pins as it should.
+The model viewer is another Flash (ActionScript 3) application using a simple 3D engine called Sandy with two basic modes: view and edit. It allows the user to manipulate view freely, although not in the most intuitive way, utilizing only one mouse button. It allows users to display or hide labels and pins appropriately.
 
 However, it suffers from graphical errors, most notably seeing labels through a bone while they should be behind it and vice versa. This is caused by Z-sorting algorithms used in Sandy 3D engine, which are too simple for the task.
 
 It is also missing some minor tweaks such as adjusting the label width to fit the length of the text.
 
-The edit mode is working, although not pretty to look at.
+The edit mode is working, although its graphical design is poor.
 
-The rendering speed of the application is subpar, greatly limiting the use on mobile devices and the quality of models. Some of the more complex models are reaching low FPS even on average desktop computers, while being virtually unusable on older machines and mobile devices. A tradeoff between model complexity and rendering speed is to be expected, but current application’s performance is nevertheless underwhelming. The technology used doesn’t provide easy solutions to some of the aforementioned flaws.
+The rendering speed of the application is unsatisfactory, greatly limiting the use on mobile devices and the quality of models. Some of the more complex models are reaching low FPS even on average desktop computers, while being virtually unusable on older machines and mobile devices. A tradeoff between model complexity and rendering speed is to be expected, but current application’s performance is nevertheless underwhelming. The technology used doesn’t provide easy solutions to some of the identified flaws (see \ref[flaws]).
 
 \secc PHP Parts
 
