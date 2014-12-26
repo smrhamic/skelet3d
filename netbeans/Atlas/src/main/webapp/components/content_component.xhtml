@@ -31,6 +31,7 @@
                           rendered="#{component.componentType == 'image'}">
                 <h:graphicImage value="/images/#{component.image.filename}" alt="#{component.description}" />
                 <h:outputText class="imageDescription" value="#{component.description}" />
+                <br /><br /> 
             </h:panelGroup>
             
             <!-- Display if MODEL component -->
@@ -50,6 +51,7 @@
                 <h:outputScript name="js/three.min.js" />
                 <h:outputScript name="js/TrackballControls.js" />
                 <h:outputScript name="js/STLLoader.js" />
+                <h:outputScript name="js/Detector.js" />
                 <!-- container element for renderer -->
                 <div id="container">
                     <!-- setup JS variables -->
@@ -90,6 +92,7 @@
                     <h:outputScript name="js/view3d.js" />
                 </div>
                 <h:outputText class="modelDescription" value="#{component.description}" />
+                <br /><br />
             </h:panelGroup>
         </ui:component>
     </body>

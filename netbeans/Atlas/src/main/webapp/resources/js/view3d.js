@@ -41,9 +41,15 @@ function init() {
     camera.position.z = 200;
 
     // create renderer
-    renderer = new THREE.WebGLRenderer();
-    //renderer.setSize(width, height);
-    renderer.setClearColor(0xF0F0F0, 0);
+    // allow fallback but display warning
+    if (Detector.webgl) {
+        renderer = new THREE.WebGLRenderer();
+    } else {
+        renderer = new THREE.CanvasRenderer();
+        alert(strings['noWebGL']);
+    }
+
+    renderer.setClearColor(0xF0F0F0, 1.0);
     // append renderer element to container
     container.appendChild(renderer.domElement);
     // setup orbit controls

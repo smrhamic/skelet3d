@@ -26,7 +26,7 @@
             <ui:repeat value="#{categoryController.childCategories}"
                            var="sub" varStatus="status">
                 <ui:include src="category_item.xhtml">
-                    <ui:param name="listPosition" value="#{status.index}" />
+                    <ui:param name="item" value="#{sub}" />
                     <ui:param name="type" value="category" />
                 </ui:include>
             </ui:repeat>

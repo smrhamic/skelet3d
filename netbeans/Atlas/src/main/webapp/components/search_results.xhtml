@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:component>
+            <h:outputStylesheet name="category.css" library="css" />
+            
+            <h2>
+                <h:outputText value="#{strings['search.results']}
+                              &quot;#{searchController.searchTerm}&quot;" />
+            </h2>
+
+            <hr class="fancy-line" />
+            
+            <h:panelGroup id="pageList">
+                <ui:repeat value="#{searchController.results}"
+                               var="page" varStatus="status">
+                    <ui:include src="category_item.xhtml">
+                        <ui:param name="item" value="#{page}" />
+                        <ui:param name="type" value="page" />
+                    </ui:include>
+                </ui:repeat>
+            </h:panelGroup>
+            
+            <div id="empty_category">
+                <h:outputText value="#{strings['search.noMatch']}"
+                              rendered="#{searchController.results.size() == 0}" />
+            </div>
+        </ui:component>
+    </body>
+</html>
+

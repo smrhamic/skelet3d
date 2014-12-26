@@ -31,7 +31,6 @@ public class LanguageService extends BasicService<Language, Integer> {
      */
     public Language findDefaultLanguage() {
         // get default flagged language
-        // if none, null
         try {
             TypedQuery<Language> query = em.createQuery(
                     "SELECT l FROM Language l "
@@ -39,6 +38,7 @@ public class LanguageService extends BasicService<Language, Integer> {
                     Language.class);
             return query.getSingleResult();
         } catch (NoResultException e) {
+            // if none, null
             return null;
         }
     }
@@ -51,7 +51,6 @@ public class LanguageService extends BasicService<Language, Integer> {
      */
     public Language findLanguageByISO639(String code) {
         // get language with matching code
-        // if none, null
         try {
             TypedQuery<Language> query = em.createQuery(
                     "SELECT l FROM Language l "
@@ -59,6 +58,7 @@ public class LanguageService extends BasicService<Language, Integer> {
                     Language.class);
             return query.setParameter("code", code).getSingleResult();
         } catch (NoResultException e) {
+            // if none, null
             return null;
         }
     }

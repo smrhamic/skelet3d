@@ -6,6 +6,10 @@ import atlas.entity.Page;
 import atlas.entity.PageContent;
 import atlas.entity.PageContentPK;
 import atlas.entity.view.PageView;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
@@ -98,6 +102,43 @@ public class PageService extends BasicService<Page, Integer> {
             published = false;
         }
         return new PageView(page, name, published);
+    }
+    
+    /**
+     * Searches for Pages whose name contains provided search term.
+     * Searches in localized names in given language AND latin.
+     * Is case insensitive.
+     *
+     * @param searchTerm Search term to look for in Page names.
+     * @param lang Language for localized names.
+     * @return All matching pages (undefined order)
+     */
+    public List<Page> searchByName(String searchTerm, Language lang) {
+        // init empty set
+        // using a set to avoid duplicate results
+        Set<Page> results = new LinkedHashSet<>();
+        
+        // prepare search term for query
+        String queryTerm = "%"+searchTerm.toLowerCase()+"%";
+        
+        // query in localized names
+        String queryString = "SELECT c.page1 FROM PageContent c "
+                            + "WHERE lower(c.name) LIKE :term AND c.language1 = :lang "
+                            + "AND c.published = true";
+        TypedQuery<Page> query = em.createQuery(
+                    queryString, Page.class);
+        results.addAll(query.setParameter("term", queryTerm).setParameter("lang", lang)
+                    .getResultList());
+        
+        // query in latin names
+        queryString = "SELECT p FROM Page p "
+                            + "WHERE lower(p.latin) LIKE :term";
+        query = em.createQuery(
+                    queryString, Page.class);
+        results.addAll(query.setParameter("term", queryTerm).getResultList());
+        
+        // return a list, not a set
+        return new ArrayList<>(results);
     }
     
     @Override

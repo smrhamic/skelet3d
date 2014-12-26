@@ -8,8 +8,9 @@ import javax.persistence.TypedQuery;
 /**
  * Provides CRUD persistence for a given entity class.
  * It needs the class of the entity and the class of its primary key to operate.
- * While it is possible to use this class directly, it will more often be
- * a parent for other services to inherit from.
+ * While it is technically possible to use this class directly, it will more often be
+ * a parent for other services to inherit from. It is the descendants' responsibility
+ * to make sure EntityManager injection is possible, typically by being an EJB.
  *
  * @author Michal Smrha
  * @param <E> Entity class

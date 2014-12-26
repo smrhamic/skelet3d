@@ -11,7 +11,6 @@
 
             <!-- Display if CATEGORY item -->
             <h:link class="undecoratedLink" outcome="browse" rendered="#{type == 'category'}">
-                <c:set var="item" value="#{categoryController.childCategories[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="categoryItem">
                     <div class="categoryItemIconCell">
@@ -31,7 +30,6 @@
             
             <!-- Display if PAGE item -->
             <h:link class="undecoratedLink" outcome="page" rendered="#{type == 'page'}">
-                <c:set var="item" value="#{categoryController.pages[listPosition]}" />
                 <f:param name="id" value="#{item.id}" />
                 <div class="#{item.published?'categoryItem':
                               'categoryItem unpublishedItem'}">
