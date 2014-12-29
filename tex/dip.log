@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  26 DEC 2014 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  30 DEC 2014 00:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,7 +631,7 @@ lineCom-po-nent\tenrm ,
 .etc.
 
 [24 <./mature_class.pdf>]) [25] (./implementation.tex [26]
-Underfull \hbox (badness 1237) in paragraph at lines 58--59
+Underfull \hbox (badness 1237) in paragraph at lines 59--60
  []\tenrm persist a pre-vi-ously un-per-sisted En-tity us-ing \tentt En-ti-ty-M
 an-ager\tenrm 's \tentt per-sist(^^80)
 
@@ -672,7 +672,7 @@ an-ager\tenrm 's \tentt per-sist(^^80)
 .etc.
 
 [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
  []\tentt countNumberOfPages(Category cat, Lan-guage lang, boolean pub-lishe-dO
 -
 
@@ -716,7 +716,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--156
 .etc.
 
 [29] [30] [31] [32] [33] [34]
-Underfull \hbox (badness 2173) in paragraph at lines 396--397
+Underfull \hbox (badness 2173) in paragraph at lines 407--408
 \tenrm (\tentt ui:component\tenrm ), how HTML com-po-nents can be de-fined us-i
 ng Facelets tags
 
@@ -754,7 +754,7 @@ ng Facelets tags
 ..\tenrm -
 .etc.
 
-[35] [36]) [37] [38] [39]
+[35] [36] [37] [38] [39] [40] [41]) [42] [43] [44]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
@@ -834,7 +834,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[40]
+[45]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -912,17 +912,17 @@ ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
 .\hbox(0.0+0.0)x0.0
 .etc.
 
-[41] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
+[46] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
 /texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (49 pages, 1529811 bytes).
+Output written on dip.pdf (54 pages, 1553597 bytes).
 PDF statistics:
- 1093 PDF objects out of 1200 (max. 8388607)
- 1013 compressed objects within 11 object streams
- 201 named destinations out of 1000 (max. 500000)
- 884 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1225 PDF objects out of 1440 (max. 8388607)
+ 1139 compressed objects within 12 object streams
+ 226 named destinations out of 1000 (max. 500000)
+ 1004 words of extra memory for PDF output out of 10000 (max. 10000000)
 

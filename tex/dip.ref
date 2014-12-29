@@ -113,6 +113,7 @@
 \Xchap{5}{Implementation }{26}
 \Xsec{5.1}{Data Model }{26}
 \Xsecc{5.1.1}{Setting Up a Local Database }{26}
+\Xlabel{impl_tables}{5.1.2}
 \Xsecc{5.1.2}{Creating Tables }{26}
 \Xsecc{5.1.3}{Generating Entities }{26}
 \Xsecc{5.1.4}{PageComponent Abstract Class }{26}
@@ -139,11 +140,12 @@
 \Xsecc{5.3.3}{LoginController }{32}
 \Xsecc{5.3.4}{PathController }{32}
 \Xsecc{5.3.5}{CategoryController }{32}
-\Xsecc{5.3.6}{PageController }{32}
+\Xsecc{5.3.6}{SearchController }{32}
+\Xsecc{5.3.7}{PageController }{32}
 \Xpage{33}
-\Xsecc{5.3.7}{ModelController }{33}
-\Xsecc{5.3.8}{ImageController }{33}
-\Xsecc{5.3.9}{Converters }{33}
+\Xsecc{5.3.8}{ModelController }{33}
+\Xsecc{5.3.9}{ImageController }{33}
+\Xsecc{5.3.10}{Converters }{33}
 \Xsec{5.4}{View -- Facelets and HTML }{33}
 \Xpage{34}
 \Xsecc{5.4.1}{Templating }{34}
@@ -153,14 +155,37 @@
 \Xsecc{5.4.4}{Ajax }{35}
 \Xsecc{5.4.5}{Localization }{35}
 \Xsecc{5.4.6}{Language Component -- Example Component }{35}
-\Xsecc{5.4.7}{Other Common Components }{35}
 \Xpage{36}
+\Xsecc{5.4.7}{Other Common Components }{36}
 \Xsecc{5.4.8}{Page Specific Components }{36}
 \Xpage{37}
+\Xsec{5.5}{Model Viewer }{37}
+\Xsecc{5.5.1}{Basics, Rendering }{37}
+\Xsecc{5.5.2}{3D Models }{37}
 \Xpage{38}
-\Xchap{6}{Testing }{38}
+\Xsecc{5.5.3}{Labels }{38}
+\Xlabel{picking}{5.5.4}
+\Xsecc{5.5.4}{Label Selection }{38}
 \Xpage{39}
-\Xchap{7}{Conclusion }{39}
+\Xsecc{5.5.5}{Camera Controls }{39}
+\Xpage{40}
+\Xlabel{view3d_ui}{5.5.6}
+\Xsecc{5.5.6}{UI Components }{40}
+\Xsecc{5.5.7}{Window Resize }{40}
+\Xlabel{view3d_edit}{5.5.8}
+\Xsecc{5.5.8}{Editing }{40}
+\Xpage{41}
+\Xsecc{5.5.9}{Mouse Mode and Mouse Events }{41}
+\Xsecc{5.5.10}{Using the Script, Required Variables }{41}
+\Xpage{42}
+\Xlabel{atlasfiller}{5.6}
+\Xsec{5.6}{Data Transfer }{42}
+\Xsec{5.7}{Deployment }{42}
+\Xsec{5.8}{Documentation }{42}
+\Xpage{43}
+\Xchap{6}{Testing }{43}
+\Xpage{44}
+\Xchap{7}{Conclusion }{44}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }
@@ -179,8 +204,8 @@
 \Xbib{flash_desktop}{16}{, }
 \Xbib{flash_focus}{17}{Winokur, }
 \Xbib{flash_android}{18}{Aljaber, }
-\Xpage{40}
-\Xchap{!1}{References}{40}
+\Xpage{45}
+\Xchap{!1}{References}{45}
 \Xbib{flash_apple}{19}{, }
 \Xbib{unity}{20}{, }
 \Xbib{shiva}{21}{, }
@@ -201,4 +226,4 @@
 \Xbib{facelets}{36}{, }
 \Xbib{prettyfaces}{37}{, }
 \Xbib{ajaxfix}{38}{, }
-\Xpage{41}
+\Xpage{46}
