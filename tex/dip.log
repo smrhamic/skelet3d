@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  30 DEC 2014 00:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  30 DEC 2014 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -121,11 +121,10 @@ FONT: Latin Modern fonts - \rm, \it, \bf, \bi, \caps\rm,... + math.
 ))
 English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
 live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
-[-2] [-3] [-4] WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12)
-WARNING: unknown UTF-8 code: `– = ^^e2^^80^^93' (line: 12) [-5] [-6] [-7]
-[-8] [1] (./problem.tex [2] [3] [4] [5]) [6] (./technology.tex [7] [8] [9 <./pe
-rf1.png>] [10] [11 <./top-languages.png (PNG copy)>]) [12] (./design.tex
-[13 <./usecase.pdf>] [14] [15] [16] [17] [18] [19]
+[-2] [-3] [-4] [-5] [-6] [-7] [-8] (./intro.tex) [1] (./problem.tex [2]
+[3] [4] [5]) [6] (./technology.tex [7] [8] [9 <./perf1.png>] [10] [11 <./top-la
+nguages.png (PNG copy)>]) [12] (./design.tex [13 <./usecase.pdf>] [14] [15]
+[16] [17] [18] [19]
 Underfull \vbox (badness 2894) has occurred while \output is active
 \vbox(674.33032+2.75)x415.41025, glue set 3.07236
 .\vbox(0.0+0.0)x0.0, glue set 25.0fil
@@ -589,7 +588,7 @@ tio\ETC.}
 .\glue 3.4 plus 1.13326 minus 1.13326
 
  [22 <./prelim_class.pdf, page is rotated 270 degrees>] [23]
-Underfull \hbox (badness 1701) in paragraph at lines 719--720
+Underfull \hbox (badness 1701) in paragraph at lines 721--722
 []\tenrm Our busi-ness ob-jects in-clude page com-po-nents, namely \tentt Head-
 lineCom-po-nent\tenrm ,
 
@@ -631,7 +630,7 @@ lineCom-po-nent\tenrm ,
 .etc.
 
 [24 <./mature_class.pdf>]) [25] (./implementation.tex [26]
-Underfull \hbox (badness 1237) in paragraph at lines 59--60
+Underfull \hbox (badness 1237) in paragraph at lines 63--64
  []\tenrm persist a pre-vi-ously un-per-sisted En-tity us-ing \tentt En-ti-ty-M
 an-ager\tenrm 's \tentt per-sist(^^80)
 
@@ -671,8 +670,8 @@ an-ager\tenrm 's \tentt per-sist(^^80)
 .\tenrm p
 .etc.
 
-[27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
+[27] [28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
  []\tentt countNumberOfPages(Category cat, Lan-guage lang, boolean pub-lishe-dO
 -
 
@@ -715,8 +714,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 158--159
 .\glue 5.775
 .etc.
 
-[29] [30] [31] [32] [33] [34]
-Underfull \hbox (badness 2173) in paragraph at lines 407--408
+[30] [31] [32] [33] [34] [35]
+Underfull \hbox (badness 2173) in paragraph at lines 411--412
 \tenrm (\tentt ui:component\tenrm ), how HTML com-po-nents can be de-fined us-i
 ng Facelets tags
 
@@ -754,9 +753,12 @@ ng Facelets tags
 ..\tenrm -
 .etc.
 
-[35] [36] [37] [38] [39] [40] [41]) [42] [43] [44]
+[36] [37] [38] [39] [40] [41] [42] [43]) [44] (./testing.tex) [45] [46 <./useca
+se-validation.pdf>] [47]
 (c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
 (./mybase.bib)
+l.43 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
+
 Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / www[] . infoworld[] . com[] / article[] / 2610420[] / ad
 obe-flash[] / adobe-flash--insecure--outdated--and-here-to-stay[] .|
@@ -834,7 +836,7 @@ Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
 .\tentt o
 .etc.
 
-[45]
+[48]
 Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
 []\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
  choosing-java-vs-net-for-web-development[] /|
@@ -912,17 +914,17 @@ ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
 .\hbox(0.0+0.0)x0.0
 .etc.
 
-[46] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
+[49] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
 /texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/ty
 pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
 0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
 2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
 fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
 c/lm/lmtt10.pfb>
-Output written on dip.pdf (54 pages, 1553597 bytes).
+Output written on dip.pdf (57 pages, 1632557 bytes).
 PDF statistics:
- 1225 PDF objects out of 1440 (max. 8388607)
- 1139 compressed objects within 12 object streams
- 226 named destinations out of 1000 (max. 500000)
- 1004 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1290 PDF objects out of 1440 (max. 8388607)
+ 1198 compressed objects within 12 object streams
+ 238 named destinations out of 1000 (max. 500000)
+ 1057 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-The task is to develop a new version of the Atlas of Human Bones, an online database of bones including 3D models with labels and web pages with additional information. The Atlas will serve as a source of information and a study material, primarily for students of the Third Faculty of Medicine at Charles University in Prague. The existing version is insufficient and should be replaced by a new system while reusing the partially pre-filled data content.
+In this chapter we define the requirements and features of the application, compare the basic concept to existing solutions including the previous version of the Atlas and evaluate possible contributions of the project.
 
 \sec Role Definition
 
@@ -12,7 +12,7 @@ The application will support three basic user roles:
 
 \sec Requirements
 
-\secc Functional Requirements - User
+\secc Functional Requirements -- User
 
 \vskip 10pt
 {\bf 3D Viewer with following features:}
@@ -34,7 +34,7 @@ The application will support three basic user roles:
 *Web page for each bone with a 3D model, relevant images, text and references
 \enditems
 
-\secc Functional Requirements – Editor
+\secc Functional Requirements -- Editor
 
 \begitems
 *Login into editorial system
@@ -46,7 +46,7 @@ The application will support three basic user roles:
 *Manually add, edit and delete labels and descriptions of 3D models
 \enditems
 
-\secc Functional Requirements – Administrator
+\secc Functional Requirements -- Administrator
 
 \begitems
 *Login into account management system
@@ -88,13 +88,16 @@ The following list is by no means complete. These are just several examples of t
 
 Overall, each existing solution provides some interesting features, but none of them offers everything our project is aiming for. We will incorporate the best of each existing solution and add something extra: Interactive 3D models comparable to Zygote/Anatronica, labels more detailed than those of Skeletopedia, information comparable to Wikipedia but focused on medical students and up-to-date content in Czech.
 
+\label[old_atlas]
 \sec Analysis of the Current Version of the Atlas
 
 The Atlas project is not beginning with this thesis. It was initiated in 2012 and most of the development of the existing version happened in 2013.
 
 The application was developed on the fly and went through a series of overhauls without proper planning. Although it works, it suffers from a variety of flaws. From a developer's point of view, the internal structure is unorganized and undocumented. While it might had been sufficient, the lack of order and proper organization makes sustainability and further development a complicated issue.
 
-The current version is a publicly available website running on the servers of the Third Faculty of Medicine, Charles University \cite[skelet3d]. It consists of a list of bones sorted in a hierarchy of groups based on parts of the human body, a 3D viewer of models of bones and a very simple editing page which isn’t public. An as-of-yet unreleased bilingual version allows editing in Czech and English (as opposed to Czech only).
+The current version is a publicly available website running on the servers of the Third Faculty of Medicine, Charles University \cite[skelet3d] {\it Note: In December 2014 that version was replaced by the product of this project and is no longer available.}
+
+It consists of a list of bones sorted in a hierarchy of groups based on parts of the human body, a 3D viewer of models of bones and a very simple editing page which isn’t public. An as-of-yet unreleased bilingual version allows editing in Czech and English (as opposed to Czech only).
 
 
 \secc Bone Selector

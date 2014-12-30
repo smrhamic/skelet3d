@@ -1,3 +1,7 @@
+In this chapter we talk about the implementation of all parts of the application, including the database, server logic in Java and 3D viewer in JavaScript. We also briefly describe the application’s deployment.
+
+Most (but not all) of the application was implemented and is ready for real use. As of yet unimplemented are the administration tools for managing registered users’ accounts.
+
 Implementation was done in NetBeans IDE 8.0.1 \cite[netbeans], a free open source development environment mostly focused on Java. All final source code can be seen on attached CD.
 
 For development purposes, a local Glassfish 4.1 server was installed and integrated into NetBeans for easy “on save” deployment in real time.
@@ -505,6 +509,14 @@ There are several {\tt Renderer}s available, most notable being {\tt WebGLRender
 
 A typical scene is statically initialized and then animated in a rendering loop. An inefficient way to do this is to call the rendering function every few milliseconds. A more efficient way is using the {\tt requestAnimationFrame} API, which lets the browser handle rendering calls, synchronizing redraws of multiple animations and stopping the loop when the scene is not visible. That is what our application was initially doing. Since our scene includes no automated animation and every motion is triggered by the user, I decided to go one step further and abandoned the render loop altogether. Instead, the {\tt render} function was added as a listener to controls’ {\tt change} event, only redrawing on user interaction.
 
+\secc Materials and Lighting
+
+{\tt three.js} takes care of illumination and shading as long as lights and materials are set properly.
+
+Mono-colored materials using Lambert’s lighting model were used for shaded surfaces such as the 3D model. For unshaded objects, basic mesh/line materials were used.
+
+The scene is lighted by a weak ambient light and a stronger point light, which is always following the camera (slightly offset up and to the right). This ensures that no part of the model is completely dark (ambient light) but surface unevenness is emphasized by shading (point light).
+
 \secc 3D Models
 
 The models available to Third Faculty of Medicine come in binary STL format, so naturally that is the first format to be supported.
@@ -689,7 +701,9 @@ Storage for uploaded files was setup at {\tt /home/glassfish/atlas-webapp/upload
 
 The application itself could not be deployed using NetBeans for unknown reasons, so the WAR file was deployed manually using GlassFish’s Administration Console.
 
-The application is currently running on this server at http://195.113.62.79/, also available on the domain name http://skelet3d.lf3.cuni.cz/.
+Daily backup of the database as well as uploaded files was setup to prevent loss of data.
+
+The application is currently running on this server at http://195.113.62.79/, also replacing the previous version of Atlas on the domain name http://skelet3d.lf3.cuni.cz/ \cite[1].
 
 
 \sec Documentation

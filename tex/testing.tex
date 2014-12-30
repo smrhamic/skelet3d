@@ -1,0 +1,32 @@
+This chapter describes what steps were taken to evaluate the quality of the application.
+
+Basic functionality of the application was being tested by the author during the whole implementation process, by editors during later stages of development and finally by several uninvolved users. Both editors and regular users provided valuable feedback regarding user experience.
+
+\sec Use Case Validation
+
+The first step of evaluating the application is use case validation. It tells us which functional requirements were met. Each use case was validated by walking through its scenarios and observing expected results. Colored use case diagram \ref[uc_validation] shows that most use cases were successfully implemented. Two use cases were not implemented as of yet: password change and account management.
+
+\midinsert
+\picw=12cm \clabel[uc_validation]{Use Case Diagram - Validation} \cinspic usecase-validation.pdf
+\caption/f Diagram of use case validation results: Green use cases were successfully implemented, red use cases were not. It shows that the application is almost complete, only account-related features are missing.
+\endinsert
+
+\sec Cooperation with Editors
+
+During later stages of implementation, three editors familiar with previous versions of the Atlas provided regular feedback on current version’s features and user experience. They tested all editorial features as they became available. Many smaller and larger issued were discovered and addressed during this stage.
+
+These are just several examples of issues the editors helped identify and their solutions:
+
+\begitems
+*{\it Constrained camera movement:} Orbit controls replaced by trackball controls
+*{\it Parts of bones completely white at certain angles:} Material changed and lighting reduced
+*{\it UI components of 3D viewer misplaced (under specific conditions):} Absolute positioning of components determined after all other content is loaded
+*{\it Files containing special characters in filenames not working:} Filenames processed and stripped of special characters
+*{\it Models have edges rather than smooth surfaces:} Known issue with model format, solution pending
+\enditems
+
+The editors were asked for ways to improve the editorial interface and what features they were missing. I emphasized that improvements we make now would make their future work easier. Nevertheless, they did not make any additional requests.
+
+\sec User Feedback
+
+TODO
