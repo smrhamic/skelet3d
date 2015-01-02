@@ -1,0 +1,36 @@
+In this project we successfully redesigned {\it Skelet3D}, a 3D atlas of human bones of the Third Faculty of Medicine at Charles University in Prague.
+
+\sec Summary
+
+We searched for existing solutions; and while many educational sources exist, not a single one covers our project’s utility: We provide easily accessible 3D models of bones with detailed labels and additional data relevant for medical students, such as examples of pathologies. Most importantly, all the content is editable by experts without the need of a technical background, available in Czech and English.
+
+After careful consideration, we chose the {\tt three.js} framework running on WebGL technology for displaying 3D models on the web and a Java EE server with JSF to handle the business logic and content.
+
+We designed a Java application covering all our requirements while keeping maintainability and separation of concerns in mind.
+
+Most of this application was also successfully implemented; the content is ready for presentation and fully editable. The only missing part is an administration interface for handling editors’ accounts.
+
+The application worked correctly on all tested desktop devices as well as many compatible mobile devices, including Android mobile phones. However, mobile support is incomplete and while tested devices showed expected behavior, user experience may vary.
+
+We received positive and encouraging feedback from editors as well as uninvolved medical students.
+
+\sec Future Development
+
+While the application is working as intended and users seem to be satisfied, there is always room for improvement.
+
+Firstly, the account management system is still missing, which means user accounts are managed directly through the database. An interface allowing administrators to modify editors’ accounts should be implemented, as well as an option to change passwords anytime.
+
+Secondly, better mobile support could be provided. While the number of devices supporting WebGL by default can be expected to grow, there should be a guide regarding compatibility and what steps can be taken to enable WebGL on older devices. It might also be worth revising the touch controls of 3D, which work, but sometimes lead to conflicts between controlling the scene and controlling the page.
+
+Other future improvements may include:
+
+\begitems
+*Conversion of models to a more efficient internal format, which would both save bandwidth and allow smooth shading
+*Improvement of the “Search” function to search all content (including 3D labels) rather than just page/bone names
+*Division of page content into chapters (allows table of content, collapsible sections)
+*Better tools for handling citations/sources, which now need to be created manually
+*Personal notes and/or public comment section for registered users
+*Overall improvement of graphical design
+\enditems
+
+Once obvious improvements are implemented and the content is more refined, user feedback should be collected in order to find out what needs to be improved further.

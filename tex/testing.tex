@@ -1,4 +1,4 @@
-This chapter describes what steps were taken to evaluate the quality of the application.
+This chapter describes what steps were taken to evaluate the quality of the application. We also discuss what should be added or improved in the future.
 
 Basic functionality of the application was being tested by the author during the whole implementation process, by editors during later stages of development and finally by several uninvolved users. Both editors and regular users provided valuable feedback regarding user experience.
 
@@ -11,22 +11,166 @@ The first step of evaluating the application is use case validation. It tells us
 \caption/f Diagram of use case validation results: Green use cases were successfully implemented, red use cases were not. It shows that the application is almost complete, only account-related features are missing.
 \endinsert
 
-\sec Cooperation with Editors
+\label[compatibility_sec]
+\sec Compatibility
 
-During later stages of implementation, three editors familiar with previous versions of the Atlas provided regular feedback on current version’s features and user experience. They tested all editorial features as they became available. Many smaller and larger issued were discovered and addressed during this stage.
+Basic compatibility tests were carried out, a more thorough analysis is still pending.
 
-These are just several examples of issues the editors helped identify and their solutions:
+Several devices were used for testing:
 
 \begitems
-*{\it Constrained camera movement:} Orbit controls replaced by trackball controls
-*{\it Parts of bones completely white at certain angles:} Material changed and lighting reduced
-*{\it UI components of 3D viewer misplaced (under specific conditions):} Absolute positioning of components determined after all other content is loaded
-*{\it Files containing special characters in filenames not working:} Filenames processed and stripped of special characters
-*{\it Models have edges rather than smooth surfaces:} Known issue with model format, solution pending
+*{\bf Dell Vostro 3460}: Laptop, Windows 7 64bit, 8GB RAM, Intel Core i7-3612QM (@2.1GHz x4), using integrated graphics for browsing
+*{\bf ASUS F3Sv}: Laptop, Windows 7 64bit, 3GB RAM, Core2 Duo T7500 (@2.2GHz x2), GeForce 8600M GS
+*{\bf Sony Xperia Z3 Compact}: Mobile phone, Android 4.4.4, 2GB RAM, Snapdragon 801 (@2.5GHz x4), Ardeno 330
+*{\bf Samsung Galaxy S3 Mini}: Mobile phone, Android 4.1.2, 1GB RAM, ST-Ericsson U8420 (@1.0GHz x2), ARM Mali-400MP1
+*{\bf Samsung S5830 Galaxy Ace}: Mobile phone, Android 2.3, 278MB RAM, ARM 11 @0.8GHz x1, Ardeno 200
+\enditems
+
+Basic features such as browsing categories and manipulating 3D scenes were tested on these devices using several common browsers. A summary of the results can be seen in table \ref[compatibility].
+
+\midinsert
+\clabel[compatibility]{Compatibility Test}
+{\def\sizespec{at9pt} \resizeall \tenrm
+\ctable{lll}{
+\hfil Device & Browser & Status \crl \tskip4pt
+Dell Vostro & Firefox 34.0 & Ok \cr
+Dell Vostro & Chrome 39.0 & Ok \cr
+Dell Vostro & IE 11.0 & Ok \cr
+ASUS F3 & Firefox 30.0 & Ok \cr
+ASUS F3 & IE 11.0 & Ok \cr
+Xperia Z3c & Chrome 39.0 & Ok \cr
+Xperia Z3c & default & No WegGL, slow 3D with broken normals/lighting \cr
+Galaxy S3m & Chrome 39.0 & Ok \cr
+Galaxy Ace & default & 3D not displayed, no message about missing WebGL \cr
+}
+}
+\caption/t Compatibility of the application with selected devices and browsers. Only basic features were checked. Device specifications can be seen in \ref[compatibility_sec]
+\endinsert
+
+The application worked flawlessly on both new (Dell Vostro) and older (ASUS F3) laptops, using recent versions of common browsers. A mid-range mobile phone from 2012, Galaxy S3m, had no problem displaying and manipulating 3D in Google Chrome. Same goes for the more advanced Xperia Z3c. However, it resorted to canvas mode in default browser, making the 3D nearly unusable. An older phone (Galaxy Ace) using default browser could not display 3D at all.
+
+All devices displayed non-3D content without trouble.
+
+While a small test sample, this leads to an expected conclusion: The application will work correctly on reasonably powerful machines running WebGL-compatible browsers, such as most desktop and laptop computers as well as more recent mobile devices. However, the presence of such a browser is crucial. Also, some form of setup might be needed on certain devices (updating drivers, enabling WebGL), while older devices might be completely incompatible.
+
+These trends were later confirmed by several users in a short survey (see \ref[feedback]), where laptops showed no problems and the success of mobile devices varied.
+
+\sec Cooperation with Editors
+
+During later stages of implementation, three editors familiar with previous versions of the Atlas provided regular feedback on current version’s features and user experience. They tested all editorial features as they became available. Many smaller and larger issues were discovered and addressed during this stage.
+
+These are just several examples of issues the editors helped identify and respective solutions:
+
+\begitems
+*{\bf Constrained camera movement}
+
+Solution: Orbit controls replaced by trackball controls
+
+*{\bf Parts of bones completely white at certain angles}
+
+Solution: Material changed and lighting reduced
+
+*{\bf UI components of 3D viewer misplaced (under specific conditions)}
+
+Solution: Absolute positioning of components determined after all other content is loaded
+
+*{\bf Files containing special characters in filenames not working}
+
+Solution: Filenames processed and stripped of special characters
+
+*{\bf Models have edges rather than smooth surfaces}
+
+Known issue with model format, solution pending, see \ref[view3d_models]
 \enditems
 
 The editors were asked for ways to improve the editorial interface and what features they were missing. I emphasized that improvements we make now would make their future work easier. Nevertheless, they did not make any additional requests.
 
+\label[feedback]
 \sec User Feedback
 
-TODO
+An online questionnaire regarding user feedback was distributed to a number of medical students. Ten students responded, seven of them from the Third Faculty of Medicine, three from other medical faculties.
+
+No questions were mandatory and technical details regarding used devices were omitted, otherwise the questionnaire might look intimidating to non-tech users. The survey was carried out in Czech.
+
+The application was available to respondents at a point when “Search” was not implemented, but all other features were ready.
+
+{\bf 9/10 students reported that the application worked correctly}, one respondent was not able to view 3D models on a further unspecified Android tablet (using Google Chrome). In the following report, this single respondent’s answers were discarded as they all revolve around the fact that the models were not displayed.
+
+No other respondents encountered any apparent errors.
+
+\secc Devices and Browsers
+
+What devices and browsers were used by respondents can be seen in chart \ref[devices_used]. Laptop with Google Chrome was by far the most commonly used.
+
+\midinsert
+\picw=10cm \clabel[devices_used]{Devices and Browsers of Respondents} \cinspic feedback_devices_used.png
+\caption/f Donut chart of devices and browsers used by 9 respondents. 7 users tested the application on a laptop, 2 on a mobile phone. Out of those using laptops, 2 used Mozilla Firefox. Everyone else used Google Chrome. No respondents used any other type of device or browser. (One case where 3D did not display on a tablet, Google Chrome, was omitted.)
+\endinsert
+
+An impotant question we needed answered was the demand for mobile support, so we asked our respondents what type of devices they would like to use our application on. The results can be seen in chart \ref[devices_wanted] and it is apparent that mobile support is wanted, especially for Android.
+
+\midinsert
+\picw=15cm \clabel[devices_wanted]{Device Support Demand} \cinspic feedback_devices_wanted.png
+\caption/f Devices 9 respondents would like to use for accessing our application in the future. Number of users mentioning a particular type of device is shown. Mobile devices are further divided by OS (ratios are preserved rather than absolute count as some users selected multiple OS).
+\endinsert
+
+\secc Application Evaluation
+
+Respondents were asked for their opinion on the quality of certain aspects of our application:
+
+\begitems
+*How useful is this application? (Rate the concept rather than the implementation.)
+*Are you overall satisfied with this implementation?
+*How do you rate the graphical design?
+*Are you satisfied with the way the categories can be browsed?
+*Are you satisfied with the way the content and models can be viewed?
+*How useful is the content available for “Calcaneus”? {\it (Note: Example page with complete content)}
+\enditems
+
+All these aspects were rated on a scale of 1-10 (10 being the best). Average results are shown in chart \ref[evaluation] and it is apparent that the feedback is positive.
+
+\midinsert
+\picw=12cm \clabel[evaluation]{User Evaluation} \cinspic feedback_evaluation.png
+\caption/f User evaluation of the application by 9 respondents. Average results are shown, different aspects were rated on a scale of 1-10 (10 being the best).
+\endinsert
+
+Students consider this application extremely useful and even the implementation is rated very highly, its weakest part being the graphical design rated at 7.67. Every other aspect is rated above 8.0, which is an encouraging result.
+
+Respondents were also asked for a short summary of the application’s positives and negatives, examples of their answers are following.
+
+\vskip 10pt
+{\bf Positives:}
+
+\begitems
+*Rotating models – great advantage over books
+*Labels can be turned on/off and selected for details
+*Low hardware requirements
+*Visualization without borrowing bones from the Institute of Anatomy
+*Better graphics and details than previous application
+*Well arranged classification
+*Extra content (for “Calcaneus” at the moment)
+*Available in Czech
+\enditems
+
+{\bf Negatives:}
+
+\begitems
+*Trouble with mobile devices
+*Not great model quality
+*Zooming everything, not just the model {\it Note: Mobile user}
+*Unrefined graphical design
+*Incomplete labels/content {\it Note: Not our responsibility}
+\enditems
+
+Users were also asked if anything needed to be fixed in current implementation. There were only two requests: One for a better graphical design, one for more content.
+
+\secc Feature Requests
+
+Finally the respondents were asked what features they would like to see in future releases, with several suggested options and room for their own additions (which nobody used). Their answers are shown in chart \ref[feature_requests].
+
+\midinsert
+\picw=12cm \clabel[feature_requests]{Feature Requests} \cinspic feedback_features.png
+\caption/f Features requested by 9 respondents. Number of users asking for each feature is shown.
+\endinsert
+
+The most requested feature was “Search” with 5/9 users asking for it. Basic search function was already implemented shortly after the survey. Other features received 2-3 votes each and might be implemented in the future.

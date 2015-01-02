@@ -4,11 +4,23 @@
 \faculty {F3}
 \department {Department of Cybernetics}
 \title {3D Atlas of Human Bones}
+\supervisor {Ing. Miroslav Burša, Ph.D.}
 \author {Bc. Michal Šmrha}
 \date {January 2015}
-\abstractEN {TODO}
-\abstractCZ {TODO}
-\declaration {TODO}
+
+\abstractEN {The topic of this project is the development of an educational web application for medical students, which displays 3D models of human bones with labels identifying their important parts. Additional information about each bone is provided in form of text and images. This thesis focuses on creating the application for both viewing and editing the content, rather than the content itself. The technologies of choice include WebGL 3D rendering in JavaScript (using {\tt three.js} library) and a Java EE server for content management (using JSF). The application was designed and implemented, including partial mobile/touch support. The result was presented to editors, who in turn provided example content for regular users. Positive feedback was received from both groups.}
+\abstractCZ {Tématem projektu je vývoj výukové webové aplikace pro studenty medicíny. Aplikace zobrazuje 3D modely lidských kostí včetně popisků jejich důležitých částí, další informace o každé kosti jsou dostupné v podobě textu a obrázků. Práce se zaměřuje na tvorbu aplikace, která umožnuje prohlížení i vytváření tohoto obsahu, nikoli na obsah samotný. Jako technologie pro realizaci byl zvolen například WebGL 3D rendering v JavaScriptu (knihovna {\tt three.js}) a Java EE server pro správu obsahu (používá JSF). Aplikace byla navržena a implementována včetně částečné podpory pro mobilní a dotyková zařízení. Výsledek byl předveden editorům, kteří připravili ukázkový obsah pro běžné uživatele. Obě skupiny uživatelů hodnotily aplikaci kladně.}
+
+\keywordsEN {3D; web; application; WebGL; three.js; Java; JSF; bone; anatomy; pathology}
+\keywordsCZ {3D; web; aplikace; WebGL; three.js; Java; JSF; kost; anatomie; patologie}
+
+\declaration {Prohlašuji, že jsem předloženou práci vypracoval samostatně a že jsem uvedl veškeré použité informační zdroje v souladu s Metodickým pokynem o dodržování etických principů při přípravě vysokoškolských závěrečných prací.\nl\nl V Praze dne}
+
+\thanks {I would like to thank Ing. Miroslav Burša, Ph.D. for supervising my thesis and patiently providing useful advice; doc. MUDr. Václav Báča, Ph.D. for starting this project and keeping it live this long; Ing. Petr Bitzan for all his help setting up the server; Pavel Smetana and his fellow editors for their cooperation. Lastly I need to thank my loved ones, who supported me at my worst and deserve my best.}
+
+\specification {\picw=\hsize \cinspic assignment_en.pdf
+\vfil\break \cinspic assignment_cs.pdf }
+
 \makefront
 
 \chap Introduction
@@ -31,15 +43,20 @@
 
 \input implementation
 
-\chap Testing
+\chap Testing, Evaluation
 
 \input testing
 
 \chap Conclusion
 
-TODO
+\input conclusion
 
 \bibchap
-\usebib/c (simple) mybase
+\usebib/c (mysimple) mybase
+
+\label[screens]
+\app Screenshots
+
+\input screens
 
 \bye

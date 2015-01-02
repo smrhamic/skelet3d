@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  30 DEC 2014 22:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  2 JAN 2015 20:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -121,9 +121,17 @@ FONT: Latin Modern fonts - \rm, \it, \bf, \bi, \caps\rm,... + math.
 ))
 English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
 live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
-[-2] [-3] [-4] [-5] [-6] [-7] [-8] (./intro.tex) [1] (./problem.tex [2]
-[3] [4] [5]) [6] (./technology.tex [7] [8] [9 <./perf1.png>] [10] [11 <./top-la
-nguages.png (PNG copy)>]) [12] (./design.tex [13 <./usecase.pdf>] [14] [15]
+[-2] [-3 <./assignment_en.pdf>] [-4 <./assignment_cs.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
+
+
+\hbox(0.0+0.0)x190.63347
+.\penalty -10000
+.\glue(\rightskip) 0.0
+
+[-5] [-6] [-7] [-8] [-9] [-10] (./intro.tex) [1] (./problem.tex [2] [3]
+[4] [5]) [6] (./technology.tex [7] [8] [9 <./perf1.png>] [10] [11 <./top-langua
+ges.png (PNG copy)>]) [12] (./design.tex [13 <./usecase.pdf>] [14] [15]
 [16] [17] [18] [19]
 Underfull \vbox (badness 2894) has occurred while \output is active
 \vbox(674.33032+2.75)x415.41025, glue set 3.07236
@@ -492,18 +500,18 @@ Underfull \vbox (badness 2894) has occurred while \output is active
 .etc.
 
  [20 <./atlas_db.png (PNG copy)>] [21]
-Underfull \vbox (badness 7397) has occurred while \output is active
-\vbox(674.33032+0.0)x415.41025, glue set 4.20145
+Underfull \vbox (badness 2057) has occurred while \output is active
+\vbox(674.33032+0.0)x415.41025, glue set 2.74394
 .\vbox(0.0+0.0)x0.0, glue set 25.0fil
 ..\kern -25.0
 ..\pdfdest name{pg:22} xyz
 ..\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue(\splittopskip) 0.0
-.\vbox(619.15315+1.94443)x415.41025
-..\hbox(600.35315+0.0)x415.41025, glue set - 5.69055fil
+.\vbox(646.34685+1.94443)x415.41025
+..\hbox(627.54684+0.0)x415.41025, glue set - 5.69055fil
 ...\glue 0.0 plus 1.0fil minus 1.0fil
-...\hbox(600.35315+0.0)x426.79134
-....\pdfrefximage(600.35315+0.0)x426.79134
+...\hbox(627.54684+0.0)x426.79134
+....\pdfrefximage(627.54684+0.0)x426.79134
 ...\glue 0.0 plus 1.0fil minus 1.0fil
 ..\penalty 10000
 ..\glue 6.8 plus 2.26653 minus 2.26653
@@ -549,43 +557,6 @@ tio\ETC.}
 ...etc.
 .\penalty 10000
 .\glue 13.6 plus 4.53326 minus 4.53326
-.\glue(\topskip) 0.0
-.\hbox(11.57158+0.85358)x415.41025, glue set 11.3811fil
-..\pdfliteral{1 .43 0 0 k}
-..\rule(9.95845+0.85358)x11.38109
-..\pdfliteral{0 0 0 1 k}
-..\glue 0.0 plus 1.0fil minus 1.0fil
-..\vbox(11.57158+0.2494)x392.64806
-...\hbox(11.57158+4.7494)x392.64806, glue set 302.67018fil
-....\vbox(0.0+0.0)x0.0, glue set 20.32915fil
-.....\kern -20.32915
-.....\pdfdest name{toc:4.4.4} xyz
-.....\glue 0.0 plus 1.0fil minus 1.0fil
-....\write0<3>{\string \Xsecc {4.4.4}{Entities }{\the \pageno }}
-....\mF 4
-....\mF .
-....\mF 4
-....\mF .
-....\mF 4
-....\glue 14.52089
-....\pdfliteral{1 .43 0 0 k}
-....\mF E
-....\mF n
-....\mF t
-....\mF i
-....\mF t
-....\mF i
-....\mF e
-....\mF s
-....\rule(11.57158+4.7494)x0.0
-....\penalty 10000
-....\glue(\parfillskip) 0.0 plus 1.0fil
-....\glue(\rightskip) 0.0
-...\kern -4.5
-..\pdfliteral{0 0 0 1 k}
-.\penalty 10000
-.\glue 0.0
-.\glue 3.4 plus 1.13326 minus 1.13326
 
  [22 <./prelim_class.pdf, page is rotated 270 degrees>] [23]
 Underfull \hbox (badness 1701) in paragraph at lines 721--722
@@ -753,178 +724,25 @@ ng Facelets tags
 ..\tenrm -
 .etc.
 
-[36] [37] [38] [39] [40] [41] [42] [43]) [44] (./testing.tex) [45] [46 <./useca
-se-validation.pdf>] [47]
-(c:/texlive/2014/texmf-dist/tex/csplain/opmac/opmac-bib-simple.tex)
-(./mybase.bib)
-l.43 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
-
-Overfull \hbox (148.66945pt too wide) in paragraph at lines 43--43
-[]\tentt http:[] /[] / www[] . infoworld[] . com[] / article[] / 2610420[] / ad
-obe-flash[] / adobe-flash--insecure--outdated--and-here-to-stay[] .|
-
-\hbox(6.9445+2.22223)x392.07898
-.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
-/Subtype/Link/A <</Type/Action/S/URI/URI(http://www.infoworld.com/art\ETC.}
-.\tentt h
-.\tentt t
-.\tentt t
-.\tentt p
-.\tentt :
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt w
-.\tentt w
-.\tentt w
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt .
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt i
-.\tentt n
-.\tentt f
-.\tentt o
-.\tentt w
-.etc.
-
-
-Overfull \hbox (1.66988pt too wide) in paragraph at lines 43--43
-[]\tentt http:[] /[] / blogs[] . adobe[] . com[] / flashplayer[] / 2012[] / 06[
-] / flash-player-and-android-update[] .|
-
-\hbox(6.9445+2.22223)x392.07898
-.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
-/Subtype/Link/A <</Type/Action/S/URI/URI(http://blogs.adobe.com/flash\ETC.}
-.\tentt h
-.\tentt t
-.\tentt t
-.\tentt p
-.\tentt :
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt b
-.\tentt l
-.\tentt o
-.\tentt g
-.\tentt s
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt .
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt a
-.\tentt d
-.\tentt o
-.etc.
-
-[48]
-Overfull \hbox (54.16972pt too wide) in paragraph at lines 43--43
-[]\tentt http:[] /[] / southernpacificreview[] . com[] / 2013[] / 08[] / 08[] /
- choosing-java-vs-net-for-web-development[] /|
-
-\hbox(6.9445+2.22223)x392.07898
-.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
-/Subtype/Link/A <</Type/Action/S/URI/URI(http://southernpacificreview\ETC.}
-.\tentt h
-.\tentt t
-.\tentt t
-.\tentt p
-.\tentt :
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt s
-.\tentt o
-.\tentt u
-.\tentt t
-.\tentt h
-.\tentt e
-.\tentt r
-.\tentt n
-.\tentt p
-.\tentt a
-.\tentt c
-.\tentt i
-.\tentt f
-.\tentt i
-.etc.
-
-
-Overfull \hbox (93.97514pt too wide) in paragraph at lines 43--43
-[]\tentt http:[] /[] / stackoverflow[] . com[] / questions[] / 21154400[] / una
-ble-to-start-derby-database-from-netbeans-7-4[]\tenrm . |
-
-\hbox(6.9445+2.22223)x392.07898
-.\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action user{
-/Subtype/Link/A <</Type/Action/S/URI/URI(http://stackoverflow.com/que\ETC.}
-.\tentt h
-.\tentt t
-.\tentt t
-.\tentt p
-.\tentt :
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\hbox(0.0+0.0)x0.0
-.\penalty 10000
-.\glue 0.0 plus 0.52502
-.\tentt /
-.\penalty 100
-.\glue 0.0 plus 0.52502
-.\tentt s
-.\tentt t
-.\tentt a
-.\tentt c
-.\tentt k
-.\tentt o
-.\tentt v
-.\tentt e
-.\tentt r
-.\tentt f
-.\tentt l
-.\tentt o
-.\tentt w
-.\hbox(0.0+0.0)x0.0
-.etc.
-
-[49] ){c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014
-/texmf-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/ty
-pe1/public/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri1
-0.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/
-2014/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/
-fonts/type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/publi
-c/lm/lmtt10.pfb>
-Output written on dip.pdf (57 pages, 1632557 bytes).
+[36] [37] [38] [39] [40] [41] [42] [43]) [44] (./testing.tex [45] [46 <./usecas
+e-validation.pdf>] [47] [48 <./feedback_devices_used.png> <./feedback_devices_w
+anted.png>] [49 <./feedback_evaluation.png>]) [50 <./feedback_features.png>]
+(./conclusion.tex [51]) [52] (./opmac-bib-mysimple.tex) (./mybase.bib)
+l.55 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
+[53] [54] [55] [56] (./screens.tex) [57 <./screens//welcome.png> <./screens//ca
+tegory.png>] [58 <./screens//blank.png> <./screens//labels.png>] [59 <./screens
+//content.png>] [60 <./screens//edit_page.png> <./screens//edit_labels.png>] ){
+c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014/texmf-
+dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/type1/pub
+lic/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb><
+c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2014/te
+xmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/fonts/t
+ype1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lm
+tt10.pfb>
+Output written on dip.pdf (70 pages, 2641077 bytes).
 PDF statistics:
- 1290 PDF objects out of 1440 (max. 8388607)
- 1198 compressed objects within 12 object streams
- 238 named destinations out of 1000 (max. 500000)
- 1057 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1493 PDF objects out of 1728 (max. 8388607)
+ 1365 compressed objects within 14 object streams
+ 274 named destinations out of 1000 (max. 500000)
+ 1186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

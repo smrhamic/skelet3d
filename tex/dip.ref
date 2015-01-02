@@ -7,6 +7,8 @@
 \Xpage{-6}
 \Xpage{-7}
 \Xpage{-8}
+\Xpage{-9}
+\Xpage{-10}
 \Xpage{1}
 \Xchap{1}{Introduction }{1}
 \Xsec{1.1}{Project Background }{1}
@@ -94,14 +96,14 @@
 \Xlabel{er_diagram}{4.2}
 \Xpage{21}
 \Xsec{4.4}{Overall Architecture and Classes }{21}
-\Xsecc{4.4.1}{Client Side }{21}
+\Xsecc{4.4.1}{View }{21}
 \Xsecc{4.4.2}{Servlet }{21}
 \Xsecc{4.4.3}{Managed Beans }{21}
 \Xpage{22}
 \Xfig{class_diag1}{4.3}{Preliminary Design of the Application}
 \Xlabel{class_diag1}{4.3}
-\Xsecc{4.4.4}{Entities }{22}
 \Xpage{23}
+\Xsecc{4.4.4}{Entities }{23}
 \Xsecc{4.4.5}{Persistence }{23}
 \Xsec{4.5}{Architecture and Classes - Mature }{23}
 \Xlabel{des-service}{4.5.1}
@@ -167,6 +169,7 @@
 \Xsecc{5.5.1}{Basics, Rendering }{38}
 \Xsecc{5.5.2}{Materials and Lighting }{38}
 \Xpage{39}
+\Xlabel{view3d_models}{5.5.3}
 \Xsecc{5.5.3}{3D Models }{39}
 \Xsecc{5.5.4}{Labels }{39}
 \Xpage{40}
@@ -189,15 +192,38 @@
 \Xpage{44}
 \Xsec{5.8}{Documentation }{44}
 \Xpage{45}
-\Xchap{6}{Testing }{45}
+\Xchap{6}{Testing, Evaluation }{45}
 \Xsec{6.1}{Use Case Validation }{45}
-\Xsec{6.2}{Cooperation with Editors }{45}
-\Xsec{6.3}{User Feedback }{45}
+\Xlabel{compatibility_sec}{6.2}
+\Xsec{6.2}{Compatibility }{45}
 \Xpage{46}
 \Xfig{uc_validation}{6.1}{Use Case Diagram - Validation}
 \Xlabel{uc_validation}{6.1}
+\Xtab{compatibility}{6.1}{Compatibility Test}
+\Xlabel{compatibility}{6.1}
 \Xpage{47}
-\Xchap{7}{Conclusion }{47}
+\Xsec{6.3}{Cooperation with Editors }{47}
+\Xlabel{feedback}{6.4}
+\Xsec{6.4}{User Feedback }{47}
+\Xpage{48}
+\Xfig{devices_used}{6.2}{Devices and Browsers of Respondents}
+\Xlabel{devices_used}{6.2}
+\Xsecc{6.4.1}{Devices and Browsers }{48}
+\Xfig{devices_wanted}{6.3}{Device Support Demand}
+\Xlabel{devices_wanted}{6.3}
+\Xsecc{6.4.2}{Application Evaluation }{48}
+\Xpage{49}
+\Xfig{evaluation}{6.4}{User Evaluation}
+\Xlabel{evaluation}{6.4}
+\Xpage{50}
+\Xsecc{6.4.3}{Feature Requests }{50}
+\Xfig{feature_requests}{6.5}{Feature Requests}
+\Xlabel{feature_requests}{6.5}
+\Xpage{51}
+\Xchap{7}{Conclusion }{51}
+\Xsec{7.1}{Summary }{51}
+\Xsec{7.2}{Future Development }{51}
+\Xpage{52}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }
@@ -212,12 +238,12 @@
 \Xbib{flash_control}{12}{Krcha, }
 \Xbib{flash_dead}{13}{Kruger, }
 \Xbib{flash_insecure}{14}{Yegulalp, }
+\Xpage{53}
+\Xchap{!1}{References}{53}
 \Xbib{flash_builtwith}{15}{, }
 \Xbib{flash_desktop}{16}{, }
 \Xbib{flash_focus}{17}{Winokur, }
 \Xbib{flash_android}{18}{Aljaber, }
-\Xpage{48}
-\Xchap{!1}{References}{48}
 \Xbib{flash_apple}{19}{, }
 \Xbib{unity}{20}{, }
 \Xbib{shiva}{21}{, }
@@ -229,6 +255,7 @@
 \Xbib{spectrum}{27}{, }
 \Xbib{php_bad}{28}{, }
 \Xbib{java_net_1}{29}{Rowe, }
+\Xpage{54}
 \Xbib{java_net_2}{30}{Davu, }
 \Xbib{jsf}{31}{, }
 \Xbib{netbeans}{32}{, }
@@ -239,4 +266,24 @@
 \Xbib{prettyfaces}{37}{, }
 \Xbib{ajaxfix}{38}{, }
 \Xbib{1}{39}{, }
-\Xpage{49}
+\Xpage{55}
+\Xpage{57}
+\Xlabel{screens}{A}
+\Xchap{A}{Screenshots }{57}
+\Xfig{screen_welcome}{A.1}{Screenshot - Welcome}
+\Xlabel{screen_welcome}{A.1}
+\Xfig{screen_category}{A.2}{Screenshot - Category}
+\Xlabel{screen_category}{A.2}
+\Xpage{58}
+\Xfig{screen_blank}{A.3}{Screenshot - 3D - Blank}
+\Xlabel{screen_blank}{A.3}
+\Xfig{screen_label}{A.4}{Screenshot - 3D - Labels}
+\Xlabel{screen_label}{A.4}
+\Xpage{59}
+\Xfig{screen_content}{A.5}{Screenshot - Content}
+\Xlabel{screen_content}{A.5}
+\Xpage{60}
+\Xfig{screen_editp}{A.6}{Screenshot - Page Editor}
+\Xlabel{screen_editp}{A.6}
+\Xfig{screen_editl}{A.7}{Screenshot - 3D - Label Editor}
+\Xlabel{screen_editl}{A.7}
