@@ -268,22 +268,31 @@
 \Xbib{1}{39}{, }
 \Xpage{55}
 \Xpage{57}
-\Xlabel{screens}{A}
-\Xchap{A}{Screenshots }{57}
-\Xfig{screen_welcome}{A.1}{Screenshot - Welcome}
-\Xlabel{screen_welcome}{A.1}
-\Xfig{screen_category}{A.2}{Screenshot - Category}
-\Xlabel{screen_category}{A.2}
+\Xlabel{classes}{A}
+\Xchap{A}{Class Diagrams }{57}
+\Xfig{class_service}{A.1}{Class Diagram - Service}
+\Xlabel{class_service}{A.1}
 \Xpage{58}
-\Xfig{screen_blank}{A.3}{Screenshot - 3D - Blank}
-\Xlabel{screen_blank}{A.3}
-\Xfig{screen_label}{A.4}{Screenshot - 3D - Labels}
-\Xlabel{screen_label}{A.4}
+\Xfig{class_controller}{A.2}{Class Diagram - Controller}
+\Xlabel{class_controller}{A.2}
 \Xpage{59}
-\Xfig{screen_content}{A.5}{Screenshot - Content}
-\Xlabel{screen_content}{A.5}
 \Xpage{60}
-\Xfig{screen_editp}{A.6}{Screenshot - Page Editor}
-\Xlabel{screen_editp}{A.6}
-\Xfig{screen_editl}{A.7}{Screenshot - 3D - Label Editor}
-\Xlabel{screen_editl}{A.7}
+\Xlabel{screens}{B}
+\Xchap{B}{Screenshots }{60}
+\Xfig{screen_welcome}{B.3}{Screenshot - Welcome}
+\Xlabel{screen_welcome}{B.3}
+\Xfig{screen_category}{B.4}{Screenshot - Category}
+\Xlabel{screen_category}{B.4}
+\Xpage{61}
+\Xfig{screen_blank}{B.5}{Screenshot - 3D - Blank}
+\Xlabel{screen_blank}{B.5}
+\Xfig{screen_label}{B.6}{Screenshot - 3D - Labels}
+\Xlabel{screen_label}{B.6}
+\Xpage{62}
+\Xfig{screen_content}{B.7}{Screenshot - Content}
+\Xlabel{screen_content}{B.7}
+\Xpage{63}
+\Xfig{screen_editp}{B.8}{Screenshot - Page Editor}
+\Xlabel{screen_editp}{B.8}
+\Xfig{screen_editl}{B.9}{Screenshot - 3D - Label Editor}
+\Xlabel{screen_editl}{B.9}

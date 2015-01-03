@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  2 JAN 2015 20:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  3 JAN 2015 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -559,7 +559,7 @@ tio\ETC.}
 .\glue 13.6 plus 4.53326 minus 4.53326
 
  [22 <./prelim_class.pdf, page is rotated 270 degrees>] [23]
-Underfull \hbox (badness 1701) in paragraph at lines 721--722
+Underfull \hbox (badness 1701) in paragraph at lines 723--724
 []\tenrm Our busi-ness ob-jects in-clude page com-po-nents, namely \tentt Head-
 lineCom-po-nent\tenrm ,
 
@@ -729,20 +729,21 @@ e-validation.pdf>] [47] [48 <./feedback_devices_used.png> <./feedback_devices_w
 anted.png>] [49 <./feedback_evaluation.png>]) [50 <./feedback_features.png>]
 (./conclusion.tex [51]) [52] (./opmac-bib-mysimple.tex) (./mybase.bib)
 l.55 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
-[53] [54] [55] [56] (./screens.tex) [57 <./screens//welcome.png> <./screens//ca
-tegory.png>] [58 <./screens//blank.png> <./screens//labels.png>] [59 <./screens
-//content.png>] [60 <./screens//edit_page.png> <./screens//edit_labels.png>] ){
-c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014/texmf-
-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/type1/pub
-lic/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb><
-c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2014/te
-xmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/fonts/t
-ype1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lm
-tt10.pfb>
-Output written on dip.pdf (70 pages, 2641077 bytes).
+[53] [54] [55] [56] (./classes.tex) [57 <./class_service.png>] [58 <./class_con
+troller.png>] [59] (./screens.tex) [60 <./screens//welcome.png> <./screens//cat
+egory.png>] [61 <./screens//blank.png> <./screens//labels.png>] [62 <./screens/
+/content.png>] [63 <./screens//edit_page.png> <./screens//edit_labels.png>] ){c
+:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014/texmf-d
+ist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/type1/publ
+ic/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c
+:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2014/tex
+mf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/fonts/ty
+pe1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmt
+t10.pfb>
+Output written on dip.pdf (73 pages, 2816529 bytes).
 PDF statistics:
- 1493 PDF objects out of 1728 (max. 8388607)
- 1365 compressed objects within 14 object streams
- 274 named destinations out of 1000 (max. 500000)
- 1186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1525 PDF objects out of 1728 (max. 8388607)
+ 1391 compressed objects within 14 object streams
+ 281 named destinations out of 1000 (max. 500000)
+ 1204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
