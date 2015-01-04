@@ -11,8 +11,8 @@
 \Xpage{-10}
 \Xpage{1}
 \Xchap{1}{Introduction }{1}
-\Xsec{1.1}{Project Background }{1}
-\Xsec{1.2}{Thesis Content }{1}
+\Xsec{1.1}{Project Aims }{1}
+\Xsec{1.2}{Project Background }{1}
 \Xpage{2}
 \Xchap{2}{Problem Analysis }{2}
 \Xsec{2.1}{Role Definition }{2}
@@ -222,8 +222,8 @@
 \Xpage{51}
 \Xchap{7}{Conclusion }{51}
 \Xsec{7.1}{Summary }{51}
-\Xsec{7.2}{Future Development }{51}
 \Xpage{52}
+\Xsec{7.2}{Future Development }{52}
 \Xbib{skelet3d}{1}{, }
 \Xbib{skeletopedia}{2}{, }
 \Xbib{zygote}{3}{, }

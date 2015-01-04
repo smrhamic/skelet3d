@@ -1,18 +1,22 @@
-In this project we successfully redesigned {\it Skelet3D}, a 3D atlas of human bones of the Third Faculty of Medicine at Charles University in Prague.
+All tasks of the assignment were successfully completed. We developed an online application called {\it Skelet3D}, an editable database of bones including labeled 3D models.
 
 \sec Summary
 
-We searched for existing solutions; and while many educational sources exist, not a single one covers our project’s utility: We provide easily accessible 3D models of bones with detailed labels and additional data relevant for medical students, such as examples of pathologies. Most importantly, all the content is editable by experts without the need of a technical background, available in Czech and English.
+First we defined the requirements and key features of the web application. It would consist of a hierarchy of categories and subcategories containing pages related to bones. Each page could contain a 3D model with labels, text and images. Labels and text need to be editable while models and images can be uploaded into the system. The application should be bilingual.
 
-After careful consideration, we chose the {\tt three.js} framework running on WebGL technology for displaying 3D models on the web and a Java EE server with JSF to handle the business logic and content.
+We then compared our concept to existing solutions and this project’s predecessor, finding that none of the solutions cover this project’s utility. It was decided that the previous version had too many issues limiting future development and that this project should start with a clean slate.
 
-We designed a Java application covering all our requirements while keeping maintainability and separation of concerns in mind.
+Available technologies were researched and compared and after careful consideration, {\tt three.js} framework using WebGL was chosen for 3D rendering, while the server would run Java EE using JSF -- an MVC framework.
 
-Most of this application was also successfully implemented; the content is ready for presentation and fully editable. The only missing part is an administration interface for handling editors’ accounts.
+The design phase began by identifying all use cases of the application and assembling their step-by-step scenarios. Based on this, a mockup GUI covering these scenarios was drafted. Business objects figuring in the application were identified and a database schema supporting multilingual content was created. The internal structure of the application was then modeled as a layered application based on MVC architecture.
 
-The application worked correctly on all tested desktop devices as well as many compatible mobile devices, including Android mobile phones. However, mobile support is incomplete and while tested devices showed expected behavior, user experience may vary.
+According to this design, the application was implemented. All layers including database persistence, data-representing entity classes, service classes with business logic, backing beans and their respective HTML views, including client side JavaScript with 3D, were successfully implemented. Nearly all planned features were realized: Categories and pages can be browsed as a hierarchy or searched for directly, models can be viewed from all angles, several modes of displaying labels are available and labels can be selected. All interfaces are bilingual; content may be created in either language. Authenticated users can create and edit pages, their content and labels, upload models and images. Only account management features are incomplete.
 
-We received positive and encouraging feedback from editors as well as uninvolved medical students.
+The application was deployed to a production server in December 2014.
+
+Functionality was verified by walking through individual use case scenarios and everything (except for missing account management) is working properly. The application is confirmed to work in WebGL compatible browsers on desktop devices as well as more recent Android mobile devices.
+
+During later stages of development we cooperated with content editors, who provided useful feedback and helped improve user experience before public release. Once they had input enough example content, the application was presented to medical students, ten of whom submitted their opinions in a short survey. The feedback was largely positive, praising the application’s utility, the only significant concern being imperfect mobile compatibility of 3D.
 
 \sec Future Development
 
