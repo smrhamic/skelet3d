@@ -2,7 +2,7 @@ In this chapter we talk about the implementation of all parts of the application
 
 Most (but not all) of the application was implemented and is ready for real use. As of yet unimplemented are the administration tools for managing registered users’ accounts.
 
-Implementation was done in NetBeans IDE 8.0.1 \cite[netbeans], a free open source development environment mostly focused on Java. All final source code can be seen on attached CD.
+Implementation was done in NetBeans \glref{IDE} 8.0.1 \cite[netbeans], a free open source development environment mostly focused on Java. All final source code can be seen on attached CD.
 
 For development purposes, a local Glassfish 4.1 server was installed and integrated into NetBeans for easy “on save” deployment in real time.
 
@@ -12,18 +12,18 @@ The first step of implementation was creating a data model. As mentioned in prev
 
 \secc Setting Up a Local Database
 
-Glassfish server comes with a pre-installed Java DB and NetBeans made it easy to setup a connection.
+Glassfish server comes with a pre-installed Java \glref{DB} and NetBeans made it easy to setup a connection.
 
-The only pitfall lay in Java’s default security policy, which did not allow access to Java DB on standard port 1527. See StackOverflow question \cite[so_java_permits] for details.
+The only pitfall lay in Java’s default security policy, which did not allow access to Java \glref{DB} on standard port 1527. See StackOverflow question \cite[so_java_permits] for details.
 
 \label[impl_tables]
 \secc Creating Tables
 
-I used the ER diagram from design phase to generate an SQL script for table creation. I had to make syntactic changes because generated script was in MySQL, which differs from Java DB syntax. After solving all syntactic issues, all tables were successfully created. The working script was saved for later use.
+I used the \glref{ER} diagram from design phase to generate an \glref{SQL} script for table creation. I had to make syntactic changes because generated script was in MySQL, which differs from Java \glref{DB} syntax. After solving all syntactic issues, all tables were successfully created. The working script was saved for later use.
 
 \secc Generating Entities
 
-NetBeans offers a feature for generating Entity classes from a registered database. I gladly used this feature to generate properly annotated, JPA-compatible classes for all Entities.
+NetBeans offers a feature for generating Entity classes from a registered database. I gladly used this feature to generate properly annotated, \glref{JPA}-compatible classes for all Entities.
 
 In later stages of development, Entities returned to being thin data-holding classes without much logic of their own. Other than several simple changes (see below) and removing a small amount of generated ballast, they were largely the same as the originally generated ones.
 
@@ -36,17 +36,17 @@ It implements {\tt Comparable<PageComponent>} and a {\tt compareTo(PageComponent
 
 \sec Service Layer
 
-Services are in charge of business logic, in case of our Atlas mostly handling persistence and relations between business objects. All service classes are EJBs ({\tt @Stateless}) to allow container-managed transactions. This is important, because otherwise all transactions need to be handled manually and JPA {\tt EntityManager} cannot be simply injected.
+Services are in charge of business logic, in case of our Atlas mostly handling persistence and relations between business objects. All service classes are \glref{EJB}s ({\tt @Stateless}) to allow container-managed transactions. This is important, because otherwise all transactions need to be handled manually and \glref{JPA} {\tt EntityManager} cannot be simply injected.
 
 \secc BasicService
 
-All service classes inherit from this common ancestor. It is a generic class {\tt BasicService<E, PK>} where {\tt E} is an Entity class and PK is the primary key class of the Entity.
+All service classes inherit from this common ancestor. It is a generic class {\tt BasicService<E, PK>} where {\tt E} is an Entity class and {\tt PK} is the primary key class of the Entity.
 
-It injects an {\tt EntityManager} using the {\tt @PersistenceContext} annotation, leaving it to the descendant services to make sure this injection is possible (simply being EJB fulfills this requirement) or creating their own {\tt EntityManager}.
+It injects an {\tt EntityManager} using the {\tt @PersistenceContext} annotation, leaving it to the descendant services to make sure this injection is possible (simply being \glref{EJB} fulfills this requirement) or creating their own {\tt EntityManager}.
 
 It provides a {\tt BasicService(Class<E> entityType)} constructor, which takes the Entity class as a parameter. This might seem unnecessary when using generic classes, but I found no better way to access the Entity’s type in method calls other than keeping a {\tt type : Class<E>} property and assigning it explicitly in the constructor. Inheriting classes then implement a no-argument constructor which calls {\tt BasicService(entityType)}.
 
-{\tt BasicService} implements 5 default CRUD methods:
+{\tt BasicService} implements 5 default \glref{CRUD} methods:
 
 \begitems
 
@@ -56,7 +56,7 @@ finds an Entity by its primary key, using {\tt EntityManager}’s {\tt find(…)
 
 *{\tt findAll() : List<E>}
 
-finds all Entities of a type {E} using a simple JPQL query on {\tt EntityManager}.
+finds all Entities of a type {E} using a simple \glref{JPQL} query on {\tt EntityManager}.
 
 *{\tt save(E entity)}
 
@@ -139,13 +139,13 @@ public class LanguageService extends BasicService<Language, Integer> {
 
 *{\tt login(String login, String pass) : User}
 
-Validates login credentials, uses a JPQL query and either returns a matching user or {\tt null}.
+Validates login credentials, uses a \glref{JPQL} query and either returns a matching user or {\tt null}.
 
 \enditems
 
 Unfortunately, advanced user management is not implemented as of yet.
 
-Passwords are hashed using SHA-256 algorithm and salted by appending a randomized string.
+Passwords are hashed using \glref{SHA}-256 algorithm and salted by appending a randomized string.
 
 \secc CategoryService
 
@@ -153,7 +153,7 @@ Passwords are hashed using SHA-256 algorithm and salted by appending a randomize
 
 *{\tt findRootCategories() : List<Category>}
 
-Uses a JPQL query which returns all categories without a parent (top-level categories).
+Uses a \glref{JPQL} query which returns all categories without a parent (top-level categories).
 
 *{\tt createCategoryView(Category cat, Language lang) : CategoryView}
 
@@ -161,7 +161,7 @@ Creates a {\tt CategoryView} based on {\tt cat} argument and queried {\tt Catego
 
 *{\tt countNumberOfPages(Category cat, Language lang, boolean publishedOnly) : int}
 
-Recursively counts the number of pages inside category and its child categories. The recursion can be costly, but this will hopefully prove insignificant due to a low number of categories in the tree. If this ever becomes an issue, the solution is keeping a “numPages” property in the database. This would mean updating all ancestor categories whenever a page is created / removed, but it would speed up regular browsing. It is worth noting that thanks to JPA, this recursion accesses objects in memory and does not cause database hits.
+Recursively counts the number of pages inside category and its child categories. The recursion can be costly, but this will hopefully prove insignificant due to a low number of categories in the tree. If this ever becomes an issue, the solution is keeping a “numPages” property in the database. This would mean updating all ancestor categories whenever a page is created / removed, but it would speed up regular browsing. It is worth noting that thanks to \glref{JPA}, this recursion accesses objects in memory and does not cause database hits.
 
 \enditems
 
@@ -209,7 +209,7 @@ Calls the default {\tt delete(model)} and also deletes the model’s binary file
 
 *{\tt isUsed(Model model) : boolean}
 
-Runs a JPQL query to find out whether this model is used in any component.
+Runs a \glref{JPQL} query to find out whether this model is used in any component.
 
 \enditems
 
@@ -223,11 +223,11 @@ Works very much like {\tt ModelService} but with {\tt Image} entities and image 
 
 *{\tt createLabelViews(Model model, Language lang) : List<LabelView>}
 
-Creates all {\tt LabelView}s for a model in given language using a JPQL query. JPQL lets us create instances of any class if we map the query results to a constructor. That feature was used here so that the “JOIN” query returns a list of {\tt LabelView}s directly.
+Creates all {\tt LabelView}s for a model in given language using a \glref{JPQL} query. \glref{JPQL} lets us create instances of any class if we map the query results to a constructor. That feature was used here so that the “JOIN” query returns a list of {\tt LabelView}s directly.
 
 *{\tt updateLabelsFromJSON(String json, Model model, Language lang)}
 
-Labels are edited in client side JavaScript and changes to be saved are sent to the server as a JSON string. The string represents an array of {\tt LabelViews}. This method parses the string using Google’s open source library GSON \cite[gson]. Then it treats each {\tt LabelView} appropriately to its {\tt action} property and either creates, deletes or removes a {\tt Label} including its {\tt LabelContent}. {\it  Note: It could be argued that the conversion from JSON to LabelView objects should be done in Controller rather than the Service layer.}
+Labels are edited in client side JavaScript and changes to be saved are sent to the server as a \glref{JSON} string. The string represents an array of {\tt LabelViews}. This method parses the string using Google’s open source library GSON \cite[gson]. Then it treats each {\tt LabelView} appropriately to its {\tt action} property and either creates, deletes or removes a {\tt Label} including its {\tt LabelContent}. {\it  Note: It could be argued that the conversion from \glref{JSON} to LabelView objects should be done in Controller rather than the Service layer.}
 
 \enditems
 
@@ -239,11 +239,11 @@ This service does not implement any new methods, but overrides {\tt save(labelCo
 
 Backing beans are the next layer of our application, one step closer to the client. In our application they are called Controllers (although the real Controller is in fact a {\tt FacesServlet} working behind the scenes).
 
-Each backing bean belongs to a View component (a reusable piece of HTML), provides content from the Model and methods for manipulating it.
+Each backing bean belongs to a View component (a reusable piece of \glref{HTML}), provides content from the Model and methods for manipulating it.
 
 Backing beans are annotated with their “scope”, which defines the bean’s lifespan. Most beans are either {\tt @ViewScoped}, which means they’re recreated when a new page is displayed, or {\tt @SessionScoped}, which means the bean lives and holds its state as long as a session with a client is maintained.
 
-It is important to note that proper annotation and import is required, for example {\tt @SessionScoped @Named("loginController")}. The correct imports would be {\tt javax.faces.view.ViewScoped} and {\tt javax.inject.Named}. Some older tutorials use {\tt @ManagedBean} annotation and different imports, which is an outdated approach and CDI annotations mentioned above should be used instead. If you happen to mix the wrong annotations and imports, your code will break.
+It is important to note that proper annotation and import is required, for example {\tt @SessionScoped @Named("loginController")}. The correct imports would be {\tt javax.faces.view.ViewScoped} and {\tt javax.inject.Named}. Some older tutorials use {\tt @ManagedBean} annotation and different imports, which is an outdated approach and \glref{CDI} annotations mentioned above should be used instead. If you happen to mix the wrong annotations and imports, your code will break.
 
 The typical life cycle of a backing bean is this:
 
@@ -259,7 +259,7 @@ The typical life cycle of a backing bean is this:
 
 Most beans’ initialization methods are called using {\tt @PostConstruct} annotation, but several need an attribute from View (typically page ID) to initialize properly. This is realized by Facelets, which calls the {\tt init(…)} method when bound properties are already set. We tell Facelets to do this by setting {\tt f:viewAction} and {\tt f:viewParam} tags.
 
-Implementing “bound properties” is really easy in a CDI annotated bean. All you have to do is have a private field with public getter/setter and the property is bound. It can then be accessed in a Facelets page like {\tt value=\char`\"\#\char`\{loginController.userName\char`\}\char`\"}.
+Implementing “bound properties” is really easy in a \glref{CDI} annotated bean. All you have to do is have a private field with public getter/setter and the property is bound. It can then be accessed in a Facelets page like {\tt value=\char`\"\#\char`\{loginController.userName\char`\}\char`\"}.
 
 Action methods are public methods which can be called from Facelets pages such as {\tt action=\char`\"\#\char`\{loginController.login()\char`\}\char`\"}. These methods can have parameters and should return a {\tt String} (redirection rule) or {\tt void}. They are sometimes called within Ajax context and sometimes not. For this reason many action methods in our application specify a {\tt boolean ajax} parameter which determines whether the page should be reloaded at the end of the method run. If {\tt ajax} is {\tt true}, returned redirection string is {\tt null} so that Ajax can take care of the view update.
 
@@ -269,7 +269,7 @@ This is an abstract class which backing beans can inherit from.
 
 Backing beans do not have too much in common, so this ancestor is not really necessary. It was introduced in later stages of development to make the other backing beans’ code a little neater and easier to read.
 
-It implements methods for displaying messages in the View. Messages are passed as a string argument and set as {\tt FacesMessage} in current {\tt FacesContext}. Because the messages can be (and typically will be) localized strings from a resource bundle, these methods evaluate their string input as an EL expression. That way, simple strings are displayed directly, but EL expressions can be used just like they would be used in a Facelets page.
+It implements methods for displaying messages in the View. Messages are passed as a string argument and set as {\tt FacesMessage} in current {\tt FacesContext}. Because the messages can be (and typically will be) localized strings from a resource bundle, these methods evaluate their string input as an \glref{EL} expression. That way, simple strings are displayed directly, but \glref{EL} expressions can be used just like they would be used in a Facelets page.
 
 Displaying messages is a common task especially during content editing. This originally created chunks of repeated, verbose code. Implementing a common ancestor reduced these chunks to one-line method calls, which look like this for localized messages:
 
@@ -319,7 +319,7 @@ During page editing, changes are held in this backing bean and only uploaded to 
 
 {\tt addComponent(String type)} method is implemented as a switch which pre-fills a default component of given type and places is at the end of collection. Methods for changing component order swap two components in the collection and adjust their {\tt compOrder} appropriately. Components are removed simply by removing them from the collection. No methods for editing the content of individual components are needed, because being managed properties, they can be edited directly in Facelets pages.
 
-A method for persisting changes of 3D model’s labels was implemented. It passes a JSON String generated by JavaScript to {\tt LabelService}, where all the magic happens.
+A method for persisting changes of 3D model’s labels was implemented. It passes a \glref{JSON} String generated by JavaScript to {\tt LabelService}, where all the magic happens.
 
 \secc ModelController
 
@@ -337,9 +337,9 @@ This bean is analogous to {\tt ModelController}, but works with images.
 
 \sec View -- Facelets and HTML
 
-Since we are creating a web application and using JSF, the View is realized by a series of HTML (in fact, XHTML) pages generated by JSF’s presentation technology. In our case, that technology would be Facelets.
+Since we are creating a web application and using \glref{JSF}, the View is realized by a series of \glref{HTML} (in fact, \glref{XHTML}) pages generated by \glref{JSF}’s presentation technology. In our case, that technology would be Facelets.
 
-Facelets is a page declaration language which can be used for creating templates, UI components and much more. It allows effective work with XHTML and uses Expression Language (EL) to access methods and properties of managed beans. It also allows the use of basic conditional statements and iteration though collections. These features are included in several supported tag libraries that need to be included as XML namespaces. For more details see \cite[facelets].
+Facelets is a page declaration language which can be used for creating templates, \glref{UI} components and much more. It allows effective work with \glref{XHTML} and uses \glref{EL} to access methods and properties of managed beans. It also allows the use of basic conditional statements and iteration though collections. These features are included in several supported tag libraries that need to be included as \glref{XML} namespaces. For more details see \cite[facelets].
 
 \secc Templating
 
@@ -371,23 +371,23 @@ Using such a template lets us reuse components and if the defaults are set corre
 
 \secc Page URLs
 
-Pages are accessed at URLs matching their name appended to the server’s root URL. At a local server running on GlassFish’s default port, the {\tt index.xhmtl} page would then be accessible at {\tt http://localhost:8080/index.xhtml}.
+Pages are accessed at \glref{URL}s matching their name appended to the server’s root \glref{URL}. At a local server running on GlassFish’s default port, the {\tt index.xhmtl} page would then be accessible at {\tt http://localhost:8080/index.xhtml}.
 
-However, all pages (or categories) are using a common {\tt page.xhtml} webpage. To differentiate between individual content pages, an ID attribute is added to the URL. A page with ID = 1 would be accessible at {\tt http://localhost:8080/page.xhtml?id=1}. URL IDs match database IDs of pages/categories.
+However, all pages (or categories) are using a common {\tt page.xhtml} webpage. To differentiate between individual content pages, an ID attribute is added to the \glref{URL}. A page with ID = 1 would be accessible at {\tt http://localhost:8080/page.xhtml?id=1}. \glref{URL} IDs match database IDs of pages/categories.
 
-This makes the pages bookmarkable and easy to navigate from server’s point of view, but it does not look very pretty. In the future, a library such as PrettyFaces \cite[prettyfaces] might be used to rewrite URLs.
+This makes the pages bookmarkable and easy to navigate from server’s point of view, but it does not look very pretty. In the future, a library such as PrettyFaces \cite[prettyfaces] might be used to rewrite \glref{URL}s.
 
 \secc Style -- CSS
 
 Pages are styled using a combination of a basic style sheet {\tt basic.css} and an additional sheet specific for the page, such as {\tt category.css}. Components generated by JavaScript are styled inside JavaScript.
 
-Although the style is not overly complex, CSS presented me with a lot of issues regarding absolute/relative positioning, alignment and sometimes browser compatibility. The final style should be compatible with all major browsers and provide scalability within reasonable limits.
+Although the style is not overly complex, \glref{CSS} presented me with a lot of issues regarding absolute/relative positioning, alignment and sometimes browser compatibility. The final style should be compatible with all major browsers and provide scalability within reasonable limits.
 
 \secc Ajax
 
-Some pages are using Ajax to update only their necessary parts instead of reloading the whole page. Thankfully Facelets provides a {\tt f:ajax} tag which is easy to use.
+Some pages are using \glref{Ajax} to update only their necessary parts instead of reloading the whole page. Thankfully Facelets provides a {\tt f:ajax} tag which is easy to use.
 
-Unfortunately, this particular JSF build is suffering from an issue where view state is not retrieved upon Ajax calls. This resulted in losing page/component IDs (URL parameters) upon consequent Ajax calls. This was fixed by appending a JavaScript file which adds missing hidden {\tt ViewState} fields to forms (see \cite[ajaxfix] for details).
+Unfortunately, this particular \glref{JSF} build is suffering from an issue where view state is not retrieved upon \glref{Ajax} calls. This resulted in losing page/component IDs (\glref{URL} parameters) upon consequent \glref{Ajax} calls. This was fixed by appending a JavaScript file which adds missing hidden {\tt ViewState} fields to forms (see \cite[ajaxfix] for details).
 
 \secc Localization
 
@@ -397,7 +397,7 @@ Unfortunately, this particular JSF build is suffering from an issue where view s
 
 *{\bf Localized content} is realized in Model layer by Entities representing localized data.
 
-*{\bf Localized UI} is realized by inserting localized strings from a property file. Property files such as {\tt WebStrings\_en.properties} contain key-value pairs of strings for the UI. They are registered as named resource bundles in {\tt faces-config.xml} so that they can be easily accessed in EL expressions.
+*{\bf Localized UI} is realized by inserting localized strings from a property file. Property files such as {\tt WebStrings\_en.properties} contain key-value pairs of strings for the \glref{UI}. They are registered as named resource bundles in {\tt faces-config.xml} so that they can be easily accessed in \glref{EL} expressions.
 
 \enditems
 
@@ -408,7 +408,7 @@ Unfortunately, this particular JSF build is suffering from an issue where view s
 
 All available languages are taken from {\tt languageController.supportedLanguages}.
 
-Following Facelets snippet demonstrates how a template component is defined ({\tt ui:component}), how HTML components can be defined using Facelets tags ({\tt h:panelGroup}) or plain XHTML tags ({\tt div}), how backing bean data is accessed ({\tt value=…}), how basic iteration through a collection is done ({\tt ui:repeat}), how action methods are invoked ({\tt action=…}) and how images are inserted ({\tt h:graphicImage}):
+Following Facelets snippet demonstrates how a template component is defined ({\tt ui:component}), how \glref{HTML} components can be defined using Facelets tags ({\tt h:panelGroup}) or plain \glref{XHTML} tags ({\tt div}), how backing bean data is accessed ({\tt value=…}), how basic iteration through a collection is done ({\tt ui:repeat}), how action methods are invoked ({\tt action=…}) and how images are inserted ({\tt h:graphicImage}):
 
 \begtt
 
@@ -444,7 +444,7 @@ Unless stated otherwise, these components are displayed in all pages and do not 
 
 *{\tt horizontal\_menu.xhtml} displays buttons leading to Model Manager and Image Manager. It is only visible when an editor is logged in. It does not have its own backing bean, but checks {\tt loginController} for current user’s role.
 
-*{\tt search\_bar.xhtml} provides a search field and submit button. It does not use a backing bean, just redirects to {\tt search.xhtml} with input as URL parameter.
+*{\tt search\_bar.xhtml} provides a search field and submit button. It does not use a backing bean, just redirects to {\tt search.xhtml} with input as \glref{URL} parameter.
 
 *{\tt messages.xhtml} displays messages and warnings which are not paired with any particular UI component. In other words, this is the default place where messages are displayed.
 
@@ -480,7 +480,7 @@ It displays general information about the page and iterates though all the “pa
 
 \enditems
 
-*{\tt edit\_content\_page} is a separate editorial interface for pages. This main component provides a static editorial toolbar and editable fields of the page such as name. Current state of the content is shown by iterating {\tt edit\_content\_component} subcomponents, which provide editable fields of related “page components”. These temporary “page components” are not persisted, they only exist in the backing bean and the page is updated by Ajax calls. It is of course possible to persist them by clicking a “Save changes” button in the toolbar.
+*{\tt edit\_content\_page} is a separate editorial interface for pages. This main component provides a static editorial toolbar and editable fields of the page such as name. Current state of the content is shown by iterating {\tt edit\_content\_component} subcomponents, which provide editable fields of related “page components”. These temporary “page components” are not persisted, they only exist in the backing bean and the page is updated by \glref{Ajax} calls. It is of course possible to persist them by clicking a “Save changes” button in the toolbar.
 
 *{\tt models.xhtml} represents Model Manager. It is only accessible to editors and uses {\tt modelController} backing bean.
 It provides a form for uploading 3D model files into the system (STL format).
@@ -503,11 +503,11 @@ The model viewer runs in the client browser rather than the server and is writte
 
 \secc Basics, Rendering
 
-Typical {\tt three.js} applications work with a {\tt Scene} which holds a {\tt Camera} and other 3D objects. They then use a {\tt Renderer} to display the {\tt Camera}’s “view” onto a {\tt Canvas} DOM element in an HTML page.
+Typical {\tt three.js} applications work with a {\tt Scene} which holds a {\tt Camera} and other 3D objects. They then use a {\tt Renderer} to display the {\tt Camera}’s “view” onto a {\tt Canvas} \glref{DOM} element in an \glref{HTML} page.
 
-There are several {\tt Renderer}s available, most notable being {\tt WebGLRenderer}, which uses the WebGL technology to allow hardware acceleration. The alternative {\tt CanvasRenderer} works without using WebGL and provides wider support at the cost of performance. WebGL is clearly superior, but we enable {\tt CanvasRenderer} as a “fallback” option when no WebGL is available in client browser (detected by {\tt Detector.js}). A warning message is displayed though, as {\tt CanvasRenderer} cannot be expected to work properly.
+There are several {\tt Renderer}s available, most notable being {\tt WebGLRenderer}, which uses the \glref{WebGL} technology to allow hardware acceleration. The alternative {\tt CanvasRenderer} works without using \glref{WebGL} and provides wider support at the cost of performance. \glref{WebGL} is clearly superior, but we enable {\tt CanvasRenderer} as a “fallback” option when no \glref{WebGL} is available in client browser (detected by {\tt Detector.js}). A warning message is displayed though, as {\tt CanvasRenderer} cannot be expected to work properly.
 
-A typical scene is statically initialized and then animated in a rendering loop. An inefficient way to do this is to call the rendering function every few milliseconds. A more efficient way is using the {\tt requestAnimationFrame} API, which lets the browser handle rendering calls, synchronizing redraws of multiple animations and stopping the loop when the scene is not visible. That is what our application was initially doing. Since our scene includes no automated animation and every motion is triggered by the user, I decided to go one step further and abandoned the render loop altogether. Instead, the {\tt render} function was added as a listener to controls’ {\tt change} event, only redrawing on user interaction.
+A typical scene is statically initialized and then animated in a rendering loop. An inefficient way to do this is to call the rendering function every few milliseconds. A more efficient way is using the {\tt requestAnimationFrame} \glref{API}, which lets the browser handle rendering calls, synchronizing redraws of multiple animations and stopping the loop when the scene is not visible. That is what our application was initially doing. Since our scene includes no automated animation and every motion is triggered by the user, I decided to go one step further and abandoned the render loop altogether. Instead, the {\tt render} function was added as a listener to controls’ {\tt change} event, only redrawing on user interaction.
 
 \secc Materials and Lighting
 
@@ -592,9 +592,9 @@ Current controls work well with a mouse. They also support touch devices and bas
 \label[view3d_ui]
 \secc UI Components
 
-Not everything we need to display is a part of the 3D scene. Certain elements such as buttons and select boxes create the 2D UI which does not change position when the camera moves.
+Not everything we need to display is a part of the 3D scene. Certain elements such as buttons and select boxes create the 2D \glref{UI} which does not change position when the camera moves.
 
-They are created and updated in JavaScript by manipulating the page’s DOM. The biggest issue is their placement, which needs to be recalculated on resize.
+They are created and updated in JavaScript by manipulating the page’s \glref{DOM}. The biggest issue is their placement, which needs to be recalculated on resize.
 
 These UI components include: 
 
@@ -609,11 +609,11 @@ These UI components include:
 
 It is important to properly handle window resize and to initialize the canvas correctly depending on window size (we call our {\tt onWindowResize()} function during initialization too).
 
-The size of the containing element (a {\tt div}) is determined by the page’s CSS.
+The size of the containing element (a {\tt div}) is determined by the page’s \glref{CSS}.
 
 On resize we need to set the size of our renderer to fit into the {\tt div}’s width, decide on a reasonable height (4:3 ratio by default, but never higher than window), change the camera’s aspect and update its projection matrix.
 
-Then we need to position all UI components appropriately. Because of issues related to positioning and picking, the containing element’s position is set as {\tt static}. That prevents us from using relative positioning for UI components. This leads to all UI components being placed absolutely, their position and dimensions calculated from {\tt container.offsetLeft}, {\tt  container.offsetTop} and renderer’s {\tt width} and {\tt height}.
+Then we need to position all \glref{UI} components appropriately. Because of issues related to positioning and picking, the containing element’s position is set as {\tt static}. That prevents us from using relative positioning for \glref{UI} components. This leads to all \glref{UI} components being placed absolutely, their position and dimensions calculated from {\tt container.offsetLeft}, {\tt  container.offsetTop} and renderer’s {\tt width} and {\tt height}.
 
 Lastly, the controls are updated so that the “trackball” is centered correctly.
 
@@ -625,7 +625,7 @@ After this setup the scene is rendered to reflect the changes.
 The script also includes everything needed for editing the labels. Following components and features are available when an editor is logged in:
 
 \begitems
- *{\bf Save changes} button, which creates a JSON string representing an array of {\tt LabelView}s of changed labels and submits it to server.
+ *{\bf Save changes} button, which creates a \glref{JSON} string representing an array of {\tt LabelView}s of changed labels and submits it to server.
 *{\bf New label} button, which enables the editor to select a point on bone’s surface (see picking in \ref[picking], except we intersect the model). From that point a new default label (default text, set distance of tag from surface, perpendicular to surface) is created and selected.
 *The box with label description is made {\bf editable}, so that upon selection two editable fields (title and description) are dynamically created and their {\tt oninput} events alter the label’s content. Changing the title also redraws the label’s texture in real time. A {\bf Delete} button is appended to the box, letting the editor remove selected label.
 *Label {\bf sprites can be dragged} when selected. The translation is perpendicular to camera direction and realized by intersecting (see picking in \ref[picking]) a large invisible plane facing the camera and placed where the sprite is placed. Theoretically just intersecting the sprite should be enough, but in practice users can drag faster than the application reacts and “lose grip” of the sprite when they quickly move their cursor out of it. The line connecting label's point and sprite needs to be recreated.
@@ -658,7 +658,7 @@ And three mouse events are processed:
 
 \secc Using the Script, Required Variables
 
-To use the {\tt view3d.js} script in a HTML page, two basic requirements must be met.
+To use the {\tt view3d.js} script in a \glref{HTML} page, two basic requirements must be met.
 
 All required libraries/classes must be included before this script is run: 
 \begitems
@@ -690,17 +690,17 @@ Model files need to be copied to the application’s {\tt …/uploads/models} fo
 
 \sec Deployment
 
-The application was deployed to a production server belonging to Third Faculty of Medicine in December 2014 under the name {\bf Skelet 3D}. A virtual machine running Debian OS was created specifically for our application.
+The application was deployed to a production server belonging to Third Faculty of Medicine in December 2014 under the name {\bf Skelet 3D}. A virtual machine running Debian \glref{OS} was created specifically for our application.
 
-To match the conditions used during development, a GlassFish 4.1 server was installed and its pre-included Java DB database was setup as well as proper connection pools (using GlassFish’s Administration Console). It is worth noting that Java DB does not start automatically with the server and needs to be started manually from the command line.
+To match the conditions used during development, a GlassFish 4.1 server was installed and its pre-included Java \glref{DB} database was setup as well as proper connection pools (using GlassFish’s Administration Console). It is worth noting that Java \glref{DB} does not start automatically with the server and needs to be started manually from the command line.
 
-Database tables were created remotely using the SQL script from early implementation stages (see \ref[impl_tables]) and populated with basic data such as {\tt Language}s and example user accounts.
+Database tables were created remotely using the \glref{SQL} script from early implementation stages (see \ref[impl_tables]) and populated with basic data such as {\tt Language}s and example user accounts.
 
 Data from previous version were remotely imported using the AtlasFiller application (see \ref[atlasfiller]).
 
 Storage for uploaded files was setup at {\tt /home/glassfish/atlas-webapp/uploads/} and existing models were transferred manually.
 
-The application itself could not be deployed using NetBeans for unknown reasons, so the WAR file was deployed manually using GlassFish’s Administration Console.
+The application itself could not be deployed using NetBeans for unknown reasons, so the \glref{WAR} file was deployed manually using GlassFish’s Administration Console.
 
 Daily backup of the database as well as uploaded files was setup to prevent loss of data.
 
@@ -712,6 +712,6 @@ The application is currently running on this server at http://195.113.62.79/, al
 \begitems
 *A short, basic user guide is available on the “Help” page directly on the website.
 *A thorough editor’s guide was created and was given to current editors. It can be seen on attached CD.
-*JavaDoc documentation for public APIs was generated from source code’s comments. It can be seen on attached CD.
+*JavaDoc documentation for public \glref{API}s was generated from source code’s comments. It can be seen on attached CD.
 \enditems
 

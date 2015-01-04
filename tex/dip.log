@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  4 JAN 2015 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/W32TeX) (preloaded format=pdfcsplain 2014.10.2)  4 JAN 2015 20:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -119,10 +119,11 @@ FONT: Latin Modern fonts - \rm, \it, \bf, \bi, \caps\rm,... + math.
 \openout2 = `dip.lbr'.
 
 ))
-English hyphenation used (\language=0). \nonfrenchspacing is set on. [-1{c:/tex
-live/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./ctulogo.pdf>]
-[-2] [-3 <./assignment_en.pdf>] [-4 <./assignment_cs.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 24--24
+English hyphenation used (\language=0). \nonfrenchspacing is set on.
+(./glosdata.tex) [-1{c:/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.m
+ap} <./ctulogo.pdf>] [-2] [-3 <./assignment_en.pdf>] [-4 <./assignment_cs.pdf>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--26
 
 
 \hbox(0.0+0.0)x190.63347
@@ -171,8 +172,11 @@ Underfull \vbox (badness 2894) has occurred while \output is active
 ...\mF 2
 ...\mF .
 ...\kern 5.0
+...\pdfstartlink(8.99994+3.00003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action got
+o name{glos:69.82.}
 ...\tenrm E
 ...\tenrm R
+...\pdfendlink
 ...\glue 3.33333 plus 1.66498 minus 1.11221
 ...\tenrm d
 ...\tenrm i
@@ -184,8 +188,6 @@ Underfull \vbox (badness 2894) has occurred while \output is active
 ...\glue 3.33333 plus 1.66666 minus 1.11111
 ...\tenrm o
 ...\tenrm f
-...\glue 3.33333 plus 1.66666 minus 1.11111
-...\tenrm a
 ...etc.
 .\penalty 10000
 .\glue 13.6 plus 4.53326 minus 4.53326
@@ -687,8 +689,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 162--163
 
 [30] [31] [32] [33] [34] [35]
 Underfull \hbox (badness 2173) in paragraph at lines 411--412
-\tenrm (\tentt ui:component\tenrm ), how HTML com-po-nents can be de-fined us-i
-ng Facelets tags
+\tenrm (\tentt ui:component\tenrm ), how []HTML[] com-po-nents can be de-fined 
+us-ing Facelets tags
 
 \hbox(8.25+2.75)x415.41025, glue set 2.79175
 .\tenrm (
@@ -712,38 +714,44 @@ ng Facelets tags
 .\kern-0.30557
 .\tenrm w
 .\glue 3.66666 plus 1.83333 minus 1.22221
+.\pdfstartlink(9.89993+3.30003)x* attr{/C[1 .8 0] /Border[0 0 .6]} action goto 
+name{glos:72.84.77.76.}
 .\tenrm H
 .\tenrm T
 .\tenrm M
 .\tenrm L
+.\pdfendlink
 .\glue 3.66666 plus 1.83148 minus 1.22343
 .\tenrm c
 .\tenrm o
-.\tenrm m
-.\discretionary
-..\tenrm -
 .etc.
 
 [36] [37] [38] [39] [40] [41] [42] [43]) [44] (./testing.tex [45] [46 <./usecas
 e-validation.pdf>] [47] [48 <./feedback_devices_used.png> <./feedback_devices_w
 anted.png>] [49 <./feedback_evaluation.png>]) [50 <./feedback_features.png>]
 (./conclusion.tex [51]) [52] (./opmac-bib-mysimple.tex) (./mybase.bib)
-l.55 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
-[53] [54] [55] [56] (./classes.tex) [57 <./class_service.png>] [58 <./class_con
-troller.png>] [59] (./screens.tex) [60 <./screens//welcome.png> <./screens//cat
-egory.png>] [61 <./screens//blank.png> <./screens//labels.png>] [62 <./screens/
-/content.png>] [63 <./screens//edit_page.png> <./screens//edit_labels.png>] ){c
-:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014/texmf-d
-ist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/type1/publ
-ic/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c
-:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2014/tex
-mf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/fonts/ty
-pe1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmt
-t10.pfb>
-Output written on dip.pdf (73 pages, 2817951 bytes).
+l.57 OPmac WARNING: \usebib: entry [1] isn't found in .bib file(s).
+[53] [54] [55] [56] Opmac: Sorting index... [57] (./classes.tex) [58 <./class_s
+ervice.png>] [59 <./class_controller.png>] [60] (./screens.tex) [61 <./screens/
+/welcome.png> <./screens//category.png>] [62 <./screens//blank.png> <./screens/
+/labels.png>] [63 <./screens//content.png>] [64 <./screens//edit_page.png> <./s
+creens//edit_labels.png>] )pdfTeX warning (dest): name{glos:87.101.103.71.76.} 
+has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glos:92.101.108.113.72.84.77.76.} has been referenc
+ed but does not exist, replaced by a fixed one
+
+{c:/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-cs.enc}{c:/texlive/2014/texmf
+-dist/fonts/enc/dvips/lm/lm-cstt.enc}<c:/texlive/2014/texmf-dist/fonts/type1/pu
+blic/lm/lmr10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
+<c:/texlive/2014/texmf-dist/fonts/type1/public/lm/lmss10.pfb><c:/texlive/2014/t
+exmf-dist/fonts/type1/public/lm/lmssbx10.pfb><c:/texlive/2014/texmf-dist/fonts/
+type1/public/lm/lmsso10.pfb><c:/texlive/2014/texmf-dist/fonts/type1/public/lm/l
+mtt10.pfb>
+Output written on dip.pdf (74 pages, 2829690 bytes).
 PDF statistics:
- 1525 PDF objects out of 1728 (max. 8388607)
- 1391 compressed objects within 14 object streams
- 281 named destinations out of 1000 (max. 500000)
- 1204 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1800 PDF objects out of 2073 (max. 8388607)
+ 1662 compressed objects within 17 object streams
+ 326 named destinations out of 1000 (max. 500000)
+ 1212 words of extra memory for PDF output out of 10000 (max. 10000000)
 

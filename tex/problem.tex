@@ -72,7 +72,7 @@ Medical students are young, non-technical users. However, high working knowledge
 The following list is by no means complete. These are just several examples of the most relevant solutions and alternatives found online.
 
 \begitems
-*Skelet 3D (available at \cite[skelet3d]) is the previous version of our project, further discussed in the next section. Our intention is to redesign and upgrade this solution.
+*Skelet 3D (available at \cite[skelet3d] {\it Note: No longer available as of December 2014.}) is the predecessor of our project, further discussed in \ref[old_atlas]. Our intention is to redesign and upgrade this solution.
 
 *Skeletopedia (available at \cite[skeletopedia]) seems to be the independent solution closest to our specification. It provides interactive 3D models of bones in browser environment as well as simple labeling of certain parts, unfortunately not in great detail. The contribution of our project in comparison to this solution should be more detailed and far more numerous labeling of the models as well as further information about each label and each bone in general.
 
@@ -102,7 +102,7 @@ It consists of a list of bones sorted in a hierarchy of groups based on parts of
 
 \secc Bone Selector
 
-The list of available bones is a Flash application written in ActionScript 3 that allows selection of a model and filtering using a hierarchy of predefined groups. It does what it’s supposed to do, although the layout might not be the most intuitive and there are no additional features such as “search”. The loading time is longer than expected due to inefficient use of XML files that define groups and bones.
+The list of available bones is a Flash application written in ActionScript 3 that allows selection of a model and filtering using a hierarchy of predefined groups. It does what it’s supposed to do, although the layout might not be the most intuitive and there are no additional features such as “search”. The loading time is longer than expected due to inefficient use of \glref{XML} files that define groups and bones.
 
 \secc 3D Viewer
 
@@ -114,11 +114,11 @@ It is also missing some minor tweaks such as adjusting the label width to fit th
 
 The edit mode is working, although its graphical design is poor.
 
-The rendering speed of the application is unsatisfactory, greatly limiting the use on mobile devices and the quality of models. Some of the more complex models are reaching low FPS even on average desktop computers, while being virtually unusable on older machines and mobile devices. A tradeoff between model complexity and rendering speed is to be expected, but current application’s performance is nevertheless underwhelming. The technology used doesn’t provide easy solutions to some of the identified flaws (see \ref[flaws]).
+The rendering speed of the application is unsatisfactory, greatly limiting the use on mobile devices and the quality of models. Some of the more complex models are reaching low \glref{FPS} even on average desktop computers, while being virtually unusable on older machines and mobile devices. A tradeoff between model complexity and rendering speed is to be expected, but current application’s performance is nevertheless underwhelming. The technology used doesn’t provide easy solutions to some of the identified flaws (see \ref[flaws]).
 
 \secc PHP Parts
 
-The Flash application is nested in a simple PHP page. The web page which is used to upload new models and enter the editing mode is implemented as a series of simple PHP scripts. Other PHP scripts are called by the Flash application to handle XML files on the server.
+The Flash application is nested in a simple \glref{PHP} page. The web page which is used to upload new models and enter the editing mode is implemented as a series of simple \glref{PHP} scripts. Other \glref{PHP} scripts are called by the Flash application to handle \glref{XML} files on the server.
 
 \secc Editing
 
@@ -135,11 +135,11 @@ No images / text & Content value & High & Add editorial system & High \cr
 No authentication & Safety, sustainability & High & Add login system & Medium \cr
 Hardware demands & Availability, details & High & Change of 3D engine & High \cr
 Graphical errors & User experience & Medium & Change of 3D engine & High \cr
-Imperfect GUI & User experience & Medium & Rework GUI & Medium \cr
+Imperfect \glref{GUI} & User experience & Medium & Rework \glref{GUI} & Medium \cr
 Bad internal design & Future development & Medium & Proper design & Medium \cr
 No documentation & Future development & Medium & Add documentation & Low \cr
 No search & User experience & Low & Implement search & Low \cr
-Slow loading of lists & User experience & Low & Use DB over XML & Low \cr
+Slow loading of lists & User experience & Low & Use \glref{DB} over \glref{XML} & Low \cr
 }
 }
 \caption/t Identified flaws of the current version of the Atlas. Author's subjective evaluation of their impact and solutions.

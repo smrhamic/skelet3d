@@ -19,11 +19,11 @@ Basic compatibility tests were carried out, a more thorough analysis is still pe
 Several devices were used for testing:
 
 \begitems
-*{\bf Dell Vostro 3460}: Laptop, Windows 7 64bit, 8GB RAM, Intel Core i7-3612QM (@2.1GHz x4), using integrated graphics for browsing
-*{\bf ASUS F3Sv}: Laptop, Windows 7 64bit, 3GB RAM, Core2 Duo T7500 (@2.2GHz x2), GeForce 8600M GS
-*{\bf Sony Xperia Z3 Compact}: Mobile phone, Android 4.4.4, 2GB RAM, Snapdragon 801 (@2.5GHz x4), Ardeno 330
-*{\bf Samsung Galaxy S3 Mini}: Mobile phone, Android 4.1.2, 1GB RAM, ST-Ericsson U8420 (@1.0GHz x2), ARM Mali-400MP1
-*{\bf Samsung S5830 Galaxy Ace}: Mobile phone, Android 2.3, 278MB RAM, ARM 11 @0.8GHz x1, Ardeno 200
+*{\bf Dell Vostro 3460}: Laptop, Windows 7 64bit, 8GB \glref{RAM}, Intel Core i7-3612QM (@2.1GHz x4), using integrated graphics for browsing
+*{\bf ASUS F3Sv}: Laptop, Windows 7 64bit, 3GB \glref{RAM}, Core2 Duo T7500 (@2.2GHz x2), GeForce 8600M GS
+*{\bf Sony Xperia Z3 Compact}: Mobile phone, Android 4.4.4, 2GB \glref{RAM}, Snapdragon 801 (@2.5GHz x4), Ardeno 330
+*{\bf Samsung Galaxy S3 Mini}: Mobile phone, Android 4.1.2, 1GB \glref{RAM}, ST-Ericsson U8420 (@1.0GHz x2), ARM Mali-400MP1
+*{\bf Samsung S5830 Galaxy Ace}: Mobile phone, Android 2.3, 278MB \glref{RAM}, ARM 11 @0.8GHz x1, Ardeno 200
 \enditems
 
 Basic features such as browsing categories and manipulating 3D scenes were tested on these devices using several common browsers. A summary of the results can be seen in table \ref[compatibility].
@@ -35,13 +35,13 @@ Basic features such as browsing categories and manipulating 3D scenes were teste
 \hfil Device & Browser & Status \crl \tskip4pt
 Dell Vostro & Firefox 34.0 & Ok \cr
 Dell Vostro & Chrome 39.0 & Ok \cr
-Dell Vostro & IE 11.0 & Ok \cr
+Dell Vostro & \glref{IE} 11.0 & Ok \cr
 ASUS F3 & Firefox 30.0 & Ok \cr
-ASUS F3 & IE 11.0 & Ok \cr
+ASUS F3 & \glref{IE} 11.0 & Ok \cr
 Xperia Z3c & Chrome 39.0 & Ok \cr
-Xperia Z3c & default & No WegGL, slow 3D with broken normals/lighting \cr
+Xperia Z3c & default & No \glref{WegGL}, slow 3D with broken normals/lighting \cr
 Galaxy S3m & Chrome 39.0 & Ok \cr
-Galaxy Ace & default & 3D not displayed, no message about missing WebGL \cr
+Galaxy Ace & default & 3D not displayed, no message about missing \glref{WebGL} \cr
 }
 }
 \caption/t Compatibility of the application with selected devices and browsers. Only basic features were checked. Device specifications can be seen in \ref[compatibility_sec]
@@ -51,7 +51,7 @@ The application worked flawlessly on both new (Dell Vostro) and older (ASUS F3) 
 
 All devices displayed non-3D content without trouble.
 
-While a small test sample, this leads to an expected conclusion: The application will work correctly on reasonably powerful machines running WebGL-compatible browsers, such as most desktop and laptop computers as well as more recent mobile devices. However, the presence of such a browser is crucial. Also, some form of setup might be needed on certain devices (updating drivers, enabling WebGL), while older devices might be completely incompatible.
+While a small test sample, this leads to an expected conclusion: The application will work correctly on reasonably powerful machines running \glref{WebGL}-compatible browsers, such as most desktop and laptop computers as well as more recent mobile devices. However, the presence of such a browser is crucial. Also, some form of setup might be needed on certain devices (updating drivers, enabling WebGL), while older devices might be completely incompatible.
 
 These trends were later confirmed by several users in a short survey (see \ref[feedback]), where laptops showed no problems and the success of mobile devices varied.
 
@@ -111,7 +111,7 @@ An impotant question we needed answered was the demand for mobile support, so we
 
 \midinsert
 \picw=15cm \clabel[devices_wanted]{Device Support Demand} \cinspic feedback_devices_wanted.png
-\caption/f Devices 9 respondents would like to use for accessing our application in the future. Number of users mentioning a particular type of device is shown. Mobile devices are further divided by OS (ratios are preserved rather than absolute count as some users selected multiple OS).
+\caption/f Devices 9 respondents would like to use for accessing our application in the future. Number of users mentioning a particular type of device is shown. Mobile devices are further divided by OS (ratios are preserved rather than absolute count as some users selected multiple \glref{OS}).
 \endinsert
 
 \secc Application Evaluation

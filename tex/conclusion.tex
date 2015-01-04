@@ -6,15 +6,15 @@ First we defined the requirements and key features of the web application. It wo
 
 We then compared our concept to existing solutions and this project’s predecessor, finding that none of the solutions cover this project’s utility. It was decided that the previous version had too many issues limiting future development and that this project should start with a clean slate.
 
-Available technologies were researched and compared and after careful consideration, {\tt three.js} framework using WebGL was chosen for 3D rendering, while the server would run Java EE using JSF -- an MVC framework.
+Available technologies were researched and compared and after careful consideration, {\tt three.js} framework using \glref{WebGL} was chosen for 3D rendering, while the server would run Java \glref{EE} using \glref{JSF} -- an \glref{MVC} framework.
 
-The design phase began by identifying all use cases of the application and assembling their step-by-step scenarios. Based on this, a mockup GUI covering these scenarios was drafted. Business objects figuring in the application were identified and a database schema supporting multilingual content was created. The internal structure of the application was then modeled as a layered application based on MVC architecture.
+The design phase began by identifying all use cases of the application and assembling their step-by-step scenarios. Based on this, a mockup GUI covering these scenarios was drafted. Business objects figuring in the application were identified and a database schema supporting multilingual content was created. The internal structure of the application was then modeled as a layered application based on \glref{MVC} architecture.
 
-According to this design, the application was implemented. All layers including database persistence, data-representing entity classes, service classes with business logic, backing beans and their respective HTML views, including client side JavaScript with 3D, were successfully implemented. Nearly all planned features were realized: Categories and pages can be browsed as a hierarchy or searched for directly, models can be viewed from all angles, several modes of displaying labels are available and labels can be selected. All interfaces are bilingual; content may be created in either language. Authenticated users can create and edit pages, their content and labels, upload models and images. Only account management features are incomplete.
+According to this design, the application was implemented. All layers including database persistence, data-representing entity classes, service classes with business logic, backing beans and their respective \glref{HTML} views, including client side JavaScript with 3D, were successfully implemented. Nearly all planned features were realized: Categories and pages can be browsed as a hierarchy or searched for directly, models can be viewed from all angles, several modes of displaying labels are available and labels can be selected. All interfaces are bilingual; content may be created in either language. Authenticated users can create and edit pages, their content and labels, upload models and images. Only account management features are incomplete.
 
 The application was deployed to a production server in December 2014.
 
-Functionality was verified by walking through individual use case scenarios and everything (except for missing account management) is working properly. The application is confirmed to work in WebGL compatible browsers on desktop devices as well as more recent Android mobile devices.
+Functionality was verified by walking through individual use case scenarios and everything (except for missing account management) is working properly. The application is confirmed to work in \glref{WebGL} compatible browsers on desktop devices as well as more recent Android mobile devices.
 
 During later stages of development we cooperated with content editors, who provided useful feedback and helped improve user experience before public release. Once they had input enough example content, the application was presented to medical students, ten of whom submitted their opinions in a short survey. The feedback was largely positive, praising the application’s utility, the only significant concern being imperfect mobile compatibility of 3D.
 
@@ -24,7 +24,7 @@ While the application is working as intended and users seem to be satisfied, the
 
 Firstly, the account management system is still missing, which means user accounts are managed directly through the database. An interface allowing administrators to modify editors’ accounts should be implemented, as well as an option to change passwords anytime.
 
-Secondly, better mobile support could be provided. While the number of devices supporting WebGL by default can be expected to grow, there should be a guide regarding compatibility and what steps can be taken to enable WebGL on older devices. It might also be worth revising the touch controls of 3D, which work, but sometimes lead to conflicts between controlling the scene and controlling the page.
+Secondly, better mobile support could be provided. While the number of devices supporting \glref{WebGL} by default can be expected to grow, there should be a guide regarding compatibility and what steps can be taken to enable \glref{WebGL} on older devices. It might also be worth revising the touch controls of 3D, which work, but sometimes lead to conflicts between controlling the scene and controlling the page.
 
 Other future improvements may include:
 

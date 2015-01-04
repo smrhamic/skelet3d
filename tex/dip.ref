@@ -267,32 +267,35 @@
 \Xbib{ajaxfix}{38}{, }
 \Xbib{1}{39}{, }
 \Xpage{55}
+\def\glosindent{41.47906pt}
 \Xpage{57}
-\Xlabel{classes}{A}
-\Xchap{A}{Class Diagrams }{57}
-\Xfig{class_service}{A.1}{Class Diagram - Service}
-\Xlabel{class_service}{A.1}
+\Xchap{A}{List of Abbreviations}{57}
 \Xpage{58}
-\Xfig{class_controller}{A.2}{Class Diagram - Controller}
-\Xlabel{class_controller}{A.2}
+\Xlabel{classes}{B}
+\Xchap{B}{Class Diagrams }{58}
+\Xfig{class_service}{B.1}{Class Diagram - Service}
+\Xlabel{class_service}{B.1}
 \Xpage{59}
+\Xfig{class_controller}{B.2}{Class Diagram - Controller}
+\Xlabel{class_controller}{B.2}
 \Xpage{60}
-\Xlabel{screens}{B}
-\Xchap{B}{Screenshots }{60}
-\Xfig{screen_welcome}{B.3}{Screenshot - Welcome}
-\Xlabel{screen_welcome}{B.3}
-\Xfig{screen_category}{B.4}{Screenshot - Category}
-\Xlabel{screen_category}{B.4}
 \Xpage{61}
-\Xfig{screen_blank}{B.5}{Screenshot - 3D - Blank}
-\Xlabel{screen_blank}{B.5}
-\Xfig{screen_label}{B.6}{Screenshot - 3D - Labels}
-\Xlabel{screen_label}{B.6}
+\Xlabel{screens}{C}
+\Xchap{C}{Screenshots }{61}
+\Xfig{screen_welcome}{C.3}{Screenshot - Welcome}
+\Xlabel{screen_welcome}{C.3}
+\Xfig{screen_category}{C.4}{Screenshot - Category}
+\Xlabel{screen_category}{C.4}
 \Xpage{62}
-\Xfig{screen_content}{B.7}{Screenshot - Content}
-\Xlabel{screen_content}{B.7}
+\Xfig{screen_blank}{C.5}{Screenshot - 3D - Blank}
+\Xlabel{screen_blank}{C.5}
+\Xfig{screen_label}{C.6}{Screenshot - 3D - Labels}
+\Xlabel{screen_label}{C.6}
 \Xpage{63}
-\Xfig{screen_editp}{B.8}{Screenshot - Page Editor}
-\Xlabel{screen_editp}{B.8}
-\Xfig{screen_editl}{B.9}{Screenshot - 3D - Label Editor}
-\Xlabel{screen_editl}{B.9}
+\Xfig{screen_content}{C.7}{Screenshot - Content}
+\Xlabel{screen_content}{C.7}
+\Xpage{64}
+\Xfig{screen_editp}{C.8}{Screenshot - Page Editor}
+\Xlabel{screen_editp}{C.8}
+\Xfig{screen_editl}{C.9}{Screenshot - 3D - Label Editor}
+\Xlabel{screen_editl}{C.9}
