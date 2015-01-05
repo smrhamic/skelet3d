@@ -641,11 +641,11 @@ All primary keys as well as foreign keys in the database are indexed to allow mo
 
 \sec Overall Architecture and Classes
 
-The preliminary design of the application is shown in diagram \ref[class_diag1], roughly following a \glref{MVC} architecture. Individual components are described below.
+The architecture of the application is shown in diagram \ref[class_diag1], roughly following an \glref{MVC} pattern. Individual components are described below. This architecture was used in an early implementation and was later slightly altered, as discussed in \ref[classes_mature].
 
 \midinsert
-\picw=15cm \clabel[class_diag1]{Preliminary Design of the Application} \cinspic prelim_class.pdf
-\caption/f Preliminary design of the application.
+\picw=15cm \clabel[class_diag1]{Initial Design of the Application} \cinspic prelim_class.pdf
+\caption/f Initial design of the application.
 \endinsert
 
 \secc View
@@ -688,6 +688,7 @@ Persistence (rightmost part in diagram \ref[class_diag1]) will be realized mostl
 
 The database connections, transactions and everything related will be left to (\glref{JPA}) as opposed to manually using \glref{JDBC}. \glref{JPA} with its EntityManager is a great (and ready to go) way to ensure that everything works and nothing clashed in our multi-user environment. What is more, entities properly mapped to database tables save us the hassle of writing \glref{SQL} queries manually.
 
+\label[classes_mature]
 \sec Architecture and Classes - Mature
 
 During the development of our application, it became apparent that while the original architecture might be sufficient, there is a lot of space for improvement.

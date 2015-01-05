@@ -1,6 +1,4 @@
-In this chapter we talk about the implementation of all parts of the application, including the database, server logic in Java and 3D viewer in JavaScript. We also briefly describe the application’s deployment.
-
-Most (but not all) of the application was implemented and is ready for real use. As of yet unimplemented are the administration tools for managing registered users’ accounts.
+In this chapter we describe the implementation of all parts of the application, including the database, server logic in Java and 3D viewer in JavaScript. We also briefly describe the application’s deployment.
 
 Implementation was done in NetBeans \glref{IDE} 8.0.1 \cite[netbeans], a free open source development environment mostly focused on Java. All final source code can be seen on attached CD.
 
@@ -14,7 +12,7 @@ The first step of implementation was creating a data model. As mentioned in prev
 
 Glassfish server comes with a pre-installed Java \glref{DB} and NetBeans made it easy to setup a connection.
 
-The only pitfall lay in Java’s default security policy, which did not allow access to Java \glref{DB} on standard port 1527. See StackOverflow question \cite[so_java_permits] for details.
+The only pitfall that had to be resolved lay in Java’s default security policy, which did not allow access to Java \glref{DB} on standard port 1527. See StackOverflow question \cite[so_java_permits] for details.
 
 \label[impl_tables]
 \secc Creating Tables
@@ -143,8 +141,6 @@ Validates login credentials, uses a \glref{JPQL} query and either returns a matc
 
 \enditems
 
-Unfortunately, advanced user management is not implemented as of yet.
-
 Passwords are hashed using \glref{SHA}-256 algorithm and salted by appending a randomized string.
 
 \secc CategoryService
@@ -227,7 +223,7 @@ Creates all {\tt LabelView}s for a model in given language using a \glref{JPQL} 
 
 *{\tt updateLabelsFromJSON(String json, Model model, Language lang)}
 
-Labels are edited in client side JavaScript and changes to be saved are sent to the server as a \glref{JSON} string. The string represents an array of {\tt LabelViews}. This method parses the string using Google’s open source library GSON \cite[gson]. Then it treats each {\tt LabelView} appropriately to its {\tt action} property and either creates, deletes or removes a {\tt Label} including its {\tt LabelContent}. {\it  Note: It could be argued that the conversion from \glref{JSON} to LabelView objects should be done in Controller rather than the Service layer.}
+Labels are edited in client side JavaScript and changes to be saved are sent to the server as a \glref{JSON} string. The string represents an array of {\tt LabelViews}. This method parses the string using Google’s open source library GSON \cite[gson]. Then it treats each {\tt LabelView} appropriately to its {\tt action} property and either creates, deletes or removes a {\tt Label} including its {\tt LabelContent}. {\it  Note: It could be argued that the conversion from \glref{JSON} to LabelView objects should be done in Controller rather than the Service layer. However, it felt more natural to keep the Controller thinner, passing the data “as is” and letting the service layer do all the processing in one place.}
 
 \enditems
 
@@ -257,7 +253,7 @@ The typical life cycle of a backing bean is this:
 
 \enditems
 
-Most beans’ initialization methods are called using {\tt @PostConstruct} annotation, but several need an attribute from View (typically page ID) to initialize properly. This is realized by Facelets, which calls the {\tt init(…)} method when bound properties are already set. We tell Facelets to do this by setting {\tt f:viewAction} and {\tt f:viewParam} tags.
+Most beans’ initialization methods are called using {\tt @PostConstruct} annotation, which invokes the initialization method after dependancy injection but before the class is put into service. However, several beans need an attribute from View (typically page ID) to initialize properly and the attribute is not available at {\tt @PostConstruct}. This is solved by Facelets, which can call the {\tt init(…)} method when bound properties are already set. We tell Facelets to do this by setting {\tt f:viewAction} and {\tt f:viewParam} tags.
 
 Implementing “bound properties” is really easy in a \glref{CDI} annotated bean. All you have to do is have a private field with public getter/setter and the property is bound. It can then be accessed in a Facelets page like {\tt value=\char`\"\#\char`\{loginController.userName\char`\}\char`\"}.
 
@@ -277,7 +273,7 @@ Displaying messages is a common task especially during content editing. This ori
 
 \secc LanguageController
 
-This session bean is initialized post-construct. It communicates with Model through {\tt LanguageService}. During initialization, it takes the preferred locale from client browser and either assigns a matching language or resorts to default language if no match is found. It also loads all supported languages.
+This session bean is initialized using {\tt@PostConstruct} annotation. It communicates with Model through {\tt LanguageService}. During initialization, it takes the preferred locale from client browser and either assigns a matching language or resorts to default language if no match is found. It also loads all supported languages.
 
 During its life it holds the current language, current locale, a list of available languages and provides a method for switching languages, which simply sets the {\tt currentLanguage}, locale and reloads the page.
 
@@ -692,7 +688,7 @@ Model files need to be copied to the application’s {\tt …/uploads/models} fo
 
 The application was deployed to a production server belonging to Third Faculty of Medicine in December 2014 under the name {\bf Skelet 3D}. A virtual machine running Debian \glref{OS} was created specifically for our application.
 
-To match the conditions used during development, a GlassFish 4.1 server was installed and its pre-included Java \glref{DB} database was setup as well as proper connection pools (using GlassFish’s Administration Console). It is worth noting that Java \glref{DB} does not start automatically with the server and needs to be started manually from the command line.
+To match the conditions used during development, a GlassFish 4.1 server was installed and its pre-included Java \glref{DB} database was setup as well as proper connection pools (using GlassFish’s Administration Console). It is worth noting that Java \glref{DB} does not start automatically with the server and needs to be started manually from the command line (or within a start up script).
 
 Database tables were created remotely using the \glref{SQL} script from early implementation stages (see \ref[impl_tables]) and populated with basic data such as {\tt Language}s and example user accounts.
 
@@ -704,7 +700,7 @@ The application itself could not be deployed using NetBeans for unknown reasons,
 
 Daily backup of the database as well as uploaded files was setup to prevent loss of data.
 
-The application is currently running on this server at http://195.113.62.79/, also replacing the previous version of Atlas on the domain name http://skelet3d.lf3.cuni.cz/ \cite[1].
+The application is currently running on this server at http://195.113.62.79/, also replacing the previous version of Atlas on the domain name http://skelet3d.lf3.cuni.cz/ \cite[skelet3d].
 
 
 \sec Documentation

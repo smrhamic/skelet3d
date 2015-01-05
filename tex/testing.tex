@@ -4,7 +4,7 @@ Basic functionality of the application was being tested by the author during the
 
 \sec Use Case Validation
 
-The first step of evaluating the application is use case validation. It tells us which functional requirements were met. Each use case was validated by walking through its scenarios and observing expected results. Colored use case diagram \ref[uc_validation] shows that most use cases were successfully implemented. Two use cases were not implemented as of yet: password change and account management.
+The first step of evaluating the application is use case validation. It tells us which functional requirements were met. Each use case was validated by walking through its scenarios and observing expected results. Colored use case diagram \ref[uc_validation] shows that most use cases were successfully implemented. Two use cases were not implemented as of yet: password change and account management. Note that these operations can still be performed manually by manipulating the \glref{DB}.
 
 \midinsert
 \picw=12cm \clabel[uc_validation]{Use Case Diagram - Validation} \cinspic usecase-validation.pdf
@@ -54,6 +54,8 @@ All devices displayed non-3D content without trouble.
 While a small test sample, this leads to an expected conclusion: The application will work correctly on reasonably powerful machines running \glref{WebGL}-compatible browsers, such as most desktop and laptop computers as well as more recent mobile devices. However, the presence of such a browser is crucial. Also, some form of setup might be needed on certain devices (updating drivers, enabling WebGL), while older devices might be completely incompatible.
 
 These trends were later confirmed by several users in a short survey (see \ref[feedback]), where laptops showed no problems and the success of mobile devices varied.
+
+We have anticipated these compatibility issues since we chose \glref{WebGL} for rendering. This powerful technology was chosen for its top performance and great prospects for the future. Compatibility with older devices is the price we pay, but the number of incompatible devices should decrease with time.
 
 \sec Cooperation with Editors
 
@@ -134,7 +136,7 @@ All these aspects were rated on a scale of 1-10 (10 being the best). Average res
 \caption/f User evaluation of the application by 9 respondents. Average results are shown, different aspects were rated on a scale of 1-10 (10 being the best).
 \endinsert
 
-Students consider this application extremely useful and even the implementation is rated very highly, its weakest part being the graphical design rated at 7.67. Every other aspect is rated above 8.0, which is an encouraging result.
+Students consider this application extremely useful and even the implementation is rated very highly, its weakest part being the graphical design rated at 7.67. Since we have not focused on graphical design as of yet and every other aspect is rated above 8.0, the result is positive an encouraging.
 
 Respondents were also asked for a short summary of the application’s positives and negatives, examples of their answers are following.
 
@@ -173,4 +175,4 @@ Finally the respondents were asked what features they would like to see in futur
 \caption/f Features requested by 9 respondents. Number of users asking for each feature is shown.
 \endinsert
 
-The most requested feature was “Search” with 5/9 users asking for it. Basic search function was already implemented shortly after the survey. Other features received 2-3 votes each and might be implemented in the future.
+The most requested feature was “Search” with 5/9 users asking for it. Basic search function was already implemented shortly after the survey. Other features received 2-3 votes each, were added to the “to do” list and will be implemented in the future.

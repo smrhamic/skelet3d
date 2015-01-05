@@ -1,22 +1,22 @@
-All tasks of the assignment were successfully completed. We developed an online application called {\it Skelet3D}, an editable database of bones including labeled 3D models.
+We have successfully developed an online application called {\it Skelet3D}, an editable database of bones including labeled 3D models: We researched existing solutions, identified improvements, designed, implemented, tested and deployed the application.
 
 \sec Summary
 
-First we defined the requirements and key features of the web application. It would consist of a hierarchy of categories and subcategories containing pages related to bones. Each page could contain a 3D model with labels, text and images. Labels and text need to be editable while models and images can be uploaded into the system. The application should be bilingual.
+First we defined the requirements and key features of the web application: A hierarchy of categories and subcategories containing pages related to bones, each page containing a 3D model with labels, text and images. Labels and text need to be editable while models and images can be uploaded into the system. The application should be bilingual.
 
-We then compared our concept to existing solutions and this project’s predecessor, finding that none of the solutions cover this project’s utility. It was decided that the previous version had too many issues limiting future development and that this project should start with a clean slate.
+We have performed a review of existing solutions and this project’s predecessor, finding that none of the solutions cover this project’s utility. It was decided that the previous version had too many issues limiting future development and that this project should start with a clean slate.
 
-Available technologies were researched and compared and after careful consideration, {\tt three.js} framework using \glref{WebGL} was chosen for 3D rendering, while the server would run Java \glref{EE} using \glref{JSF} -- an \glref{MVC} framework.
+Available technologies were researched and compared and after careful consideration, {\tt three.js} framework using \glref{WebGL} was chosen for 3D rendering, while the server would run easily extensible Java \glref{EE} using \glref{JSF} -- an \glref{MVC} framework.
 
-The design phase began by identifying all use cases of the application and assembling their step-by-step scenarios. Based on this, a mockup GUI covering these scenarios was drafted. Business objects figuring in the application were identified and a database schema supporting multilingual content was created. The internal structure of the application was then modeled as a layered application based on \glref{MVC} architecture.
+We designed the application: Identified all its use cases and assembled their step-by-step scenarios. Based on this, a mockup \glref{GUI} covering these scenarios was drafted. Business objects figuring in the application were identified and a database schema supporting multilingual content was created. The internal structure of the application was then modeled as a layered application based on \glref{MVC} architecture.
 
-According to this design, the application was implemented. All layers including database persistence, data-representing entity classes, service classes with business logic, backing beans and their respective \glref{HTML} views, including client side JavaScript with 3D, were successfully implemented. Nearly all planned features were realized: Categories and pages can be browsed as a hierarchy or searched for directly, models can be viewed from all angles, several modes of displaying labels are available and labels can be selected. All interfaces are bilingual; content may be created in either language. Authenticated users can create and edit pages, their content and labels, upload models and images. Only account management features are incomplete.
+According to this design, the application was implemented. All layers including database persistence, data-representing entity classes, service classes with business logic, backing beans and their respective \glref{HTML} views, including client side JavaScript with 3D, were successfully implemented. All important features were realized: Categories and pages can be browsed as a hierarchy or searched for directly, models can be viewed from all angles, several modes of displaying labels are available and labels can be selected. All interfaces are bilingual; content may be created in either language. Authenticated users can create and edit pages, their content and labels, upload models and images. Content from previous version has been transferred.
 
 The application was deployed to a production server in December 2014.
 
-Functionality was verified by walking through individual use case scenarios and everything (except for missing account management) is working properly. The application is confirmed to work in \glref{WebGL} compatible browsers on desktop devices as well as more recent Android mobile devices.
+Functionality was verified by walking through individual use case scenarios -- all features are available except for account administration. The application is confirmed to work in \glref{WebGL} compatible browsers on desktop devices as well as more recent mobile devices including Android phones.
 
-During later stages of development we cooperated with content editors, who provided useful feedback and helped improve user experience before public release. Once they had input enough example content, the application was presented to medical students, ten of whom submitted their opinions in a short survey. The feedback was largely positive, praising the application’s utility, the only significant concern being imperfect mobile compatibility of 3D.
+During later stages of development we cooperated with content editors, who provided useful feedback and helped improve user experience before public release. Once they had input enough example content, the application was presented to medical students, ten of whom submitted their opinions in a short survey. The feedback was largely positive, praising the application’s utility.
 
 \sec Future Development
 
@@ -38,3 +38,17 @@ Other future improvements may include:
 \enditems
 
 Once obvious improvements are implemented and the content is more refined, user feedback should be collected in order to find out what needs to be improved further.
+
+\sec Goal Completion Summary
+
+All tasks of the assignment were successfully completed.
+
+\begitems
+*Current solution and other existing solutions were reviewed
+*Improvements and new key features were introduced
+*A new version of the application was designed
+*The application was implemented according to the design
+*Functionality was verified and tested
+*User experience was tested with editors and students
+*The application was improved according to user feedback
+\enditems
